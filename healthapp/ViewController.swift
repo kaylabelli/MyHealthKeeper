@@ -110,7 +110,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             contentMonthlRem.sound = UNNotificationSound.default
         contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
         contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthKeeper." , arguments:nil)
-        contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+        //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
         var monthly=DateComponents()
             //monthly notification for the first day of every month at 12
         monthly.minute=0
@@ -197,7 +197,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
                 let contentMonthlRem = UNMutableNotificationContent()
                 contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
                 contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthApp." , arguments:nil)
-                contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+                //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
                 var monthly=DateComponents()
                 //monthly notifications for first day of month at 12pm
                 monthly.minute=0
@@ -291,7 +291,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
         //set notificaton body
         content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName + " at location " + remLocation , arguments:nil)
-        content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+        //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
         //set trigger
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
               //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
@@ -440,7 +440,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     
     var menu_vc : MenuViewController!
-    //var menu_bool = true
+    var menu_bool = true
     @objc func menu_Action(_ sender: UIBarButtonItem) {
         if menu_vc.view.isHidden{
             UIView.animate(withDuration: 0.3){ () -> Void in

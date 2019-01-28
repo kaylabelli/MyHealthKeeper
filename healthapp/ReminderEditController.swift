@@ -115,7 +115,7 @@ var isGrantedNotificationAccess: Bool=false
         let content = UNMutableNotificationContent()
         content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
         content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName! + " at location " + remLoc! , arguments:nil)
-        content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+        //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
         
         //update reminder in Rminder table in database
