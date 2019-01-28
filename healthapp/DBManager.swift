@@ -261,7 +261,7 @@ return false
         print(reminderName)
         print(reminderLocation)
         print(reminderReason)
-        print(String(reminderDate)!)
+        print(reminderDate)
         //  open database
         if !openEncrypted() {
             print("Failed to Open database.")
@@ -371,7 +371,7 @@ return false
         print(reminderName)
         print(reminderLocation)
         print(reminderReason)
-        print(String(reminderDate)!)
+        print(reminderDate)
         //  open database
         if !openEncrypted() {
             print("Failed to Open database2.")

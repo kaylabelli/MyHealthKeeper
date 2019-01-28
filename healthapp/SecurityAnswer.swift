@@ -51,8 +51,8 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
         }
         else
         {
-            let resetAlert = UIAlertController(title: "ERROR", message: "Incorrect Security Answers", preferredStyle: UIAlertControllerStyle.alert)
-            resetAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let resetAlert = UIAlertController(title: "ERROR", message: "Incorrect Security Answers", preferredStyle: UIAlertController.Style.alert)
+            resetAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(resetAlert,animated: true, completion:nil)
             
         }
@@ -71,7 +71,7 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
   
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         backgroundCol()
 
@@ -82,7 +82,7 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
 
  
         //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         let defaults:UserDefaults = UserDefaults.standard
         var CurrentName=""
         if let opened:String = defaults.string(forKey: "userNameKey" )

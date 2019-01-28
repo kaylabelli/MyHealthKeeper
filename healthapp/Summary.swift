@@ -82,8 +82,8 @@ class summary: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(personal[0].firstname == "" && doctor[0].rowID == -1 && illness[0].rowID == -1 && medicine[0].medid == -1 && surgery[0].rowID == -1 && allergy[0].rowID == -1 && vaccine[0].rowID == -1 && insurance[0].insuranceName == "" && additional[0].Family_history == ""){
-            let alertController = UIAlertController(title: "Medical Information Not Uploaded!", message: "You have not completed any Medical Information.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "Medical Information Not Uploaded!", message: "You have not completed any Medical Information.", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerOK)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -141,8 +141,8 @@ class summary: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:  UITableViewCell = UITableViewCell(style:UITableViewCellStyle.value1,reuseIdentifier:"cell") as UITableViewCell
-        let cell1:  UITableViewCell = UITableViewCell(style:UITableViewCellStyle.value1,reuseIdentifier:"cell1") as UITableViewCell
+        let cell:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell") as UITableViewCell
+        let cell1:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell1") as UITableViewCell
         cell.detailTextLabel?.textColor = UIColor.black
         // cell.detailTextLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
         // passs same user for all information
@@ -302,7 +302,7 @@ class summary: UITableViewController {
     
     
     
-    func sectionTapped(sender: UIButton)
+    @objc func sectionTapped(sender: UIButton)
     {
         let section = sender.tag
         print(section)
@@ -392,7 +392,7 @@ class summary: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = UIView()
-        let btn = UIButton(type: UIButtonType.custom) as UIButton
+        let btn = UIButton(type: UIButton.ButtonType.custom) as UIButton
         if (section == 0)
         {
             btn.frame = CGRect(x: 10, y: 20, width: tableView.frame.size.width, height: 30)
@@ -407,7 +407,7 @@ class summary: UITableViewController {
         btn.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
         
         btn.contentHorizontalAlignment = .left
-        btn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        btn.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
         // btn.titleLabel?.minimumScaleFactor = 0.5
         btn.titleLabel?.adjustsFontForContentSizeCategory = true
         btn.addTarget(self, action: #selector(sectionTapped), for: .touchUpInside)
@@ -458,7 +458,7 @@ class summary: UITableViewController {
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         
         let yvalue = self.tableView.contentOffset.y+84

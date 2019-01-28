@@ -45,10 +45,10 @@ var isGrantedNotificationAccess: Bool=false
         }
         
         //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         
         //Main UIview color
@@ -105,9 +105,9 @@ var isGrantedNotificationAccess: Bool=false
         {
             //set up error message
            // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
-            let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
+            let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             //add close action to error message
-            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(reminderError,animated: true, completion:nil)
         }
         else{
@@ -137,8 +137,8 @@ var isGrantedNotificationAccess: Bool=false
                 reminderStatus=reminderStatus+"You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications."
             }
             //create user message opup
-            let reminderUpdateAlert = UIAlertController(title: "Reminder Status", message: reminderStatus, preferredStyle: UIAlertControllerStyle.alert)
-            reminderUpdateAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+            let reminderUpdateAlert = UIAlertController(title: "Reminder Status", message: reminderStatus, preferredStyle: UIAlertController.Style.alert)
+            reminderUpdateAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertAction.Style.default, handler: {(action) -> Void in
                 self.performSegue(withIdentifier: "UpdateToViewReminder", sender: self)}));
             //present message to user
             self.present(reminderUpdateAlert,animated: true, completion:nil)
@@ -149,8 +149,8 @@ var isGrantedNotificationAccess: Bool=false
         {
        
             //create error message popup
-            let reminderUpdateAlertF = UIAlertController(title: "ERROR", message: "Reminder was updated unsuccessfully.", preferredStyle: UIAlertControllerStyle.alert)
-            reminderUpdateAlertF.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let reminderUpdateAlertF = UIAlertController(title: "ERROR", message: "Reminder was updated unsuccessfully.", preferredStyle: UIAlertController.Style.alert)
+            reminderUpdateAlertF.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(reminderUpdateAlertF,animated: true, completion:nil)
             print("Updating item was unsuccessful")
         }
@@ -181,7 +181,7 @@ var isGrantedNotificationAccess: Bool=false
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false

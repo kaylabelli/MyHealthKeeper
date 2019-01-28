@@ -40,20 +40,20 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
         let checkValidCellphone = isCellphoneValid (cellphoneString: cellphoneInput!)
         
         if (DocName.text! == ""){
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
             
         else if (checkDoctorName == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
         else if (checkValidCellphone == false){
-            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertController.Style.alert)
+            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert4,animated: true, completion:nil)
         }
  
@@ -76,9 +76,9 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
        // GoBackToDoctorPage
             
             
-        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertControllerStyle.alert)
+        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
        // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToDoctorPage", sender: self)}));
         //present message to user
         self.present(UpdateAlert,animated: true, completion:nil)
@@ -92,7 +92,7 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
         // Do any additional setup after loading the view.
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
       //  DocAddress.text = "Enter Address (Optional)"
       //  DocAddress.font = UIFont.systemFont(ofSize: 15)
@@ -205,15 +205,15 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
             
             if (DocName.text! == "")
             {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
                 
             else if (checkDoctorName == false)
             {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
         }
@@ -221,8 +221,8 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
         {
             
             if (checkValidCellphone == false){
-                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertController.Style.alert)
+                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert4,animated: true, completion:nil)
             }
         }
@@ -336,7 +336,7 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false

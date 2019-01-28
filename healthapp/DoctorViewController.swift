@@ -75,7 +75,7 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     }
     
     //Call function
-    func callFunction(_ sender:UITapGestureRecognizer) {
+    @objc func callFunction(_ sender:UITapGestureRecognizer) {
         let touch = sender.location(in: TableView)
         if let indexPath1 = TableView.indexPathForRow(at: touch){
             print("it's tapped...")
@@ -132,7 +132,7 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         }
         
         tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         tableView.endUpdates()
         
     }
@@ -217,15 +217,15 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
             
             if (DocNameText.text! == "")
             {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
                 
             else if (checkDoctorName == false)
             {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
         }
@@ -233,8 +233,8 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         {
             
             if (checkValidCellphone == false){
-                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertController.Style.alert)
+                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert4,animated: true, completion:nil)
             }
         }
@@ -265,20 +265,20 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         let checkValidCellphone = isCellphoneValid (cellphoneString: cellphoneInput!)
         
         if (DocNameText.text! == ""){
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
             
         else if (checkDoctorName == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
         else if (checkValidCellphone == false){
-            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertController.Style.alert)
+            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert4,animated: true, completion:nil)
         }
             
@@ -322,8 +322,8 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     @IBAction func continueTonextpage(_ sender: Any) {
         if(Docarray.count==0 )//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Doctor List cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "ERROR", message: "Doctor List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerNo)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -340,7 +340,7 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var AddDesign: UIButton!
     override func viewWillAppear(_ animated: Bool) {
         TableView.rowHeight=100.0
-        TableView.rowHeight=UITableViewAutomaticDimension
+        TableView.rowHeight=UITableView.automaticDimension
     }
     
     //  *************************************** ViewDidLoad function *********************************
@@ -355,7 +355,7 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         DocAddress.text = "Enter Address (Optional)"
         DocAddress.font = UIFont.systemFont(ofSize: 15)
@@ -527,7 +527,7 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -579,9 +579,9 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     
     //alert user about unsaved changes
     @IBAction func menu_Doctor_additionalInfo(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
+        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
             action in
             
             if self.menu_vc.view.isHidden{

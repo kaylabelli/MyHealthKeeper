@@ -34,7 +34,7 @@ class SecurityQuestions: UITableViewController{
         return  -1
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:  UITableViewCell = UITableViewCell(style:UITableViewCellStyle.value1,reuseIdentifier: "cell")
+        let cell:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier: "cell")
         let defaults:UserDefaults = UserDefaults.standard
         var CurrentName=""
         if let opened:String = defaults.string(forKey: "userNameKey" )
@@ -119,7 +119,7 @@ class SecurityQuestions: UITableViewController{
         
         
         //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     //   override func didReceiveMemoryWarning() {

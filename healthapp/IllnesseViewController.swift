@@ -131,8 +131,8 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         if (IllnesseNameText.text! == "")
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Disease/Illness Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Disease/Illness Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
             
@@ -161,8 +161,8 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         if(IllnesseArray.count==0 )//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Disease/Illness List cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "ERROR", message: "Disease/Illness List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerNo)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -179,7 +179,7 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         super.viewDidLoad()
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         // delete navbar button appears
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         editButtonItem.title="Edit"
@@ -191,7 +191,7 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         //Expand row size
         TableView.estimatedRowHeight = 50
-        TableView.rowHeight = UITableViewAutomaticDimension
+        TableView.rowHeight = UITableView.automaticDimension
         
         if((adddesign) != nil)
         {
@@ -263,7 +263,7 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -284,9 +284,9 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
      */
     //alerts user about unsaved info
     @IBAction func menu_Illness_alert(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
+        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
             action in
             
             if self.menu_vc.view.isHidden{

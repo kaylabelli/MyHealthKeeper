@@ -20,7 +20,7 @@ extension UIViewController {
         
     }
     //when tap is found
-    func dismissKeyboard()
+    @objc func dismissKeyboard()
     {
         view.endEditing(true)
     }
@@ -51,7 +51,7 @@ extension UIViewController {
     
     //checks if user rotates device and fixes backgroumd
     func rotatedDevice() {
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+        if UIDevice.current.orientation.isLandscape {
             print("Landscape Mode")
             //reapply background
             
@@ -60,7 +60,7 @@ extension UIViewController {
             backgroundCol()
         }
         
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        if UIDevice.current.orientation.isPortrait {
             print("Portrait Mode")
             //reapply backgroudn
             referenceToLastLayer.removeFromSuperlayer()

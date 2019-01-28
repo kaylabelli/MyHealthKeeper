@@ -17,8 +17,8 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
         
         if ((resetPassword.text?.isEmpty)! || (confirmPassword.text?.isEmpty)!){
             
-            let noMatchAlert = UIAlertController(title: "ERROR", message: "Field(s) cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            noMatchAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let noMatchAlert = UIAlertController(title: "ERROR", message: "Field(s) cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            noMatchAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(noMatchAlert,animated: true, completion:nil)
         }
             
@@ -44,8 +44,8 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
                 
             else
             {
-                let updateAlert = UIAlertController(title: "ERROR", message: "Failed to Reset Password", preferredStyle: UIAlertControllerStyle.alert)
-                updateAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let updateAlert = UIAlertController(title: "ERROR", message: "Failed to Reset Password", preferredStyle: UIAlertController.Style.alert)
+                updateAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(updateAlert,animated: true, completion:nil)
                 
             }
@@ -56,8 +56,8 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
             
         else if(resetPassword.text != confirmPassword.text){
             
-            let noMatchAlert = UIAlertController(title: "ERROR", message: "Passwords do not match. Please try again.", preferredStyle: UIAlertControllerStyle.alert)
-            noMatchAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let noMatchAlert = UIAlertController(title: "ERROR", message: "Passwords do not match. Please try again.", preferredStyle: UIAlertController.Style.alert)
+            noMatchAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(noMatchAlert,animated: true, completion:nil)
         }
         
@@ -72,7 +72,7 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
         
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         backgroundCol()
         
@@ -80,8 +80,8 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
         self.hideKeyboard()
         
         //hide keyboard when user presses enter on keyboard
-        self.resetPassword.delegate=self as! UITextFieldDelegate
-        self.confirmPassword.delegate=self as! UITextFieldDelegate
+        self.resetPassword.delegate=self as UITextFieldDelegate
+        self.confirmPassword.delegate=self as UITextFieldDelegate
         
         //Changes to 'Done'
         resetPassword.returnKeyType = UIReturnKeyType.done
@@ -93,7 +93,7 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
         }
         
         //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         // Do any additional setup after loading the view.
     }

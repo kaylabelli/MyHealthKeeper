@@ -80,8 +80,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         if(self.loadDoc.count >= 10)
         {
             // upload limit reached
-            let alertController = UIAlertController(title: "ERROR", message:"You have reached a limit of 10 images. Please delete image(s) before continuing.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alertController = UIAlertController(title: "ERROR", message:"You have reached a limit of 10 images. Please delete image(s) before continuing.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
         else{
@@ -90,7 +90,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
             let image = UIImagePickerController()   //Declare variable
             image.delegate = self                   //Set the variable's delegate
             
-            image.sourceType = UIImagePickerControllerSourceType.photoLibrary   //Set source type(Photo Library)
+            image.sourceType = UIImagePickerController.SourceType.photoLibrary   //Set source type(Photo Library)
             
             image.allowsEditing = false             //Cannot edit picture
             
@@ -98,8 +98,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         }
         else {
             print("Photo Library not available")
-            let alertController = UIAlertController(title: "ERROR", message: "Photo Library is not available.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alertController = UIAlertController(title: "ERROR", message: "Photo Library is not available.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
         }
@@ -112,8 +112,8 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         if(self.loadDoc.count >= 10)
         {
             // upload limit reached
-            let alertController = UIAlertController(title: "ERROR", message: "You have reached a limit of 10 images. Please delete image(s) before continuing.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alertController = UIAlertController(title: "ERROR", message: "You have reached a limit of 10 images. Please delete image(s) before continuing.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
         else{
@@ -121,22 +121,25 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         {
             let image = UIImagePickerController()
             image.delegate = self
-            image.sourceType = UIImagePickerControllerSourceType.camera
+            image.sourceType = UIImagePickerController.SourceType.camera
             image.allowsEditing = false
             self.present(image, animated: true, completion: nil)
         }
         else{
             // print("Camera not available")
-            let alertController = UIAlertController(title: "ERROR", message: "Camera is not available.", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            let alertController = UIAlertController(title: "ERROR", message: "Camera is not available.", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             present(alertController, animated: true, completion: nil)
         }
         }
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        if let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage
         {
             imageView.image = image
 
@@ -156,7 +159,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
         if imageView.image != nil {
             let image = imageView.image //Let image = the uploaded image
            // self.imageData = UIImagePNGRepresentation(image!)    //Convert image to PNG
-            self.imageData = UIImageJPEGRepresentation(image!, 0.7) //Convert image to JPEG
+            self.imageData = image!.jpegData(compressionQuality: 0.7) //Convert image to JPEG
             
             //Get image size
             var imageSize: Int = self.imageData!.count
@@ -165,21 +168,21 @@ UINavigationControllerDelegate, UITextFieldDelegate{
             
             //Error if image size is too large
             if(size > 5000000){
-                let alertController = UIAlertController(title: "ERROR", message: "The image is too large. Please select another image.", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "ERROR", message: "The image is too large. Please select another image.", preferredStyle: UIAlertController.Style.alert)
 
-                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 alertController.addAction(alertControllerOK)
                 self.present(alertController, animated: true, completion: nil)
             }
             else{
-                let alertController = UIAlertController(title: "Enter Document Information", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                let alertController = UIAlertController(title: "Enter Document Information", message: "", preferredStyle: UIAlertController.Style.alert)
                 alertController.addTextField(configurationHandler: Name)
                 alertController.addTextField(configurationHandler: Description)
-                let OKalert = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                let OKalert = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
                     
                     if(self.Name.text == ""){
-                    let alertController = UIAlertController(title: "ERROR", message: "Document Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                    let alertController = UIAlertController(title: "ERROR", message: "Document Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                    let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                     alertController.addAction(alertControllerNo)
                     self.present(alertController, animated: true, completion: nil)
                     }
@@ -188,15 +191,15 @@ UINavigationControllerDelegate, UITextFieldDelegate{
                     }
                     }
             )
-                let Cancelalert = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+                let Cancelalert = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
                 alertController.addAction(OKalert)
                 alertController.addAction(Cancelalert)
                 self.present(alertController, animated: true, completion: nil)
             }
         }
         else {
-            let alertController = UIAlertController(title: "ERROR", message: "Please upload an image.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "ERROR", message: "Please upload an image.", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerNo)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -278,7 +281,7 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -290,4 +293,14 @@ UINavigationControllerDelegate, UITextFieldDelegate{
     }
     //Thanjila: END
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

@@ -32,19 +32,19 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         let vaccineneamecheck = String (VaccineName.text!)
         let checkdate = String (VaccineDate.text!)
-        let vaccinecheckdate = isDoBValid(DoBString: checkdate!)
+        let vaccinecheckdate = isDoBValid(DoBString: checkdate)
         
-        if ((vaccineneamecheck?.isEmpty)!)
+        if ((vaccineneamecheck.isEmpty))
         {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(Alert1,animated: true, completion:nil)
             
         }
         else if (vaccinecheckdate == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
         
@@ -54,9 +54,9 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         let UpdateVaccine = DbmanagerMadicalinfo.shared1.updateVaccineTable(vaccinesName: VName!, vaccinesdate: VDate!, rowID: i!)
       
              // alert will disply when user update information
-        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertControllerStyle.alert)
+        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
         // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToVaccinePage", sender: self)}));
         //present message to user
         self.present(UpdateAlert,animated: true, completion:nil)
@@ -74,7 +74,7 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         //hide keyboard when user taps screen
         self.hideKeyboard()
@@ -127,10 +127,10 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         
         if(textField == VaccineName){
-            if ((vaccineneamecheck?.isEmpty)!)
+            if ((vaccineneamecheck.isEmpty))
             {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(Alert1,animated: true, completion:nil)
             }
         }
@@ -139,8 +139,8 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
             
             if (vaccinecheckdate == false)
             {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
             
@@ -220,7 +220,7 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
