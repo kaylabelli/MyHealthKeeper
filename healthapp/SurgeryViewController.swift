@@ -214,20 +214,13 @@ class SurgeryViewController: UIViewController  ,UITableViewDelegate,UITableViewD
         
         let checkdate = SurgeryDate.text
         let Date = isDoBValid(DoBString: checkdate!)
-        if (SurgeryNameText.text! == "")
-        {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Surgery Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-            self.present(Alert1,animated: true, completion:nil)
-            
-        }
-        else if (Date == false)
+        if (Date == false)
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
-        else // if SurgeryNameText.text != ""
+        else if SurgeryNameText.text != ""
         {
             // load data to text field
             SurgeryArray.append(SurgeryNameText.text!)
@@ -249,7 +242,7 @@ class SurgeryViewController: UIViewController  ,UITableViewDelegate,UITableViewD
     }
     
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+    /*func textFieldDidEndEditing(_ textField: UITextField){
         
         let checkdate = SurgeryDate.text
         let Date = isDoBValid(DoBString: checkdate!)
@@ -273,18 +266,27 @@ class SurgeryViewController: UIViewController  ,UITableViewDelegate,UITableViewD
                 self.present(regAlert1,animated: true, completion:nil)
             }
         }
-    }
+    }*/
     
     
     // action for next page
     @IBAction func goToallergiespage(_ sender: Any) {
         
-        if(SurgeryArray.count==0 )//invalid entry
+        if(SurgeryNameText.text! != "")//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Surgery List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            /*let alertController = UIAlertController(title: "ERROR", message: "Allergy List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+             let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+             alertController.addAction(alertControllerNo)
+             self.present(alertController, animated: true, completion: nil)*/
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                self.performSegue(withIdentifier: "GoToAllergies", sender: self)
+            }));
+            
+            self.present(Alert1,animated: true, completion:nil)
         }
         else
         {
@@ -450,20 +452,28 @@ class SurgeryViewController: UIViewController  ,UITableViewDelegate,UITableViewD
     
     //alerts user about unsaved info
     @IBAction func menu_Surgery_alert(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
-            action in
+        if SurgeryNameText.text! != "" && self.menu_vc.view.isHidden
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
 }
 

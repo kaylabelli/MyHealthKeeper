@@ -183,20 +183,14 @@ class VaccineViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         let checkdate = String (opentext1.text!)
         let vaccinecheckdate = isDoBValid(DoBString: checkdate)
         
-        if ((vaccineneamecheck.isEmpty))
-        {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-            self.present(Alert1,animated: true, completion:nil)
-            
-        }
-        else if (vaccinecheckdate == false)
+        if (vaccinecheckdate == false)
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
+            
         }
-        else //VaccineNameText.text != ""
+        else if VaccineNameText.text! != ""
         {
             // load data to text field
             VaccineArray.append(VaccineNameText.text!)
@@ -215,7 +209,7 @@ class VaccineViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         }
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField){
+   /* func textFieldDidEndEditing(_ textField: UITextField){
         
         let vaccineneamecheck = String (VaccineNameText.text!)
         let checkdate = opentext1.text
@@ -243,16 +237,26 @@ class VaccineViewController: UIViewController ,UITableViewDelegate,UITableViewDa
             
         }
     }
+ */
     
     // will go to Family history page
     
     @IBAction func GotofamilyHistorypage(_ sender: Any) {
-        if(VaccineArray.count==0 )//invalid entry
+        if(VaccineNameText.text! != "")//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Vaccine List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            /*let alertController = UIAlertController(title: "ERROR", message: "Allergy List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+             let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+             alertController.addAction(alertControllerNo)
+             self.present(alertController, animated: true, completion: nil)*/
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                self.performSegue(withIdentifier: "GoToFamilyHistory", sender: self)
+            }));
+            
+            self.present(Alert1,animated: true, completion:nil)
         }
         else
         {
@@ -398,20 +402,28 @@ class VaccineViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     
     //alerts user about unsaved info
     @IBAction func menu_Vaccine_alert(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
-            action in
+        if VaccineNameText.text! != "" && self.menu_vc.view.isHidden
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
     
     /*

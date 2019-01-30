@@ -129,15 +129,8 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
             print("USERNAME2")
             print(opened)
         }
-        if (IllnesseNameText.text! == "")
-        {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Disease/Illness Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-            self.present(regAlert1,animated: true, completion:nil)
-            
-            
-        }
-        else //if (IllnesseNameText.text != "")
+        
+        if (IllnesseNameText.text != "")
         {
             // load data to text field
             IllnesseArray.append(IllnesseNameText.text!)
@@ -158,13 +151,17 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     
     @IBAction func GoToMedicationPage(_ sender: Any) {
-        
-        if(IllnesseArray.count==0 )//invalid entry
+        if(IllnesseNameText.text! != "")//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Disease/Illness List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                self.performSegue(withIdentifier: "GoToMedication", sender: self)
+            }));
+            
+            self.present(Alert1,animated: true, completion:nil)
         }
         else
         {
@@ -284,20 +281,28 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
      */
     //alerts user about unsaved info
     @IBAction func menu_Illness_alert(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
-            action in
+        if IllnesseNameText.text! != "" && self.menu_vc.view.isHidden
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
     
 }
