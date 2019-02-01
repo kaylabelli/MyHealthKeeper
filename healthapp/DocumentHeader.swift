@@ -26,7 +26,7 @@ class DocumentHeader: UILabel {
         self.lineBreakMode = .byWordWrapping
         self.numberOfLines = 2
         
-        return super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+        return super.drawText(in: rect.inset(by: insets))
     }
     
     /*

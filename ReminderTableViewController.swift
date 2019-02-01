@@ -94,8 +94,8 @@ class ReminderTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     print("You selected cell #\(indexPath.row)!")
-        let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertControllerStyle.alert)
-        let alertControllerNo = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
+        let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertController.Style.alert)
+        let alertControllerNo = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
         let alertControllerYes = UIAlertAction(title: "Yes", style: .default, handler: { action in
             let passReminder = self.items[indexPath.row]
             self.currentitem=passReminder
@@ -119,8 +119,8 @@ class ReminderTableViewController: UITableViewController {
         if(self.items.count != 0)
         {
             if (self.items[0].reminderId == -1 ){
-                let alertController = UIAlertController(title: "ERROR", message: "You have not set any Appointment Reminders.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                let alertController = UIAlertController(title: "ERROR", message: "You have not set any Appointment Reminders.", preferredStyle: UIAlertController.Style.alert)
+                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 alertController.addAction(alertControllerOK)
                 self.present(alertController, animated: true, completion: nil)
                 return self.items.count-1
@@ -183,7 +183,7 @@ class ReminderTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     
         if editingStyle == .delete {
             
@@ -210,8 +210,8 @@ class ReminderTableViewController: UITableViewController {
             }
             else{
                 //error deleteing item
-                let reminderDeleteAlert = UIAlertController(title: "ERROR", message: "Reminder was deleted unsuccessfully", preferredStyle: UIAlertControllerStyle.alert)
-                reminderDeleteAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let reminderDeleteAlert = UIAlertController(title: "ERROR", message: "Reminder was deleted unsuccessfully", preferredStyle: UIAlertController.Style.alert)
+                reminderDeleteAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(reminderDeleteAlert,animated: true, completion:nil)
                 print("Deleting item was unsuccessful")
                 
@@ -272,7 +272,7 @@ class ReminderTableViewController: UITableViewController {
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         
         let yvalue = self.tableView.contentOffset.y+84

@@ -59,7 +59,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    func sectionTapped(sender: UIButton)
+    @objc func sectionTapped(sender: UIButton)
     {
         let section = sender.tag
         print(section)
@@ -251,13 +251,13 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = UIView()
-        let btn = UIButton(type: UIButtonType.custom) as UIButton
+        let btn = UIButton(type: UIButton.ButtonType.custom) as UIButton
         btn.frame = CGRect(x: 33, y: 0, width: menu_tableView.frame.size.width, height: 50)
         
         btn.setTitle(title_arr[section], for: .normal)
         btn.setTitleColor(UIColor.white, for: .normal)
         btn.contentHorizontalAlignment = .left
-        btn.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
+        btn.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 0)
         btn.titleLabel?.minimumScaleFactor = 0.3;
         btn.titleLabel?.adjustsFontSizeToFitWidth = true
         btn.addTarget(self, action: #selector(sectionTapped), for: .touchUpInside)

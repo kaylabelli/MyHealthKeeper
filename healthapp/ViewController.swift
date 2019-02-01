@@ -31,7 +31,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         super.viewDidLoad()
      
         //if user flips phone to landscape mode the background is reapplied
-         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -107,10 +107,10 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         {
         let contentMonthlRem = UNMutableNotificationContent()
             //Provides sound to monthly notifications
-            contentMonthlRem.sound = UNNotificationSound.default()
+            contentMonthlRem.sound = UNNotificationSound.default
         contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
         contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthKeeper." , arguments:nil)
-        contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+        //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
         var monthly=DateComponents()
             //monthly notification for the first day of every month at 12
         monthly.minute=0
@@ -163,7 +163,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     }
     
     @IBOutlet weak var NotificationStatus: UISwitch!
-    func notificationStatus(NotificationStatus: UISwitch) {
+    @objc func notificationStatus(NotificationStatus: UISwitch) {
          let status=NotificationStatus.isOn
         let defaults:UserDefaults = UserDefaults.standard
         //current state
@@ -197,7 +197,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
                 let contentMonthlRem = UNMutableNotificationContent()
                 contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
                 contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthApp." , arguments:nil)
-                contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+                //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
                 var monthly=DateComponents()
                 //monthly notifications for first day of month at 12pm
                 monthly.minute=0
@@ -231,15 +231,15 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
                 
                 
             }
-            let reminderAlert = UIAlertController(title: "Reminder Status", message: noteStatus, preferredStyle: UIAlertControllerStyle.alert)
-            reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let reminderAlert = UIAlertController(title: "Reminder Status", message: noteStatus, preferredStyle: UIAlertController.Style.alert)
+            reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             
             self.present(reminderAlert,animated: true, completion:nil)
         }
         else //user has disabled all notfications
         {
-            let turnOnNotifications = UIAlertController(title: "Notification Status", message: "You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications.", preferredStyle: UIAlertControllerStyle.alert)
-            turnOnNotifications.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let turnOnNotifications = UIAlertController(title: "Notification Status", message: "You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications.", preferredStyle: UIAlertController.Style.alert)
+            turnOnNotifications.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(turnOnNotifications,animated: true, completion:nil)
             
         }
@@ -269,9 +269,9 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         {
            // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
             //Create Add Reminder Error Alert
-            let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
+            let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             //Add close action to alert
-            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             //Present the alert
             self.present(reminderError,animated: true, completion:nil)        }
         else   //if the entry is valid
@@ -286,12 +286,12 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         //Start creating the Local Notification for the User
         let content = UNMutableNotificationContent()
             //Provide sound to local notification
-            content.sound = UNNotificationSound.default()
+            content.sound = UNNotificationSound.default
         //set the Notification title
         content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
         //set notificaton body
-        content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName! + " at location " + remLocation! , arguments:nil)
-        content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+        content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName + " at location " + remLocation , arguments:nil)
+        //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
         //set trigger
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
               //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
@@ -300,7 +300,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             let defaults:UserDefaults = UserDefaults.standard
             if let opened:String = defaults.string(forKey: "userNameKey" ){uName=opened}
         //insert reminder information into the Reminder table in the database and returns the sucess status
-        let sucess=DBManager.shared.insertReminderTable(reminderName: remName!, reminderLocation: remLocation!, reminderReason: remReason!, reminderDate: dateR, reminderUser: uName)
+        let sucess=DBManager.shared.insertReminderTable(reminderName: remName, reminderLocation: remLocation, reminderReason: remReason, reminderDate: dateR, reminderUser: uName)
         
         //Initlize the reminder Status message variable
         var reminderStatusMessage=""
@@ -310,7 +310,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
       //      var t = DBManager.shared.lastReminder()
             
             //sets status message variable
-            reminderStatusMessage = "Insert of " + remName! + " at " + dateR + " was successful."
+            reminderStatusMessage = "Insert of " + remName + " at " + dateR + " was successful."
             
             //if the user has not granted the application permission to send notificatoins
             if(!isGrantedNotificationAccess){
@@ -342,9 +342,9 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             
         //Create Add Reminder Alert
             
-        let reminderAlert = UIAlertController(title: "Notification Status", message: reminderStatusMessage, preferredStyle: UIAlertControllerStyle.alert)
+        let reminderAlert = UIAlertController(title: "Notification Status", message: reminderStatusMessage, preferredStyle: UIAlertController.Style.alert)
         //Add Action Go to View Reminders Page
-            reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {
+            reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertAction.Style.default, handler: {
                 (action) -> Void in
                 do {
                     //Performs Segue to go to View Reminder Page
@@ -391,7 +391,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             cell.NotificationStatus.setOn(false, animated: true)
         }
         
-        cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControlEvents.valueChanged)
+        cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
 
         return cell
     }
@@ -429,8 +429,8 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
 
                 if(remName == "")//invalid entry-Reminder Name is empty
                 {
-                    let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                    let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                    reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                     self.present(reminderError,animated: true, completion:nil)
                 }
             }
@@ -440,8 +440,8 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     
     var menu_vc : MenuViewController!
-    //var menu_bool = true
-    func menu_Action(_ sender: UIBarButtonItem) {
+    var menu_bool = true
+    @objc func menu_Action(_ sender: UIBarButtonItem) {
         if menu_vc.view.isHidden{
             UIView.animate(withDuration: 0.3){ () -> Void in
                 self.show_menu()
@@ -466,7 +466,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -481,9 +481,9 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     //alerts user about unsaved info
     @IBAction func menu_Reminder_alert(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
+        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
             action in
             
             if self.menu_vc.view.isHidden{

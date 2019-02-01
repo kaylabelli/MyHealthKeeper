@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions:
-        [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let defaults:UserDefaults = UserDefaults.standard
         defaults.set("",forKey: "userNameKey")
         defaults.set(true,forKey: "monthlyNotificationStatus")
@@ -88,7 +88,7 @@ extension UIApplication
         //Check all children
         if base != nil
         {
-            for controller in base!.childViewControllers
+            for controller in base!.children
             {
                 if let alertController = controller as? UIAlertController
                 {
