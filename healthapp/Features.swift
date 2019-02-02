@@ -549,7 +549,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     //        }
             
       //  else
-            if (textField == question1){
+           /* if (textField == question1){
                 
                 if((pQuestion1.isEmpty))
                 {
@@ -621,8 +621,9 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 }
             }
             
-        }
-        else if(title=="Registration"){
+        }*/
+        //else
+            if(title=="Registration"){
             
             if((textField == email) || (textField == cellPhone)){
                 scrollView2.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -734,7 +735,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
         }
     }
-    
+    }
     
     
     
