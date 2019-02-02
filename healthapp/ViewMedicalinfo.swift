@@ -333,6 +333,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       if (title == "PersonalInfo")
       {
         self.picker1.isHidden = true
+        self.genderPicker.isHidden = true
     }
     else if (title == "Medication")
       {
@@ -341,7 +342,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
         //if user flips phone to landscape mode the background is reapplied
         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
@@ -556,6 +556,9 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
    
     @IBOutlet weak var StateDropDown: UITextField!
     @IBOutlet weak var picker1: UIPickerView!
+    @IBOutlet weak var genderPicker: UIPickerView!
+    @IBOutlet weak var genderDropDown: UITextField!
+    
     var StateList=["Alaska","Alabama","Arkansas","Arizona","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Iowa","Idaho","Illinois","Indiana",
                    "Kansas","Kentucky","Louisiana","Massachusetts","Maryland","Maine","Michigan","Minnesota","Missouri","Mississippi","Montana","North Carolina","North Dakota",
                    "Nebraska","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
@@ -564,6 +567,8 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
      @IBOutlet weak var picker2: UIPickerView!
     var SatusList = ["Current","Past"]
+    
+    var genderList = ["Male", "Female"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -574,8 +579,17 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (title == "PersonalInfo")
             {
-            picker1.isHidden = true
-            return StateList.count
+                if pickerView == picker1
+                {
+                    // picker1.isHidden = true
+                    picker1.isHidden = true
+                    return StateList.count
+                }
+                else if pickerView == genderPicker
+                {
+                    genderPicker.isHidden = true
+                    return genderList.count
+                }
             }
             
             else if (title=="Medication")
@@ -597,14 +611,25 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
             return SatusList[row]
         }
+        else if pickerView == genderPicker
+        {
+            return genderList[row]
+        }
         return ""
     }
         
     func pickerView(_ pickerView: UIPickerView,didSelectRow row:Int,inComponent:Int){
         if(title=="PersonalInfo")
         {
-        StateDropDown.text=StateList[row]
-        // picker1.isHidden = true
+            if pickerView == picker1
+            {
+                // picker1.isHidden = true
+                StateDropDown.text=StateList[row]
+            }
+            else if pickerView == genderPicker
+            {
+                genderDropDown.text = genderList[row]
+            }
         }
         else if(title=="Medication")
         {
@@ -617,10 +642,22 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (textField == StateDropDown){
             StateDropDown.inputView = UIView()
             picker1.isHidden = false
+            genderPicker.isHidden = true
+            textField.endEditing(true)
+            print("found it")
+        }
+        else if (textField == genderDropDown)
+        {
+            genderDropDown.inputView = UIView()
+            genderPicker.isHidden = false
+            picker1.isHidden = true
+            textField.endEditing(true)
+            print("here")
         }
         else
         {
-             picker1.isHidden = true
+            genderPicker.isHidden = true
+            picker1.isHidden = true
         }
           
     
@@ -635,6 +672,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
             if textField == TextField3{
                 picker2.isHidden = false
+                textField.endEditing(true)
             }
             else
             {
@@ -668,11 +706,12 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     @IBOutlet weak var SaveLName: UITextField!
     @IBOutlet var SaveFName: UITextField!
     @IBOutlet var SaveDOB: UITextField!
-    @IBOutlet var SaveGender: UITextField!
     @IBOutlet var SaveStreet: UITextField!
+    @IBOutlet var SaveGender: UITextField!
     @IBOutlet var SaveCity: UITextField!
     @IBOutlet var SaveZipCode: UITextField!
     @IBOutlet var SaveState: UITextField!
+    
     
     
      @IBOutlet weak var ZipscrollView: UIScrollView!
@@ -708,7 +747,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let CheckState = isValidString(nameString: H)
         
         // check if last name is valid or not
-        if (CheckLname == false)
+        if ((CheckLname == false) || (A == ""))
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "Last Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -717,7 +756,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         }
             // check if first name is valid or not
-        else  if (CheckFname == false)
+        else  if ((CheckFname == false) || (B == ""))
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "First name field is not valid.", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -725,13 +764,13 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         }
             // check if Dob is valid or not
-        else if (CheckValidDoB == false){
+        else if ((CheckValidDoB == false) || (C == "")){
             let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
 
             self.present(regAlert1,animated: true, completion:nil)
         }  // check if gender is valid or not
-        else  if (CheckGender == false)
+        else  if ((CheckGender == false) || (D == ""))
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "Gender field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -749,7 +788,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         }
             // check city
-        else  if (CheckCity == false)
+        else  if ((CheckCity == false) || (F == ""))
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "City field is not valid", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -764,7 +803,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         }
             // Check state
-        else  if (CheckState == false)
+        else  if ((CheckState == false) || (H == ""))
         {
             let regAlert1 = UIAlertController(title: "ERROR", message: "State field is Not Valid.", preferredStyle: UIAlertController.Style.alert)
             regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -787,7 +826,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             var getPesonalInfo:[PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: CurrentName) ?? [PersonalInfo()]
             //if user already entered informaton into database
             print(getPesonalInfo.count)
-            if(getPesonalInfo.count<1 || getPesonalInfo[0].lastname==""){ //if last name, which is requrened text feild is empty then we should insert
+            if(getPesonalInfo.count<1){ //if last name, which is requrened text feild is empty then we should insert
                 DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: A, FirstName: B, DateOfBirth: C, Gender: D, Street: E, City: F, ZipCode: G, State: H,SameUser: CurrentName)
             }
             else //we update information
@@ -852,7 +891,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 
         
-        if (textField == SaveLName)
+        /*if (textField == SaveLName && SaveLName.text! != "")
         {
             if (CheckLname == false)
             {
@@ -861,7 +900,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 self.present(regAlert1,animated: true, completion:nil)
             }
         }
-        else if (textField == SaveFName)
+        else if (textField == SaveFName && SaveFName.text! != "")
         {
             // check if first name is valid or not
             if (CheckFname == false)
@@ -871,7 +910,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 self.present(regAlert1,animated: true, completion:nil)
             }
         }
-        else if (textField == SaveDOB)
+        else if (textField == SaveDOB && SaveDOB.text! != "")
         {
             if ((C.isEmpty)){
                 
@@ -881,7 +920,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 self.present(regAlert1,animated: true, completion:nil)
             }
             
-           else if (CheckValidDoB == false)
+           else if (CheckValidDoB == false && SaveLName.text! != "")
             {
                 let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
                 regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
@@ -890,7 +929,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
            }
         }
    
-        else if (textField == SaveGender)
+        else if (textField == SaveGender && SaveGender.text! != "")
         {
             if (CheckGender == false)
             {
@@ -901,7 +940,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 
             }
         }
-        else if (textField == SaveStreet)
+        else if (textField == SaveStreet && SaveStreet.text! != "")
         {
             if ((E.isEmpty))
             {
@@ -912,7 +951,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 
             }
         }
-        else if (textField == SaveCity)
+        else if (textField == SaveCity && SaveCity.text! != "")
         {
             if (CheckCity == false)
             {
@@ -936,7 +975,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             }
             // Check state
         }
-        else if (textField == SaveState)
+        else if (textField == SaveState && SaveState.text! != "")
         {
             if (CheckState == false)
             {
@@ -946,7 +985,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
                 
             }
         }
-    }
+    }*/
         /*else if (title == "Insurance")
         {
             
@@ -1058,6 +1097,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             }
             }
         }*/
+        }
 
     
     }

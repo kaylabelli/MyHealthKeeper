@@ -443,6 +443,9 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             question3.text = sQuestion3[row]
             picker3.isHidden = true
         }
+            picker1.isHidden = true
+            picker2.isHidden = true
+            picker3.isHidden = true
         }
    //     return ""
     }
@@ -463,6 +466,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker2.isHidden = true
             picker3.isHidden = true
             
+            textField.endEditing(true)
+            
         }
         else if (textField == question2){
             
@@ -473,6 +478,9 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker2.isHidden = false
             picker1.isHidden = true
             picker3.isHidden = true
+            
+            textField.endEditing(true)
+            
             }
         else if (textField == question3){
             
@@ -483,7 +491,15 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker3.isHidden = false
             picker1.isHidden = true
             picker2.isHidden = true
+            
+            textField.endEditing(true)
 
+        }
+        else
+        {
+            picker3.isHidden = true
+            picker1.isHidden = true
+            picker2.isHidden = true
         }
         }
         
@@ -1342,3 +1358,4 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
 }
 
 // End code by GM
+
