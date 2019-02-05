@@ -826,7 +826,8 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             var getPesonalInfo:[PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: CurrentName) ?? [PersonalInfo()]
             //if user already entered informaton into database
             print(getPesonalInfo.count)
-            if(getPesonalInfo.count<1){ //if last name, which is requrened text feild is empty then we should insert
+            //Kayla change 1 to 2
+            if(getPesonalInfo.count<2){ //if last name, which is requrened text feild is empty then we should insert
                 DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: A, FirstName: B, DateOfBirth: C, Gender: D, Street: E, City: F, ZipCode: G, State: H,SameUser: CurrentName)
             }
             else //we update information

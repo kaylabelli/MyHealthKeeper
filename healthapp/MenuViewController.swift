@@ -42,7 +42,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     // var sectiondata:[String] =[
     
     
-    let title_arr : [String] = ["Home","Medical Data","View Medical","View Documents","View Reminders","Upload Document", "Set Reminder", "Print","Logout"]
+    //Kayla Belli - changed some of the menu names in title_arr
+    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Print","Logout"]
     var row1 = ["\t\tPersonal",
                 "\t\tDoctor",
                 "\t\tIllness",

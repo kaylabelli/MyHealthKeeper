@@ -8,6 +8,9 @@ import Foundation
 import UIKit
 import CoreGraphics
 
+//Kayla Belli
+import LocalAuthentication
+//END KAYLA BELLI
 
 var selectAlert = true
 var imageInView = false
@@ -179,7 +182,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         super.viewDidLoad()
         
         
-        
+        Biometrics()
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -1356,7 +1359,42 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
     
     
-}
+
 
 // End code by GM
+
+//Code by Kayla Belli
+        func Biometrics() {
+    
+        let context = LAContext()
+    
+        //let saveSuccessful: Bool = KeychainWrapper.standard.set(sUsername.text!, forKey: "username")
+    
+        // If the Device can use biometric authentication
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics,localizedReason: "Fingerprint Login", reply: { (success, error) in
+                if success {
+                    //Fingerprint recognized
+                    self.performSegue(withIdentifier: "Login", sender: self)
+                }
+                else {
+                    //If not recognized then
+                    let alert = UIAlertController(title: "Authentication failed", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true)
+                }
+            })
+        }
+        else{
+            let alert = UIAlertController(title: "Biometrics unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+        }
+
+    }
+
+}
+//End Kayla belli
+
 
