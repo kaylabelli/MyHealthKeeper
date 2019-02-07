@@ -4445,12 +4445,21 @@
                                 </constraints>
                                 <variation key="heightClass=compact" hidden="NO"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJe-e4-wJ8">
+                                <rect key="frame" x="240" y="198.5" width="64" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="BiometricAuthentication:" destination="Rkb-xH-AAR" eventType="touchUpInside" id="P5g-Fi-CYE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.55608636140823364" green="0.83351856470108032" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Swh-24-mVs" firstAttribute="leading" secondItem="srI-Xm-Rle" secondAttribute="leading" id="2Zu-7w-GcH"/>
+                            <constraint firstItem="BJe-e4-wJ8" firstAttribute="top" secondItem="ino-Ct-1Qt" secondAttribute="bottom" constant="5" id="7Ii-f6-21u"/>
                             <constraint firstItem="O6n-dZ-myD" firstAttribute="width" secondItem="RHL-Uk-BxR" secondAttribute="width" id="7Is-fF-q6Z"/>
                             <constraint firstItem="ino-Ct-1Qt" firstAttribute="centerX" secondItem="srI-Xm-Rle" secondAttribute="centerX" id="8t0-t6-1L1"/>
+                            <constraint firstItem="BJe-e4-wJ8" firstAttribute="top" secondItem="ino-Ct-1Qt" secondAttribute="bottom" constant="10" id="9e4-el-mCM"/>
                             <constraint firstItem="f2R-OI-nwM" firstAttribute="height" secondItem="srI-Xm-Rle" secondAttribute="height" multiplier="1:10" priority="999" id="FRi-Lp-MJH"/>
                             <constraint firstItem="O6n-dZ-myD" firstAttribute="top" secondItem="13p-O2-bYZ" secondAttribute="bottom" constant="8" id="G95-a9-9nR">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
@@ -4474,6 +4483,7 @@
                             </constraint>
                             <constraint firstItem="13p-O2-bYZ" firstAttribute="leading" secondItem="RHL-Uk-BxR" secondAttribute="leading" constant="-1" id="Up8-je-6hq"/>
                             <constraint firstItem="RHL-Uk-BxR" firstAttribute="height" secondItem="13p-O2-bYZ" secondAttribute="height" id="V8J-Mr-nS8"/>
+                            <constraint firstItem="BJe-e4-wJ8" firstAttribute="top" secondItem="ino-Ct-1Qt" secondAttribute="bottom" id="V9D-xt-5BS"/>
                             <constraint firstItem="MaB-LS-JbM" firstAttribute="centerX" secondItem="XLv-zZ-Kfv" secondAttribute="centerX" id="XdS-Hz-G8W"/>
                             <constraint firstItem="13p-O2-bYZ" firstAttribute="top" secondItem="cDz-HY-0EC" secondAttribute="bottom" constant="15" id="Xgj-E7-QbV">
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
@@ -4502,7 +4512,9 @@
                             <constraint firstItem="Swh-24-mVs" firstAttribute="top" secondItem="4Nz-IK-oH8" secondAttribute="bottom" constant="8" symbolic="YES" id="qX9-qT-We9"/>
                             <constraint firstItem="ino-Ct-1Qt" firstAttribute="centerX" secondItem="cDz-HY-0EC" secondAttribute="centerX" constant="-1" id="rcH-ur-woE"/>
                             <constraint firstItem="f2R-OI-nwM" firstAttribute="top" secondItem="Swh-24-mVs" secondAttribute="bottom" constant="10" id="teH-DT-C2i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BJe-e4-wJ8" secondAttribute="trailing" id="tyO-ZX-Au9"/>
                             <constraint firstItem="Swh-24-mVs" firstAttribute="centerX" secondItem="O6n-dZ-myD" secondAttribute="centerX" id="w7Y-TB-7bm"/>
+                            <constraint firstItem="BJe-e4-wJ8" firstAttribute="leading" secondItem="cDz-HY-0EC" secondAttribute="trailing" id="y4s-in-Xg7"/>
                             <constraint firstItem="13p-O2-bYZ" firstAttribute="centerX" secondItem="srI-Xm-Rle" secondAttribute="centerX" id="yxe-eF-KWF"/>
                         </constraints>
                     </view>
@@ -5388,9 +5400,9 @@
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
-        <segue reference="e1Y-6G-4z3"/>
+        <segue reference="853-my-C7d"/>
         <segue reference="vbZ-5b-9yE"/>
-        <segue reference="W6E-5a-M9A"/>
+        <segue reference="vaQ-fy-FoI"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="eWA-4f-dh2"/>
         <segue reference="iDV-28-2t0"/>
