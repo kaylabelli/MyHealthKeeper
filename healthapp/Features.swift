@@ -181,9 +181,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Kayla Belli
-        BiometricAuthentication()
-        //Kayla belli end
         
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -207,7 +204,11 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         // Do any additional setup after loading the view, typically from a nib.
         hideKeyboard()
         if(title == "SignIn"){
-            
+            //Kayla Belli
+            //retrive last username that was typed in and autofill in the username text field on the login page
+            let name = UserDefaults.standard.string(forKey: "username")
+            sUsername.text = name
+            //Kayla belli end
             
             if((RoundImage) != nil)
             {
@@ -1279,6 +1280,12 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     @IBAction func LoginCheck(_ sender: Any) {
         
+        //Kayla Belli
+        //save username to be autofilled on login screen
+        let name = sUsername.text
+        UserDefaults.standard.set(name, forKey: "username")
+        //Kayla Belli
+        
         if( String(sUsername.text!) == "" || (String(sPassword.text!) == "") )
         {
 
@@ -1364,40 +1371,50 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
 
 
 // End code by GM
-
+    
+    
 //Code by Kayla Belli
-        func BiometricAuthentication() {
-    
+    @IBAction func BiometricAuthentication(_ sender: Any) {
+
         let context = LAContext()
-        var BiometricsError: NSError?
-    
+        //var BiometricsError: NSError?
+        
+        //save username to be autofilled on login screen
+        let name = sUsername.text
+        UserDefaults.standard.set(name, forKey: "username")
+
         // If the Device can use biometric authentication
-        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &BiometricsError)
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil)
         {
             context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Fingerprint login", reply: { (success, error)in
                 if success {
                     //Fingerprint recognized
-                    self.performSegue(withIdentifier: "Login", sender: self)
+                    DispatchQueue.main.async {
+                        let UnameDoesntExist =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(self.sUsername.text!))
+                        if( String(self.sUsername.text!) == "")
+                        {
+                            //if no username is entered
+                            let alert = UIAlertController(title: "ERROR", message: "Please enter a username.", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                            self.present(alert,animated: true, completion:nil)
+                        }
+                        else if (UnameDoesntExist == true){
+                            let alert = UIAlertController(title: "ERROR", message: "The username entered does not exist.", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                            self.present(alert,animated: true, completion:nil)
+                        }
+                        else{
+                            //Login 
+                            let defaults:UserDefaults = UserDefaults.standard
+                            defaults.set(String(self.sUsername.text!),forKey: "userNameKey")
+                            self.performSegue(withIdentifier: "Login", sender: self)
+                        }
+                    }
                 }
                 else {
                     //Authentication Failed
-                   /*let alert = UIAlertController(title: "Authentication failed", message: "", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
-                    self.present(alert, animated: true)
-                    //print(evalPolicyError?.localizedDescription)*/
-                    
-                  
-                   /* if let error = BiometricsError{
-                        switch error.code{
-                        case LAError.authenticationFailed.rawValue:
-                            message = "Authentication Failed123"
-                        default:
-                            message = error.localizedDescription
-                        }
-                        let alert = UIAlertController(title: "Biometrics Error", message: message, preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(alert, animated: true)
-                    }*/
+                    //Pre defined apple error will appear
+                    print("Authentication failure")
                 }
             })
         }
