@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 class ViewController: UIViewController,UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITableViewDataSource{
+UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UITableViewDelegate, UITextFieldDelegate, UITableViewDataSource{
     //MARK: Properties
     var isGrantedNotificationAccess: Bool = true
     var monlyNotif: String = "MonthlyNotif"
@@ -26,23 +26,51 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     @IBOutlet weak var RoundImage: UIImageView!
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.AddReminderDesign.isHidden = true
+        self.reminderDate.isHidden = true
+        self.appointmentStack.isHidden = true
+        self.medicationView.isHidden = true
+        self.saveMedicationButton.isHidden = true
+        self.typeMedicationPicker.isHidden = true
+        self.dosagePicker.isHidden = true
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (medicationType.isEditing)
+        {
+            self.typeMedicationPicker.isHidden = false
+        }
+        else
+        {
+            self.typeMedicationPicker.isHidden = true
+        }
+        if (dosageText.isEditing)
+        {
+            self.dosagePicker.isHidden = false
+        }
+        else
+        {
+            self.dosagePicker.isHidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
         //if user flips phone to landscape mode the background is reapplied
-         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
         
-           // round image
+        // round image
         
         if((RoundImage) != nil)
         {
-        RoundImage.layer.cornerRadius = RoundImage.frame.size.width/2
-        RoundImage.clipsToBounds = true
+            RoundImage.layer.cornerRadius = RoundImage.frame.size.width/2
+            RoundImage.clipsToBounds = true
         }
         if((MedicalDesign) != nil)
         {
@@ -59,9 +87,9 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         if(AddReminderDesign != nil)
         {
             
-        AddReminderDesign.Design()
+            AddReminderDesign.Design()
         }
-         //Main UIview color
+        //Main UIview color
         backgroundCol()
         var uName=""
         let defaults:UserDefaults = UserDefaults.standard
@@ -71,7 +99,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         }
         
         var MonthlyReminder=true
-      //  let defaults:UserDefaults = UserDefaults.standard
+        //  let defaults:UserDefaults = UserDefaults.standard
         if let opened:Bool = defaults.bool(forKey: "monthlyNotificationStatus" )
         {
             MonthlyReminder=opened
@@ -93,61 +121,76 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             self.reasonField.delegate=self
             self.LocationField.delegate=self
             
+            self.medicationName.delegate=self
+            self.medicationType.delegate=self
+            self.medicationAmount.delegate=self
+            self.medicationTotalAmount.delegate=self
+            self.dosageText.delegate=self
+            self.reminderTextField.delegate=self
+            
             //Changes to 'Done'
             reminderName.returnKeyType = UIReturnKeyType.done
             reasonField.returnKeyType = UIReturnKeyType.done
             LocationField.returnKeyType = UIReturnKeyType.done
-        
-        //request authroization for notification
-         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
+            
+            self.AddReminderDesign.isHidden = true
+            self.reminderDate.isHidden = true
+            self.appointmentStack.isHidden = true
+            self.medicationView.isHidden = true
+            self.saveMedicationButton.isHidden = true
+            self.typeMedicationPicker.isHidden = true
+            self.dosagePicker.isHidden = true
+            
+            //request authroization for notification
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
             //get data from
             var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
-         
-        if(isGrantedNotificationAccess  && MonthlyReminder)
-        {
-        let contentMonthlRem = UNMutableNotificationContent()
-            //Provides sound to monthly notifications
-            contentMonthlRem.sound = UNNotificationSound.default
-        contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
-        contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthKeeper." , arguments:nil)
-        //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
-        var monthly=DateComponents()
-            //monthly notification for the first day of every month at 12
-        monthly.minute=0
-        monthly.hour = 12
-        monthly.day = 1
-        let triggerm = UNCalendarNotificationTrigger(dateMatching: monthly, repeats:true )
-        var rowID = DBManager.shared.lastMonthlyReminder()
-        //UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
-            let request=UNNotificationRequest(identifier:"MonthlyNotif"+uName, content: contentMonthlRem, trigger: triggerm)
-        UNUserNotificationCenter.current().add(request) { (error:Error?) in
-            if let theError = error{
-                print(theError.localizedDescription)
+            
+            if(isGrantedNotificationAccess  && MonthlyReminder)
+            {
+                let contentMonthlRem = UNMutableNotificationContent()
+                //Provides sound to monthly notifications
+                contentMonthlRem.sound = UNNotificationSound.default
+                contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
+                contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthKeeper." , arguments:nil)
+                //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+                var monthly=DateComponents()
+                //monthly notification for the first day of every month at 12
+                monthly.minute=0
+                monthly.hour = 12
+                monthly.day = 1
+                let triggerm = UNCalendarNotificationTrigger(dateMatching: monthly, repeats:true )
+                var rowID = DBManager.shared.lastMonthlyReminder()
+                //UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                let request=UNNotificationRequest(identifier:"MonthlyNotif"+uName, content: contentMonthlRem, trigger: triggerm)
+                UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                    if let theError = error{
+                        print(theError.localizedDescription)
+                    }
+                }
             }
         }
-    }
-}
-    
-            // Do any additional setup after loading the view, typically from a nib.
+        
+        // Do any additional setup after loading the view, typically from a nib.
         if(title == "Home"){
             //Hide title on navigation bar
             self.navigationItem.title = ""
             
             //Hide back button and add menu
-        //self.navigationItem.setHidesBackButton(true, animated: false)
+            //self.navigationItem.setHidesBackButton(true, animated: false)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
             //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(ViewController.ButtonPressed(_:)))
             
             //Hides the drop-down menu
-           // self.menuview.isHidden = true
+            // self.menuview.isHidden = true
         }
-
         
-
+        
+        
     }
     
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -164,7 +207,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     @IBOutlet weak var NotificationStatus: UISwitch!
     @objc func notificationStatus(NotificationStatus: UISwitch) {
-         let status=NotificationStatus.isOn
+        let status=NotificationStatus.isOn
         let defaults:UserDefaults = UserDefaults.standard
         //current state
         
@@ -180,9 +223,9 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             {
                 uName=opened
             }
-              var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
+            var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
             
-          //  let status=itemsR[0].reminderStatus!
+            //  let status=itemsR[0].reminderStatus!
             var noteStatus=""
             if(status){
                 print("Notifications are turned on")
@@ -246,7 +289,16 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     }
     //end Melissa Turn notification
     
-//Submit Reminder -Melissa Heredia
+    //Submit Reminder -Melissa Heredia
+    
+    
+    //@IBOutlet weak var medicationView: UIView!
+    @IBOutlet weak var medicationView: UIStackView!
+    @IBOutlet weak var medicationType: UITextField!
+    @IBOutlet weak var medicationName: UITextField!
+    @IBOutlet weak var medicationAmount: UITextField!
+    @IBOutlet weak var medicationTotalAmount: UITextField!
+    @IBOutlet weak var dosageText: UITextField!
     
     @IBOutlet weak var reminderName: UITextField!
     @IBOutlet weak var LocationField: UITextField!
@@ -254,9 +306,847 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     //picker
     @IBOutlet weak var reminderDate: UIDatePicker!
     
+    @IBOutlet weak var reminderTextField: UITextField!
+    @IBOutlet weak var reminderPicker: UIPickerView!
+    @IBOutlet weak var reminderLabel: UILabel!
+    
+    @IBAction func createMedicationReminder(_ sender: Any) {
+        
+        let medName=String(medicationName.text!)
+        let medType=String(medicationType.text!)
+        let medAmount = String(medicationAmount.text!)
+        let medTAmount = String(medicationTotalAmount.text!)
+        let dos = String(dosageText.text!)
+        
+        let medAmountNum:Int = Int(medicationAmount.text!) ?? 0
+        let medTAmountNum:Int = Int(medicationTotalAmount.text!) ?? 1
+        
+        //clears the textfeilds
+        medicationName.text!=""
+        medicationType.text!=""
+        medicationAmount.text!=""
+        medicationTotalAmount.text!=""
+        dosageText.text!=""
+        if(medName=="")//invalid entry-check if the Reminder Name is empty
+        {
+            // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
+            //Create Add Reminder Error Alert
+            let reminderError = UIAlertController(title: "ERROR", message: "Medication name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            //Add close action to alert
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            //Present the alert
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else if (medType == "")
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Medication type field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else if (medAmount == "")
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Medication amount field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else if (medTAmount == "")
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Medication total amount field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else if (dos == "")
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Dosage field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else if (medTAmountNum < medAmountNum)
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Total amount must be greater than per use", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
+        else   //if the entry is valid
+        {
+            //fomat the reminder date from date picker
+            //create and set a dateFormatter object
+            let currentDateTime = Date()
+            var reminderTime = Date()
+            
+            let calendar = Calendar.current
+            
+            // initialize the date formatter and set the style
+            var currentHour = calendar.component(.hour, from: currentDateTime)
+            var currentMinute = calendar.component(.minute, from: currentDateTime)
+            
+            // getting minute to equal 0
+            if (currentMinute != 0)
+            {
+                while (currentMinute != 0)
+                {
+                    reminderTime.addTimeInterval(60.0)
+                    currentMinute = currentMinute + 1
+                    if (currentMinute == 60)
+                    {
+                        currentMinute = 0
+                    }
+                }
+                if (currentHour == 24)
+                {
+                    currentHour = 0
+                }
+                else
+                {
+                    currentHour = currentHour + 1
+                }
+            }
+            
+            // getting reminderTime start at an appropiate time
+            if (dos == "1 Time per Day")
+            {
+                if (currentHour < 12)
+                {
+                    while (currentHour != 12)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 12)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "2 Times per Day")
+            {
+                if (currentHour < 8)
+                {
+                    while (currentHour != 8)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 8)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "3 Times per Day")
+            {
+                if (currentHour < 8)
+                {
+                    while (currentHour != 8)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 8)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "4 Times per Day")
+            {
+                if (currentHour < 6)
+                {
+                    while (currentHour != 6)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 6)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "Every 4 Hours")
+            {
+                if (currentHour < 6)
+                {
+                    while (currentHour != 6)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 6)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "Every 6 Hours")
+            {
+                if (currentHour < 8)
+                {
+                    while (currentHour != 8)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 8)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            else if (dos == "Every 8 Hours")
+            {
+                if (currentHour < 8)
+                {
+                    while (currentHour != 8)
+                    {
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+                else
+                {
+                    if (currentHour == 24)
+                    {
+                        currentHour = 0
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                    
+                    while (currentHour != 8)
+                    {
+                        if (currentHour == 24)
+                        {
+                            currentHour = 0
+                        }
+                        reminderTime.addTimeInterval(60.0 * 60.0)
+                        currentHour = currentHour + 1
+                    }
+                }
+            }
+            
+            
+            let DateFormat=DateFormatter()
+            DateFormat.dateFormat="MM-dd-yyyy HH:mm"
+            //pass the reminderDate the user enters through the date formatter
+            let dateR=DateFormat.string(from: reminderDate.date)
+            var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+            
+            //Start creating the Local Notification for the User
+            let content = UNMutableNotificationContent()
+            //Provide sound to local notification
+            content.sound = UNNotificationSound.default
+            //set the Notification title
+            content.title=NSString.localizedUserNotificationString(forKey: "Medication Reminder", arguments: nil)
+            //set notificaton body
+            content.body = NSString.localizedUserNotificationString(forKey: "Remember to take " + medName, arguments:nil)
+            //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            //set trigger
+            var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+            //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+            //get the Users username from nuser default
+            var uName=""
+            let defaults:UserDefaults = UserDefaults.standard
+            if let opened:String = defaults.string(forKey: "userNameKey" ){uName=opened}
+            //insert reminder information into the Reminder table in the database and returns the sucess status
+            var sucess=DBManager.shared.insertReminderMedicationTable(medicationName: medName, medicationType: medType, medicationTotalAmount: medAmountNum, medicationAmount: medTAmountNum, dosage: dos, reminderUser: uName)
+            
+            let previousInsert = DBManager.shared.lastReminderMedication()
+            
+            //Initlize the reminder Status message variable
+            var reminderStatusMessage=""
+            
+            if(sucess){ //if insert was sucessful
+                //       print("Insert Sucessful")
+                //      var t = DBManager.shared.lastReminder()
+                
+                //sets status message variable
+                reminderStatusMessage = "Insert of " + medName + " at " + dos + " was successful."
+                
+                //if the user has not granted the application permission to send notificatoins
+                if(!isGrantedNotificationAccess){
+                    //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
+                    reminderStatusMessage=reminderStatusMessage+"You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications."
+                }
+                
+                if(isGrantedNotificationAccess) //User has granted notification access
+                {
+                    //Set up notification request to the notification center with Unique identifier
+                    let totalReminders: Int = medTAmountNum / medAmountNum
+                    var reminderCount: Int = 0
+                    while (reminderCount < totalReminders)
+                    {
+                        print("Loops: \(reminderCount) \(totalReminders)")
+                        print(dos)
+                        if (dos == "1 Time per Day")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                    print("Does this Happen?")
+                                }
+                            }
+                            reminderTime.addTimeInterval(86400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 1
+                        }
+                        else if (dos == "2 Times per Day")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(57600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 2
+                        }
+                        else if (dos == "3 Times per Day")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 3
+                        }
+                        else if (dos == "4 Times per Day")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 4
+                        }
+                        else if (dos == "Every 4 Hours")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(14400)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 6
+                        }
+                        else if (dos == "Every 6 Hours")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(21600)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 4
+                        }
+                        else if (dos == "Every 8 Hours")
+                        {
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
+                            UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                if let theError = error{
+                                    print(theError.localizedDescription)
+                                }
+                            }
+                            
+                            reminderTime.addTimeInterval(28800)
+                            dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
+                            trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+                            reminderCount = reminderCount + 3
+                        }
+                    }
+                }
+            }
+            else{
+                print("Insert error")
+                reminderStatusMessage="Insert Unsucessful"
+            }
+            
+            
+            
+            
+            
+            //Create Add Reminder Alert
+            
+            let reminderAlert = UIAlertController(title: "Notification Status", message: reminderStatusMessage, preferredStyle: UIAlertController.Style.alert)
+            //Add Action Go to View Reminders Page
+            reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertAction.Style.default, handler: {
+                (action) -> Void in
+                do {
+                    //Performs Segue to go to View Reminder Page
+                    self.performSegue(withIdentifier: "ViewReminders", sender: self)
+                }
+            }))
+            
+            //cancel button on Add Reminder Alert
+            //reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: nil))
+            
+            //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+            // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
+            // Performs the Segue
+            self.present(reminderAlert,animated: true, completion:nil)
+        }
+    }
+    
+    @IBOutlet weak var saveMedicationButton: UIButton!
+    @IBAction func submitType(_ sender: Any) {
+        if reminderTextField.text == "Appointment"
+        {
+            AddReminderDesign.isHidden = false
+            reminderDate.isHidden = false
+            appointmentStack.isHidden = false
+            medicationView.isHidden = true
+            saveMedicationButton.isHidden = true
+            typeMedicationPicker.isHidden = true
+            dosagePicker.isHidden = true
+            reminderLabel.text = "Setup Appointment Reminder"
+        }
+        else if reminderTextField.text == "Medication"
+        {
+            AddReminderDesign.isHidden = true
+            reminderDate.isHidden = true
+            appointmentStack.isHidden = true
+            medicationView.isHidden = false
+            saveMedicationButton.isHidden = false
+            reminderLabel.text = "Setup Medication Reminder"
+        }
+        else
+        {
+            AddReminderDesign.isHidden = true
+            reminderDate.isHidden = true
+            appointmentStack.isHidden = true
+            medicationView.isHidden = true
+            saveMedicationButton.isHidden = true
+            typeMedicationPicker.isHidden = true
+            dosagePicker.isHidden = true
+            reminderLabel.text = "Setup Reminder"
+        }
+        
+        reminderPicker.isHidden = true
+        typeMedicationPicker.isHidden = true
+        dosagePicker.isHidden = true
+    }
+    
+    
+    @IBOutlet weak var appointmentStack: UIStackView!
+    var reminderType = ["Appointment", "Medication"]
+    
+    @IBOutlet weak var typeMedicationPicker: UIPickerView!
+    var medicationTypeList = ["Solid", "Liquid"]
+    
+    @IBOutlet weak var dosagePicker: UIPickerView!
+    var dosageList = ["1 Time per Day", "2 Times per Day", "3 Times per Day", "4 Times per Day", "Every 4 Hours", "Every 6 Hours", "Every 8 Hours"]
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if (title == "Reminders")
+        {
+            if pickerView == reminderPicker
+            {
+                // picker1.isHidden = true
+                reminderPicker.isHidden = true
+                return reminderType.count
+            }
+            else if pickerView == typeMedicationPicker
+            {
+                typeMedicationPicker.isHidden = true
+                return medicationTypeList.count
+            }
+            else if pickerView == dosagePicker
+            {
+                dosagePicker.isHidden = true
+                return dosageList.count
+            }
+        }
+        return 0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,titleForRow row: Int,forComponent component: Int) -> String?{
+        
+        if pickerView == reminderPicker
+        {
+            // picker1.isHidden = true
+            return reminderType[row]
+        }
+        else if pickerView == typeMedicationPicker
+        {
+            return medicationTypeList[row]
+        }
+        else if pickerView == dosagePicker
+        {
+            return dosageList[row]
+        }
+        return ""
+    }
+    
+    func pickerView(_ pickerView: UIPickerView,didSelectRow row:Int,inComponent:Int){
+        if(title=="Reminders")
+        {
+            if pickerView == reminderPicker
+            {
+                // picker1.isHidden = true
+                reminderTextField.text = reminderType[row]
+            }
+            else if pickerView == typeMedicationPicker
+            {
+                medicationType.text = medicationTypeList[row]
+            }
+            else if pickerView == dosagePicker
+            {
+                dosageText.text = dosageList[row]
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if title == "Reminders"
+        {
+            if (textField == reminderTextField)
+            {
+                reminderTextField.inputView = UIView()
+                reminderPicker.isHidden = false
+                typeMedicationPicker.isHidden = true
+                dosagePicker.isHidden = true
+                textField.endEditing(true)
+            }
+            else if (textField == medicationType)
+            {
+                medicationType.inputView = UIView()
+                if typeMedicationPicker.isHidden
+                {
+                    typeMedicationPicker.isHidden = false
+                }
+                else
+                {
+                    typeMedicationPicker.isHidden = true
+                }
+                reminderPicker.isHidden = true
+                dosagePicker.isHidden = true
+                textField.endEditing(true)
+            }
+            else if (textField == dosageText)
+            {
+                dosageText.inputView = UIView()
+                if dosagePicker.isHidden
+                {
+                    dosagePicker.isHidden = false
+                }
+                else
+                {
+                    dosagePicker.isHidden = true
+                }
+                reminderPicker.isHidden = true
+                typeMedicationPicker.isHidden = true
+                textField.endEditing(true)
+            }
+            else if (textField == medicationName)
+            {
+                typeMedicationPicker.isHidden = true
+                reminderPicker.isHidden = true
+                dosagePicker.isHidden = true
+            }
+            else if (textField == medicationAmount)
+            {
+                typeMedicationPicker.isHidden = true
+                reminderPicker.isHidden = true
+                dosagePicker.isHidden = true
+            }
+            else if (textField == medicationTotalAmount)
+            {
+                typeMedicationPicker.isHidden = true
+                reminderPicker.isHidden = true
+                dosagePicker.isHidden = true
+            }
+            
+        }
+    }
+    
     @IBAction func SaveReminderData(_ sender: Any) {
         //if reminder was valid
-     
+        
         
         let remName=String(reminderName.text!)
         let remLocation=String(LocationField.text!)
@@ -267,7 +1157,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         LocationField.text!=""
         if(remName=="")//invalid entry-check if the Reminder Name is empty
         {
-           // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
+            // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
             //Create Add Reminder Error Alert
             let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             //Add close action to alert
@@ -276,89 +1166,89 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             self.present(reminderError,animated: true, completion:nil)        }
         else   //if the entry is valid
         {
-        //fomat the reminder date from date picker
-        //create and set a dateFormatter object
-        let DateFormat=DateFormatter()
-        DateFormat.dateFormat="MM-dd-yyyy HH:mm"
-        //pass the reminderDate the user enters through the date formatter
-        let dateR=DateFormat.string(from: reminderDate.date)
-        let dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderDate.date)
-        //Start creating the Local Notification for the User
-        let content = UNMutableNotificationContent()
+            //fomat the reminder date from date picker
+            //create and set a dateFormatter object
+            let DateFormat=DateFormatter()
+            DateFormat.dateFormat="MM-dd-yyyy HH:mm"
+            //pass the reminderDate the user enters through the date formatter
+            let dateR=DateFormat.string(from: reminderDate.date)
+            let dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderDate.date)
+            //Start creating the Local Notification for the User
+            let content = UNMutableNotificationContent()
             //Provide sound to local notification
             content.sound = UNNotificationSound.default
-        //set the Notification title
-        content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
-        //set notificaton body
-        content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName + " at location " + remLocation , arguments:nil)
-        //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
-        //set trigger
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-              //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
-        //get the Users username from nuser default
+            //set the Notification title
+            content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
+            //set notificaton body
+            content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName + " at location " + remLocation , arguments:nil)
+            //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+            //set trigger
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
+            //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+            //get the Users username from nuser default
             var uName=""
             let defaults:UserDefaults = UserDefaults.standard
             if let opened:String = defaults.string(forKey: "userNameKey" ){uName=opened}
-        //insert reminder information into the Reminder table in the database and returns the sucess status
-        let sucess=DBManager.shared.insertReminderTable(reminderName: remName, reminderLocation: remLocation, reminderReason: remReason, reminderDate: dateR, reminderUser: uName)
-        
-        //Initlize the reminder Status message variable
-        var reminderStatusMessage=""
-        
-        if(sucess){ //if insert was sucessful
-     //       print("Insert Sucessful")
-      //      var t = DBManager.shared.lastReminder()
+            //insert reminder information into the Reminder table in the database and returns the sucess status
+            let sucess=DBManager.shared.insertReminderTable(reminderName: remName, reminderLocation: remLocation, reminderReason: remReason, reminderDate: dateR, reminderUser: uName)
             
-            //sets status message variable
-            reminderStatusMessage = "Insert of " + remName + " at " + dateR + " was successful."
+            //Initlize the reminder Status message variable
+            var reminderStatusMessage=""
             
-            //if the user has not granted the application permission to send notificatoins
-            if(!isGrantedNotificationAccess){
-                //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
-                reminderStatusMessage=reminderStatusMessage+"You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications."
-            }
-            
-            if(isGrantedNotificationAccess) //User has granted notification access
-            {
-                //Increase badge number by 1
-                incrementBadgeNumberBy(badgeNumberIncrement: 1)
-                //Set up notification request to the notification center with Unique identifier
-                let request=UNNotificationRequest(identifier:"Reminder"+"\(DBManager.shared.lastReminder())", content: content, trigger: trigger)
-                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                    if let theError = error{
-                        print(theError.localizedDescription)
+            if(sucess){ //if insert was sucessful
+                //       print("Insert Sucessful")
+                //      var t = DBManager.shared.lastReminder()
+                
+                //sets status message variable
+                reminderStatusMessage = "Insert of " + remName + " at " + dateR + " was successful."
+                
+                //if the user has not granted the application permission to send notificatoins
+                if(!isGrantedNotificationAccess){
+                    //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
+                    reminderStatusMessage=reminderStatusMessage+"You have not given this application permission to receive notifications. Please go to 'Settings' and enable the feature to receive notifications."
+                }
+                
+                if(isGrantedNotificationAccess) //User has granted notification access
+                {
+                    //Increase badge number by 1
+                    incrementBadgeNumberBy(badgeNumberIncrement: 1)
+                    //Set up notification request to the notification center with Unique identifier
+                    let request=UNNotificationRequest(identifier:"Reminder"+"\(DBManager.shared.lastReminder())", content: content, trigger: trigger)
+                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                        if let theError = error{
+                            print(theError.localizedDescription)
+                        }
                     }
                 }
             }
-        }
-        else{
-            print("Insert error")
-            reminderStatusMessage="Insert Unsucessful"
-        }
-        
+            else{
+                print("Insert error")
+                reminderStatusMessage="Insert Unsucessful"
+            }
             
             
             
             
-        //Create Add Reminder Alert
             
-        let reminderAlert = UIAlertController(title: "Notification Status", message: reminderStatusMessage, preferredStyle: UIAlertController.Style.alert)
-        //Add Action Go to View Reminders Page
+            //Create Add Reminder Alert
+            
+            let reminderAlert = UIAlertController(title: "Notification Status", message: reminderStatusMessage, preferredStyle: UIAlertController.Style.alert)
+            //Add Action Go to View Reminders Page
             reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertAction.Style.default, handler: {
                 (action) -> Void in
                 do {
                     //Performs Segue to go to View Reminder Page
-                self.performSegue(withIdentifier: "ViewReminders", sender: self)
+                    self.performSegue(withIdentifier: "ViewReminders", sender: self)
                 }
             }))
             
             //cancel button on Add Reminder Alert
-           //reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: nil))
+            //reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: nil))
             
-        //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
-           // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
-        // Performs the Segue
-        self.present(reminderAlert,animated: true, completion:nil)
+            //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+            // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
+            // Performs the Segue
+            self.present(reminderAlert,animated: true, completion:nil)
         }
     }
     //end Melissa's Part
@@ -382,7 +1272,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         }
         //get data from
         var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
-
+        
         if(itemsR[0].reminderStatus == true)
         {
             cell.NotificationStatus.setOn(true, animated: false)
@@ -392,11 +1282,11 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         }
         
         cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
-
+        
         return cell
     }
     
-
+    
     //menu
     
     
@@ -416,7 +1306,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
             
             return updatedText.count <= 30
         }
-     return true
+        return true
     }
     
     
@@ -425,17 +1315,25 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         
         let remName=String(reminderName.text!)
         
-            if (textField == reminderName){
-
-                if(remName == "")//invalid entry-Reminder Name is empty
-                {
-                    let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                    reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(reminderError,animated: true, completion:nil)
-                }
+        if (textField == reminderName){
+            
+            if(remName == "")//invalid entry-Reminder Name is empty
+            {
+                let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                self.present(reminderError,animated: true, completion:nil)
             }
         }
-
+        else if (textField == reminderTextField){
+        }
+        else if (textField == medicationType){}
+        else
+        {
+            typeMedicationPicker.isHidden = true
+            reminderPicker.isHidden = true
+        }
+    }
+    
     
     
     
@@ -456,10 +1354,10 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
     
     @IBAction func menu_Action_Reminder(_ sender: UIBarButtonItem) {
         if menu_vc.view.isHidden{
-                self.show_menu()
+            self.show_menu()
         }
         else {
-                self.close_menu()
+            self.close_menu()
         }
     }
     
@@ -496,7 +1394,7 @@ UINavigationControllerDelegate, UITableViewDelegate, UITextFieldDelegate, UITabl
         
         self.present(Alert1,animated: true, completion:nil)
     }
-
+    
     
 }
 

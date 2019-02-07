@@ -337,22 +337,17 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KZ-yL-Fgp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igw-kF-7qL">
-                                        <rect key="frame" x="61.5" y="20" width="197" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="Igw-kF-7qL" secondAttribute="height" multiplier="191:34" id="Xnz-Cp-dPs"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Appointment Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2l-JE-JEV">
-                                        <rect key="frame" x="20.5" y="63" width="279.5" height="23"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Appointment Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xU4-da-Y8z">
+                                        <rect key="frame" x="90" y="83" width="140" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="azN-wY-8Gw" id="AY8-vr-j4F"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2l-JE-JEV">
+                                        <rect key="frame" x="82" y="5" width="156" height="130"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <nil key="highlightedColor"/>
@@ -361,8 +356,8 @@
                                         </variation>
                                         <variation key="heightClass=compact-widthClass=regular" hidden="YES"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p0k-LB-pAi">
-                                        <rect key="frame" x="66.5" y="101" width="187" height="106"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p0k-LB-pAi">
+                                        <rect key="frame" x="66" y="133" width="187" height="106"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Yvm-fi-6yr">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
@@ -404,8 +399,8 @@
                                         <variation key="heightClass=compact" spacing="3"/>
                                         <variation key="heightClass=regular-widthClass=regular" spacing="15"/>
                                     </stackView>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ilO-O8-FYx">
-                                        <rect key="frame" x="0.0" y="254.5" width="320" height="107.5"/>
+                                    <datePicker contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ilO-O8-FYx">
+                                        <rect key="frame" x="0.0" y="287" width="320" height="107.5"/>
                                         <color key="backgroundColor" red="0.16487686439999999" green="0.66688232930000002" blue="0.91873785620000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -421,8 +416,8 @@
                                             <!--2037-12-31 11:00:00 +0000-->
                                         </date>
                                     </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cc-F1-xSu">
-                                        <rect key="frame" x="80" y="384" width="160" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4cc-F1-xSu">
+                                        <rect key="frame" x="79" y="416" width="160" height="30"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="IFN-AH-4iS">
@@ -441,7 +436,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FEX-YN-z7U">
-                                        <rect key="frame" x="0.0" y="454" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="503" width="320" height="81"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ZrA-aD-ecj" customClass="ReminderTableViewCell" customModule="healthapp" customModuleProvider="target">
@@ -492,43 +487,153 @@
                                             <outlet property="delegate" destination="azN-wY-8Gw" id="zhc-M6-KJj"/>
                                         </connections>
                                     </tableView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igw-kF-7qL">
+                                        <rect key="frame" x="62" y="0.0" width="197" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Igw-kF-7qL" secondAttribute="height" multiplier="191:34" id="Xnz-Cp-dPs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-9I-REn">
+                                        <rect key="frame" x="261" y="80" width="30" height="30"/>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Go"/>
+                                        <connections>
+                                            <action selector="submitType:" destination="azN-wY-8Gw" eventType="touchUpInside" id="6Ac-uD-URg"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7a1-I1-Qf8">
+                                        <rect key="frame" x="66.5" y="150" width="187" height="315"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-qe-mxy">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="187" id="slR-ui-s0u"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-ql-vRe">
+                                                <rect key="frame" x="0.0" y="35" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-TC-NJA">
+                                                <rect key="frame" x="0.0" y="70" width="187" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="1IX-X1-Yu6"/>
+                                                    <constraint firstAttribute="height" constant="50" id="v1R-L5-HTb"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="azN-wY-8Gw" id="SxI-I4-e11"/>
+                                                    <outlet property="delegate" destination="azN-wY-8Gw" id="D0G-tr-XeZ"/>
+                                                </connections>
+                                            </pickerView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="koc-mA-oTH">
+                                                <rect key="frame" x="0.0" y="125" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount Per Use" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-04-gLJ">
+                                                <rect key="frame" x="0.0" y="160" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dosage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCB-Pt-uzT">
+                                                <rect key="frame" x="0.0" y="195" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fp-1L-hnM">
+                                                <rect key="frame" x="0.0" y="230" width="187" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="200" id="1q9-cO-mOU"/>
+                                                    <constraint firstAttribute="height" constant="50" id="rQg-eI-C2b"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="azN-wY-8Gw" id="gVZ-Ye-lPq"/>
+                                                    <outlet property="delegate" destination="azN-wY-8Gw" id="N9U-ke-zQh"/>
+                                                </connections>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwB-iZ-sbd">
+                                                <rect key="frame" x="0.0" y="285" width="187" height="30"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="createMedicationReminder:" destination="azN-wY-8Gw" eventType="touchUpInside" id="dsC-RX-cBz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dz-Db-zvU">
+                                        <rect key="frame" x="60" y="103" width="200" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="ZT8-xD-cNF"/>
+                                            <constraint firstAttribute="height" constant="50" id="lp2-MM-0b0"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dataSource" destination="azN-wY-8Gw" id="5qm-da-4tr"/>
+                                            <outlet property="delegate" destination="azN-wY-8Gw" id="Yxi-Rp-2GX"/>
+                                        </connections>
+                                    </pickerView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Igw-kF-7qL" firstAttribute="top" secondItem="0KZ-yL-Fgp" secondAttribute="top" constant="20" id="23h-VM-XQk"/>
-                                    <constraint firstItem="C2l-JE-JEV" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="8" id="7hx-xL-h30"/>
+                                    <constraint firstItem="C2l-JE-JEV" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="-50" id="7hx-xL-h30"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="A0B-0z-OZZ"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="AMX-5B-yhZ"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" multiplier="1:2" id="Cdu-V6-28z"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="HwX-q6-1BV"/>
-                                    <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="46" id="RKZ-s2-m7n"/>
+                                    <constraint firstItem="HlN-9I-REn" firstAttribute="leading" secondItem="xU4-da-Y8z" secondAttribute="trailing" constant="31" id="PRM-qA-mQb"/>
+                                    <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="95" id="RKZ-s2-m7n"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="height" secondItem="0KZ-yL-Fgp" secondAttribute="height" multiplier="1:8" constant="17.75" id="RSB-qJ-fyD"/>
+                                    <constraint firstItem="7a1-I1-Qf8" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="147" id="Sor-SQ-rn0"/>
                                     <constraint firstItem="Igw-kF-7qL" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="WgU-rM-cSd"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="Y1j-US-5Zt"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="p0k-LB-pAi" secondAttribute="bottom" constant="5" id="Y9M-n2-KsH"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="top" secondItem="ilO-O8-FYx" secondAttribute="bottom" constant="22" id="aoz-jC-4fb"/>
-                                    <constraint firstItem="FEX-YN-z7U" firstAttribute="top" secondItem="4cc-F1-xSu" secondAttribute="bottom" constant="53.333333333333258" id="eQJ-Db-Rdw">
+                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="top" secondItem="HlN-9I-REn" secondAttribute="bottom" constant="-27" id="dbn-Db-MYb"/>
+                                    <constraint firstItem="FEX-YN-z7U" firstAttribute="top" secondItem="4cc-F1-xSu" secondAttribute="bottom" id="eQJ-Db-Rdw">
                                         <variation key="widthClass=compact" constant="40"/>
                                     </constraint>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="fOy-Hk-qNO"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="top" secondItem="p0k-LB-pAi" secondAttribute="bottom" constant="47.333333333333371" id="fQg-VA-KzV"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="height" secondItem="0KZ-yL-Fgp" secondAttribute="height" multiplier="1:6" constant="23.666666666666686" id="gnN-1P-54f"/>
                                     <constraint firstItem="C2l-JE-JEV" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="inD-SW-BEF"/>
+                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="28" id="jF8-HQ-R0l"/>
                                     <constraint firstAttribute="bottom" secondItem="FEX-YN-z7U" secondAttribute="bottom" constant="20" id="jNu-bt-NuR"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="ktQ-tD-1bh"/>
+                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="lQI-Pv-xTm"/>
                                     <constraint firstAttribute="trailing" secondItem="FEX-YN-z7U" secondAttribute="trailing" constant="20" id="lpj-Ei-Kku"/>
-                                    <constraint firstItem="FEX-YN-z7U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4cc-F1-xSu" secondAttribute="bottom" constant="8" id="mAl-SR-tFf"/>
+                                    <constraint firstItem="FEX-YN-z7U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4cc-F1-xSu" secondAttribute="bottom" constant="-10" id="mAl-SR-tFf"/>
+                                    <constraint firstItem="7a1-I1-Qf8" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="rpR-d3-BBv"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="rzR-TP-Nx9"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" multiplier="2:3" constant="-26.666666666666629" id="tgo-vH-PKV"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="C2l-JE-JEV" secondAttribute="bottom" constant="15.000000000000028" id="uuO-Kr-H1I"/>
+                                    <constraint firstItem="7a1-I1-Qf8" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="95" id="whM-ct-QLj"/>
+                                    <constraint firstItem="0dz-Db-zvU" firstAttribute="top" secondItem="xU4-da-Y8z" secondAttribute="bottom" constant="-10" id="xEj-z9-gB1"/>
+                                    <constraint firstItem="0dz-Db-zvU" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="ye1-Vr-mP9"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.5710759162902832" green="0.86338168382644653" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="0hm-31-xCb" firstAttribute="top" secondItem="0KZ-yL-Fgp" secondAttribute="bottom" id="7Jf-zE-dCa"/>
+                            <constraint firstItem="0hm-31-xCb" firstAttribute="top" secondItem="0KZ-yL-Fgp" secondAttribute="bottom" id="JV4-dG-7Gz"/>
                             <constraint firstItem="0KZ-yL-Fgp" firstAttribute="width" secondItem="pzd-hf-4aY" secondAttribute="width" id="R8y-ZZ-D2I"/>
+                            <constraint firstItem="0KZ-yL-Fgp" firstAttribute="top" secondItem="fNg-9V-qnF" secondAttribute="bottom" id="fj2-s6-lvZ"/>
                             <constraint firstAttribute="trailing" secondItem="0KZ-yL-Fgp" secondAttribute="trailing" id="lHU-BG-HWR"/>
-                            <constraint firstItem="0KZ-yL-Fgp" firstAttribute="top" secondItem="fNg-9V-qnF" secondAttribute="bottom" id="of5-lb-xBI"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="M32-gW-vYL">
@@ -541,16 +646,29 @@
                     <connections>
                         <outlet property="AddReminderDesign" destination="4cc-F1-xSu" id="rhi-VE-vmL"/>
                         <outlet property="LocationField" destination="VQJ-6f-HP3" id="gKa-Ai-J7M"/>
+                        <outlet property="appointmentStack" destination="p0k-LB-pAi" id="5Jt-P9-Ked"/>
+                        <outlet property="dosagePicker" destination="7Fp-1L-hnM" id="VS4-TW-0Tj"/>
+                        <outlet property="dosageText" destination="wCB-Pt-uzT" id="j7M-lB-vSI"/>
+                        <outlet property="medicationAmount" destination="XOj-04-gLJ" id="WHq-RC-Sv2"/>
+                        <outlet property="medicationName" destination="3Xp-qe-mxy" id="sR7-DD-T5A"/>
+                        <outlet property="medicationTotalAmount" destination="koc-mA-oTH" id="LHE-nT-HES"/>
+                        <outlet property="medicationType" destination="4dl-ql-vRe" id="gvK-HI-Arq"/>
+                        <outlet property="medicationView" destination="7a1-I1-Qf8" id="dVk-vC-DDa"/>
                         <outlet property="reasonField" destination="Gvg-VZ-auC" id="8bd-8a-6tS"/>
                         <outlet property="reminderDate" destination="ilO-O8-FYx" id="w1U-Tn-XQE"/>
+                        <outlet property="reminderLabel" destination="C2l-JE-JEV" id="J17-bJ-z0F"/>
                         <outlet property="reminderName" destination="Yvm-fi-6yr" id="CD7-VM-hes"/>
+                        <outlet property="reminderPicker" destination="0dz-Db-zvU" id="nTx-rT-idh"/>
                         <outlet property="reminderTable" destination="FEX-YN-z7U" id="QyX-7R-Qa3"/>
+                        <outlet property="reminderTextField" destination="xU4-da-Y8z" id="pW3-f1-hH6"/>
+                        <outlet property="saveMedicationButton" destination="gwB-iZ-sbd" id="HYo-zs-0Vj"/>
+                        <outlet property="typeMedicationPicker" destination="lyp-TC-NJA" id="JmN-1E-Zzf"/>
                         <segue destination="1LF-Uv-tE5" kind="show" identifier="ViewReminders" id="W6E-5a-M9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwf-0j-8FQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13.043478260869566" y="1115.217391304348"/>
+            <point key="canvasLocation" x="11.25" y="1114.4366197183099"/>
         </scene>
         <!--Reminder Table View Controller-->
         <scene sceneID="e2X-6N-M72">
@@ -1110,7 +1228,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="103.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="103.5" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1714,7 +1832,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="219" y="162.5" width="80" height="35"/>
+                                <rect key="frame" x="232" y="162.5" width="80" height="35"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <state key="normal" title="Add">
@@ -1757,7 +1875,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="162.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="162.5" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -1984,7 +2102,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="154" width="25" height="25"/>
+                                <rect key="frame" x="185" y="154" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2650,7 +2768,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="93" width="80" height="35"/>
+                                <rect key="frame" x="242" y="93" width="80" height="35"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <state key="normal" title="Add">
@@ -2661,7 +2779,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="93" width="25" height="25"/>
+                                <rect key="frame" x="185" y="93" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5379,8 +5497,8 @@
     </scenes>
     <resources>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="EGs-ke-pmL"/>

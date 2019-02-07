@@ -20,31 +20,31 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
  
-  Copyright (c) 2008-2012 Zetetic LLC
-            All rights reserved.
-            
-            Redistribution and use in source and binary forms, with or without
-            modification, are permitted provided that the following conditions are met:
-                * Redistributions of source code must retain the above copyright
-                  notice, this list of conditions and the following disclaimer.
-                * Redistributions in binary form must reproduce the above copyright
-                  notice, this list of conditions and the following disclaimer in the
-                  documentation and/or other materials provided with the distribution.
-                * Neither the name of the ZETETIC LLC nor the
-                  names of its contributors may be used to endorse or promote products
-                  derived from this software without specific prior written permission.
-            
-            THIS SOFTWARE IS PROVIDED BY ZETETIC LLC ''AS IS'' AND ANY
-            EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-            WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-            DISCLAIMED. IN NO EVENT SHALL ZETETIC LLC BE LIABLE FOR ANY
-            DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-            (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-            LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-            ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-            (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-            SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ Copyright (c) 2008-2012 Zetetic LLC
+ All rights reserved.
+ 
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ * Neither the name of the ZETETIC LLC nor the
+ names of its contributors may be used to endorse or promote products
+ derived from this software without specific prior written permission.
+ 
+ THIS SOFTWARE IS PROVIDED BY ZETETIC LLC ''AS IS'' AND ANY
+ EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL ZETETIC LLC BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
 
 //
@@ -65,7 +65,7 @@ class DBManager: NSObject {
     let databaseFileName1 = "HealthAppEncrypted5.sqlite"
     
     var pathToDatabase: String!
-     var pathToDatabase2: String!
+    var pathToDatabase2: String!
     var queue :FMDatabaseQueue?
     var database: FMDatabase!
     var database2: FMDatabase!
@@ -80,53 +80,53 @@ class DBManager: NSObject {
     let field_Reminder_Date="reminderDate"
     let field_Reminder_User="reminderUser"
     let field_Reminder_Status="reminderStatus"
-   let field_Reminder_Row="rowID"
+    let field_Reminder_Row="rowID"
     override init() {
         super.init()
         
         let documentsDirectory = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString) as String
-
+        
         pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
         pathToDatabase2 = documentsDirectory.appending("/\(databaseFileName1)")
- 
+        
         // let path="/Users/gayu/Desktop"
-       // let path="/Users/melissaheredia/Desktop/NEW"
-      // let path="/Users/gopikamenon/Desktop/New"
-      //  let path="/Users/thanjilauddin/Desktop/NEW"
-
-
-
-       // pathToDatabase = path.appending("/\(databaseFileName)")
+        // let path="/Users/melissaheredia/Desktop/NEW"
+        // let path="/Users/gopikamenon/Desktop/New"
+        //  let path="/Users/thanjilauddin/Desktop/NEW"
+        
+        
+        
+        // pathToDatabase = path.appending("/\(databaseFileName)")
         // pathToDatabase2=path.appending("/HealthAppEncrypted5.sqlite")
-       // database2 = FMDatabase(path: pathToDatabase2!)
-       //   pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
-       // pathToDatabase2 = documentsDirectory.appending("/\(databaseFileName1)")
-         pathToDatabase=databaseFileName
-   
+        // database2 = FMDatabase(path: pathToDatabase2!)
+        //   pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
+        // pathToDatabase2 = documentsDirectory.appending("/\(databaseFileName1)")
+        pathToDatabase=databaseFileName
+        
         print(pathToDatabase)
     }
-   
+    
     func openEncrypted() ->Bool
     {
-//  0.2  // FMDatabase
-//    FMDatabase *db = [FMDatabase databaseWithPath:[self getDatabasePath]];
-  database2.open()
-  database2.setKey("TGMG2017")
-   // var x=insertReminderTable(reminderName: "TestEncypted", reminderLocation: "TestLocation", reminderReason: "Test Reason", reminderDate: "TestDate", reminderUser: "TestEncyptedUser")
-   /*
-        if(x){
-        "Encyption is sucessful"
-        }
-        else{
-            
-            "Encyption is unsucessful"
-        }
- */
- return true
+        //  0.2  // FMDatabase
+        //    FMDatabase *db = [FMDatabase databaseWithPath:[self getDatabasePath]];
+        database2.open()
+        database2.setKey("TGMG2017")
+        // var x=insertReminderTable(reminderName: "TestEncypted", reminderLocation: "TestLocation", reminderReason: "Test Reason", reminderDate: "TestDate", reminderUser: "TestEncyptedUser")
+        /*
+         if(x){
+         "Encyption is sucessful"
+         }
+         else{
+         
+         "Encyption is unsucessful"
+         }
+         */
+        return true
     }
     
     
-
+    
     
     //*****************************    create database function   *****************************
     func createDatabase() -> Bool {
@@ -135,14 +135,14 @@ class DBManager: NSObject {
         if !FileManager.default.fileExists(atPath: pathToDatabase) {
             database = FMDatabase(path: pathToDatabase!) //construct a FM database file in path given
             //if database file has been created sucessfull
-         //     database2 = FMDatabase(path: pathToDatabase2!)
+            //     database2 = FMDatabase(path: pathToDatabase2!)
             if database != nil {
                 // Open the database.
                 if database.open() {
                     
-                   
                     
-                
+                    
+                    
                     database.close()
                     
                 }
@@ -156,7 +156,7 @@ class DBManager: NSObject {
         return created
     }
     
-   
+    
     
     
     
@@ -166,18 +166,18 @@ class DBManager: NSObject {
     {
         var db: OpaquePointer? = nil;
         let databasePath = pathToDatabase
-       //  let path="/Users/gayu/Desktop"
-       // let path="/Users/melissaheredia/Desktop/NEW"
-       // let path="/Users/gopikamenon/Desktop/New"
+        //  let path="/Users/gayu/Desktop"
+        // let path="/Users/melissaheredia/Desktop/NEW"
+        // let path="/Users/gopikamenon/Desktop/New"
         
-       //  let ecDB = path.appending("/HealthAppEncrypted5.sqlite")
+        //  let ecDB = path.appending("/HealthAppEncrypted5.sqlite")
         let documentsDirectory = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString) as String
-
+        
         let ecDB = documentsDirectory.appending("/HealthAppEncrypted5.sqlite")
         
         
-    // if file doesn't exist at path
-    
+        // if file doesn't exist at path
+        
         database2 = FMDatabase(path: pathToDatabase2!) //construct a FM database file in path given
         
         //if database file has been created sucessfully
@@ -195,31 +195,31 @@ class DBManager: NSObject {
             }
         }
         //if the database file doesn't exist at bath
-  if !FileManager.default.fileExists(atPath: pathToDatabase2) {
-        let result = String("ATTACH DATABASE '\(ecDB)' AS HealthAppEncrypted5 KEY 'TGMG2017' ")
-        //open database path i
-        if (sqlite3_open(databasePath, &db) == SQLITE_OK) {
-            
-            // Attach empty encrypted database to unencrypted database
-            sqlite3_exec(db, result, nil, nil, nil);
-            
-            // export database
-            sqlite3_exec(db, "SELECT sqlcipher_export('HealthAppEncrypted5')", nil, nil, nil);
-            // Detach encrypted database
-            sqlite3_exec(db, "DETACH DATABASE HealthAppEncrypted5", nil, nil, nil);
-            
-            sqlite3_close(db);
-            return true;
+        if !FileManager.default.fileExists(atPath: pathToDatabase2) {
+            let result = String("ATTACH DATABASE '\(ecDB)' AS HealthAppEncrypted5 KEY 'TGMG2017' ")
+            //open database path i
+            if (sqlite3_open(databasePath, &db) == SQLITE_OK) {
+                
+                // Attach empty encrypted database to unencrypted database
+                sqlite3_exec(db, result, nil, nil, nil);
+                
+                // export database
+                sqlite3_exec(db, "SELECT sqlcipher_export('HealthAppEncrypted5')", nil, nil, nil);
+                // Detach encrypted database
+                sqlite3_exec(db, "DETACH DATABASE HealthAppEncrypted5", nil, nil, nil);
+                
+                sqlite3_close(db);
+                return true;
+            }
+            else {
+                sqlite3_close(db);
+                sqlite3_errmsg(db);
+                return false;
+            }
         }
-        else {
-            sqlite3_close(db);
-            sqlite3_errmsg(db);
-            return false;
-        }
-    }
         //delete the first databasse
         
-return false
+        return false
     }
     
     
@@ -228,11 +228,11 @@ return false
     
     
     
-//*****************************     open database fucntion *****************
+    //*****************************     open database fucntion *****************
     
     func openDatabase() -> Bool {
         //if FMdatabase file doesn't exist create one
-
+        
         if database == nil {
             if FileManager.default.fileExists(atPath: pathToDatabase) {
                 database = FMDatabase(path: pathToDatabase)
@@ -254,7 +254,7 @@ return false
     
     
     
-  ///*************************** ADD REMINDER FUNCTIONS *********************
+    ///*************************** ADD REMINDER FUNCTIONS *********************
     
     //    create table and insert data test function -Melissa Heredia
     func insertReminderTable(reminderName:String, reminderLocation:String, reminderReason:String, reminderDate:String, reminderUser:String) -> Bool {
@@ -327,14 +327,14 @@ return false
         return reminders
         
     }
-
     
     
     
     
     
     
-           
+    
+    
     
     //delete Reminder Items
     func deleteReminderItem(reminderID: Int) -> Bool {
@@ -345,14 +345,14 @@ return false
             let query = "DELETE FROM reminder where reminderID = \(reminderID)"
             
             do{
-        
+                
                 try database2.executeUpdate(query, values: nil)
                 deleted=true
             }
             catch{
                 
                 print(error.localizedDescription)
-                           }
+            }
             
             
             database2.close()
@@ -378,18 +378,18 @@ return false
             print(database2.lastError(), database2.lastErrorMessage())
             return false;
         }
-   
-         //insert data into database
+        
+        //insert data into database
         let query="update reminder set \(field_Reminder_Name)=? , \(field_Reminder_Location)=?, \(field_Reminder_Reason)=?,\(field_Reminder_Date)=? where reminderID=?  ;"
         do{
-        try(database2.executeUpdate(query, values: [reminderName,reminderLocation,reminderReason,reminderDate,reminderID]))
+            try(database2.executeUpdate(query, values: [reminderName,reminderLocation,reminderReason,reminderDate,reminderID]))
             
         }
         catch{
             print("Failed to insert initial data into the database2.")
             print(database2.lastError(), database2.lastErrorMessage())
             return false;
-            }
+        }
         
         return true;
     }
@@ -429,14 +429,247 @@ return false
     
     
     
+    //*********** Medication Reminders ********************
+    
+    func insertReminderMedicationTable(medicationName:String, medicationType:String, medicationTotalAmount:Int, medicationAmount:Int, dosage:String, reminderUser:String) -> Bool {
+        print(medicationName)
+        print(medicationType)
+        print(medicationAmount)
+        print(medicationTotalAmount)
+        print(reminderUser)
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            
+            return false;
+        }
+        //create table if not already created
+        let createHealthAppTableQuery = " create table reminderMedication (reminderID integer primary key not null, medicationName text not null, medicationType text not null, medicationTotalAmount integer not null, medicationAmount integer not null, dosage text not null, reminderUser text )"
+        
+        do{
+            try database2.executeUpdate(createHealthAppTableQuery, values:nil)
+            
+        }
+        catch{
+            print("Failed to create table ")
+            print(error.localizedDescription)
+        }
+        //insert data into database
+        let query="insert into reminderMedication ('reminderID', 'medicationName', 'medicationType', 'medicationTotalAmount', 'medicationAmount', 'dosage', 'reminderUser') values (NULL,'\(medicationName)','\(medicationType)', '\(medicationTotalAmount)', '\(medicationAmount)', '\(dosage)','\(reminderUser)');"
+        if !database2.executeStatements(query) {
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        return true;
+    }
+    
+    func insertMoreReminderMedication(reminderID: Int) -> Bool {
+        print(reminderID)
+        
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            
+            return false;
+        }
+        let createHealthAppTableQuery = "create table reminderList (reminders integer primary key not null, reminderID int not null, foreign key(reminderID) references reminderMedication(reminderID) )"
+        
+        do{
+            try database2.executeUpdate(createHealthAppTableQuery, values:nil)
+            
+        }
+        catch{
+            print("Failed to create table ")
+            print(error.localizedDescription)
+        }
+        //insert data into database
+        let query="insert into reminderList ('reminders', 'reminderID') values (NULL, \(reminderID));"
+        if !database2.executeStatements(query) {
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        return true;
+    }
+    // loading reminders into reminderobject list-Melissa Heredia
+    func loadRemindersMedication(reminderUser:String = "") -> [ReminderMedicationInfo]! {
+        var reminders: [ReminderMedicationInfo]!
+        if openEncrypted()
+        {
+            let query = "select * from reminderMedication where reminderUser = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser])
+                
+                while results.next() {
+                    let reminder = ReminderMedicationInfo(reminderId: Int(results.int(forColumn: "reminderID")), medicationName: results.string(forColumn: "medicationName"), medicationType: results.string(forColumn: "medicationType"), medicationTotalAmount: Int(results.int(forColumn: "medicationTotalAmount")), medicationAmount: Int(results.int(forColumn: "medicationAmount")), dosage: results.string(forColumn: "dosage"), reminderUser: results.string( forColumn: "reminderUser"))
+                    
+                    
+                    if reminders==nil {
+                        reminders=[ReminderMedicationInfo]()
+                    }
+                    reminders.append(reminder)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return reminders
+        
+    }
     
     
     
-//*********** MONTHLY REMINDERS ***********************
+    
+    
+    
+    
+    
+    
+    //delete Reminder Items
+    func deleteReminderMedicationItem(reminderID: Int) -> Bool {
+        var deleted=false;
+        if openEncrypted()
+        {
+            print(reminderID)
+            let query = "DELETE FROM reminderMedication where reminderID = \(reminderID)"
+            
+            do{
+                
+                try database2.executeUpdate(query, values: nil)
+                deleted=true
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            let query2 = "DELETE FROM reminderList where reminderID = \(reminderID)"
+            
+            do{
+                
+                try database2.executeUpdate(query2, values: nil)
+                deleted=true
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return deleted
+    }
+    
+    
+    
+    
+    
+    
+    func updateReminderMedicationTable(medicationName:String, medicationType:String, medicationTotalAmount:Int, medicationAmount:Int, dosage:String, reminderID:String) -> Bool {
+        print(medicationName)
+        print(medicationType)
+        print(medicationAmount)
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        //insert data into database
+        let query="update reminderMedication set medicationName=? , medicationType=?, medicationTotalAmount=?, medicationAmount=?, dosage=? where reminderID=?  ;"
+        do{
+            try(database2.executeUpdate(query, values: [medicationName,medicationType,medicationTotalAmount, medicationAmount, dosage, reminderID]))
+            
+        }
+        catch{
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        return true;
+    }
+    
+    
+    
+    
+    
+    
+    func lastReminderMedication() -> Int {
+        //  open database
+        var val = -1
+        if !openEncrypted() {
+            print("Failed to Open database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return -1
+        }
+        
+        //select last reminder
+        let query="select * from reminderMedication order by reminderID desc limit 1 ;"
+        do{
+            
+            let result = try(database2.executeQuery(query, values: nil ))
+            while(result.next())
+            {
+                val=Int(result.int(forColumn: "reminderID"))
+            }
+        }
+        catch{
+            print("Failed to find reminder id.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return -1
+        }
+        
+        return val;
+    }
+    
+    func lastReminderMedication(reminderID: Int) -> String {
+        //  open database
+        var val = ""
+        if !openEncrypted() {
+            print("Failed to Open database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return ""
+        }
+        
+        //select last reminder
+        let query="select * from reminderList order by reminderID desc, reminders desc limit 1 ;"
+        do{
+            
+            let result = try(database2.executeQuery(query, values: nil ))
+            while(result.next())
+            {
+                val = result.string(forColumn: "reminders") ?? ""
+            }
+        }
+        catch{
+            print("Failed to find reminder id.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return ""
+        }
+        
+        return val;
+    }
+    
+    
+    //*********** MONTHLY REMINDERS ***********************
     
     //    create table and insert data test function -Melissa Heredia
     func insertMonthlyReminderTable(reminderStatus:Bool, reminderUser:String) -> Bool {
-
+        
         //  open database
         if !openEncrypted() {
             print("Failed to Open database2.")
@@ -511,8 +744,8 @@ return false
     
     
     func updateMonthlyReminderTable(reminderStatus:Bool, reminderUser:String) -> Bool {
-      
-       
+        
+        
         if !openEncrypted() {
             print("Failed to Open database2.")
             print(database2.lastError(), database2.lastErrorMessage())
@@ -567,7 +800,7 @@ return false
         
         return val;
     }
-
+    
 }
 
 
@@ -601,6 +834,35 @@ struct  ReminderInfo {
     }
 }
 
+//structure holding reminderMedication
+struct  ReminderMedicationInfo {
+    var reminderId: Int!
+    var medicationName: String!
+    var medicationType: String!
+    var medicationTotalAmount: Int!
+    var medicationAmount: Int!
+    var dosage: String!
+    var reminderUser: String!
+    init(reminderId:Int!, medicationName:String! , medicationType:String!,medicationTotalAmount:Int!, medicationAmount:Int!, dosage:String!,reminderUser:String!) {
+        self.reminderId=reminderId
+        self.medicationName=medicationName
+        self.medicationType=medicationType
+        self.medicationTotalAmount=medicationTotalAmount
+        self.medicationAmount=medicationAmount
+        self.dosage = dosage
+        self.reminderUser=reminderUser
+    }
+    init() {
+        self.reminderId = -1
+        self.medicationName = ""
+        self.medicationType = ""
+        self.medicationAmount = -1
+        self.medicationTotalAmount = -1
+        self.dosage = ""
+        self.reminderUser = ""
+    }
+}
+
 
 //structure holding reminder information-Melissa
 struct  MonthlyReminderInfo {
@@ -612,12 +874,12 @@ struct  MonthlyReminderInfo {
         self.reminderUser=reminderUser
     }
     init(rowID:Int!,reminderUser:String!,reminderStatus:Bool) {
-     
+        
         self.reminderStatus=reminderStatus
         self.reminderUser=reminderUser
     }
     init() {
-     
+        
         self.reminderStatus=true
         self.reminderUser=""
     }
