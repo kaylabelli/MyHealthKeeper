@@ -181,8 +181,10 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Kayla Belli
+        BiometricAuthentication()
+        //Kayla belli end
         
-        Biometrics()
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -1364,25 +1366,38 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
 // End code by GM
 
 //Code by Kayla Belli
-        func Biometrics() {
+        func BiometricAuthentication() {
     
         let context = LAContext()
-    
-        //let saveSuccessful: Bool = KeychainWrapper.standard.set(sUsername.text!, forKey: "username")
+        var BiometricsError: NSError?
     
         // If the Device can use biometric authentication
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &BiometricsError)
         {
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics,localizedReason: "Fingerprint Login", reply: { (success, error) in
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Fingerprint login", reply: { (success, error)in
                 if success {
                     //Fingerprint recognized
                     self.performSegue(withIdentifier: "Login", sender: self)
                 }
                 else {
-                    //If not recognized then
-                    let alert = UIAlertController(title: "Authentication failed", message: "", preferredStyle: .alert)
+                    //Authentication Failed
+                   /*let alert = UIAlertController(title: "Authentication failed", message: "", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true)
+                    //print(evalPolicyError?.localizedDescription)*/
+                    
+                  
+                   /* if let error = BiometricsError{
+                        switch error.code{
+                        case LAError.authenticationFailed.rawValue:
+                            message = "Authentication Failed123"
+                        default:
+                            message = error.localizedDescription
+                        }
+                        let alert = UIAlertController(title: "Biometrics Error", message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(alert, animated: true)
+                    }*/
                 }
             })
         }
@@ -1390,11 +1405,13 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             let alert = UIAlertController(title: "Biometrics unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(alert, animated: true)
+            
         }
 
     }
 
+    //End Kayla belli
 }
-//End Kayla belli
+
 
 

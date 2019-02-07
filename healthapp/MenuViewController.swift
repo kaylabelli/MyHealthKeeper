@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //Kayla Belli - changed some of the menu names in title_arr
-    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Print","Logout"]
+    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Adult Congenital Checklist","Print", "Logout"]
     var row1 = ["\t\tPersonal",
                 "\t\tDoctor",
                 "\t\tIllness",
@@ -112,12 +112,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
+        
+                //Kayla Belli
             else if(section == 7){
-                boardID = "Print Preview"
+                boardID = "Health Maintenance"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
             else if(section == 8){
+                boardID = "Adult Congenital Checklist"
+                let navigation = main.instantiateViewController(withIdentifier: boardID)
+                self.navigationController?.pushViewController(navigation, animated: true)
+            }
+                //end Kayla Belli
+            else if(section == 9){
+                boardID = "Print Preview"
+                let navigation = main.instantiateViewController(withIdentifier: boardID)
+                self.navigationController?.pushViewController(navigation, animated: true)
+            }
+            else if(section == 10){
                 boardID = "Sign In"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
@@ -294,11 +307,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         {
             image.image = UIImage(named: "clock")
         }
+            //Kayla belli
         else if (section == 7)
+        {
+            image.image = UIImage(named: "history")
+        }
+        else if (section == 8)
+        {
+            image.image = UIImage(named: "history")
+        }
+            //end Kayla Belli
+        else if (section == 9)
         {
             image.image = UIImage(named: "print")
         }
-        else if (section == 8)
+        else if (section == 10)
         {
             image.image = UIImage(named: "logout")
         }
