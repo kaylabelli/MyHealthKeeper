@@ -5395,6 +5395,7 @@
         <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Cgh-uD-9eQ"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>
