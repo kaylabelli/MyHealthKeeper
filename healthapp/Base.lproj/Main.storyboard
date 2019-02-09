@@ -664,6 +664,7 @@
                         <outlet property="saveMedicationButton" destination="gwB-iZ-sbd" id="HYo-zs-0Vj"/>
                         <outlet property="typeMedicationPicker" destination="lyp-TC-NJA" id="JmN-1E-Zzf"/>
                         <segue destination="1LF-Uv-tE5" kind="show" identifier="ViewReminders" id="W6E-5a-M9A"/>
+                        <segue destination="YQi-YK-jP0" kind="show" identifier="ViewMedicationReminders" id="9SN-Hj-22G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vwf-0j-8FQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -902,8 +903,8 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal">
-                                            <string key="title">Save and Continue 
-</string>
+                                            <string key="title">Save and Continue
+                                            </string>
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -5506,6 +5507,87 @@
             </objects>
             <point key="canvasLocation" x="4316" y="-1455"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RuK-3H-bRb">
+            <objects>
+                <navigationController id="YQi-YK-jP0" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cBD-AY-2O0">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="V08-tt-Ifo" kind="relationship" relationship="rootViewController" id="sU9-WA-Qwk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTt-ug-Fl8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="11" y="1910"/>
+        </scene>
+        <!--Reminder Medication Table View Controller Scene-->
+        <scene sceneID="YfA-C2-Um0">
+            <objects>
+                <tableViewController restorationIdentifier="Reminder Medication Summary" storyboardIdentifier="Reminder Medication Summary" id="V08-tt-Ifo" userLabel="Reminder Medication Table View Controller Scene" customClass="ReminderMedicationTableViewController" customModule="healthapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="12" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="xfH-Ww-BRu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="lGl-Ix-13j">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.3968740798" green="0.80973742540000004" blue="0.84880781169999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                            <nil key="highlightedColor"/>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
+                            </variation>
+                        </label>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="Opg-KA-BVS">
+                                <rect key="frame" x="0.0" y="109" width="320" height="104"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Opg-KA-BVS" id="1ZI-13-dNh">
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="104"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="5" highlighted="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Nl-Sv-0b0">
+                                            <rect key="frame" x="16" y="11" width="292" height="93"/>
+                                            <color key="backgroundColor" red="0.3968740798" green="0.80973742540000004" blue="0.84880781169999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.3968740798" green="0.80973742540000004" blue="0.84880781169999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstItem="9Nl-Sv-0b0" firstAttribute="top" secondItem="1ZI-13-dNh" secondAttribute="topMargin" id="9a8-1s-qWn"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="9Nl-Sv-0b0" secondAttribute="trailing" constant="-30" id="SFV-j3-Tfd"/>
+                                        <constraint firstItem="9Nl-Sv-0b0" firstAttribute="leading" secondItem="1ZI-13-dNh" secondAttribute="leadingMargin" id="VCa-dH-ig1"/>
+                                        <constraint firstAttribute="bottom" secondItem="9Nl-Sv-0b0" secondAttribute="bottom" id="oZQ-4j-8Iw"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
+                        <connections>
+                            <outlet property="dataSource" destination="V08-tt-Ifo" id="msi-Ug-HGg"/>
+                            <outlet property="delegate" destination="V08-tt-Ifo" id="rln-18-dIR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="dcL-1b-fvu">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="smallmenuIcon" id="uLl-On-SJD">
+                            <connections>
+                                <action selector="menu_Action:" destination="V08-tt-Ifo" id="81u-9L-2DN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cO-0S-J2X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="1910"/>
+        </scene>
     </scenes>
     <resources>
         <image name="finallogo" width="553" height="465"/>
@@ -5513,15 +5595,14 @@
         <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Cgh-uD-9eQ"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
-        <segue reference="853-my-C7d"/>
+        <segue reference="ggC-Wb-zY6"/>
         <segue reference="vbZ-5b-9yE"/>
-        <segue reference="vaQ-fy-FoI"/>
+        <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="eWA-4f-dh2"/>
         <segue reference="iDV-28-2t0"/>
@@ -5536,3 +5617,4 @@
         <segue reference="wSI-CB-RT9"/>
     </inferredMetricsTieBreakers>
 </document>
+

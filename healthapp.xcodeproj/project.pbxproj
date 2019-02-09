@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */; };
+		15D59189220E77C900C10A67 /* ReminderMedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */; };
 		6C1502FC1FB29D460058A41B /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */; };
 		6C18DADF1F83118600D0D1FF /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18DAD11F83118400D0D1FF /* FMDatabasePool.m */; };
 		6C18DAE01F83118600D0D1FF /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18DAD31F83118500D0D1FF /* FMDatabaseQueue.m */; };
@@ -121,6 +123,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationEditController.swift; sourceTree = "<group>"; };
+		15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationTableViewController.swift; sourceTree = "<group>"; };
 		6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
 		6C18DAD01F83118400D0D1FF /* healthapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "healthapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C18DAD11F83118400D0D1FF /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
@@ -308,7 +312,9 @@
 				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
 				6CA09A741FACEC4C00CEF949 /* MenuTableViewCell.swift */,
 				6CA09A721FACEC1300CEF949 /* MenuViewController.swift */,
+				15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */,
 				6C86F8061FB5437600DE0F14 /* ReminderEditController.swift */,
+				15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */,
 				9B2D9A3B1FC9F7BE0025975B /* ReminderTableViewCell.swift */,
 				AE141B331F90268E009244FF /* ReminderTableViewController.swift */,
 				9B4EF1CD1FA54AFD0056EA85 /* ResetPassword.swift */,
@@ -535,6 +541,7 @@
 				6C5949C41F9850FA00E5B793 /* DoctorViewController.swift in Sources */,
 				6C18DAE01F83118600D0D1FF /* FMDatabaseQueue.m in Sources */,
 				6CA09A731FACEC1300CEF949 /* MenuViewController.swift in Sources */,
+				15D59189220E77C900C10A67 /* ReminderMedicationTableViewController.swift in Sources */,
 				AEBA0CED1FA0F064002849EB /* SecurityAnswer.swift in Sources */,
 				6CF73BF81F998417009F36FC /* VaccineViewController.swift in Sources */,
 				9B2D9A3C1FC9F7BE0025975B /* ReminderTableViewCell.swift in Sources */,
@@ -546,6 +553,7 @@
 				6C18DAE41F83118600D0D1FF /* FMDatabase.m in Sources */,
 				6CBEAD6F1FCA100000839D64 /* Edit_Medication_ViewController.swift in Sources */,
 				9B4EF1CE1FA54AFD0056EA85 /* ResetPassword.swift in Sources */,
+				15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */,
 				9B7B77FF1F92D7D9007E0F9E /* DocumentViewController.swift in Sources */,
 				6C1502FC1FB29D460058A41B /* TextInputTableViewCell.swift in Sources */,
 				6CD787351FC8F3500056D523 /* EditDoctorViewController.swift in Sources */,

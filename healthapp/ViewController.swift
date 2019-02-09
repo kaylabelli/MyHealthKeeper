@@ -27,13 +27,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     @IBOutlet weak var RoundImage: UIImageView!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.AddReminderDesign.isHidden = true
+        /*self.AddReminderDesign.isHidden = true
         self.reminderDate.isHidden = true
         self.appointmentStack.isHidden = true
         self.medicationView.isHidden = true
         self.saveMedicationButton.isHidden = true
         self.typeMedicationPicker.isHidden = true
-        self.dosagePicker.isHidden = true
+        self.dosagePicker.isHidden = true*/
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -953,7 +953,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 (action) -> Void in
                 do {
                     //Performs Segue to go to View Reminder Page
-                    self.performSegue(withIdentifier: "ViewReminders", sender: self)
+                    self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
                 }
             }))
             
