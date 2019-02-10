@@ -92,18 +92,18 @@ class ReminderMedicationTableViewController: UITableViewController
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
-        let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertController.Style.alert)
+        /*let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertController.Style.alert)
         let alertControllerNo = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
         let alertControllerYes = UIAlertAction(title: "Yes", style: .default, handler: { action in
             let passReminder = self.items[indexPath.row]
             self.currentitem=passReminder
-            self.performSegue(withIdentifier: "EditReminders", sender: self)
+            self.performSegue(withIdentifier: "EditRemindersMedication", sender: self)
         })
         alertController.addAction(alertControllerNo)
         alertController.addAction(alertControllerYes)
         self.present(alertController, animated: true, completion: nil)
         
-        //    present(target, animated: true)
+        //    present(target, animated: true)*/
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -134,7 +134,7 @@ class ReminderMedicationTableViewController: UITableViewController
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = DocumentHeader()
         label.textAlignment = .center
-        label.text = "Tap row to edit reminder."
+        label.text = "Medication Reminders"
         label.backgroundColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
@@ -157,13 +157,12 @@ class ReminderMedicationTableViewController: UITableViewController
         let DateFormat=DateFormatter()
         var dateDisplay=""
         var labelimage = "💊 "
-        DateFormat.dateFormat="MMMM d yyyy',' H:mm a"
         /*if(date != nil)
          {
          dateDisplay = DateFormat.string(from: date!)
          }*/
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\n" + self.items[indexPath.row].dosage
+        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\n" + self.items[indexPath.row].dosage + "\nAmount per Dose: \(self.items[indexPath.row].medicationTotalAmount!)"
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.numberOfLines = 0
         return cell
@@ -189,21 +188,25 @@ class ReminderMedicationTableViewController: UITableViewController
             //store the id of reminder
             print("Delete Row")
             let idDeleteItem = self.items[indexPath.row].reminderId!
-            let error=DBManager.shared.deleteReminderItem(reminderID: idDeleteItem)
+            let list: [String] = DBManager.shared.listReminderID(reminderID: idDeleteItem)
+            let error=DBManager.shared.deleteReminderMedicationItem(reminderID: idDeleteItem)
             
             if(error==true)
             {
-                print("Deleting item was successful")
                 items.remove(at: indexPath.row)
                 tableView.reloadData()
-                //    self.editButtonItem.title="Delete"
-                //delete notif from notificaton center
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Reminder"+"\(idDeleteItem)"])
+                for i in list {
+                    
+                    print("Deleting item was successful")
+                    //    self.editButtonItem.title="Delete"
+                    //delete notif from notificaton center
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Reminder\(idDeleteItem).\(i)"])
                 
-                //if empty then hide delete cell
-                if(items.count==0)
-                {
-                    self.navigationItem.rightBarButtonItem=nil
+                    //if empty then hide delete cell
+                    if(items.count==0)
+                    {
+                        self.navigationItem.rightBarButtonItem=nil
+                    }
                 }
             }
             else{
@@ -244,10 +247,10 @@ class ReminderMedicationTableViewController: UITableViewController
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //        Get the new view controller using segue.destinationViewController.
         //if going to edit reminder page-pass populate data
-        if segue.identifier=="EditReminders"
+        if segue.identifier=="EditRemindersMedication"
         {
             print("in segway")
-            let target=segue.destination as? ReminderMedicationEditController
+            let target = segue.destination as? ReminderMedicationEditController
             target?.curitem = currentitem
             
         }

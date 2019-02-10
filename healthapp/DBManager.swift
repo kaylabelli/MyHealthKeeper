@@ -646,7 +646,7 @@ class DBManager: NSObject {
         }
         
         //select last reminder
-        let query="select * from reminderList order by reminderID desc, reminders desc limit 1 ;"
+        let query="select * from reminderList where reminderID = \(reminderID) order by reminders desc limit 1 ;"
         do{
             
             let result = try(database2.executeQuery(query, values: nil ))
@@ -662,6 +662,38 @@ class DBManager: NSObject {
         }
         
         return val;
+    }
+    
+    func listReminderID(reminderID: Int) -> [String]!
+    {
+        var list: [String]!
+        if openEncrypted()
+        {
+            let query = "select * from reminderList where reminderID = \(reminderID)"
+            
+            do{
+                let results = try database2.executeQuery(query, values: nil)
+                
+                while results.next() {
+                    let id = results.string(forColumn: "reminders") ?? ""
+                    
+                    if list == nil
+                    {
+                        list = [""]
+                    }
+                    list.append(id)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return list
     }
     
     
