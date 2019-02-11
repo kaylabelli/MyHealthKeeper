@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //Kayla Belli - changed some of the menu names in title_arr
-    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Adult Congenital Checklist","Print", "Logout"]
+    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Checklist","Print", "Logout"]
     var row1 = ["\t\tPersonal",
                 "\t\tDoctor",
                 "\t\tIllness",
@@ -120,7 +120,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
             else if(section == 8){
-                boardID = "Adult Congenital Checklist"
+                boardID = "Checklist"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
