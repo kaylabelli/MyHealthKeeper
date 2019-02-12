@@ -11,10 +11,21 @@ import UIKit
 
 class checklist: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let sections = ["Heart Disease", "Kidney Disease"]
-    let heart = ["Heart Checkup", "Colonoscopy", "Diet Guidelines"]
+    let sections = ["Congenital Heart Disease", "Kidney Disease", "Sickle Cell Disease", "Diabetes", "HIV/AIDS"]
+    let heart = ["Heart Checkup", "Colonoscopy", "Dietary Guidelines"]
     let kidney = ["Screenings", "Blood Pressure Tests", "Fluid Tests"]
+    //Kayla Belli adding on
+    let sickle = ["Blood Trasnfusion", "Vitamins", "Analgesia"]
+    let diabetes = ["Hemoglobin Testing", "Insulin Therapy"]
+    let HIV = ["Drug Resistance Testing", "Viral load testing"]
     
+    
+    override func viewDidLoad() {
+        // backgroundCol()
+    }
+    
+    
+    //Kayla Belli end
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
     }
@@ -31,11 +42,22 @@ class checklist: UIViewController, UITableViewDelegate, UITableViewDataSource {
         case 1:
             //kidney section
             return kidney.count
+        //Kayla Belli adding on
+        case 2:
+            //epilespy
+            return sickle.count
+        case 3:
+            //chrons
+            return diabetes.count
+        case 4:
+            //HIV
+            return HIV.count
+        //Kayla Belli end
         default:
             return 0
         }
         
-        }
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Create an object of the dynamic cell "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
@@ -49,10 +71,27 @@ class checklist: UIViewController, UITableViewDelegate, UITableViewDataSource {
             //kidney
             cell.textLabel?.text = kidney[indexPath.row]
             break
+        //Kayla Belli
+        case 2:
+            //epilepsy
+            cell.textLabel?.text = sickle[indexPath.row]
+            break
+        case 3:
+            //chrons
+            cell.textLabel?.text = diabetes[indexPath.row]
+            break
+        case 4:
+            //HIV
+            cell.textLabel?.text = HIV[indexPath.row]
+            break
+        //Kayla Belli
         default:
             break
         }
         
         return cell
     }
-    }
+}
+
+
+
