@@ -15,7 +15,7 @@ class checklist: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let heart = ["Heart Checkup", "Colonoscopy", "Dietary Guidelines"]
     let kidney = ["Screenings", "Blood Pressure Tests", "Fluid Tests"]
     //Kayla Belli adding on
-    let sickle = ["Blood Trasnfusion", "Vitamins", "Analgesia"]
+    let sickle = ["Blood Transsfusion", "Vitamins", "Analgesia"]
     let diabetes = ["Hemoglobin Testing", "Insulin Therapy"]
     let HIV = ["Drug Resistance Testing", "Viral load testing"]
     
