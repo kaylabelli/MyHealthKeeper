@@ -1377,7 +1377,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBAction func BiometricAuthentication(_ sender: Any) {
 
         let context = LAContext()
-        //var BiometricsError: NSError?
         
         //save username to be autofilled on login screen
         let name = sUsername.text
@@ -1386,7 +1385,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         // If the Device can use biometric authentication
         if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil)
         {
-            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Fingerprint login", reply: { (success, error)in
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Fingerprint login", reply: { (success, error) in
                 if success {
                     //Fingerprint recognized
                     DispatchQueue.main.async {

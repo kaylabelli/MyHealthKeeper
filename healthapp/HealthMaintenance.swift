@@ -14,7 +14,7 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     let sections = ["Please enter the following dates"]
-    let q1 = ["Last Colonoscopy: ", "Last Mammogram: ", "Last Blood Draw: ", "Last Flu Shot: ", "Last Checkup"]
+    let q1 = ["Last Colonoscopy: ", "Last Mammogram: ", "Last Blood Draw: ", "Last Flu Shot: ", "Last Checkup: "]
     
     
     @IBOutlet weak var Submit: UIButton!
