@@ -92,7 +92,7 @@ class ReminderMedicationTableViewController: UITableViewController
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
-        /*let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: "Edit Reminder?", message: "Would you like to edit this reminder?", preferredStyle: UIAlertController.Style.alert)
         let alertControllerNo = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
         let alertControllerYes = UIAlertAction(title: "Yes", style: .default, handler: { action in
             let passReminder = self.items[indexPath.row]
@@ -103,7 +103,7 @@ class ReminderMedicationTableViewController: UITableViewController
         alertController.addAction(alertControllerYes)
         self.present(alertController, animated: true, completion: nil)
         
-        //    present(target, animated: true)*/
+        //    present(target, animated: true)
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -252,7 +252,6 @@ class ReminderMedicationTableViewController: UITableViewController
             print("in segway")
             let target = segue.destination as? ReminderMedicationEditController
             target?.curitem = currentitem
-            
         }
     }
     
