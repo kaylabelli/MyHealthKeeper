@@ -11,6 +11,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     
     var isGrantedNotificationAccess: Bool=false
     var curitem: ReminderMedicationInfo?=nil
+    var name: String? = nil
     
     var menu_vc: MenuViewController!
     @IBAction func menu_Action(_ sender: Any) {
@@ -144,6 +145,11 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         perUse.returnKeyType = UIReturnKeyType.done
         dosage.returnKeyType = UIReturnKeyType.done
         
+        self.dosagePicker.dataSource = self
+        self.dosagePicker.delegate = self
+        self.typePicker.dataSource = self
+        self.typePicker.delegate = self
+        
         self.typePicker.isHidden = true
         self.dosagePicker.isHidden = true
         
@@ -166,10 +172,10 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         
         // print(id)
         //prepopulate page
-        let totalNum: Int = curitem?.medicationTotalAmount ?? 1
-        let useNum: Int = curitem?.medicationAmount ?? 0
+        let useNum: Int = curitem?.medicationTotalAmount ?? 1
+        let totalNum: Int = curitem?.medicationAmount ?? 0
         
-        // medicationName?.text = curitem?.medicationName
+        medicationName?.text = curitem?.medicationName
         medicationType?.text = curitem?.medicationType
         totalAmount.text = String(totalNum)
         perUse.text = String(useNum)
@@ -829,6 +835,11 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             reminderCount = reminderCount + 3
                         }
                     }
+                    let reminderUpdateAlert = UIAlertController(title: "Reminder Status", message: "Successfully updated reminder", preferredStyle: UIAlertController.Style.alert)
+                    reminderUpdateAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertAction.Style.default, handler: {(action) -> Void in
+                        self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)}));
+                    self.present(reminderUpdateAlert,animated: true, completion:nil)
+                    print("Update was successful")
                 }
             }
             else{

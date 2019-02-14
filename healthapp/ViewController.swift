@@ -971,7 +971,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }))
             
             //cancel button on Add Reminder Alert
-            //reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: nil))
+            reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
             
             //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
             // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
@@ -1256,7 +1256,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }))
             
             //cancel button on Add Reminder Alert
-            //reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: nil))
+            reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
             
             //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
             // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
