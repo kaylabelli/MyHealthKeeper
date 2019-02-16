@@ -126,16 +126,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.medicationAmount.delegate=self
             self.medicationTotalAmount.delegate=self
             self.dosageText.delegate=self
-            self.reminderTextField.delegate=self
             
+            reminderLabel.text = "Setup Appointment Reminder"
             //Changes to 'Done'
             reminderName.returnKeyType = UIReturnKeyType.done
             reasonField.returnKeyType = UIReturnKeyType.done
             LocationField.returnKeyType = UIReturnKeyType.done
             
-            self.AddReminderDesign.isHidden = true
-            self.reminderDate.isHidden = true
-            self.appointmentStack.isHidden = true
             self.medicationView.isHidden = true
             self.saveMedicationButton.isHidden = true
             self.typeMedicationPicker.isHidden = true
@@ -291,6 +288,40 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     //Submit Reminder -Melissa Heredia
     
+    @IBOutlet weak var segmentPicker: UISegmentedControl!
+    @IBAction func reminderType(_ sender: Any) {
+        let index = segmentPicker.selectedSegmentIndex
+        
+        switch (index)
+        {
+        case 0:
+            print(index)
+            self.AddReminderDesign.isHidden = false
+            self.reminderDate.isHidden = false
+            self.appointmentStack.isHidden = false
+            self.medicationView.isHidden = true
+            self.saveMedicationButton.isHidden = true
+            self.typeMedicationPicker.isHidden = true
+            self.dosagePicker.isHidden = true
+            typeMedicationPicker.isHidden = true
+            dosagePicker.isHidden = true
+            reminderLabel.text = "Setup Appointment Reminder"
+        case 1:
+            print(index)
+            self.AddReminderDesign.isHidden = true
+            self.reminderDate.isHidden = true
+            self.appointmentStack.isHidden = true
+            self.medicationView.isHidden = false
+            self.saveMedicationButton.isHidden = false
+            self.typeMedicationPicker.isHidden = false
+            self.dosagePicker.isHidden = false
+            typeMedicationPicker.isHidden = true
+            dosagePicker.isHidden = true
+            reminderLabel.text = "Setup Medication Reminder"
+        default:
+            print("none")
+        }
+    }
     
     //@IBOutlet weak var medicationView: UIView!
     @IBOutlet weak var medicationView: UIStackView!
@@ -306,8 +337,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //picker
     @IBOutlet weak var reminderDate: UIDatePicker!
     
-    @IBOutlet weak var reminderTextField: UITextField!
-    @IBOutlet weak var reminderPicker: UIPickerView!
     @IBOutlet weak var reminderLabel: UILabel!
     
     @IBAction func createMedicationReminder(_ sender: Any) {
@@ -981,47 +1010,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     }
     
     @IBOutlet weak var saveMedicationButton: UIButton!
-    @IBAction func submitType(_ sender: Any) {
-        if reminderTextField.text == "Appointment"
-        {
-            AddReminderDesign.isHidden = false
-            reminderDate.isHidden = false
-            appointmentStack.isHidden = false
-            medicationView.isHidden = true
-            saveMedicationButton.isHidden = true
-            typeMedicationPicker.isHidden = true
-            dosagePicker.isHidden = true
-            reminderLabel.text = "Setup Appointment Reminder"
-        }
-        else if reminderTextField.text == "Medication"
-        {
-            AddReminderDesign.isHidden = true
-            reminderDate.isHidden = true
-            appointmentStack.isHidden = true
-            medicationView.isHidden = false
-            saveMedicationButton.isHidden = false
-            reminderLabel.text = "Setup Medication Reminder"
-        }
-        else
-        {
-            AddReminderDesign.isHidden = true
-            reminderDate.isHidden = true
-            appointmentStack.isHidden = true
-            medicationView.isHidden = true
-            saveMedicationButton.isHidden = true
-            typeMedicationPicker.isHidden = true
-            dosagePicker.isHidden = true
-            reminderLabel.text = "Setup Reminder"
-        }
-        
-        reminderPicker.isHidden = true
-        typeMedicationPicker.isHidden = true
-        dosagePicker.isHidden = true
-    }
-    
     
     @IBOutlet weak var appointmentStack: UIStackView!
-    var reminderType = ["Appointment", "Medication"]
     
     @IBOutlet weak var typeMedicationPicker: UIPickerView!
     var medicationTypeList = ["Solid", "Liquid"]
@@ -1037,13 +1027,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (title == "Reminders")
         {
-            if pickerView == reminderPicker
-            {
-                // picker1.isHidden = true
-                reminderPicker.isHidden = true
-                return reminderType.count
-            }
-            else if pickerView == typeMedicationPicker
+            if pickerView == typeMedicationPicker
             {
                 typeMedicationPicker.isHidden = true
                 return medicationTypeList.count
@@ -1059,12 +1043,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     func pickerView(_ pickerView: UIPickerView,titleForRow row: Int,forComponent component: Int) -> String?{
         
-        if pickerView == reminderPicker
-        {
-            // picker1.isHidden = true
-            return reminderType[row]
-        }
-        else if pickerView == typeMedicationPicker
+        if pickerView == typeMedicationPicker
         {
             return medicationTypeList[row]
         }
@@ -1078,12 +1057,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     func pickerView(_ pickerView: UIPickerView,didSelectRow row:Int,inComponent:Int){
         if(title=="Reminders")
         {
-            if pickerView == reminderPicker
-            {
-                // picker1.isHidden = true
-                reminderTextField.text = reminderType[row]
-            }
-            else if pickerView == typeMedicationPicker
+            if pickerView == typeMedicationPicker
             {
                 medicationType.text = medicationTypeList[row]
             }
@@ -1097,15 +1071,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if title == "Reminders"
         {
-            if (textField == reminderTextField)
-            {
-                reminderTextField.inputView = UIView()
-                reminderPicker.isHidden = false
-                typeMedicationPicker.isHidden = true
-                dosagePicker.isHidden = true
-                textField.endEditing(true)
-            }
-            else if (textField == medicationType)
+            if (textField == medicationType)
             {
                 medicationType.inputView = UIView()
                 if typeMedicationPicker.isHidden
@@ -1116,7 +1082,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 {
                     typeMedicationPicker.isHidden = true
                 }
-                reminderPicker.isHidden = true
                 dosagePicker.isHidden = true
                 textField.endEditing(true)
             }
@@ -1131,26 +1096,22 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 {
                     dosagePicker.isHidden = true
                 }
-                reminderPicker.isHidden = true
                 typeMedicationPicker.isHidden = true
                 textField.endEditing(true)
             }
             else if (textField == medicationName)
             {
                 typeMedicationPicker.isHidden = true
-                reminderPicker.isHidden = true
                 dosagePicker.isHidden = true
             }
             else if (textField == medicationAmount)
             {
                 typeMedicationPicker.isHidden = true
-                reminderPicker.isHidden = true
                 dosagePicker.isHidden = true
             }
             else if (textField == medicationTotalAmount)
             {
                 typeMedicationPicker.isHidden = true
-                reminderPicker.isHidden = true
                 dosagePicker.isHidden = true
             }
             
@@ -1336,14 +1297,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(reminderError,animated: true, completion:nil)
             }
-        }
-        else if (textField == reminderTextField){
-        }
-        else if (textField == medicationType){}
-        else
-        {
-            typeMedicationPicker.isHidden = true
-            reminderPicker.isHidden = true
         }
     }
     

@@ -53,6 +53,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 "\t\tVaccine",
                 "\t\tAdditional",
                 "\t\tInsurance"]
+    var row2 = ["\t\tAppointment", "\t\tMedication"]
     
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,15 +70,27 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let main = UIStoryboard(name: "Main", bundle: nil)
         var boardID: String
         
-        if(section == 1){
-        if (shouldExp)
+        if(section == 1)
         {
-            ExpendedSection.removeAllObjects()
-            ExpendedSection.add(section)
+            if (shouldExp)
+            {
+                ExpendedSection.removeAllObjects()
+                ExpendedSection.add(section)
+            }
+            else{
+                ExpendedSection.removeAllObjects()
+            }
         }
-        else{
-            ExpendedSection.removeAllObjects()
-        }
+            else if (section == 4)
+        {
+            if (shouldExp)
+            {
+                ExpendedSection.removeAllObjects()
+                ExpendedSection.add(section)
+            }
+            else{
+                ExpendedSection.removeAllObjects()
+            }
         }
         else
         {
@@ -94,11 +107,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             else if(section == 3){
                 boardID = "Document Summary"
-                let navigation = main.instantiateViewController(withIdentifier: boardID)
-                self.navigationController?.pushViewController(navigation, animated: true)
-            }
-            else if(section == 4){
-                boardID = "Reminder Summary"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
@@ -150,6 +158,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             if (section == 1)
             {
                 return row1.count
+            }
+            else if (section == 4)
+            {
+                return row2.count
             }
             else
            {
@@ -211,6 +223,22 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.addSubview(image)
         }
+        else if (indexPath.section == 4)
+        {
+            cell.textLabel?.text = row2[indexPath.row]
+            var image = UIImageView()
+            image = UIImageView.init(frame: CGRect(x: 33, y: 12, width: 25, height: 20))
+            if (indexPath.row == 0)
+            {
+                image.image = UIImage(named: "clock")
+            }
+            else if(indexPath.row == 1)
+            {
+                image.image = UIImage(named: "clock")
+            }
+            
+            cell.addSubview(image)
+        }
         
         
         return cell
@@ -224,28 +252,46 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let main = UIStoryboard(name: "Main", bundle: nil)
         var boardID: String
         
-        switch indexPath.row {
-        case 0: //For "one"
-            boardID = "Personal Info"
-        case 1: //For "two"
-            boardID = "Doctor"
-        case 2:
-            boardID = "Illness"
-            print("Went to Illness Page")
-        case 3:
-            boardID = "Medication"
-        case 4:
-            boardID = "Surgery"
-        case 5:
-            boardID = "Allergy"
-        case 6:
-            boardID = "Vaccine"
-        case 7:
-            boardID = "Additional Info"
-        case 8:
-            boardID = "Insurance"
-        default: //For "three"
-            boardID = "Personal Info"
+        if (indexPath.section == 1)
+        {
+            switch indexPath.row {
+            case 0: //For "one"
+                boardID = "Personal Info"
+            case 1: //For "two"
+                boardID = "Doctor"
+            case 2:
+                boardID = "Illness"
+                print("Went to Illness Page")
+            case 3:
+                boardID = "Medication"
+            case 4:
+                boardID = "Surgery"
+            case 5:
+                boardID = "Allergy"
+            case 6:
+                boardID = "Vaccine"
+            case 7:
+                boardID = "Additional Info"
+            case 8:
+                boardID = "Insurance"
+            default: //For "three"
+                boardID = "Personal Info"
+            }
+        }
+        else if (indexPath.section == 4)
+        {
+            switch indexPath.row {
+            case 0: //For "one"
+                boardID = "Reminder Summary"
+            case 1: //For "two"
+                boardID = "Reminder Medication Summary"
+            default: //For "three"
+                boardID = "Personal Info"
+            }
+        }
+        else
+        {
+            boardID = "Home"
         }
         let navigation = main.instantiateViewController(withIdentifier: boardID)
         self.navigationController?.pushViewController(navigation, animated: true)

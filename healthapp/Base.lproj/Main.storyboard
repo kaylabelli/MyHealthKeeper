@@ -337,18 +337,12 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KZ-yL-Fgp">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Appointment Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xU4-da-Y8z">
-                                        <rect key="frame" x="90" y="83" width="140" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="azN-wY-8Gw" id="AY8-vr-j4F"/>
-                                        </connections>
-                                    </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2l-JE-JEV">
-                                        <rect key="frame" x="82" y="5" width="156" height="130"/>
+                                        <rect key="frame" x="10" y="5" width="300" height="130"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="v1g-SR-yFN"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact-widthClass=compact" hidden="YES">
@@ -501,14 +495,6 @@
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                         </variation>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlN-9I-REn">
-                                        <rect key="frame" x="261" y="80" width="30" height="30"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Go"/>
-                                        <connections>
-                                            <action selector="submitType:" destination="azN-wY-8Gw" eventType="touchUpInside" id="6Ac-uD-URg"/>
-                                        </connections>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7a1-I1-Qf8">
                                         <rect key="frame" x="66.5" y="150" width="187" height="315"/>
                                         <subviews>
@@ -577,17 +563,20 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dz-Db-zvU">
-                                        <rect key="frame" x="60" y="103" width="200" height="50"/>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N1A-vA-VUM">
+                                        <rect key="frame" x="60" y="90" width="200" height="29"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="200" id="ZT8-xD-cNF"/>
-                                            <constraint firstAttribute="height" constant="50" id="lp2-MM-0b0"/>
+                                            <constraint firstAttribute="width" constant="200" id="dkc-qK-Mkl"/>
                                         </constraints>
+                                        <segments>
+                                            <segment title="Appointment"/>
+                                            <segment title="Medication"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
-                                            <outlet property="dataSource" destination="azN-wY-8Gw" id="5qm-da-4tr"/>
-                                            <outlet property="delegate" destination="azN-wY-8Gw" id="Yxi-Rp-2GX"/>
+                                            <action selector="reminderType:" destination="azN-wY-8Gw" eventType="valueChanged" id="kaS-8h-zIw"/>
                                         </connections>
-                                    </pickerView>
+                                    </segmentedControl>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Igw-kF-7qL" firstAttribute="top" secondItem="0KZ-yL-Fgp" secondAttribute="top" constant="20" id="23h-VM-XQk"/>
@@ -596,7 +585,6 @@
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="AMX-5B-yhZ"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" multiplier="1:2" id="Cdu-V6-28z"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="HwX-q6-1BV"/>
-                                    <constraint firstItem="HlN-9I-REn" firstAttribute="leading" secondItem="xU4-da-Y8z" secondAttribute="trailing" constant="31" id="PRM-qA-mQb"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="95" id="RKZ-s2-m7n"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="height" secondItem="0KZ-yL-Fgp" secondAttribute="height" multiplier="1:8" constant="17.75" id="RSB-qJ-fyD"/>
                                     <constraint firstItem="7a1-I1-Qf8" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="147" id="Sor-SQ-rn0"/>
@@ -604,18 +592,17 @@
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="Y1j-US-5Zt"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="p0k-LB-pAi" secondAttribute="bottom" constant="5" id="Y9M-n2-KsH"/>
                                     <constraint firstItem="4cc-F1-xSu" firstAttribute="top" secondItem="ilO-O8-FYx" secondAttribute="bottom" constant="22" id="aoz-jC-4fb"/>
-                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="top" secondItem="HlN-9I-REn" secondAttribute="bottom" constant="-27" id="dbn-Db-MYb"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="top" secondItem="4cc-F1-xSu" secondAttribute="bottom" id="eQJ-Db-Rdw">
                                         <variation key="widthClass=compact" constant="40"/>
                                     </constraint>
+                                    <constraint firstItem="N1A-vA-VUM" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="35" id="eXs-Pb-fTg"/>
+                                    <constraint firstItem="N1A-vA-VUM" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="epy-zb-zIF"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="fOy-Hk-qNO"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="top" secondItem="p0k-LB-pAi" secondAttribute="bottom" constant="47.333333333333371" id="fQg-VA-KzV"/>
                                     <constraint firstItem="ilO-O8-FYx" firstAttribute="height" secondItem="0KZ-yL-Fgp" secondAttribute="height" multiplier="1:6" constant="23.666666666666686" id="gnN-1P-54f"/>
                                     <constraint firstItem="C2l-JE-JEV" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="inD-SW-BEF"/>
-                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="28" id="jF8-HQ-R0l"/>
                                     <constraint firstAttribute="bottom" secondItem="FEX-YN-z7U" secondAttribute="bottom" constant="20" id="jNu-bt-NuR"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" id="ktQ-tD-1bh"/>
-                                    <constraint firstItem="xU4-da-Y8z" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="lQI-Pv-xTm"/>
                                     <constraint firstAttribute="trailing" secondItem="FEX-YN-z7U" secondAttribute="trailing" constant="20" id="lpj-Ei-Kku"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4cc-F1-xSu" secondAttribute="bottom" constant="-10" id="mAl-SR-tFf"/>
                                     <constraint firstItem="7a1-I1-Qf8" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="rpR-d3-BBv"/>
@@ -623,8 +610,6 @@
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" multiplier="2:3" constant="-26.666666666666629" id="tgo-vH-PKV"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="C2l-JE-JEV" secondAttribute="bottom" constant="15.000000000000028" id="uuO-Kr-H1I"/>
                                     <constraint firstItem="7a1-I1-Qf8" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="95" id="whM-ct-QLj"/>
-                                    <constraint firstItem="0dz-Db-zvU" firstAttribute="top" secondItem="xU4-da-Y8z" secondAttribute="bottom" constant="-10" id="xEj-z9-gB1"/>
-                                    <constraint firstItem="0dz-Db-zvU" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="ye1-Vr-mP9"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -658,10 +643,9 @@
                         <outlet property="reminderDate" destination="ilO-O8-FYx" id="w1U-Tn-XQE"/>
                         <outlet property="reminderLabel" destination="C2l-JE-JEV" id="J17-bJ-z0F"/>
                         <outlet property="reminderName" destination="Yvm-fi-6yr" id="CD7-VM-hes"/>
-                        <outlet property="reminderPicker" destination="0dz-Db-zvU" id="nTx-rT-idh"/>
                         <outlet property="reminderTable" destination="FEX-YN-z7U" id="QyX-7R-Qa3"/>
-                        <outlet property="reminderTextField" destination="xU4-da-Y8z" id="pW3-f1-hH6"/>
                         <outlet property="saveMedicationButton" destination="gwB-iZ-sbd" id="HYo-zs-0Vj"/>
+                        <outlet property="segmentPicker" destination="N1A-vA-VUM" id="DQd-wK-olO"/>
                         <outlet property="typeMedicationPicker" destination="lyp-TC-NJA" id="JmN-1E-Zzf"/>
                         <segue destination="1LF-Uv-tE5" kind="show" identifier="ViewReminders" id="W6E-5a-M9A"/>
                         <segue destination="YQi-YK-jP0" kind="show" identifier="ViewMedicationReminders" id="9SN-Hj-22G"/>
@@ -1229,7 +1213,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="103.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="103.5" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2103,7 +2087,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="154" width="25" height="25"/>
+                                <rect key="frame" x="185" y="154" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -4463,7 +4447,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHealthKeeper" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swh-24-mVs">
-                                <rect key="frame" x="0.0" y="28" width="320" height="35"/>
+                                <rect key="frame" x="0.0" y="28" width="322" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4474,7 +4458,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ino-Ct-1Qt">
-                                <rect key="frame" x="-1" y="163.5" width="320" height="35"/>
+                                <rect key="frame" x="-1" y="163.5" width="322" height="35"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4485,7 +4469,7 @@
                                 </variation>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13p-O2-bYZ">
-                                <rect key="frame" x="80" y="263.5" width="160" height="30"/>
+                                <rect key="frame" x="81" y="263.5" width="160" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
@@ -4494,7 +4478,7 @@
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHL-Uk-BxR">
-                                <rect key="frame" x="81" y="374.5" width="160" height="30"/>
+                                <rect key="frame" x="82" y="374.5" width="158" height="30"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Sign In">
@@ -4509,7 +4493,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLv-zZ-Kfv">
-                                <rect key="frame" x="80" y="455.5" width="160" height="30"/>
+                                <rect key="frame" x="81" y="455.5" width="158" height="30"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Click to Register">
@@ -4533,7 +4517,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-dZ-myD">
-                                <rect key="frame" x="80" y="301.5" width="160" height="33"/>
+                                <rect key="frame" x="82" y="301.5" width="158" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -4546,7 +4530,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cDz-HY-0EC">
-                                <rect key="frame" x="80" y="218.5" width="160" height="30"/>
+                                <rect key="frame" x="81" y="218.5" width="160" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -5332,9 +5316,8 @@
                                     <constraint firstAttribute="width" constant="260" id="D5Q-7K-kW6"/>
                                     <constraint firstAttribute="height" constant="344" id="qds-c2-qam"/>
                                 </constraints>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sickle Cell Disease" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-gy-XdU">
@@ -5835,15 +5818,15 @@
         <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GTm-Hl-6Tj"/>
+        <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
-        <segue reference="Nl3-F2-eMS"/>
+        <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
-        <segue reference="Cop-1Y-Nhy"/>
+        <segue reference="ggC-Wb-zY6"/>
         <segue reference="vbZ-5b-9yE"/>
-        <segue reference="vaQ-fy-FoI"/>
+        <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="eWA-4f-dh2"/>
         <segue reference="iDV-28-2t0"/>
