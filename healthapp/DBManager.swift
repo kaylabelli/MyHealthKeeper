@@ -696,6 +696,120 @@ class DBManager: NSObject {
         return list
     }
     
+    //***************** Health Maintenance *****************
+    func insertHealthMaintenance(reminderUser:String, maintenanceType:String) -> Bool {
+        print(reminderUser)
+        print(maintenanceType)
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            
+            return false;
+        }
+        //create table if not already created
+        let createHealthAppTableQuery = " create table healthMaintenance (reminderUser text not null, date text not null, maintenanceType text not null)"
+        
+        do{
+            try database2.executeUpdate(createHealthAppTableQuery, values:nil)
+            
+        }
+        catch{
+            print("Failed to create table ")
+            print(error.localizedDescription)
+        }
+        //insert data into database
+        let query="insert into healthMaintenance ('reminderUser', 'date', 'maintenanceType') values ('\(reminderUser)', '', '\(maintenanceType)');"
+        if !database2.executeStatements(query) {
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        return true;
+    }
+    
+    func updateHealthMaintence(reminderUser:String, maintenanceType:String, date:String) -> Bool {
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        //insert data into database
+        let query="update healthMaintenance set date=? where reminderUser = ? and maintenanceType = ? ;"
+        do{
+            try(database2.executeUpdate(query, values: [date, reminderUser, maintenanceType]))
+            
+        }
+        catch{
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        return true;
+    }
+    
+    func ifExist(reminderUser:String, maintenanceType:String) -> Bool
+    {
+        var counter = 0
+        if openEncrypted()
+        {
+            let query = "select * from healthMaintenance where reminderUser = ? and maintenanceType = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser, maintenanceType])
+                
+                while results.next()
+                {
+                    counter = counter + 1
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        if (counter > 0)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
+    func getDate(reminderUser:String, maintenanceType:String) -> String
+    {
+        var date: String = ""
+        if openEncrypted()
+        {
+            let query = "select * from healthMaintenance where reminderUser = ? and maintenanceType = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser, maintenanceType])
+                
+                while results.next()
+                {
+                    date = results.string(forColumn: "date") ?? ""
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        return date
+    }
     
     //*********** MONTHLY REMINDERS ***********************
     

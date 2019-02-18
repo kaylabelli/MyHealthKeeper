@@ -11,14 +11,13 @@ import UIKit
 class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSource
 {
     
-    
+    @IBOutlet var maintenanceTableView: UITableView!
+    @IBOutlet weak var Button: UIButton!
     
     let sections = ["Please enter the following dates"]
     let q1 = ["Last Colonoscopy: ", "Last Mammogram: ", "Last Blood Draw: ", "Last Flu Shot: ", "Last Checkup: "]
     
-    
-    @IBOutlet weak var Submit: UIButton!
-    
+    // Used in UIViewController
     override func viewDidLoad() {
         //backgroundCol()
         
@@ -27,7 +26,9 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
         }*/
     }
     
-    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sections[section]
@@ -50,18 +51,70 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Create an object of the dynamic cell "Cell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        var uName=""
+        let defaults:UserDefaults = UserDefaults.standard
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            uName=opened
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dateCell", for: indexPath) as! HealthMaintenanceCell
         //depending on the section fill the textlabel with the relevant text
         switch indexPath.section {
         case 0:
             //heart
             cell.textLabel?.text = q1[indexPath.row]
+            if (ifExist(type: q1[indexPath.row], username: uName))
+            {
+                // fill it with the corresponding date cell.Date.text = ??
+                cell.Date.text = DBManager.shared.getDate(reminderUser: uName, maintenanceType: q1[indexPath.row])
+            }
+            else
+            {
+                // insert something into the DB with no values with the q1[??] string
+                let create = DBManager.shared.insertHealthMaintenance(reminderUser: uName, maintenanceType: q1[indexPath.row])
+                print(create)
+            }
+            
             break
         default:
             break
         }
+        if tableView == maintenanceTableView
+        {
+            print(tableView)
+        }
         
         return cell
+    }
+    @IBAction func buttonPressed(_ sender: Any) {
+        var uName=""
+        let defaults:UserDefaults = UserDefaults.standard
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            uName=opened
+        }
+        var j = 0
+        for i in q1
+        {
+            var indexPath = IndexPath(row: j, section: 0)
+            var cell = maintenanceTableView.cellForRow(at: indexPath) as! HealthMaintenanceCell
+            let update = DBManager.shared.updateHealthMaintence(reminderUser: uName, maintenanceType: i, date: cell.Date.text!)
+            print(cell.Date.text)
+            j = j + 1
+        }
+    }
+    
+    // makes call to DB to see if the cell is already there
+    func ifExist(type: String, username: String) -> Bool
+    {
+        if DBManager.shared.ifExist(reminderUser: username, maintenanceType: type)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
     }
 }
 
