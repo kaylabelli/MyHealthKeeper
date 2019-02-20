@@ -14,7 +14,7 @@ extension UIButton {
     func Design(){
         
         
-     self.backgroundColor = UIColor(red:0, green:0.4,blue: 0.5569,alpha:1.0)
+     self.backgroundColor = UIColor(red:0, green:0.4,blue: 0.6000,alpha:1.0)
      //self.layer.cornerRadius = self.frame.height/2
         self.layer.cornerRadius = 15
     // design.layer.cornerRadius = 7

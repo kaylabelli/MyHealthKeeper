@@ -23,17 +23,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHealthKeeper" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DnO-oj-n3H">
-                                <rect key="frame" x="46.5" y="70" width="227.5" height="35"/>
+                                <rect key="frame" x="37.5" y="70" width="245" height="30"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <accessibility key="accessibilityConfiguration" identifier="MyHealthApp" label="MyHealthApp"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
                                 <color key="highlightedColor" red="0.67265810380000002" green="0.94164942839999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nWc-Ag-HLk">
-                                <rect key="frame" x="49" y="260" width="222" height="189.5"/>
+                                <rect key="frame" x="49" y="255" width="222" height="189.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="m3F-w5-vtL">
                                         <rect key="frame" x="0.0" y="0.0" width="222" height="189.5"/>
@@ -42,7 +42,7 @@
                                                 <rect key="frame" x="4.5" y="0.0" width="213" height="46.5"/>
                                                 <color key="backgroundColor" red="0.30307873240731004" green="0.54387601691285348" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <accessibility key="accessibilityConfiguration" label="Enter Medical History"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <inset key="imageEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
                                                 <state key="normal" title="Enter Medical History">
@@ -59,7 +59,7 @@
                                                 <rect key="frame" x="4.5" y="71.5" width="213" height="46.5"/>
                                                 <color key="backgroundColor" red="0.27230096179064639" green="0.55248218047846442" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <accessibility key="accessibilityConfiguration" label="Upload Document"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Upload Document">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,7 +75,7 @@
                                                 <rect key="frame" x="4.5" y="143" width="213" height="46.5"/>
                                                 <color key="backgroundColor" red="0.27193379402160645" green="0.55287492275238037" blue="0.73790448904037476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <accessibility key="accessibilityConfiguration" label="Set Appointment Reminder"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <inset key="titleEdgeInsets" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
                                                 <state key="normal" title="Set Reminder ">
@@ -114,7 +114,7 @@
                                 </items>
                             </navigationBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finallogo" translatesAutoresizingMaskIntoConstraints="NO" id="JI2-Cf-We7">
-                                <rect key="frame" x="117.5" y="125" width="85" height="85"/>
+                                <rect key="frame" x="117.5" y="120" width="85" height="85"/>
                                 <accessibility key="accessibilityConfiguration" label="HealthApp Icon">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
@@ -247,11 +247,11 @@
                                         </date>
                                     </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4r-QU-d4s">
-                                        <rect key="frame" x="97.5" y="417" width="125" height="33"/>
+                                        <rect key="frame" x="97.5" y="417" width="125" height="34"/>
                                         <color key="backgroundColor" red="0.16487686439999999" green="0.66688232930000002" blue="0.91873785620000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -338,7 +338,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2l-JE-JEV">
-                                        <rect key="frame" x="10" y="5" width="300" height="130"/>
+                                        <rect key="frame" x="10" y="0.0" width="300" height="130"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="v1g-SR-yFN"/>
@@ -430,7 +430,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FEX-YN-z7U">
-                                        <rect key="frame" x="0.0" y="503" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="498" width="320" height="80.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ZrA-aD-ecj" customClass="ReminderTableViewCell" customModule="healthapp" customModuleProvider="target">
@@ -486,7 +486,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Igw-kF-7qL" secondAttribute="height" multiplier="191:34" id="Xnz-Cp-dPs"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -496,7 +496,7 @@
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7a1-I1-Qf8">
-                                        <rect key="frame" x="66.5" y="150" width="187" height="315"/>
+                                        <rect key="frame" x="66.5" y="145" width="187" height="315"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-qe-mxy">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
@@ -564,7 +564,7 @@
                                         </subviews>
                                     </stackView>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N1A-vA-VUM">
-                                        <rect key="frame" x="60" y="90" width="200" height="29"/>
+                                        <rect key="frame" x="60" y="85" width="200" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="dkc-qK-Mkl"/>
                                         </constraints>
@@ -740,7 +740,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-fi-gNf">
-                                        <rect key="frame" x="53.5" y="403" width="106.5" height="105"/>
+                                        <rect key="frame" x="53.5" y="392" width="106.5" height="105"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="105" id="I8q-iC-8Sa">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="200"/>
@@ -753,7 +753,7 @@
                                         </connections>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="gHf-qs-18i">
-                                        <rect key="frame" x="53.5" y="365" width="213" height="30"/>
+                                        <rect key="frame" x="53.5" y="354" width="213" height="30"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select State " adjustsFontForContentSizeCategory="YES" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FCN-8i-RJv">
                                                 <rect key="frame" x="0.0" y="0.0" width="106.5" height="30"/>
@@ -786,7 +786,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uYw-Ny-aru">
-                                        <rect key="frame" x="53.5" y="65" width="213" height="290"/>
+                                        <rect key="frame" x="53.5" y="54" width="213" height="290"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name*" adjustsFontForContentSizeCategory="YES" minimumFontSize="15" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8mw-XV-d96">
                                                 <rect key="frame" x="0.0" y="0.0" width="213" height="30"/>
@@ -874,7 +874,7 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="20"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaF-VH-KAT">
-                                        <rect key="frame" x="85" y="523" width="150" height="34"/>
+                                        <rect key="frame" x="85" y="512" width="150" height="34"/>
                                         <color key="backgroundColor" red="0.30307873239999999" green="0.54387601689999998" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="b6j-ii-1jG">
@@ -884,12 +884,12 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="275"/>
                                             </constraint>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal">
                                             <string key="title">Save and Continue
                                             </string>
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -900,16 +900,17 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="6Mq-kX-6CF">
-                                        <rect key="frame" x="19.5" y="10" width="281" height="35"/>
+                                        <rect key="frame" x="38" y="10" width="244.5" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         </variation>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="gHf-qs-18i" firstAttribute="centerX" secondItem="MrZ-0P-EQc" secondAttribute="centerX" id="5rw-on-NOG"/>
                                     <constraint firstItem="6Mq-kX-6CF" firstAttribute="centerX" secondItem="MrZ-0P-EQc" secondAttribute="centerX" id="6TJ-le-aNT"/>
@@ -982,7 +983,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mvv-ef-D8z">
-                                <rect key="frame" x="0.0" y="300.5" width="320" height="144.5"/>
+                                <rect key="frame" x="0.0" y="303" width="320" height="142"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="250" id="hL4-eF-l6U" customClass="ExpandableCell" customModule="healthapp" customModuleProvider="target">
@@ -1136,7 +1137,7 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="3sM-za-pvu">
-                                <rect key="frame" x="10" y="101.5" width="160" height="174"/>
+                                <rect key="frame" x="10" y="104" width="160" height="174"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the Doctor*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jjG-Gm-ufv">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
@@ -1179,9 +1180,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QQ-u7-cmN">
                                 <rect key="frame" x="305" y="174" width="100" height="30"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="AddDoc:" destination="Utp-sU-dC7" eventType="touchUpInside" id="6dR-XU-hil"/>
@@ -1201,9 +1202,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
@@ -1213,7 +1214,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="103.5" width="38" height="38"/>
+                                <rect key="frame" x="175" y="106" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1226,16 +1227,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Doctors" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaY-Jn-XmW">
-                                <rect key="frame" x="0.0" y="50" width="320" height="21.5"/>
+                                <rect key="frame" x="0.0" y="50" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NaY-Jn-XmW" firstAttribute="top" secondItem="ExB-Sj-PBC" secondAttribute="bottom" priority="200" constant="30" id="1np-kL-rAg"/>
                             <constraint firstItem="mlM-FZ-dAL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vMU-Gg-vV7" secondAttribute="bottom" constant="9" id="78m-lP-yeh"/>
@@ -1311,10 +1312,10 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="y61-J9-uTE">
-                                        <rect key="frame" x="20" y="20" width="280" height="36"/>
+                                        <rect key="frame" x="20" y="20" width="280" height="25"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <color key="highlightedColor" red="0.56493607160000003" green="0.85666965439999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -1322,7 +1323,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Medical History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJb-KP-fgJ">
-                                        <rect key="frame" x="53.5" y="93" width="223" height="26"/>
+                                        <rect key="frame" x="53.5" y="82" width="223" height="26"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -1330,7 +1331,7 @@
                                         </variation>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mwz-G4-2aM">
-                                        <rect key="frame" x="53.5" y="139" width="213" height="33"/>
+                                        <rect key="frame" x="53.5" y="128" width="213" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="250" id="rLD-re-Ffu"/>
@@ -1344,7 +1345,7 @@
                                         </variation>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Note" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBs-8C-F0b">
-                                        <rect key="frame" x="53.5" y="192" width="153" height="25"/>
+                                        <rect key="frame" x="53.5" y="181" width="153" height="25"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -1352,7 +1353,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNz-ca-bCE">
-                                        <rect key="frame" x="81.5" y="330" width="150" height="35"/>
+                                        <rect key="frame" x="81.5" y="319" width="150" height="35"/>
                                         <color key="backgroundColor" red="0.30307873239999999" green="0.54387601689999998" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="cxa-zC-zJg">
@@ -1362,10 +1363,10 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                             </constraint>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Save and Continue ">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -1376,7 +1377,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ugb-RT-GnM">
-                                        <rect key="frame" x="53.5" y="237" width="213" height="33"/>
+                                        <rect key="frame" x="53.5" y="226" width="213" height="33"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1387,6 +1388,7 @@
                                         </variation>
                                     </textView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="OBs-8C-F0b" firstAttribute="leading" secondItem="ugb-RT-GnM" secondAttribute="leading" id="07B-MI-gJo"/>
                                     <constraint firstItem="ugb-RT-GnM" firstAttribute="width" secondItem="0LM-tB-DUu" secondAttribute="width" multiplier="1:1.5" id="0m1-XJ-w3a"/>
@@ -1463,7 +1465,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-rA-SQV">
-                                <rect key="frame" x="0.0" y="323" width="320" height="166"/>
+                                <rect key="frame" x="0.0" y="324" width="320" height="165"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="200" id="9xK-3E-ESv" customClass="ExpandableCell" customModule="healthapp" customModuleProvider="target">
@@ -1573,7 +1575,7 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="I5o-fl-F3I">
-                                <rect key="frame" x="10" y="136" width="160" height="162"/>
+                                <rect key="frame" x="10" y="137" width="160" height="162"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ybc-C1-ccZ">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
@@ -1612,11 +1614,11 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vd6-pS-bHy">
-                                <rect key="frame" x="220" y="136" width="80" height="35"/>
+                                <rect key="frame" x="220" y="137" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="AddButton:" destination="Add-me-p5E" eventType="touchUpInside" id="w1j-kN-pla"/>
@@ -1633,9 +1635,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
@@ -1645,16 +1647,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Medication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HbB-zP-zc8">
-                                <rect key="frame" x="0.0" y="83" width="320" height="23"/>
+                                <rect key="frame" x="0.0" y="83" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.90000000000000002"/>
                         <constraints>
                             <constraint firstItem="HbB-zP-zc8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1fS-3D-C4A" secondAttribute="bottom" constant="5" id="0I4-GT-p7k"/>
@@ -1718,7 +1720,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tfd-W6-wFr">
-                                <rect key="frame" x="0.0" y="287.5" width="320" height="201.5"/>
+                                <rect key="frame" x="0.0" y="288.5" width="320" height="200.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="250" id="9kx-mn-Tgv" customClass="ExpandableCell" customModule="healthapp" customModuleProvider="target">
@@ -1797,7 +1799,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="7sc-X0-o5j" secondAttribute="trailing" constant="294" id="zhu-nD-sff"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="FirstView" destination="8gJ-s3-RM5" id="eXY-JJ-Qbv"/>
@@ -1817,18 +1819,18 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="232" y="162.5" width="80" height="35"/>
+                                <rect key="frame" x="219" y="163.5" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="AddDoc:" destination="Mw8-Am-Ym8" eventType="touchUpInside" id="Ldp-lg-gic"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="p3s-xc-OCB">
-                                <rect key="frame" x="10" y="162.5" width="160" height="100"/>
+                                <rect key="frame" x="10" y="163.5" width="160" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" alpha="0.90000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surgery Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="u1Y-72-Hww">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
@@ -1860,7 +1862,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="162.5" width="38" height="38"/>
+                                <rect key="frame" x="175" y="163.5" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -1871,9 +1873,9 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Surgeries" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JcQ-NA-zli">
-                                <rect key="frame" x="0.0" y="85" width="320" height="23"/>
+                                <rect key="frame" x="0.0" y="85" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
@@ -1890,16 +1892,16 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="275"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="goToallergiespage:" destination="Mw8-Am-Ym8" eventType="touchUpInside" id="OFV-Rn-aT6"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zha-Dx-3eR" firstAttribute="top" secondItem="cim-dB-GlT" secondAttribute="bottom" priority="200" constant="30" id="0Lx-oO-a1U"/>
                             <constraint firstItem="SJ4-ih-beC" firstAttribute="top" secondItem="mkZ-al-nt4" secondAttribute="top" id="26G-9v-DIN"/>
@@ -1961,7 +1963,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ow7-eb-TqC">
-                                <rect key="frame" x="0.0" y="279" width="320" height="149"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="148"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="9Am-nB-xkQ" customClass="ExpandableCell" customModule="healthapp" customModuleProvider="target">
@@ -2056,9 +2058,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQH-E6-xgW">
                                 <rect key="frame" x="276" y="166" width="104" height="25"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="AddAllergies:" destination="sra-Yr-80f" eventType="touchUpInside" id="u1q-TH-frJ"/>
@@ -2075,9 +2077,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="275"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
@@ -2087,7 +2089,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="154" width="38" height="38"/>
+                                <rect key="frame" x="185" y="155" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2097,16 +2099,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Allergies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2lN-0l-og7">
-                                <rect key="frame" x="0.0" y="72" width="320" height="23"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="F9q-b6-Ywb">
-                                <rect key="frame" x="20" y="154" width="160" height="100"/>
+                                <rect key="frame" x="20" y="155" width="160" height="100"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Allergy Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FaX-Qn-AfT">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
@@ -2138,7 +2140,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="yQH-E6-xgW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bdw-IO-UMp" secondAttribute="trailing" constant="5" id="0aL-f9-yyt"/>
                             <constraint firstItem="F9q-b6-Ywb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="2lN-0l-og7" secondAttribute="bottom" constant="5" id="1eO-fG-P2S"/>
@@ -2204,15 +2206,15 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="528"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Doctor Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozx-Sa-Yjg">
-                                        <rect key="frame" x="0.0" y="8" width="320" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <rect key="frame" x="0.0" y="8" width="320" height="24"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                         </variation>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MW8-4B-fI1">
-                                        <rect key="frame" x="53.5" y="242.5" width="213" height="100"/>
+                                        <rect key="frame" x="53.5" y="245" width="213" height="100"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="kJC-49-9Zu"/>
@@ -2224,14 +2226,14 @@
                                         </variation>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9S-9O-gZp">
-                                        <rect key="frame" x="106.5" y="367.5" width="107" height="45"/>
+                                        <rect key="frame" x="106.5" y="370" width="107" height="45"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="zXb-cF-DfW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="UpadteDoc:" destination="hGB-7b-Zfo" eventType="touchUpInside" id="iR4-RP-7sE"/>
@@ -2239,7 +2241,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8Te-oc-7ST">
-                                        <rect key="frame" x="53.5" y="60.5" width="213" height="130"/>
+                                        <rect key="frame" x="53.5" y="63" width="213" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name of the Doctor*" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5NM-NJ-1ct">
                                                 <rect key="frame" x="0.0" y="0.0" width="213" height="30"/>
@@ -2264,7 +2266,7 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="50"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="5NM-NJ-1ct" firstAttribute="top" secondItem="Ozx-Sa-Yjg" secondAttribute="bottom" priority="20" constant="31" id="0Mq-Uj-xoi">
                                         <variation key="heightClass=regular-widthClass=regular" constant="61"/>
@@ -2334,11 +2336,11 @@
                                 <rect key="frame" x="45" y="80" width="230" height="488"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mVA-XB-B2m">
-                                        <rect key="frame" x="74" y="289.5" width="82" height="35"/>
+                                        <rect key="frame" x="74" y="290.5" width="82" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="Illness:" destination="pb0-AX-WZE" eventType="touchUpInside" id="ZMu-41-JGn"/>
@@ -2346,7 +2348,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Disease Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rbO-Gj-xUy">
-                                        <rect key="frame" x="5.5" y="163.5" width="219" height="30"/>
+                                        <rect key="frame" x="5.5" y="164.5" width="219" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -2355,8 +2357,8 @@
                                         </variation>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Illness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VEW-bL-KOT">
-                                        <rect key="frame" x="5.5" y="20" width="219" height="23"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <rect key="frame" x="5.5" y="20" width="219" height="24"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
@@ -2380,7 +2382,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="6fz-OA-AVC" firstAttribute="top" secondItem="aiM-BD-npr" secondAttribute="bottom" id="7hS-8U-ppH"/>
                             <constraint firstItem="aiM-BD-npr" firstAttribute="leading" secondItem="veY-07-P1W" secondAttribute="leadingMargin" constant="29" id="OHE-Oh-KYt"/>
@@ -2417,7 +2419,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="crq-ib-djM">
-                                <rect key="frame" x="0.0" y="193.5" width="320" height="295.5"/>
+                                <rect key="frame" x="0.0" y="195" width="320" height="294"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="rQq-Od-9Oj" detailTextLabel="60R-AW-QD9" style="IBUITableViewCellStyleValue2" id="WV5-Ag-S6j">
@@ -2454,10 +2456,10 @@
                                 </connections>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QIB-jV-vn0">
-                                <rect key="frame" x="43.5" y="138.5" width="233" height="35"/>
+                                <rect key="frame" x="43.5" y="141" width="233" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Disease Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gGT-7o-qQC">
-                                        <rect key="frame" x="0.0" y="0.0" width="160" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="34"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -2466,11 +2468,11 @@
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wY8-ee-fT2">
-                                        <rect key="frame" x="180" y="0.0" width="53" height="35"/>
+                                        <rect key="frame" x="180" y="0.0" width="53" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Add">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -2496,9 +2498,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -2508,16 +2510,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Illnesses/Diseases" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uvW-o1-Le9">
-                                <rect key="frame" x="0.0" y="70" width="320" height="21.5"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 </variation>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="crq-ib-djM" firstAttribute="height" relation="greaterThanOrEqual" secondItem="RNV-9g-acl" secondAttribute="height" multiplier="1:4" id="8TN-az-MVN"/>
                             <constraint firstItem="QIB-jV-vn0" firstAttribute="top" secondItem="uvW-o1-Le9" secondAttribute="bottom" priority="200" constant="47" id="CvQ-wE-iEp"/>
@@ -2575,7 +2577,7 @@
                                 <rect key="frame" x="19" y="43" width="282" height="525"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ERz-Nk-MKS">
-                                        <rect key="frame" x="32" y="106.5" width="218" height="80"/>
+                                        <rect key="frame" x="32" y="109" width="218" height="80"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vaccine Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tV0-S8-IY7">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="30"/>
@@ -2600,20 +2602,20 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="50"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Vaccine Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0M-mK-t6g">
-                                        <rect key="frame" x="35.5" y="20" width="211" height="21.5"/>
+                                        <rect key="frame" x="-2" y="20" width="286.5" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ir-we-wXj">
-                                        <rect key="frame" x="86.5" y="283.5" width="109" height="35"/>
+                                        <rect key="frame" x="86.5" y="286" width="109" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="vaccine:" destination="3gO-Fp-FxF" eventType="touchUpInside" id="eSW-Fx-l4f"/>
@@ -2640,7 +2642,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="96p-Qp-F6Y" firstAttribute="top" secondItem="Erx-aP-Qhh" secondAttribute="bottom" constant="23" id="Icx-Dm-w1i"/>
                             <constraint firstItem="96p-Qp-F6Y" firstAttribute="leading" secondItem="8V5-e3-OXz" secondAttribute="leadingMargin" constant="3" id="bkE-fy-xTE"/>
@@ -2679,7 +2681,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2bj-FH-6mT">
-                                <rect key="frame" x="0.0" y="188" width="320" height="301"/>
+                                <rect key="frame" x="0.0" y="189" width="320" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="949-oS-2dF" customClass="ExpandableCell" customModule="healthapp" customModuleProvider="target">
@@ -2753,18 +2755,18 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="242" y="93" width="80" height="35"/>
+                                <rect key="frame" x="229" y="94" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="AddVaccine:" destination="uli-4b-s97" eventType="touchUpInside" id="fJr-SM-Iqp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="93" width="38" height="38"/>
+                                <rect key="frame" x="185" y="94" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2784,9 +2786,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Save and Continue">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -2796,16 +2798,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter List of Vaccines" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOK-2J-0NC">
-                                <rect key="frame" x="0.0" y="40" width="320" height="23"/>
+                                <rect key="frame" x="0.0" y="40" width="320" height="24"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="e1s-xE-IiN">
-                                <rect key="frame" x="20" y="93" width="160" height="70"/>
+                                <rect key="frame" x="20" y="94" width="160" height="70"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vaccine Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="tXY-Wj-bmr">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="30"/>
@@ -2828,7 +2830,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Jmp-Du-bIv" firstAttribute="leading" secondItem="tXY-Wj-bmr" secondAttribute="trailing" constant="5" id="0ND-HL-GhD"/>
                             <constraint firstItem="jOK-2J-0NC" firstAttribute="centerX" secondItem="eds-ff-aJt" secondAttribute="centerX" id="2Bg-6Q-6yD"/>
@@ -2891,13 +2893,13 @@
                                 <rect key="frame" x="6" y="64" width="308" height="504"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insurance Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="91" translatesAutoresizingMaskIntoConstraints="NO" id="PSr-ri-dx8">
-                                        <rect key="frame" x="5.5" y="20" width="297" height="50"/>
+                                        <rect key="frame" x="26" y="20" width="256" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Z6p-we-884"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <color key="highlightedColor" red="0.56493607160000003" green="0.85666965439999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -2917,10 +2919,10 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                             </constraint>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Save and Finish">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -2981,6 +2983,7 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="27"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="gFD-yk-yZm" secondAttribute="trailing" constant="47" id="1ck-5Z-zfQ"/>
                                     <constraint firstItem="gFD-yk-yZm" firstAttribute="top" secondItem="PSr-ri-dx8" secondAttribute="bottom" constant="50" id="FRD-ZQ-A2J"/>
@@ -3036,6 +3039,7 @@
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="spatial" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="OAx-zJ-Z3Z" detailTextLabel="GbU-47-FGb" rowHeight="200" style="IBUITableViewCellStyleValue2" id="ys6-GF-7Dk">
                                 <rect key="frame" x="0.0" y="55.5" width="320" height="200"/>
@@ -3060,7 +3064,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="tintColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="tintColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </tableViewCell>
@@ -3119,7 +3123,7 @@
                         <subviews>
                             <webView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFa-kl-VHG">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Print Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I21-ER-tCe">
@@ -3150,7 +3154,7 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <state key="normal" title="Edit Image">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -3165,7 +3169,7 @@
                                                 <accessibility key="accessibilityConfiguration" identifier="ClearImage"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <state key="normal" title="Clear Image">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <variation key="heightClass=regular-widthClass=regular">
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -3201,7 +3205,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Print Standard Report">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -3230,7 +3234,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Print Detailed Report">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=regular-widthClass=regular">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -3496,7 +3500,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MGN-u9-vbi" secondAttribute="height" multiplier="332:35" id="4rr-UF-0WF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -3609,9 +3613,9 @@
                                                 <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                             </constraint>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Submit">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -3698,12 +3702,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter one of the following" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tnu-UU-3cL">
-                                        <rect key="frame" x="113" y="357" width="187" height="18"/>
+                                        <rect key="frame" x="113" y="346" width="187" height="18"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AYD-eD-oQl">
-                                        <rect key="frame" x="99.5" y="275" width="213.5" height="30"/>
+                                        <rect key="frame" x="99.5" y="264" width="213.5" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Thq-yC-Wrc">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3720,7 +3724,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-y1-iAr">
-                                        <rect key="frame" x="100" y="111" width="213" height="31"/>
+                                        <rect key="frame" x="100" y="100" width="213" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="8Vi-1H-jd4">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3740,7 +3744,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ci1-tt-eqW">
-                                        <rect key="frame" x="100" y="165" width="213" height="30"/>
+                                        <rect key="frame" x="100" y="154" width="213" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2hT-eo-vK1">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3757,7 +3761,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-Jb-1Eo">
-                                        <rect key="frame" x="53.5" y="221" width="213" height="30"/>
+                                        <rect key="frame" x="53.5" y="210" width="213" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="V34-VO-x4c">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3774,7 +3778,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email address" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XA0-jN-W6C">
-                                        <rect key="frame" x="53.5" y="403" width="213" height="30"/>
+                                        <rect key="frame" x="53.5" y="392" width="213" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="p7B-nn-vFC">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3791,7 +3795,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone # (3331112222)" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x1s-Hq-jbv">
-                                        <rect key="frame" x="100" y="465" width="213" height="30"/>
+                                        <rect key="frame" x="100" y="454" width="213" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="8J4-cI-kRb">
                                                 <variation key="heightClass=regular-widthClass=regular" constant="40"/>
@@ -3808,13 +3812,13 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-OR-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8E-Hp-f3L">
-                                        <rect key="frame" x="-2" y="437" width="414" height="20"/>
+                                        <rect key="frame" x="-2" y="426" width="414" height="20"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact" hidden="YES"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvr-jF-eEp">
-                                        <rect key="frame" x="95.5" y="569" width="125" height="30"/>
+                                        <rect key="frame" x="95.5" y="558" width="125" height="30"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="125" id="QIp-t6-5Iy">
@@ -3836,11 +3840,11 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register New User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2V-RI-pki">
-                                        <rect key="frame" x="-2" y="28" width="414" height="35"/>
+                                        <rect key="frame" x="-2" y="28" width="414" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="414" id="vFi-V8-mbn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -3925,7 +3929,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6qK-yV-Qrs">
-                                        <rect key="frame" x="10" y="87" width="300" height="130"/>
+                                        <rect key="frame" x="10" y="76" width="300" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click to select first Security Question*" adjustsFontForContentSizeCategory="YES" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="RUC-4B-owR">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -3964,8 +3968,8 @@
                                         <variation key="heightClass=compact" spacing="3"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup Security Questions" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-mT-f6B">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="35"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="24"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -3975,7 +3979,7 @@
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NDG-nZ-uP7">
-                                        <rect key="frame" x="10" y="245" width="300" height="130"/>
+                                        <rect key="frame" x="10" y="234" width="300" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click to select second Security Question*" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="dvS-tp-GQ4">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -4010,7 +4014,7 @@
                                         <variation key="heightClass=compact" spacing="3"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cJ0-1V-hSQ">
-                                        <rect key="frame" x="10" y="403" width="300" height="130"/>
+                                        <rect key="frame" x="10" y="392" width="300" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Click to select third Security Question*" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4nV-Ab-1es">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="30"/>
@@ -4045,14 +4049,14 @@
                                         <variation key="heightClass=compact" spacing="3"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akT-Xm-nFR">
-                                        <rect key="frame" x="56.5" y="562" width="207" height="30"/>
+                                        <rect key="frame" x="56.5" y="551" width="207" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="207" id="dWe-e3-HLO"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Finish &amp; Sign In">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <variation key="heightClass=compact-widthClass=compact">
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -4121,7 +4125,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Uploaded Documents" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="nTk-P7-YyB">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -4329,8 +4333,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mqd-dH-IQn">
-                                <rect key="frame" x="47" y="85" width="226" height="35"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <rect key="frame" x="47" y="85" width="226" height="24"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -4340,7 +4344,7 @@
                                 </variation>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter New Password*" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="okO-pF-s35">
-                                <rect key="frame" x="80" y="172" width="160" height="30"/>
+                                <rect key="frame" x="80" y="161" width="160" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fzd-du-K5f"/>
                                 </constraints>
@@ -4355,7 +4359,7 @@
                                 </variation>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm New Password*" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rUC-MZ-UdI">
-                                <rect key="frame" x="80" y="222" width="160" height="30"/>
+                                <rect key="frame" x="80" y="211" width="160" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
@@ -4367,7 +4371,7 @@
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vgx-KR-PsT">
-                                <rect key="frame" x="70" y="304" width="180" height="30"/>
+                                <rect key="frame" x="70" y="293" width="180" height="30"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="762-Sd-Lug">
@@ -4377,9 +4381,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" constant="275"/>
                                     </constraint>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <state key="normal" title="Submit New Password">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
@@ -4447,8 +4451,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHealthKeeper" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swh-24-mVs">
-                                <rect key="frame" x="0.0" y="28" width="320" height="35"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="30"/>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -4457,9 +4461,9 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ino-Ct-1Qt">
-                                <rect key="frame" x="-1" y="163.5" width="320" height="35"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ino-Ct-1Qt">
+                                <rect key="frame" x="-1" y="188.5" width="322" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
@@ -4469,7 +4473,7 @@
                                 </variation>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13p-O2-bYZ">
-                                <rect key="frame" x="80" y="263.5" width="160" height="30"/>
+                                <rect key="frame" x="80" y="285.5" width="160" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" textContentType="password"/>
@@ -4478,9 +4482,9 @@
                                 </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHL-Uk-BxR">
-                                <rect key="frame" x="81" y="374.5" width="160" height="30"/>
+                                <rect key="frame" x="81" y="409.5" width="160" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -4493,9 +4497,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLv-zZ-Kfv">
-                                <rect key="frame" x="80" y="455.5" width="160" height="30"/>
+                                <rect key="frame" x="80" y="494.5" width="160" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Click to Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -4507,7 +4511,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-OR-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaB-LS-JbM">
-                                <rect key="frame" x="140" y="419.5" width="40.5" height="21"/>
+                                <rect key="frame" x="140" y="458.5" width="40.5" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact" hidden="YES"/>
@@ -4516,9 +4520,9 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-dZ-myD">
-                                <rect key="frame" x="80" y="301.5" width="160" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-dZ-myD">
+                                <rect key="frame" x="80" y="313.5" width="160" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -4530,7 +4534,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cDz-HY-0EC">
-                                <rect key="frame" x="80" y="218.5" width="160" height="30"/>
+                                <rect key="frame" x="80" y="236.5" width="160" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -4539,7 +4543,7 @@
                                 </variation>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="finallogo" translatesAutoresizingMaskIntoConstraints="NO" id="f2R-OI-nwM">
-                                <rect key="frame" x="123" y="73" width="74" height="73.5"/>
+                                <rect key="frame" x="123.5" y="100" width="73" height="73"/>
                                 <accessibility key="accessibilityConfiguration" label="HealthApp Icon">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
@@ -4569,13 +4573,12 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                             </constraint>
                             <constraint firstItem="Swh-24-mVs" firstAttribute="leading" secondItem="ino-Ct-1Qt" secondAttribute="leading" constant="1" id="GHP-ll-rIt"/>
-                            <constraint firstItem="ino-Ct-1Qt" firstAttribute="top" secondItem="Swh-24-mVs" secondAttribute="bottom" constant="100" id="HCp-n2-A5Z"/>
                             <constraint firstItem="cDz-HY-0EC" firstAttribute="centerX" secondItem="srI-Xm-Rle" secondAttribute="centerX" id="KMR-uC-Njf"/>
                             <constraint firstItem="Swh-24-mVs" firstAttribute="trailing" secondItem="ino-Ct-1Qt" secondAttribute="trailing" constant="1" id="LNq-8p-1Ad"/>
                             <constraint firstItem="RHL-Uk-BxR" firstAttribute="trailing" secondItem="XLv-zZ-Kfv" secondAttribute="trailing" constant="1" id="MNf-6K-sE1"/>
                             <constraint firstItem="cDz-HY-0EC" firstAttribute="trailing" secondItem="13p-O2-bYZ" secondAttribute="trailing" id="N6o-gC-aVu"/>
                             <constraint firstItem="13p-O2-bYZ" firstAttribute="height" secondItem="cDz-HY-0EC" secondAttribute="height" id="NAx-aC-r8c"/>
-                            <constraint firstItem="RHL-Uk-BxR" firstAttribute="top" secondItem="O6n-dZ-myD" secondAttribute="bottom" constant="40" id="NBe-EU-pUh">
+                            <constraint firstItem="RHL-Uk-BxR" firstAttribute="top" secondItem="O6n-dZ-myD" secondAttribute="bottom" constant="50" id="NBe-EU-pUh">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
@@ -4593,7 +4596,7 @@
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="30"/>
                             </constraint>
-                            <constraint firstItem="ino-Ct-1Qt" firstAttribute="top" secondItem="Swh-24-mVs" secondAttribute="bottom" constant="100.66666666666666" id="cXr-5Q-M98">
+                            <constraint firstItem="ino-Ct-1Qt" firstAttribute="top" secondItem="Swh-24-mVs" secondAttribute="bottom" constant="100" id="cXr-5Q-M98">
                                 <variation key="heightClass=compact-widthClass=compact" constant="5"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="5"/>
                             </constraint>
@@ -4612,7 +4615,7 @@
                                 <variation key="heightClass=compact-widthClass=compact" constant="10"/>
                                 <variation key="heightClass=compact-widthClass=regular" constant="10"/>
                             </constraint>
-                            <constraint firstItem="Swh-24-mVs" firstAttribute="top" secondItem="4Nz-IK-oH8" secondAttribute="bottom" constant="8" symbolic="YES" id="qX9-qT-We9"/>
+                            <constraint firstItem="Swh-24-mVs" firstAttribute="top" secondItem="4Nz-IK-oH8" secondAttribute="bottom" constant="40" id="qX9-qT-We9"/>
                             <constraint firstItem="ino-Ct-1Qt" firstAttribute="centerX" secondItem="cDz-HY-0EC" secondAttribute="centerX" constant="-1" id="rcH-ur-woE"/>
                             <constraint firstItem="f2R-OI-nwM" firstAttribute="top" secondItem="Swh-24-mVs" secondAttribute="bottom" constant="10" id="teH-DT-C2i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BJe-e4-wJ8" secondAttribute="trailing" id="tyO-ZX-Au9"/>
@@ -4796,18 +4799,18 @@
                                 <rect key="frame" x="16" y="8" width="288" height="560"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxI-2B-E7W">
-                                        <rect key="frame" x="79.5" y="387.5" width="129" height="35"/>
+                                        <rect key="frame" x="79.5" y="390" width="129" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="Medication:" destination="YCV-sk-99P" eventType="touchUpInside" id="kox-kN-x4Y"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="02u-Ku-VOc">
-                                        <rect key="frame" x="15.5" y="95.5" width="257" height="130"/>
+                                        <rect key="frame" x="15.5" y="98" width="257" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Piz-KX-iTz">
                                                 <rect key="frame" x="0.0" y="0.0" width="257" height="30"/>
@@ -4841,8 +4844,8 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="40"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Medication Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TIZ-fS-ZJt">
-                                        <rect key="frame" x="24.5" y="30" width="239.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <rect key="frame" x="-18.5" y="30" width="325" height="24"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -4850,7 +4853,7 @@
                                         </variation>
                                     </label>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oAg-F6-HEf">
-                                        <rect key="frame" x="15.5" y="255.5" width="257" height="110"/>
+                                        <rect key="frame" x="15.5" y="258" width="257" height="110"/>
                                         <connections>
                                             <outlet property="dataSource" destination="YCV-sk-99P" id="XLc-QO-3MG"/>
                                             <outlet property="delegate" destination="YCV-sk-99P" id="jHY-BD-wyA"/>
@@ -4887,7 +4890,7 @@
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="pX3-CF-ZAa" firstAttribute="top" secondItem="fqo-c4-Ovy" secondAttribute="bottom" id="Bwx-Y9-ojE"/>
                             <constraint firstItem="fqo-c4-Ovy" firstAttribute="leading" secondItem="r8k-5y-htZ" secondAttribute="leadingMargin" id="dvR-kb-znG"/>
@@ -4985,8 +4988,8 @@
                                 <rect key="frame" x="16" y="33" width="288" height="535"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Allergy Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3m-fo-izz">
-                                        <rect key="frame" x="42" y="20" width="204.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <rect key="frame" x="5" y="20" width="278" height="24"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -4994,7 +4997,7 @@
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1AP-PO-t8N">
-                                        <rect key="frame" x="15.5" y="108.5" width="257" height="130"/>
+                                        <rect key="frame" x="15.5" y="111" width="257" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Allergy Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="msn-Ng-Grj">
                                                 <rect key="frame" x="0.0" y="0.0" width="257" height="30"/>
@@ -5028,11 +5031,11 @@
                                         <variation key="heightClass=regular-widthClass=regular" spacing="50"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAm-2Y-2Ai">
-                                        <rect key="frame" x="79.5" y="311.5" width="129" height="35"/>
+                                        <rect key="frame" x="79.5" y="314" width="129" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="Allergy:" destination="nAZ-09-eGO" eventType="touchUpInside" id="TGH-8p-Hqk"/>
@@ -5059,7 +5062,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hl1-vm-Id4" firstAttribute="leading" secondItem="g1H-ez-Vdb" secondAttribute="leadingMargin" id="7vt-bb-Dxd"/>
                             <constraint firstItem="YoC-zO-fAt" firstAttribute="top" secondItem="hl1-vm-Id4" secondAttribute="bottom" id="VOB-dr-hSl"/>
@@ -5208,8 +5211,8 @@
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Health Maintenance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="o5G-sA-fvM">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.39607843139999999" green="0.80784313730000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -5283,8 +5286,8 @@
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congenital Checklist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsS-Nq-8TJ">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.39607843139999999" green="0.80784313730000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                            <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -5333,7 +5336,7 @@
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sickle Cell Disease" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-gy-XdU">
                                 <rect key="frame" x="0.0" y="54" width="320" height="70"/>
-                                <color key="backgroundColor" red="0.39607843139999999" green="0.80784313730000001" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -5424,11 +5427,11 @@
                                 <rect key="frame" x="16" y="20" width="288" height="548"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Kv-eM-lgX">
-                                        <rect key="frame" x="79.5" y="270" width="129" height="35"/>
+                                        <rect key="frame" x="79.5" y="272.5" width="129" height="34"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <state key="normal" title="Update ">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="AddDoc:" destination="Mw8-Am-Ym8" eventType="touchUpInside" id="2Vk-Vd-jGA"/>
@@ -5436,7 +5439,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="27A-KL-UYY">
-                                        <rect key="frame" x="15.5" y="95.5" width="257" height="130"/>
+                                        <rect key="frame" x="15.5" y="98" width="257" height="130"/>
                                         <subviews>
                                             <textField opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surgery Name*" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NQK-qM-Vb0">
                                                 <rect key="frame" x="0.0" y="0.0" width="257" height="30"/>
@@ -5470,9 +5473,9 @@
                                         <variation key="heightClass=regular-widthClass=regular" distribution="equalSpacing" spacing="50"/>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Surgery Information" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a7J-jV-lg7">
-                                        <rect key="frame" x="38" y="20" width="212.5" height="21.5"/>
+                                        <rect key="frame" x="-0.5" y="20" width="289.5" height="24"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <variation key="heightClass=regular-widthClass=regular">
@@ -5496,7 +5499,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="jDI-hW-fnb" firstAttribute="top" secondItem="cBi-BY-w2t" secondAttribute="bottom" id="C3S-RB-kvY"/>
                             <constraint firstItem="jDI-hW-fnb" firstAttribute="centerX" secondItem="YZ3-jX-jhI" secondAttribute="centerX" id="LXP-nO-uJd"/>
@@ -5619,7 +5622,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexBackgroundColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="lGl-Ix-13j">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -5825,18 +5827,19 @@
     </scenes>
     <resources>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
-        <image name="smallmenuIcon" width="128" height="128"/>
+        <image name="icons8-below" width="25" height="25"/>
+        <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="pkr-2a-HJ4"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
-        <segue reference="gp7-Sx-oSS"/>
-        <segue reference="rE7-OR-7EK"/>
+        <segue reference="Nl3-F2-eMS"/>
+        <segue reference="wIY-ro-ndP"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
-        <segue reference="ggC-Wb-zY6"/>
-        <segue reference="vbZ-5b-9yE"/>
+        <segue reference="853-my-C7d"/>
+        <segue reference="NHS-B9-Lrd"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="eWA-4f-dh2"/>

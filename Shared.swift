@@ -35,7 +35,7 @@ extension UIViewController {
      //background color for main UI
     func backgroundCol()
     {
-        let glayer = CAGradientLayer()
+       /* let glayer = CAGradientLayer()
         glayer.frame = self.view.frame
         //  glayer.colors = [UIColor.red.cgColor,UIColor.blue.cgColor,UIColor(red:124/255.5, green:14/255, blue:54/255.5, alpha:1.0).cgColor]
         glayer.colors =  [UIColor(hue: 219/360, saturation: 79/100, brightness: 89/100, alpha: 1.0).cgColor, UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0).cgColor]
@@ -44,7 +44,7 @@ extension UIViewController {
         //  glayer.endPoint=CGPoint(x:1.0,y:0.0)
         self.view.layer.insertSublayer(glayer,at:0)
         referenceToLastLayer=glayer
-        
+        */
     }
 
     
