@@ -87,6 +87,8 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
         return cell
     }
     @IBAction func buttonPressed(_ sender: Any) {
+        self.view.endEditing(true)
+        var isValid: Bool = true
         var uName=""
         let defaults:UserDefaults = UserDefaults.standard
         if let opened:String = defaults.string(forKey: "userNameKey" )
@@ -96,11 +98,34 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
         var j = 0
         for i in q1
         {
-            var indexPath = IndexPath(row: j, section: 0)
-            var cell = maintenanceTableView.cellForRow(at: indexPath) as! HealthMaintenanceCell
-            let update = DBManager.shared.updateHealthMaintence(reminderUser: uName, maintenanceType: i, date: cell.Date.text!)
-            print(cell.Date.text)
+            let indexPath = IndexPath(row: j, section: 0)
+            let cell = maintenanceTableView.cellForRow(at: indexPath) as! HealthMaintenanceCell
+            print(cell.Date.text!)
+            if (!isValidDate(DoBString: cell.Date.text!))
+            {
+                isValid = false
+            }
             j = j + 1
+        }
+        
+        if (isValid)
+        {
+            j = 0
+            for i in q1
+            {
+                let indexPath = IndexPath(row: j, section: 0)
+                let cell = maintenanceTableView.cellForRow(at: indexPath) as! HealthMaintenanceCell
+                _ = DBManager.shared.updateHealthMaintence(reminderUser: uName, maintenanceType: i, date: cell.Date.text!)
+                print(cell.Date.text!)
+                j = j + 1
+            }
+        }
+        else
+        {
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Date fields must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            
+            self.present(regAlert1,animated: true, completion:nil)
         }
     }
     
@@ -115,6 +140,29 @@ class HealthMaintenance:UIViewController, UITableViewDelegate, UITableViewDataSo
         {
             return false
         }
+    }
+    
+    func isValidDate(DoBString: String) -> Bool{
+        // expression for MM/DD/YYYY
+        let DoBRegEx = "^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\\d\\d$|^$"
+        do{
+            
+            let regex1 = try NSRegularExpression(pattern: DoBRegEx)
+            let nsString1 = DoBString as NSString
+            let results1 = regex1.matches(in: DoBString, range: NSRange(location: 0, length: nsString1.length))
+            if(results1.count == 0)
+            {
+                return false
+            }
+        }
+        catch let error as NSError{
+            
+            print ("Invalid regex: \(error.localizedDescription)")
+            
+            return  false
+        }
+        return true
+        
     }
 }
 
