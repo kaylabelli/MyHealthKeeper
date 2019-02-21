@@ -465,8 +465,9 @@ class DBManager: NSObject {
         return true;
     }
     
-    func insertMoreReminderMedication(reminderID: Int) -> Bool {
+    func insertMoreReminderMedication(reminderID: Int, reminderDate: String) -> Bool {
         print(reminderID)
+        print(reminderDate)
         
         //  open database
         if !openEncrypted() {
@@ -475,7 +476,7 @@ class DBManager: NSObject {
             
             return false;
         }
-        let createHealthAppTableQuery = "create table reminderList (reminders integer primary key not null, reminderID int not null, foreign key(reminderID) references reminderMedication(reminderID) )"
+        let createHealthAppTableQuery = "create table reminderList (reminders integer primary key not null, reminderDate text not null, reminderID int not null, foreign key(reminderID) references reminderMedication(reminderID) )"
         
         do{
             try database2.executeUpdate(createHealthAppTableQuery, values:nil)
@@ -486,7 +487,7 @@ class DBManager: NSObject {
             print(error.localizedDescription)
         }
         //insert data into database
-        let query="insert into reminderList ('reminders', 'reminderID') values (NULL, \(reminderID));"
+        let query="insert into reminderList ('reminders', 'reminderDate', 'reminderID') values (NULL, '\(reminderDate)', \(reminderID));"
         if !database2.executeStatements(query) {
             print("Failed to insert initial data into the database2.")
             print(database2.lastError(), database2.lastErrorMessage())
