@@ -481,7 +481,7 @@
                                             <outlet property="delegate" destination="azN-wY-8Gw" id="zhc-M6-KJj"/>
                                         </connections>
                                     </tableView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igw-kF-7qL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Add Reminder" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Igw-kF-7qL">
                                         <rect key="frame" x="62" y="0.0" width="197" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Igw-kF-7qL" secondAttribute="height" multiplier="191:34" id="Xnz-Cp-dPs"/>
@@ -5311,6 +5311,89 @@
             </objects>
             <point key="canvasLocation" x="9832.5" y="-101.40845070422536"/>
         </scene>
+        <!--Import Export-->
+        <scene sceneID="qfN-Yp-bfC">
+            <objects>
+                <viewController storyboardIdentifier="ImportExport" id="5nH-2r-HI0" customClass="ImportExport" customModule="healthapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tcj-ag-B3K"/>
+                        <viewControllerLayoutGuide type="bottom" id="pzz-X4-IyM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JaU-wS-E61">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MPE-3J-3W5">
+                                <rect key="frame" x="16" y="232" width="288" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import/Export" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bp9-sA-Vja">
+                                <rect key="frame" x="63" y="40" width="194" height="34.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Bp9-sA-Vja" secondAttribute="height" multiplier="191:34" id="CRM-EV-xFu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="28"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data Backup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1bP-aN-hlT">
+                                <rect key="frame" x="10" y="101.5" width="300" height="23"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Bpj-9t-zYY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact-widthClass=compact" hidden="YES">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular" hidden="YES"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LWo-f0-PDj">
+                                <rect key="frame" x="60" y="164.5" width="200" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ivx-gz-wL0"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Import"/>
+                                    <segment title="Export"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentSelected:" destination="5nH-2r-HI0" eventType="valueChanged" id="M8y-ri-pjM"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="1bP-aN-hlT" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="18N-vV-JTv"/>
+                            <constraint firstItem="LWo-f0-PDj" firstAttribute="top" secondItem="1bP-aN-hlT" secondAttribute="bottom" constant="40" id="4as-1i-Jp2"/>
+                            <constraint firstItem="1bP-aN-hlT" firstAttribute="bottom" secondItem="Bp9-sA-Vja" secondAttribute="bottom" constant="50" id="8rR-iZ-7VR"/>
+                            <constraint firstItem="Bp9-sA-Vja" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="AGi-6I-4BN"/>
+                            <constraint firstItem="MPE-3J-3W5" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="Chf-PS-Vj1"/>
+                            <constraint firstItem="MPE-3J-3W5" firstAttribute="centerY" secondItem="JaU-wS-E61" secondAttribute="centerY" id="LGy-pb-gQq"/>
+                            <constraint firstItem="Bp9-sA-Vja" firstAttribute="top" secondItem="tcj-ag-B3K" secondAttribute="bottom" constant="20" id="Nc4-IF-HQg"/>
+                            <constraint firstItem="Bp9-sA-Vja" firstAttribute="width" secondItem="Bp9-sA-Vja" secondAttribute="height" multiplier="191:34" id="bBX-gc-d9H"/>
+                            <constraint firstItem="LWo-f0-PDj" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="kwG-jk-hdt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="disclaimer" destination="MPE-3J-3W5" id="ykI-x1-61v"/>
+                        <outlet property="segmentPicker" destination="LWo-f0-PDj" id="4m0-di-SUc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WwZ-8w-o77" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9505" y="617"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="mWP-bq-Pfd">
             <objects>
@@ -5831,7 +5914,6 @@
         <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pkr-2a-HJ4"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="Nl3-F2-eMS"/>

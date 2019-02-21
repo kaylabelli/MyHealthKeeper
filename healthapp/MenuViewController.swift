@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //Kayla Belli - changed some of the menu names in title_arr
-    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Checklist","Print", "Logout"]
+    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Checklist","Print", "Import/Export", "Logout"]
     var row1 = ["\t\tPersonal",
                 "\t\tDoctor",
                 "\t\tIllness",
@@ -139,6 +139,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
             else if(section == 10){
+                boardID = "ImportExport"
+                let navigation = main.instantiateViewController(withIdentifier: boardID)
+                self.navigationController?.pushViewController(navigation, animated: true)
+            }
+            else if(section == 11){
                 boardID = "Sign In"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
@@ -368,6 +373,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             image.image = UIImage(named: "print")
         }
         else if (section == 10)
+        {
+            image.image = UIImage(named: "logout")
+        }
+        else if (section == 11)
         {
             image.image = UIImage(named: "logout")
         }
