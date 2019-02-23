@@ -13,8 +13,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //MARK: Properties
     var isGrantedNotificationAccess: Bool = true
     var monlyNotif: String = "MonthlyNotif"
+    var appointmentReminders: [ReminderInfo] = [ReminderInfo()]
     
     
+    @IBOutlet weak var scheduleView: UITableView!
     @IBOutlet weak var reminderTable: UITableView!
     
     @IBOutlet weak var AddReminderDesign: UIButton!
@@ -173,6 +175,24 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //Hide title on navigation bar
             self.navigationItem.title = ""
             
+            let currentDateTime = Date()
+            let DateFormat=DateFormatter()
+            DateFormat.dateFormat="MM-dd-yyyy"
+            let timeFormat = DateFormatter()
+            timeFormat.dateFormat = "HH:mm"
+            
+            //current date goes to db to retrieve
+            let date = DateFormat.string(from: currentDateTime)
+            // time for keeping order
+            let time = timeFormat.string(from: currentDateTime)
+            
+            appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: date)
+            
+            if (appointmentReminders.count == 1)
+            {
+                self.scheduleView.isHidden = true
+            }
+    
             //Hide back button and add menu
             //self.navigationItem.setHidesBackButton(true, animated: false)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
@@ -1255,31 +1275,50 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if (title == "Home")
+        {
+            return appointmentReminders.count - 1
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReminderTableViewCell
-        
-        var uName=""
-        let defaults:UserDefaults = UserDefaults.standard
-        if let opened:String = defaults.string(forKey: "userNameKey" )
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        if (title == "Reminders")
         {
-            uName=opened
-        }
-        //get data from
-        var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReminderTableViewCell
         
-        if(itemsR[0].reminderStatus == true)
+            var uName=""
+            let defaults:UserDefaults = UserDefaults.standard
+            if let opened:String = defaults.string(forKey: "userNameKey" )
+            {
+                uName=opened
+            }
+            //get data from
+            var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
+        
+            if(itemsR[0].reminderStatus == true)
+            {
+                cell.NotificationStatus.setOn(true, animated: false)
+            }
+            else{
+                cell.NotificationStatus.setOn(false, animated: true)
+            }
+        
+            cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
+        
+            return cell
+        }
+        if (title == "Home")
         {
-            cell.NotificationStatus.setOn(true, animated: false)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+            
+            cell.dateLabel.text = appointmentReminders[indexPath.row + 1].reminderDate
+            cell.reminderLabel.text = appointmentReminders[indexPath.row + 1].reminderName
+            
+            
+            return cell
         }
-        else{
-            cell.NotificationStatus.setOn(false, animated: true)
-        }
-        
-        cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
-        
         return cell
     }
     

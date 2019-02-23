@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15355A942219F6C300CFFD9A /* HealthMaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */; };
+		15B0F1F42221AE0F00C57FD3 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */; };
 		15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */; };
 		15D59189220E77C900C10A67 /* ReminderMedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */; };
 		6C1502FC1FB29D460058A41B /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */; };
@@ -127,6 +128,7 @@
 
 /* Begin PBXFileReference section */
 		15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMaintenanceCell.swift; sourceTree = "<group>"; };
+		15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationEditController.swift; sourceTree = "<group>"; };
 		15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationTableViewController.swift; sourceTree = "<group>"; };
 		6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				FD3C5574221128C000034FAC /* Checklist.swift */,
 				EF203E6922124DD300E58D81 /* HealthMaintenance.swift */,
 				15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */,
+				15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */,
 				6CF73BF51F998384009F36FC /* AllergiesViewController.swift */,
 				AE7703A51F75BE4F004C2482 /* AppDelegate.swift */,
 				6C18DADD1F83118600D0D1FF /* Assets.xcassets */,
@@ -552,6 +555,7 @@
 				6C18DAE01F83118600D0D1FF /* FMDatabaseQueue.m in Sources */,
 				6CA09A731FACEC1300CEF949 /* MenuViewController.swift in Sources */,
 				15D59189220E77C900C10A67 /* ReminderMedicationTableViewController.swift in Sources */,
+				15B0F1F42221AE0F00C57FD3 /* ScheduleCell.swift in Sources */,
 				AEBA0CED1FA0F064002849EB /* SecurityAnswer.swift in Sources */,
 				6CF73BF81F998417009F36FC /* VaccineViewController.swift in Sources */,
 				9B2D9A3C1FC9F7BE0025975B /* ReminderTableViewCell.swift in Sources */,
