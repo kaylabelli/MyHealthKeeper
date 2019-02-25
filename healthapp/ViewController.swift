@@ -14,6 +14,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     var isGrantedNotificationAccess: Bool = true
     var monlyNotif: String = "MonthlyNotif"
     var appointmentReminders: [ReminderInfo] = [ReminderInfo()]
+    var nextAppointmentReminders: [ReminderInfo] = [ReminderInfo()]
+    let day = ["Today", "Tomorrow"]
     
     
     @IBOutlet weak var scheduleView: UITableView!
@@ -175,20 +177,25 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //Hide title on navigation bar
             self.navigationItem.title = ""
             
-            let currentDateTime = Date()
+            var currentDateTime = Date()
             let DateFormat=DateFormatter()
             DateFormat.dateFormat="MM-dd-yyyy"
             let timeFormat = DateFormatter()
             timeFormat.dateFormat = "HH:mm"
             
             //current date goes to db to retrieve
-            let date = DateFormat.string(from: currentDateTime)
+            var date = DateFormat.string(from: currentDateTime)
             // time for keeping order
             let time = timeFormat.string(from: currentDateTime)
             
             appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: date)
             
-            if (appointmentReminders.count == 1)
+            currentDateTime.addTimeInterval(86400)
+            date = DateFormat.string(from: currentDateTime)
+            
+            nextAppointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: date)
+            
+            if ((appointmentReminders.count == 1) && (nextAppointmentReminders.count == 1))
             {
                 self.scheduleView.isHidden = true
             }
@@ -1271,13 +1278,41 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //end Melissa's Part
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if (title == "Home")
+        {
+            return 2;
+        }
         return 1
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (title == "Home")
+        {
+            return day[section]
+        }
+        return ""
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if (title == "Home")
         {
-            return appointmentReminders.count - 1
+            switch section
+            {
+            case 0:
+                if (appointmentReminders.count == 1)
+                {
+                    return 1
+                }
+                return appointmentReminders.count - 1
+            case 1:
+                if (nextAppointmentReminders.count == 1)
+                {
+                    return 1
+                }
+                return nextAppointmentReminders.count - 1
+            default:
+                return 0
+            }
         }
         return 1
     }
@@ -1311,13 +1346,40 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         }
         if (title == "Home")
         {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+            switch indexPath.section
+            {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+                if (appointmentReminders.count == 1)
+                {
+                    cell.dateLabel.text = "No Reminders"
+                    cell.reminderLabel.text = ""
+                }
+                else
+                {
+                    cell.dateLabel.text = appointmentReminders[indexPath.row + 1].reminderDate
+                    cell.reminderLabel.text = appointmentReminders[indexPath.row + 1].reminderName
+                }
             
-            cell.dateLabel.text = appointmentReminders[indexPath.row + 1].reminderDate
-            cell.reminderLabel.text = appointmentReminders[indexPath.row + 1].reminderName
-            
-            
-            return cell
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+                
+                if (nextAppointmentReminders.count == 1)
+                {
+                    cell.dateLabel.text = "No Reminders"
+                    cell.reminderLabel.text = ""
+                }
+                else
+                {
+                    cell.dateLabel.text = nextAppointmentReminders[indexPath.row + 1].reminderDate
+                    cell.reminderLabel.text = nextAppointmentReminders[indexPath.row + 1].reminderName
+                }
+                
+                return cell
+            default:
+                return cell
+            }
         }
         return cell
     }
