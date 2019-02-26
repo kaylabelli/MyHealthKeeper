@@ -13,8 +13,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //MARK: Properties
     var isGrantedNotificationAccess: Bool = true
     var monlyNotif: String = "MonthlyNotif"
+    var appointmentReminders: [ReminderInfo] = [ReminderInfo()]
+    var nextAppointmentReminders: [ReminderInfo] = [ReminderInfo()]
+    let day = ["Today", "Tomorrow"]
     
     
+    @IBOutlet weak var scheduleView: UITableView!
     @IBOutlet weak var reminderTable: UITableView!
     
     @IBOutlet weak var AddReminderDesign: UIButton!
@@ -173,6 +177,29 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //Hide title on navigation bar
             self.navigationItem.title = ""
             
+            var currentDateTime = Date()
+            let DateFormat=DateFormatter()
+            DateFormat.dateFormat="MM-dd-yyyy"
+            let timeFormat = DateFormatter()
+            timeFormat.dateFormat = "HH:mm"
+            
+            //current date goes to db to retrieve
+            var date = DateFormat.string(from: currentDateTime)
+            // time for keeping order
+            let time = timeFormat.string(from: currentDateTime)
+            
+            appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: date)
+            
+            currentDateTime.addTimeInterval(86400)
+            date = DateFormat.string(from: currentDateTime)
+            
+            nextAppointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: date)
+            
+            if ((appointmentReminders.count == 1) && (nextAppointmentReminders.count == 1))
+            {
+                self.scheduleView.isHidden = true
+            }
+    
             //Hide back button and add menu
             //self.navigationItem.setHidesBackButton(true, animated: false)
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
@@ -661,7 +688,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             let DateFormat=DateFormatter()
             DateFormat.dateFormat="MM-dd-yyyy HH:mm"
             //pass the reminderDate the user enters through the date formatter
-            let dateR=DateFormat.string(from: reminderDate.date)
+            var dateR = DateFormat.string(from: reminderTime)
             var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
             
             //Start creating the Local Notification for the User
@@ -712,7 +739,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         print(dos)
                         if (dos == "1 Time per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -720,13 +747,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(86400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 1
                         }
                         else if (dos == "2 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -734,9 +762,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -745,13 +774,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(57600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 2
                         }
                         else if (dos == "3 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -759,9 +789,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -770,9 +801,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -781,13 +813,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 3
                         }
                         else if (dos == "4 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -795,9 +828,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -805,9 +839,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -815,9 +850,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -826,13 +862,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 4
                         }
                         else if (dos == "Every 4 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -840,9 +877,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -850,9 +888,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -860,9 +899,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -870,9 +910,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -880,9 +921,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -891,13 +933,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(14400)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 6
                         }
                         else if (dos == "Every 6 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -905,9 +948,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -915,9 +959,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -925,9 +970,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -936,13 +982,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(21600)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 4
                         }
                         else if (dos == "Every 8 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -950,9 +997,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -960,9 +1008,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 }
                             }
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -971,6 +1020,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                             }
                             
                             reminderTime.addTimeInterval(28800)
+                            dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             reminderCount = reminderCount + 3
@@ -1228,35 +1278,109 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //end Melissa's Part
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if (title == "Home")
+        {
+            return 2;
+        }
         return 1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if (title == "Home")
+        {
+            return day[section]
+        }
+        return ""
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if (title == "Home")
+        {
+            switch section
+            {
+            case 0:
+                if (appointmentReminders.count == 1)
+                {
+                    return 1
+                }
+                return appointmentReminders.count - 1
+            case 1:
+                if (nextAppointmentReminders.count == 1)
+                {
+                    return 1
+                }
+                return nextAppointmentReminders.count - 1
+            default:
+                return 0
+            }
+        }
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReminderTableViewCell
-        
-        var uName=""
-        let defaults:UserDefaults = UserDefaults.standard
-        if let opened:String = defaults.string(forKey: "userNameKey" )
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        if (title == "Reminders")
         {
-            uName=opened
-        }
-        //get data from
-        var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReminderTableViewCell
         
-        if(itemsR[0].reminderStatus == true)
+            var uName=""
+            let defaults:UserDefaults = UserDefaults.standard
+            if let opened:String = defaults.string(forKey: "userNameKey" )
+            {
+                uName=opened
+            }
+            //get data from
+            var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
+        
+            if(itemsR[0].reminderStatus == true)
+            {
+                cell.NotificationStatus.setOn(true, animated: false)
+            }
+            else{
+                cell.NotificationStatus.setOn(false, animated: true)
+            }
+        
+            cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
+        
+            return cell
+        }
+        if (title == "Home")
         {
-            cell.NotificationStatus.setOn(true, animated: false)
+            switch indexPath.section
+            {
+            case 0:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+                if (appointmentReminders.count == 1)
+                {
+                    cell.dateLabel.text = "No Reminders"
+                    cell.reminderLabel.text = ""
+                }
+                else
+                {
+                    cell.dateLabel.text = appointmentReminders[indexPath.row + 1].reminderDate
+                    cell.reminderLabel.text = appointmentReminders[indexPath.row + 1].reminderName
+                }
+            
+                return cell
+            case 1:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+                
+                if (nextAppointmentReminders.count == 1)
+                {
+                    cell.dateLabel.text = "No Reminders"
+                    cell.reminderLabel.text = ""
+                }
+                else
+                {
+                    cell.dateLabel.text = nextAppointmentReminders[indexPath.row + 1].reminderDate
+                    cell.reminderLabel.text = nextAppointmentReminders[indexPath.row + 1].reminderName
+                }
+                
+                return cell
+            default:
+                return cell
+            }
         }
-        else{
-            cell.NotificationStatus.setOn(false, animated: true)
-        }
-        
-        cell.NotificationStatus.addTarget(self, action: #selector(ViewController.notificationStatus(NotificationStatus:)), for: UIControl.Event.valueChanged)
-        
         return cell
     }
     
