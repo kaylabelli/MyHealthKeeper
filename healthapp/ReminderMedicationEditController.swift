@@ -571,7 +571,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         print(dos)
                         if (dos == "1 Time per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -587,7 +587,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "2 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -598,7 +598,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -614,7 +614,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "3 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -625,7 +625,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -637,7 +637,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -653,7 +653,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "4 Times per Day")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -664,7 +664,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -675,7 +675,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -686,7 +686,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -702,7 +702,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "Every 4 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -713,7 +713,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -724,7 +724,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -735,7 +735,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -746,7 +746,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -757,7 +757,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -773,7 +773,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "Every 6 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -784,7 +784,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -795,7 +795,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -806,7 +806,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -822,7 +822,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         }
                         else if (dos == "Every 8 Hours")
                         {
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             var request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -833,7 +833,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
@@ -844,7 +844,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                             dateR = DateFormat.string(from: reminderTime)
                             dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: reminderTime)
                             trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR)
+                            sucess=DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                             request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
                             UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                 if let theError = error{
