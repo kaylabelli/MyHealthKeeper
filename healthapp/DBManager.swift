@@ -503,7 +503,7 @@ class DBManager: NSObject {
         return true;
     }
     
-    func insertMoreReminderMedication(reminderID: Int, reminderDate: String) -> Bool {
+    func insertMoreReminderMedication(reminderID: Int, reminderDate: String, reminderUser: String) -> Bool {
         print(reminderID)
         print(reminderDate)
         
@@ -514,7 +514,7 @@ class DBManager: NSObject {
             
             return false;
         }
-        let createHealthAppTableQuery = "create table reminderList (reminders integer primary key not null, reminderDate text not null, reminderID int not null, foreign key(reminderID) references reminderMedication(reminderID) )"
+        let createHealthAppTableQuery = "create table reminderList (reminders integer primary key not null, reminderDate text not null, reminderID int not null, reminderUser text not null, foreign key(reminderID) references reminderMedication(reminderID) )"
         
         do{
             try database2.executeUpdate(createHealthAppTableQuery, values:nil)
@@ -525,7 +525,7 @@ class DBManager: NSObject {
             print(error.localizedDescription)
         }
         //insert data into database
-        let query="insert into reminderList ('reminders', 'reminderDate', 'reminderID') values (NULL, '\(reminderDate)', \(reminderID));"
+        let query="insert into reminderList ('reminders', 'reminderDate', 'reminderID', 'reminderUser') values (NULL, '\(reminderDate)', \(reminderID), '\(reminderUser)');"
         if !database2.executeStatements(query) {
             print("Failed to insert initial data into the database2.")
             print(database2.lastError(), database2.lastErrorMessage())
@@ -733,6 +733,47 @@ class DBManager: NSObject {
         }
         
         return list
+    }
+    
+    func todayMedicationReminder(reminderUser:String, reminderDate:String) -> [medicationStruct] {
+        var reminders: [medicationStruct] = [medicationStruct()]
+        if openEncrypted()
+        {
+            let query = "select * from reminderList where reminderUser = ? AND reminderDate LIKE '\(reminderDate)%'"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser])
+                
+                while results.next() {
+                    var reminder: medicationStruct = medicationStruct()
+                    reminder.reminderID = Int(results.int(forColumn: "reminderID"))
+                    
+                    let query2 = "select * from reminderMedication where reminderUser = ? AND reminderID = ?"
+                    let results2 = try database2.executeQuery(query2, values: [reminderUser, reminder.reminderID])
+                    while results2.next()
+                    {
+                        reminder.medName = results2.string(forColumn: "medicationName")
+                    }
+                    reminder.date = results.string(forColumn: "reminderDate")
+                    
+                    if reminders==nil {
+                        reminders=[medicationStruct]()
+                    }
+                    reminders.append(reminder)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+                let reminder = medicationStruct()
+                reminders.append(reminder)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return reminders
     }
     
     //***************** Health Maintenance *****************
@@ -1067,6 +1108,27 @@ struct  MonthlyReminderInfo {
         
         self.reminderStatus=true
         self.reminderUser=""
+    }
+}
+
+struct medicationStruct
+{
+    var medName: String!
+    var date: String!
+    var reminderID: Int!
+    
+    init(name: String!, time: String!, id: Int!)
+    {
+        self.medName = name
+        self.date = time
+        self.reminderID = id
+    }
+    
+    init()
+    {
+        self.medName = ""
+        self.date = ""
+        self.reminderID = -1
     }
 }
 
