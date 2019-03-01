@@ -200,7 +200,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             let DateFormat=DateFormatter()
             DateFormat.dateFormat="MM-dd-yyyy"
             let timeFormat = DateFormatter()
-            timeFormat.dateFormat = "HH:mm"
+            timeFormat.dateFormat = "h:mm a"
+            let DateFormats=DateFormatter()
+            DateFormats.dateFormat="MM-dd-yyyy HH:mm"
+
             
             //current date goes to db to retrieve
             var date = DateFormat.string(from: currentDateTime)
@@ -258,6 +261,28 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var r: scheduleStruct = scheduleStruct(Date: date, Message: name, isApp: false)
                     tmrwSchedule.append(r)
                 }
+            }
+            
+            todaySchedule.sort {$0.date < $1.date}
+            tmrwSchedule.sort {$0.date < $1.date}
+            // (h:mm a) for 12-hour
+            
+            var i = 0
+            while (i < todaySchedule.count)
+            {
+                var date = DateFormats.date(from: todaySchedule[i].date)
+                todaySchedule[i].date = timeFormat.string(from: date!)
+                
+                i = i + 1
+            }
+            
+            i = 0
+            while (i < tmrwSchedule.count)
+            {
+                var date = DateFormats.date(from: tmrwSchedule[i].date)
+                tmrwSchedule[i].date = timeFormat.string(from: date!)
+                
+                i = i + 1
             }
             
             if ((todaySchedule.count == 0) && (tmrwSchedule.count == 0))
@@ -1422,8 +1447,16 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 }
                 else
                 {
-                    cell.dateLabel.text = todaySchedule[indexPath.row].date
-                    cell.reminderLabel.text = todaySchedule[indexPath.row].message
+                    if (todaySchedule[indexPath.row].isAppointment)
+                    {
+                        cell.dateLabel.text = "🔔\t" + todaySchedule[indexPath.row].date
+                        cell.reminderLabel.text = todaySchedule[indexPath.row].message
+                    }
+                    else
+                    {
+                        cell.dateLabel.text = "💊\t" + todaySchedule[indexPath.row].date
+                        cell.reminderLabel.text = todaySchedule[indexPath.row].message
+                    }
                 }
             
                 return cell
@@ -1437,8 +1470,16 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 }
                 else
                 {
-                    cell.dateLabel.text = tmrwSchedule[indexPath.row].date
-                    cell.reminderLabel.text = tmrwSchedule[indexPath.row].message
+                    if (tmrwSchedule[indexPath.row].isAppointment)
+                    {
+                        cell.dateLabel.text = "🔔\t" + tmrwSchedule[indexPath.row].date
+                        cell.reminderLabel.text = tmrwSchedule[indexPath.row].message
+                    }
+                    else
+                    {
+                        cell.dateLabel.text = "💊\t" + tmrwSchedule[indexPath.row].date
+                        cell.reminderLabel.text = tmrwSchedule[indexPath.row].message
+                    }
                 }
                 
                 return cell
@@ -1447,6 +1488,59 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (title == "Home")
+        {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath) as! ScheduleCell
+
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            switch indexPath.section {
+            case 0:
+                if (todaySchedule.count == 0)
+                {
+                    let boardID = "Set Reminder"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else if (todaySchedule[indexPath.row].isAppointment)
+                {
+                    let boardID = "Reminder Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else
+                {
+                    let boardID = "Reminder Medication Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+            break
+            case 1:
+                if (tmrwSchedule.count == 0)
+                {
+                    let boardID = "Set Reminder"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else if (tmrwSchedule[indexPath.row].isAppointment)
+                {
+                    let boardID = "Reminder Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else
+                {
+                    let boardID = "Reminder Medication Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+            default:
+            break
+            }
+        }
+        
     }
     
     
