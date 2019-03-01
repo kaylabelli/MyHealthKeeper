@@ -8,6 +8,7 @@
          import Foundation
          
          import UIKit
+         import MobileCoreServices
          
          class ImportExport: UIViewController {
             
@@ -18,6 +19,7 @@
             @IBOutlet weak var Import: UIButton!
             
             @IBOutlet weak var Export: UIButton!
+
             
             override func viewDidLoad() {
                 super.viewDidLoad()
@@ -47,23 +49,39 @@
                 }
             }
             
-            
+         
+            //Import data button is pressed
             @IBAction func ImportData(_ sender: Any) {
-             
-                let ImportAlert = UIAlertController(title: "WARNING", message: "Are you sure you would like to Import and override all current data in the MyHealthKeeper Applicaiton?", preferredStyle: .alert)
+            
+                
+                //Display import warning and Okay and Cancel options.
+               let ImportAlert = UIAlertController(title: "WARNING", message: "Are you sure you would like to Import and override all current data in the MyHealthKeeper Applicaiton?", preferredStyle: .alert)
                 ImportAlert.addAction(UIAlertAction(title: "Yes, Import Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
-               
+                        //let user choose file they want to import
+                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
+                        documentPickerController.delegate = self as? UIDocumentPickerDelegate
+                        self.present(documentPickerController, animated: true, completion: nil)
+                        
+                        //display file that was chosen
+                        func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+                            print("file picked: ")
+                            documentPicker.dismiss(animated: true, completion: nil)
+                        }
+                       //Call read file function
+                        self.readFile()
                     }
                 }))
                 
                 ImportAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.default, handler: nil))
                 
                 self.present(ImportAlert, animated: true)
+          
             }
             
             
+            //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
                 let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? ", preferredStyle: .alert)
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
@@ -97,7 +115,30 @@
                 self.present(ExportAlert, animated: true)
             }
             
+
             
+            
+            //REad from the file that the user would like to import
+            func readFile(){
+  
+                
+                let dir = try? FileManager.default.url(for: .documentDirectory,
+                                                       in: .userDomainMask, appropriateFor: nil, create: true)
+                
+                // If the directory was found, we write a file to it and read it back
+                if let fileURL = URL(string: "///private/var/mobile/Library/Mobile%20Documents/com~apple~CloudDocs/Sample.csv")
+                 {
+                    
+                    
+                    // Then reading it back from the file
+                    var inString = ""
+                    do {
+                        inString = try String(contentsOf: fileURL)
+                    } catch {
+                        print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
+                    }
+                    print("Read from the file: \(inString)")
+                }
+            }
          }
          
-        
