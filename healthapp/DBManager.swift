@@ -397,8 +397,6 @@ class DBManager: NSObject {
     
     
     
-    
-    
     func lastReminder() -> Int {
         //  open database
         var val = -1
@@ -567,13 +565,8 @@ class DBManager: NSObject {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
+   
+
     //delete Reminder Items
     func deleteReminderMedicationItem(reminderID: Int) -> Bool {
         var deleted=false;
@@ -1027,12 +1020,48 @@ class DBManager: NSObject {
         return val;
     }
     
+
+
+///RETRIEVE ALL INFO FOR EXPORT
+//Kayla
+func retrieveMedicationReminderTable() -> [ReminderMedicationInfo]!{
+    
+    var reminders: [ReminderMedicationInfo]!
+    if openEncrypted()
+    {
+        let query = ("SELECT * FROM reminderMedication")
+        
+        do{
+            let results = try database2.executeQuery(query, values: [])
+            
+            while results.next() {
+                let reminder = ReminderMedicationInfo(reminderId: Int(results.int(forColumn: "reminderID")), medicationName: results.string(forColumn: "medicationName"), medicationType: results.string(forColumn: "medicationType"), medicationTotalAmount: Int(results.int(forColumn: "medicationTotalAmount")), medicationAmount: Int(results.int(forColumn: "medicationAmount")), dosage: results.string(forColumn: "dosage"), reminderUser: results.string( forColumn: "reminderUser"))
+                
+                if reminders==nil {
+                    reminders=[ReminderMedicationInfo]()
+                }
+                reminders.append(reminder)
+                print(reminders)
+            }
+        }
+        catch{
+            print(error.localizedDescription)
+        }
+        
+        
+        database2.close()
+        
+    }
+    
+    return reminders
+    
+    
 }
 
 
-
-
-
+///END RETRIEVE ALL INFO FOR EXPORT
+//END Kayla
+}
 
 //structure holding reminder information-Melissa
 struct  ReminderInfo {

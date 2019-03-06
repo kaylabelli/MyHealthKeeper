@@ -97,26 +97,7 @@
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
-                        let text = "This is some text that I want to share."
-                        
-                        let fileName = "Sample.csv"
-                        let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-                        
-                        do {
-                            try text.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
-                        }catch{
-                            print(text)
-                        }
-                        // set up activity view controller
-                        
-                        let activityViewController = UIActivityViewController(activityItems: [path] , applicationActivities: nil)
-                        activityViewController.popoverPresentationController?.sourceView = self.view
-                        
-                        // exclude some activity types from the list
-                        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
-                        
-                        self.present(activityViewController, animated: true, completion: nil)
-
+                        self.createFile()
                     }
                 }))
                 
@@ -147,5 +128,60 @@
                 print("Read from the file: \(inString)")
                     
                 }
-         }
          
+         
+
+         func createFile(){
+            
+            //Medication Reminder Table
+            //Retreive all data in table
+            var reminderMedicationItems: [ReminderMedicationInfo] = DBManager.shared.retrieveMedicationReminderTable() ?? [ReminderMedicationInfo()]
+        
+            var text = [String]()
+            var i = reminderMedicationItems.count - 1
+            
+            //append all items in data to the text array
+            while i >= 0 {
+                text.append("reminderMedication")
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].reminderId))
+                text.append(",")
+                text.append(reminderMedicationItems[i].medicationName)
+                text.append(",")
+                text.append(reminderMedicationItems[i].medicationType)
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].medicationTotalAmount))
+                text.append(",")
+                text.append(reminderMedicationItems[i].dosage)
+                text.append(",")
+                text.append(reminderMedicationItems[i].reminderUser)
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //End Medication Reminder Table
+            
+            //write all items in the text array to the csv file.
+            let fileName = "MyHealthKeeper.csv"
+            let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+            
+            do {
+                try text.joined(separator:"").write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+            }catch{
+                print(text)
+            }
+            
+            // set up activity view controller
+            
+            let activityViewController = UIActivityViewController(activityItems: [path] , applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            
+            // exclude some activity types from the list
+            activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+            
+            self.present(activityViewController, animated: true, completion: nil)
+
+         }
+        
+}
