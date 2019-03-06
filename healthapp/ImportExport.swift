@@ -10,7 +10,13 @@
          import UIKit
          import MobileCoreServices
          
-         class ImportExport: UIViewController {
+         class ImportExport: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
+            
+            func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
+                print("file picked: ")
+                documentPicker.dismiss(animated: true, completion: nil)
+            }
+            
             
             
             @IBOutlet weak var disclaimer: UITextView!
@@ -49,7 +55,12 @@
                 }
             }
             
-         
+            func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+                print("file picked: \(urls)")
+                documentPicker.dismiss(animated: true, completion: nil)
+                self.readFile(url: urls[0])
+            }
+            
             //Import data button is pressed
             @IBAction func ImportData(_ sender: Any) {
             
@@ -60,17 +71,17 @@
                     (action) -> Void in
                     do {
                         //let user choose file they want to import
-                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
+                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .open)
                         documentPickerController.delegate = self as? UIDocumentPickerDelegate
                         self.present(documentPickerController, animated: true, completion: nil)
                         
                         //display file that was chosen
-                        func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+                        /*func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
                             print("file picked: ")
                             documentPicker.dismiss(animated: true, completion: nil)
                         }
                        //Call read file function
-                        self.readFile()
+                        self.readFile()*/
                     }
                 }))
                 
@@ -79,7 +90,6 @@
                 self.present(ImportAlert, animated: true)
           
             }
-            
             
             //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
@@ -119,26 +129,23 @@
             
             
             //REad from the file that the user would like to import
-            func readFile(){
+            func readFile(url: URL){
   
                 
                 let dir = try? FileManager.default.url(for: .documentDirectory,
                                                        in: .userDomainMask, appropriateFor: nil, create: true)
-                
-                // If the directory was found, we write a file to it and read it back
-                if let fileURL = URL(string: "///private/var/mobile/Library/Mobile%20Documents/com~apple~CloudDocs/Sample.csv")
-                 {
+            
+                let fileURL = url
                     
-                    
-                    // Then reading it back from the file
-                    var inString = ""
-                    do {
-                        inString = try String(contentsOf: fileURL)
-                    } catch {
-                        print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
-                    }
-                    print("Read from the file: \(inString)")
+                // Then reading it back from the file
+                var inString = ""
+                do {
+                    inString = try String(contentsOf: fileURL)
+                } catch {
+                    print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
                 }
-            }
+                print("Read from the file: \(inString)")
+                    
+                }
          }
          
