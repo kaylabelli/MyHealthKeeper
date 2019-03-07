@@ -71,7 +71,7 @@
                     (action) -> Void in
                     do {
                         //let user choose file they want to import
-                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .open)
+                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
                         documentPickerController.delegate = self as? UIDocumentPickerDelegate
                         self.present(documentPickerController, animated: true, completion: nil)
                         
