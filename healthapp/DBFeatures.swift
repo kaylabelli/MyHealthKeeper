@@ -452,6 +452,36 @@ class DBFeatures: NSObject {
         return  securityQ
     }   // retrieve Security Questions ends
     
+    // function that retrieves Security Questions and Answers from database
+    func RetrieveSecurityQuestionsAndAnswers(username: String) -> [securityQAndAInfo]!
+    {
+        var securityQ:[securityQAndAInfo]!
+        if  openDatabase()
+        {
+            let query1 = "SELECT * FROM Security where pUser=?"
+            
+            do {
+                
+                let secQResult = try database.executeQuery(query1, values: [username])
+                
+                while secQResult.next(){
+                    let security1 = securityQAndAInfo(secQ1: (secQResult.string(forColumn:field_security_question1)),secQ2: (secQResult.string(forColumn:field_security_question2)),secQ3:(secQResult.string(forColumn:field_security_question3)), secA1:(secQResult.string(forColumn:field_security_answer1)), secA2:(secQResult.string(forColumn:field_security_answer2)), secA3:(secQResult.string(forColumn:field_security_answer3)), secUser: (secQResult.string(forColumn:field_security_user)))
+                    
+                    if (securityQ == nil) {
+                        securityQ = [securityQAndAInfo]()
+                        
+                    }
+                    securityQ.append(security1)
+                }
+            }
+            catch {
+                print (error.localizedDescription)
+            }
+            database.close()
+        }
+        return  securityQ
+    }   // retrieve Security Questions ends
+    
     
     func checkSecurityQuestions(pQuestion1: String, pQuestion2: String, pQuestion3: String, pUser: String)->Bool {
         if !openDatabase(){
@@ -649,6 +679,39 @@ struct securityQInfo
         self.secQ1 = ""
         self.secQ2 = ""
         self.secQ3 = ""
+        self.secUser = ""
+    }
+}
+
+struct securityQAndAInfo
+{
+    var secQ1: String!
+    var secQ2: String!
+    var secQ3: String!
+    var secA1: String!
+    var secA2: String!
+    var secA3: String!
+    var secUser: String!
+    
+    init(secQ1:String!, secQ2:String!, secQ3:String!, secA1:String!, secA2:String!, secA3:String!,secUser:String!) {
+        
+        self.secQ1 = secQ1
+        self.secQ2 = secQ2
+        self.secQ3 = secQ3
+        self.secA1 = secA1
+        self.secA2 = secA2
+        self.secA3 = secA3
+        self.secUser = secUser
+        
+    }
+    init(){
+        
+        self.secQ1 = ""
+        self.secQ2 = ""
+        self.secQ3 = ""
+        self.secA1 = ""
+        self.secA2 = ""
+        self.secA3 = ""
         self.secUser = ""
     }
 }

@@ -1021,7 +1021,7 @@ class DBManager: NSObject {
     }
     
 
-
+/*
 ///RETRIEVE ALL INFO FOR EXPORT
 //Kayla
 func retrieveMedicationReminderTable() -> [ReminderMedicationInfo]!{
@@ -1061,6 +1061,7 @@ func retrieveMedicationReminderTable() -> [ReminderMedicationInfo]!{
 
 ///END RETRIEVE ALL INFO FOR EXPORT
 //END Kayla
+    */
 }
 
 //structure holding reminder information-Melissa

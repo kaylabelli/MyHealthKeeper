@@ -132,13 +132,215 @@
          
 
          func createFile(){
+             var text = [String]()
             
-            //Medication Reminder Table
+            let defaults:UserDefaults = UserDefaults.standard
+            var currentUser = ""
+            if let opened:String = defaults.string(forKey: "userNameKey" )
+            {
+                currentUser=opened
+                print(opened)
+            }
+            
+            //ALLERGY TABLE
+            var allergyItems: [AllergyInfo] = DbmanagerMadicalinfo.shared1.RetrieveAlleryInfo(SameUser: currentUser) ?? [AllergyInfo()]
+            var i = allergyItems.count - 1
+            
+            while i >= 0 {
+                text.append("Allergies")
+                text.append(",")
+                text.append(String(allergyItems[i].rowID))
+                text.append(",")
+                text.append(allergyItems[i].allergiesName)
+                text.append(",")
+                text.append(allergyItems[i].AllergyMedi)
+                text.append(",")
+                text.append(allergyItems[i].treatment)
+                text.append(",")
+                text.append(allergyItems[i].sameuser)
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END ALLERGY TABLE
+            
+            //DOCTOR TABLE
+            var doctorItems: [DoctorInfo] = DbmanagerMadicalinfo.shared1.RetrieveDoctorInfo(SameUser: currentUser) ?? [DoctorInfo()]
+            i = doctorItems.count - 1
+            
+            while i >= 0 {
+                text.append("Doctor")
+                text.append(",")
+                text.append(String(doctorItems[i].rowID))
+                text.append(",")
+                text.append(doctorItems[i].name)
+                text.append(",")
+                text.append(doctorItems[i].speciallity)
+                text.append(",")
+                text.append(doctorItems[i].address)
+                text.append(",")
+                text.append(doctorItems[i].contact)
+                text.append(",")
+                text.append(doctorItems[i].sameuser)
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END DOCTOR TABLE
+            
+            //ILLNESS TABLE
+            var illnessItems: [illnessInfo] = DbmanagerMadicalinfo.shared1.RetrieveillnessInfo(SameUser: currentUser) ?? [illnessInfo()]
+            i = illnessItems.count - 1
+            
+            while i >= 0 {
+                text.append("Illnesses")
+                text.append(",")
+                text.append(String(illnessItems[i].rowID))
+                text.append(",")
+                text.append(illnessItems[i].disease)
+                text.append(",")
+                text.append(illnessItems[i].sameuser)
+               
+            
+                text.append("\n")
+                i = i - 1
+                
+            }
+
+            //END ILLNESS TABLE
+            
+            //INSURANCE TABLE
+            var insuranceItems: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: currentUser) ?? [InsuranceInfo()]
+            i = insuranceItems.count - 1
+            
+            while i >= 0 {
+                text.append("InsuranceInformation")
+                text.append(",")
+                text.append(insuranceItems[i].insuranceType)
+                text.append(",")
+                text.append(insuranceItems[i].insuranceName)
+                text.append(",")
+                text.append(String(insuranceItems[i].memberid))
+                text.append(",")
+                text.append(insuranceItems[i].ExpDate)
+                text.append(",")
+                text.append(insuranceItems[i].sameuser)
+               
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END INSURANCE TABLE
+            
+            
+            //REGISTRATION INFO TABLE
+            
+            //END REGISTRATION INFO TABLE
+            
+            //PERSONAL INFO TABLE
+            var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
+            i = personalItems.count - 1
+            
+            while i >= 0 {
+                text.append("PersonalInformation")
+                text.append(",")
+                text.append(personalItems[i].lastname)
+                text.append(",")
+                text.append(personalItems[i].firstname)
+                text.append(",")
+                text.append(personalItems[i].dob)
+                text.append(",")
+                text.append(personalItems[i].gender)
+                text.append(",")
+                text.append(personalItems[i].street)
+                text.append(",")
+                text.append(personalItems[i].city)
+                text.append(",")
+                text.append(personalItems[i].zipcode)
+                text.append(",")
+                text.append(personalItems[i].state)
+                text.append(",")
+                text.append(personalItems[i].sameuser)
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END PERSONAL INFO TABLE
+            
+            
+            //SECURITY TABLE
+            var securityItems: [securityQAndAInfo] = DBFeatures.sharedFeatures.RetrieveSecurityQuestionsAndAnswers(username: currentUser) ?? [securityQAndAInfo()]
+            i = securityItems.count - 1
+            
+            while i >= 0 {
+                text.append("Security")
+                text.append(",")
+                text.append(securityItems[i].secQ1)
+                text.append(",")
+                text.append(securityItems[i].secQ2)
+                text.append(",")
+                text.append(securityItems[i].secQ3)
+                text.append(",")
+                text.append(securityItems[i].secA1)
+                text.append(",")
+                text.append(securityItems[i].secA2)
+                text.append(",")
+                text.append(securityItems[i].secA3)
+             
+               
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END SECURITY TABLE
+            
+            //HEALTH MAINTANANCE TABLE
+            
+            //END HEALTH MAINTANCE TABLE
+            
+            //APPOINTMENT REMINDER TABLE
+            var reminderAppointmentItems: [ReminderInfo] = DBManager.shared.loadReminders(reminderUser: currentUser) ?? [ReminderInfo()]
+            
+            
+            i = reminderAppointmentItems.count - 1
+            
+            //append all items in data to the text array
+            while i >= 0 {
+                text.append("reminder")
+                text.append(",")
+                text.append(String(reminderAppointmentItems[i].reminderId))
+                text.append(",")
+                text.append(reminderAppointmentItems[i].reminderName)
+                text.append(",")
+                text.append(reminderAppointmentItems[i].reminderReason)
+                text.append(",")
+                text.append(reminderAppointmentItems[i].reminderDate)
+                text.append(",")
+                text.append(reminderAppointmentItems[i].reminderUser)
+                
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            //END APPOINTMENT REMINDER TABLE
+            
+            //REMINDER LIST TABLE
+            
+            //END REMINDER LIST TABLE
+            
+            
+            //MEDICATION REMINDER TABLE
             //Retreive all data in table
-            var reminderMedicationItems: [ReminderMedicationInfo] = DBManager.shared.retrieveMedicationReminderTable() ?? [ReminderMedicationInfo()]
+            var reminderMedicationItems: [ReminderMedicationInfo] = DBManager.shared.loadRemindersMedication(reminderUser: currentUser) ?? [ReminderMedicationInfo()]
         
-            var text = [String]()
-            var i = reminderMedicationItems.count - 1
+           
+            i = reminderMedicationItems.count - 1
             
             //append all items in data to the text array
             while i >= 0 {
@@ -160,7 +362,11 @@
                 i = i - 1
                 
             }
-            //End Medication Reminder Table
+            //END MEDICATION REMINDER TABLE
+            
+            //REMINDER MONTHLY TABLE
+            
+            //END REMINDER MONTHLY TABLE
             
             //write all items in the text array to the csv file.
             let fileName = "MyHealthKeeper.csv"
