@@ -452,7 +452,10 @@ class DBFeatures: NSObject {
         return  securityQ
     }   // retrieve Security Questions ends
     
+    
+    
     // function that retrieves Security Questions and Answers from database
+    //Kayla
     func RetrieveSecurityQuestionsAndAnswers(username: String) -> [securityQAndAInfo]!
     {
         var securityQ:[securityQAndAInfo]!
@@ -716,7 +719,45 @@ struct securityQAndAInfo
     }
 }
 
-
+/*
+struct registrationInfo
+{
+    //naming convention of DB field variables field_TableName_FieldName
+    let field_registration_firstName = "pFirstName"
+    let field_registration_lastName = "pLastName"
+    let field_registration_username = "pUsername"
+    let field_registration_password = "pPassword"
+    let field_registration_email = "pEmail"
+    let field_registration_cellPhone = "pCellPhone"
+    
+    var firstName: String!
+    var lastName: String!
+    var username: String!
+    var password: String!
+    var email: String!
+    var cellphone: String!
+    
+    init(firstName:String!, lastName:String!, username:String!, password:String!, email:String!, cellphone:String!) {
+        
+        self.firstName = firstName
+        self.lastName = lastName
+        self.username = username
+        self.password = password
+        self.email = email
+        self.cellphone = cellphone
+        
+    }
+    init(){
+        
+        self.firstName = ""
+        self.lastName = ""
+        self.username = ""
+        self.password = ""
+        self.email = ""
+        self.cellphone = ""
+     
+    }
+}
 
 
 
@@ -818,4 +859,4 @@ struct securityQAndAInfo
 
 
 
-
+*/

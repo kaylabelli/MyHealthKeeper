@@ -98,12 +98,15 @@
                     (action) -> Void in
                     do {
                         self.createFile()
+                    
+                        
                     }
                 }))
                 
                 ExportAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.default, handler: nil))
                 
                 self.present(ExportAlert, animated: true)
+                
             }
             
 
@@ -236,10 +239,6 @@
             //END INSURANCE TABLE
             
             
-            //REGISTRATION INFO TABLE
-            
-            //END REGISTRATION INFO TABLE
-            
             //PERSONAL INFO TABLE
             var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
             i = personalItems.count - 1
@@ -273,7 +272,7 @@
             
             
             //SECURITY TABLE
-            var securityItems: [securityQAndAInfo] = DBFeatures.sharedFeatures.RetrieveSecurityQuestionsAndAnswers(username: currentUser) ?? [securityQAndAInfo()]
+            /*var securityItems: [securityQAndAInfo] = DBFeatures.sharedFeatures.RetrieveSecurityQuestionsAndAnswers(username: currentUser) ?? [securityQAndAInfo()]
             i = securityItems.count - 1
             
             while i >= 0 {
@@ -298,6 +297,7 @@
                 
             }
             //END SECURITY TABLE
+            */
             
             //HEALTH MAINTANANCE TABLE
             
@@ -330,10 +330,6 @@
             }
             //END APPOINTMENT REMINDER TABLE
             
-            //REMINDER LIST TABLE
-            
-            //END REMINDER LIST TABLE
-            
             
             //MEDICATION REMINDER TABLE
             //Retreive all data in table
@@ -365,7 +361,19 @@
             //END MEDICATION REMINDER TABLE
             
             //REMINDER MONTHLY TABLE
+            var montlyReminderItems: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: currentUser) ?? [MonthlyReminderInfo()]
+            i = montlyReminderItems.count - 1
             
+            while i >= 0 {
+                text.append("reminderMonthly")
+                text.append(",")
+                text.append(montlyReminderItems[i].reminderUser)
+                text.append(",")
+                text.append(String(montlyReminderItems[i].reminderStatus))
+                
+                text.append("\n")
+                i = i - 1
+            }
             //END REMINDER MONTHLY TABLE
             
             //write all items in the text array to the csv file.
@@ -387,7 +395,7 @@
             activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
             
             self.present(activityViewController, animated: true, completion: nil)
-
+            
          }
         
 }
