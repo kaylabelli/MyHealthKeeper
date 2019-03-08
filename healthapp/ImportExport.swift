@@ -124,7 +124,88 @@
                 // Then reading it back from the file
                 var inString = ""
                 do {
+                    let defaults:UserDefaults = UserDefaults.standard
+                    var currentUser = ""
+                    if let opened:String = defaults.string(forKey: "userNameKey" )
+                    {
+                        currentUser=opened
+                        print(opened)
+                    }
+                    
                     inString = try String(contentsOf: fileURL)
+                    let textFromFile = inString.components(separatedBy: .newlines)
+                    for i in textFromFile
+                    {
+                        let line = i.components(separatedBy: ",")
+                        switch line[0]
+                        {
+                        case "Allergies":
+                            if (line[2] != "")
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.insertallergiesInformationTable(allergiesName: line[2], allergiesmedi: line[3], allergiestreatment: line[4], SameUser: currentUser)
+                            }
+                            break
+                        case "Doctor":
+                            print("doctor")
+                            if (line[2] != "")
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.insertDoctorInformationTable(DoctorName: line[2], DoctorSpeciallity: line[3], DoctorAddress: line[4], Doctorcontact: line[5], SameUser: currentUser)
+                            }
+                            break
+                        case "Illnesses":
+                            print("ill")
+                            if (line[2] != "")
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.insertillnessesInformationTable(illnesseName: line[2], SameUser: currentUser)
+                            }
+                            break
+                        case "InsuranceInformation":
+                            print("insurance")
+                            var insuranceItems: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: currentUser) ?? [InsuranceInfo()]
+                            if (insuranceItems[0].insuranceName == "")
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: line[1], Insurance_Name: line[2], Member_ID: line[3], Expiration_Date: line[4], SameUser: currentUser)
+                            }
+                            else
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.updateInsuranceInformationTable(Insurance_Type: line[1], Insurance_Name: line[2], Member_ID: line[3], Expiration_Date: line[4], SameUser: currentUser)
+                            }
+                            break
+                        case "PersonalInformation":
+                            print("personal")
+                            var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
+                            if (personalItems[0].lastname == "")
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: line[1], FirstName: line[2], DateOfBirth: line[3], Gender: line[4], Street: line[5], City: line[6], ZipCode: line[7], State: line[8], SameUser: currentUser)
+                            }
+                            else
+                            {
+                                _ = DbmanagerMadicalinfo.shared1.updatePersonalInformationTable(LastName: line[1], FirstName: line[2], DateOfBirth: line[3], Gender: line[4], Street: line[5], City: line[6], ZipCode: line[7], State: line[8], SameUser: currentUser)
+                            }
+                            break
+                        case "reminder":
+                            print("reminder")
+                            if (line[2] != "")
+                            {
+                                _ = DBManager.shared.insertReminderTable(reminderName: line[2], reminderLocation: line[3], reminderReason: line[4], reminderDate: line[5], reminderUser: currentUser)
+                            }
+                            break
+                        case "reminderMonthly":
+                            if (line[2] != "false")
+                            {
+                                _ = DBManager.shared.insertMonthlyReminderTable(reminderStatus: Bool(line[2])!, reminderUser: currentUser)
+                            }
+                            break
+                        case "reminderMedication":
+                            if (line[2] != "")
+                            {
+                                _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
+                            }
+                            break
+                        default:
+                            print("error")
+                        }
+                    }
                 } catch {
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
                 }
@@ -317,6 +398,8 @@
                 text.append(",")
                 text.append(reminderAppointmentItems[i].reminderName)
                 text.append(",")
+                text.append(reminderAppointmentItems[i].reminderLocation)
+                text.append(",")
                 text.append(reminderAppointmentItems[i].reminderReason)
                 text.append(",")
                 text.append(reminderAppointmentItems[i].reminderDate)
@@ -349,6 +432,8 @@
                 text.append(reminderMedicationItems[i].medicationType)
                 text.append(",")
                 text.append(String(reminderMedicationItems[i].medicationTotalAmount))
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].medicationAmount))
                 text.append(",")
                 text.append(reminderMedicationItems[i].dosage)
                 text.append(",")
