@@ -827,7 +827,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             //if user already entered informaton into database
             print(getPesonalInfo.count)
             //Kayla change 1 to 2
-            if(getPesonalInfo.count<2){ //if last name, which is requrened text feild is empty then we should insert
+            if(getPesonalInfo[0].sameuser == ""){ //if last name, which is requrened text feild is empty then we should insert
                 DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: A, FirstName: B, DateOfBirth: C, Gender: D, Street: E, City: F, ZipCode: G, State: H,SameUser: CurrentName)
             }
             else //we update information
@@ -1187,10 +1187,10 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
             var getInsuranceinfo:[InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: CurrentName) ?? [InsuranceInfo()]
             print (getInsuranceinfo.count)
-            if (getInsuranceinfo.count < 1 || getInsuranceinfo[0].insuranceType == "")
+            if (getInsuranceinfo[0].sameuser == "")
             {
                 
-        let error2=DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: Q, Insurance_Name :R, Member_ID :T,Expiration_Date:V,SameUser: CurrentName)
+                let error2=DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: Q, Insurance_Name :R, Member_ID :T,Expiration_Date:V,SameUser: CurrentName)
            
             }
             else
@@ -1254,7 +1254,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             var getmedicalInfo:[MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: CurrentName) ?? [MedicaInfo()]
             //if user already entered informaton into database
             print(getmedicalInfo.count)
-            if(getmedicalInfo.count<1){ //if last name, which is requrened text feild is empty then we should insert
+            if((getmedicalInfo[0].sameuser == "")){ //if last name, which is requrened text feild is empty then we should insert
                 let error1=DbmanagerMadicalinfo.shared1.insertMedicalInformationTable(Family_History:O,Note:P,SameUser: CurrentName)
             }
             else //we update information
@@ -1498,7 +1498,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
          var getInsuranceInfo:[InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: CurrentName) ?? [InsuranceInfo()]
         
-        if (((SaveInsuranceName.text! != getInsuranceInfo[0].insuranceName) || (SaveInsuranceType.text! != getInsuranceInfo[0].insuranceType) || (SaveMemberID.text! != getInsuranceInfo[0].insuranceName) || (SaveExpDate.text! != getInsuranceInfo[0].ExpDate)) && (self.menu_vc.view.isHidden))
+        if (((SaveInsuranceName.text! != getInsuranceInfo[0].insuranceName) || (SaveInsuranceType.text! != getInsuranceInfo[0].insuranceType) || (SaveMemberID.text! != getInsuranceInfo[0].memberid) || (SaveExpDate.text! != getInsuranceInfo[0].ExpDate)) && (self.menu_vc.view.isHidden))
         {
             let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
             Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));

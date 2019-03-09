@@ -140,29 +140,20 @@
                         switch line[0]
                         {
                         case "Allergies":
-                            if (line[2] != "")
-                            {
-                                _ = DbmanagerMadicalinfo.shared1.insertallergiesInformationTable(allergiesName: line[2], allergiesmedi: line[3], allergiestreatment: line[4], SameUser: currentUser)
-                            }
+                            _ = DbmanagerMadicalinfo.shared1.insertallergiesInformationTable(allergiesName: line[2], allergiesmedi: line[3], allergiestreatment: line[4], SameUser: currentUser)
                             break
                         case "Doctor":
                             print("doctor")
-                            if (line[2] != "")
-                            {
-                                _ = DbmanagerMadicalinfo.shared1.insertDoctorInformationTable(DoctorName: line[2], DoctorSpeciallity: line[3], DoctorAddress: line[4], Doctorcontact: line[5], SameUser: currentUser)
-                            }
+                            _ = DbmanagerMadicalinfo.shared1.insertDoctorInformationTable(DoctorName: line[2], DoctorSpeciallity: line[3], DoctorAddress: line[4], Doctorcontact: line[5], SameUser: currentUser)
                             break
                         case "Illnesses":
                             print("ill")
-                            if (line[2] != "")
-                            {
-                                _ = DbmanagerMadicalinfo.shared1.insertillnessesInformationTable(illnesseName: line[2], SameUser: currentUser)
-                            }
+                            _ = DbmanagerMadicalinfo.shared1.insertillnessesInformationTable(illnesseName: line[2], SameUser: currentUser)
                             break
                         case "InsuranceInformation":
                             print("insurance")
                             var insuranceItems: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: currentUser) ?? [InsuranceInfo()]
-                            if (insuranceItems[0].insuranceName == "")
+                            if (insuranceItems[0].sameuser == "")
                             {
                                 _ = DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: line[1], Insurance_Name: line[2], Member_ID: line[3], Expiration_Date: line[4], SameUser: currentUser)
                             }
@@ -174,7 +165,7 @@
                         case "PersonalInformation":
                             print("personal")
                             var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
-                            if (personalItems[0].lastname == "")
+                            if (personalItems[0].sameuser == "")
                             {
                                 _ = DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: line[1], FirstName: line[2], DateOfBirth: line[3], Gender: line[4], Street: line[5], City: line[6], ZipCode: line[7], State: line[8], SameUser: currentUser)
                             }
@@ -185,22 +176,33 @@
                             break
                         case "reminder":
                             print("reminder")
-                            if (line[2] != "")
-                            {
-                                _ = DBManager.shared.insertReminderTable(reminderName: line[2], reminderLocation: line[3], reminderReason: line[4], reminderDate: line[5], reminderUser: currentUser)
-                            }
+                            _ = DBManager.shared.insertReminderTable(reminderName: line[2], reminderLocation: line[3], reminderReason: line[4], reminderDate: line[5], reminderUser: currentUser)
                             break
                         case "reminderMonthly":
-                            if (line[2] != "false")
-                            {
-                                _ = DBManager.shared.insertMonthlyReminderTable(reminderStatus: Bool(line[2])!, reminderUser: currentUser)
-                            }
+                           _ = DBManager.shared.insertMonthlyReminderTable(reminderStatus: Bool(line[2])!, reminderUser: currentUser)
                             break
                         case "reminderMedication":
-                            if (line[2] != "")
-                            {
-                                _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
-                            }
+                            _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
+                            break
+                        case "Medicinelist":
+                            _ = DbmanagerMadicalinfo.shared1.insertmedicationInformationTable(MedName: line[2], dose: line[4], status: line[3], sameuser: currentUser)
+                            break
+                        case "Surgery":
+                            _ = DbmanagerMadicalinfo.shared1.insertsurgeryInformationTable(SurgeryName: line[2], Surgerydate: line[3], SurgeryDescription: line[4], sameuser: currentUser)
+                            break
+                        case "Vaccines":
+                            _ = DbmanagerMadicalinfo.shared1.insertVaccinesInformationTable(vaccinesName: line[2], vaccinesdate: line[3], SameuUser: currentUser)
+                            break
+                        case "MedicalInformation":
+                             var medicalItems: [MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: currentUser) ?? [MedicaInfo()]
+                             if (medicalItems[0].sameuser == "")
+                             {
+                                _ = DbmanagerMadicalinfo.shared1.insertMedicalInformationTable(Family_History: line[1], Note: line[2], SameUser: currentUser)
+                             }
+                             else
+                             {
+                                _ = DbmanagerMadicalinfo.shared1.updatemedicalInformationTable(Family_History: line[1], Note: line[2], SameUser: currentUser)
+                             }
                             break
                         default:
                             print("error")
@@ -381,7 +383,7 @@
             var medicalItems: [MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: currentUser) ?? [MedicaInfo()]
             i = medicalItems.count - 1
             
-            if (medicalItems[0].Family_history != ""){
+            if (medicalItems[0].sameuser != ""){
             while i >= 0 {
                 text.append("MedicalInformation")
                 text.append(",")
@@ -403,7 +405,7 @@
             var insuranceItems: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: currentUser) ?? [InsuranceInfo()]
             i = insuranceItems.count - 1
             
-            if (insuranceItems[0].insuranceType != ""){
+            if (insuranceItems[0].sameuser != ""){
             while i >= 0 {
                 text.append("InsuranceInformation")
                 text.append(",")
@@ -430,7 +432,7 @@
             var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
             i = personalItems.count - 1
             
-            if (personalItems[0].lastname != ""){
+            if (personalItems[0].sameuser != ""){
             while i >= 0 {
                 text.append("PersonalInformation")
                 text.append(",")
