@@ -230,6 +230,7 @@
             var allergyItems: [AllergyInfo] = DbmanagerMadicalinfo.shared1.RetrieveAlleryInfo(SameUser: currentUser) ?? [AllergyInfo()]
             var i = allergyItems.count - 1
             
+            if (allergyItems[0].rowID != -1){
             while i >= 0 {
                 text.append("Allergies")
                 text.append(",")
@@ -247,12 +248,14 @@
                 i = i - 1
                 
             }
+            }
             //END ALLERGY TABLE
             
             //DOCTOR TABLE
             var doctorItems: [DoctorInfo] = DbmanagerMadicalinfo.shared1.RetrieveDoctorInfo(SameUser: currentUser) ?? [DoctorInfo()]
             i = doctorItems.count - 1
             
+            if (doctorItems[0].rowID != -1){
             while i >= 0 {
                 text.append("Doctor")
                 text.append(",")
@@ -272,12 +275,14 @@
                 i = i - 1
                 
             }
+            }
             //END DOCTOR TABLE
             
             //ILLNESS TABLE
             var illnessItems: [illnessInfo] = DbmanagerMadicalinfo.shared1.RetrieveillnessInfo(SameUser: currentUser) ?? [illnessInfo()]
             i = illnessItems.count - 1
             
+            if (illnessItems[i].rowID != -1){
             while i >= 0 {
                 text.append("Illnesses")
                 text.append(",")
@@ -292,13 +297,113 @@
                 i = i - 1
                 
             }
-
+            }
             //END ILLNESS TABLE
+            
+            //MEDICATION TABLE
+            var medicineItems: [medicineInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedListInfo(SameUser: currentUser) ?? [medicineInfo()]
+            i = medicineItems.count - 1
+            
+            if (medicineItems[0].medid != -1){
+            while i >= 0 {
+                text.append("Medicinelist")
+                text.append(",")
+                text.append(String(medicineItems[i].medid))
+                text.append(",")
+                text.append(medicineItems[i].name)
+                text.append(",")
+                text.append(medicineItems[i].status)
+                text.append(",")
+                text.append(medicineItems[i].dose)
+                text.append(",")
+                text.append(medicineItems[i].sameuser)
+                
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            }
+            //END MEDICATION TABLE
+            
+            //SURGERY TALBE
+            var surgeryItems: [SurgeryInfo] = DbmanagerMadicalinfo.shared1.RetrieveSurgeryInfo(SameUser: currentUser) ?? [SurgeryInfo()]
+            i = surgeryItems.count - 1
+            
+            if (surgeryItems[0].rowID != -1){
+            while i >= 0 {
+                text.append("Surgery")
+                text.append(",")
+                text.append(String(surgeryItems[i].rowID))
+                text.append(",")
+                text.append(surgeryItems[i].SurgeryName)
+                text.append(",")
+                text.append(surgeryItems[i].Date)
+                text.append(",")
+                text.append(surgeryItems[i].Description)
+                text.append(",")
+                text.append(surgeryItems[i].sameuser)
+                
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            }
+            //END SURGERY TABLE
+            
+            //VACCINE TABLE
+            var vaccineItems: [VaccineInfo] = DbmanagerMadicalinfo.shared1.RetrieveVaccineInfo(SameUser: currentUser) ?? [VaccineInfo()]
+            i = vaccineItems.count - 1
+            
+            if (vaccineItems[0].rowID != -1){
+            while i >= 0 {
+                text.append("Vaccines")
+                text.append(",")
+                text.append(String(vaccineItems[i].rowID))
+                text.append(",")
+                text.append(vaccineItems[i].vaccinesname)
+                text.append(",")
+                text.append(vaccineItems[i].Date)
+                text.append(",")
+                text.append(vaccineItems[i].sameuser)
+                text.append(",")
+              
+            
+                text.append("\n")
+                i = i - 1
+                
+            }
+            }
+            //END VACCINE TABLE
+            
+            //FAMILY HISTORY TABLE
+            var medicalItems: [MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: currentUser) ?? [MedicaInfo()]
+            i = medicalItems.count - 1
+            
+            if (medicalItems[0].Family_history != ""){
+            while i >= 0 {
+                text.append("MedicalInformation")
+                text.append(",")
+                text.append(String(medicalItems[i].Family_history))
+                text.append(",")
+                text.append(medicalItems[i].Note)
+                text.append(",")
+                text.append(medicalItems[i].sameuser)
+                text.append(",")
+                
+                text.append("\n")
+                i = i - 1
+                
+            }
+            }
+            //END FAMILY HISTORY TABLE
             
             //INSURANCE TABLE
             var insuranceItems: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: currentUser) ?? [InsuranceInfo()]
             i = insuranceItems.count - 1
             
+            if (insuranceItems[0].insuranceType != ""){
             while i >= 0 {
                 text.append("InsuranceInformation")
                 text.append(",")
@@ -317,6 +422,7 @@
                 i = i - 1
                 
             }
+            }
             //END INSURANCE TABLE
             
             
@@ -324,6 +430,7 @@
             var personalItems: [PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: currentUser) ?? [PersonalInfo()]
             i = personalItems.count - 1
             
+            if (personalItems[0].lastname != ""){
             while i >= 0 {
                 text.append("PersonalInformation")
                 text.append(",")
@@ -348,6 +455,7 @@
                 text.append("\n")
                 i = i - 1
                 
+            }
             }
             //END PERSONAL INFO TABLE
             
@@ -387,10 +495,9 @@
             //APPOINTMENT REMINDER TABLE
             var reminderAppointmentItems: [ReminderInfo] = DBManager.shared.loadReminders(reminderUser: currentUser) ?? [ReminderInfo()]
             
-            
             i = reminderAppointmentItems.count - 1
             
-            //append all items in data to the text array
+            if (reminderAppointmentItems[0].reminderId != -1){
             while i >= 0 {
                 text.append("reminder")
                 text.append(",")
@@ -411,6 +518,7 @@
                 i = i - 1
                 
             }
+            }
             //END APPOINTMENT REMINDER TABLE
             
             
@@ -422,6 +530,7 @@
             i = reminderMedicationItems.count - 1
             
             //append all items in data to the text array
+            if (reminderMedicationItems[0].reminderId != -1){
             while i >= 0 {
                 text.append("reminderMedication")
                 text.append(",")
@@ -443,12 +552,14 @@
                 i = i - 1
                 
             }
+            }
             //END MEDICATION REMINDER TABLE
             
             //REMINDER MONTHLY TABLE
             var montlyReminderItems: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: currentUser) ?? [MonthlyReminderInfo()]
             i = montlyReminderItems.count - 1
             
+            if (montlyReminderItems[0].reminderUser != ""){
             while i >= 0 {
                 text.append("reminderMonthly")
                 text.append(",")
@@ -458,6 +569,7 @@
                 
                 text.append("\n")
                 i = i - 1
+            }
             }
             //END REMINDER MONTHLY TABLE
             
