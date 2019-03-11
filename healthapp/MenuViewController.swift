@@ -43,7 +43,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //Kayla Belli - changed some of the menu names in title_arr
-    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Checklist","Print", "Import/Export", "Logout"]
+    let title_arr : [String] = ["Home","Add Medical Data","View Medical Data", "Calendar","View Documents","View Reminders","Upload Document", "Set Reminder", "Health Maintenance", "Checklist","Print", "Import/Export", "Logout"]
     var row1 = ["\t\tPersonal",
                 "\t\tDoctor",
                 "\t\tIllness",
@@ -81,7 +81,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 ExpendedSection.removeAllObjects()
             }
         }
-            else if (section == 4)
+            else if (section == 5)
         {
             if (shouldExp)
             {
@@ -105,45 +105,51 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 3){
+            else if (section == 3)
+            {
+                boardID = "Calendar"
+                let navigation = main.instantiateViewController(withIdentifier: boardID)
+                self.navigationController?.pushViewController(navigation, animated: true)
+            }
+            else if(section == 4){
                 boardID = "Document Summary"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 5){
+            else if(section == 6){
                 boardID = "Upload Document"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 6){
+            else if(section == 7){
                 boardID = "Set Reminder"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
         
                 //Kayla Belli
-            else if(section == 7){
+            else if(section == 8){
                 boardID = "Health Maintenance"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 8){
+            else if(section == 9){
                 boardID = "Checklist"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
                 //end Kayla Belli
-            else if(section == 9){
+            else if(section == 10){
                 boardID = "Print Preview"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 10){
+            else if(section == 11){
                 boardID = "ImportExport"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
-            else if(section == 11){
+            else if(section == 12){
                 boardID = "Sign In"
                 let navigation = main.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
@@ -164,7 +170,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             {
                 return row1.count
             }
-            else if (section == 4)
+            else if (section == 5)
             {
                 return row2.count
             }
@@ -228,7 +234,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             cell.addSubview(image)
         }
-        else if (indexPath.section == 4)
+        else if (indexPath.section == 5)
         {
             cell.textLabel?.text = row2[indexPath.row]
             var image = UIImageView()
@@ -283,7 +289,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 boardID = "Personal Info"
             }
         }
-        else if (indexPath.section == 4)
+        else if (indexPath.section == 5)
         {
             switch indexPath.row {
             case 0: //For "one"
@@ -348,35 +354,39 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else if (section == 4)
         {
-            image.image = UIImage(named: "notification")
+            image.image = UIImage(named: "ekg")
         }
         else if (section == 5)
         {
-            image.image = UIImage(named: "camera")
+            image.image = UIImage(named: "notification")
         }
         else if (section == 6)
+        {
+            image.image = UIImage(named: "camera")
+        }
+        else if (section == 7)
         {
             image.image = UIImage(named: "clock")
         }
             //Kayla belli
-        else if (section == 7)
-        {
-            image.image = UIImage(named: "history")
-        }
         else if (section == 8)
         {
             image.image = UIImage(named: "history")
         }
-            //end Kayla Belli
         else if (section == 9)
+        {
+            image.image = UIImage(named: "history")
+        }
+            //end Kayla Belli
+        else if (section == 10)
         {
             image.image = UIImage(named: "print")
         }
-        else if (section == 10)
+        else if (section == 11)
         {
             image.image = UIImage(named: "logout")
         }
-        else if (section == 11)
+        else if (section == 12)
         {
             image.image = UIImage(named: "logout")
         }
