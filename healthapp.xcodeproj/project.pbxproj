@@ -10,6 +10,7 @@
 		15355A942219F6C300CFFD9A /* HealthMaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */; };
 		15B0F1F42221AE0F00C57FD3 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */; };
 		15C523422236DCA500BD48C9 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C523412236DCA500BD48C9 /* calendarViewController.swift */; };
+		15C523442236F6B500BD48C9 /* calendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */; };
 		15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */; };
 		15D59189220E77C900C10A67 /* ReminderMedicationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */; };
 		6C1502FC1FB29D460058A41B /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */; };
@@ -132,6 +133,7 @@
 		15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMaintenanceCell.swift; sourceTree = "<group>"; };
 		15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
 		15C523412236DCA500BD48C9 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
+		15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationEditController.swift; sourceTree = "<group>"; };
 		15D59188220E77C900C10A67 /* ReminderMedicationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationTableViewController.swift; sourceTree = "<group>"; };
 		6C1502FB1FB29D460058A41B /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				AE7703AE1F75BE4F004C2482 /* LaunchScreen.storyboard */,
 				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
 				15C523412236DCA500BD48C9 /* calendarViewController.swift */,
+				15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */,
 				6CA09A741FACEC4C00CEF949 /* MenuTableViewCell.swift */,
 				6CA09A721FACEC1300CEF949 /* MenuViewController.swift */,
 				15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */,
@@ -578,6 +581,7 @@
 				FD3C557A221128C000034FAC /* Checklist.swift in Sources */,
 				15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */,
 				9B7B77FF1F92D7D9007E0F9E /* DocumentViewController.swift in Sources */,
+				15C523442236F6B500BD48C9 /* calendarCollectionViewCell.swift in Sources */,
 				6C1502FC1FB29D460058A41B /* TextInputTableViewCell.swift in Sources */,
 				6CD787351FC8F3500056D523 /* EditDoctorViewController.swift in Sources */,
 				6C18DADF1F83118600D0D1FF /* FMDatabasePool.m in Sources */,
