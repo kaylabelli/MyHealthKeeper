@@ -8,7 +8,7 @@
 import Foundation
 
 import UIKit
-
+//Kyle start 3/11/19
 struct cellData {
     var opened = Bool()
     var title = String()
@@ -18,10 +18,10 @@ struct cellData {
 class checklist: UITableViewController{
     
     var tableViewData = [cellData]()
-    
+    let checklistItems = UIStoryboard(name: "ChecklistItems", bundle: nil)
     override func viewDidLoad() {
         tableViewData = [cellData(opened: false, title: "Medications/Pharmacy", sectionData: ["Is your medication list up to date?", "When are you due for your refills?", "Do you want to set a reminder to call your pharmacy?"]),
-                         cellData(opened: false, title: "Excersize", sectionData: ["Please talk to your physician about any potential exercise restrictions.", "Information regarding excersize:"]),
+                         cellData(opened: false, title: "Exercise", sectionData: ["Please talk to your physician about any potential exercise restrictions.", "Information regarding excersize:"]),
                          cellData(opened: false, title: "Insurance", sectionData: ["When does your insurance expire?", "Do you want to set a reminder to renew insurance?"]),
                          cellData(opened: false, title: "Immunizations", sectionData: ["When was your last flu shot?", "Do you want to set a reminder to get a flu shot?"]),
                          cellData(opened: false, title: "Depression/Anxiety", sectionData: ["Patients with chronic medical conditions are at higher risk of having depression and/or anxiety. Please get screened routinely for depression and anxiety and speak to your physician if you are feeling anxious or sad.", "Last screen for depression/anxiety:"]),
@@ -52,10 +52,14 @@ class checklist: UITableViewController{
         if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return UITableViewCell()}
             cell.textLabel?.text = tableViewData[indexPath.section].title
+            cell.textLabel?.numberOfLines = 0
+
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else {return UITableViewCell()}
             cell.textLabel?.text = tableViewData[indexPath.section].sectionData[dataIndex]
+            cell.textLabel?.numberOfLines = 0
+
             return cell
         }
     }
@@ -71,7 +75,57 @@ class checklist: UITableViewController{
             tableView.reloadSections(sections, with: .none)
         }
         }
-}
+        if tableViewData[indexPath.section].title == "Medications/Pharmacy"
+        {
+            let boardID = "MedicationsPharmacy"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Exercise"
+        {
+            let boardID = "Exercise"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Insurance"
+        {
+            let boardID = "Insurance"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Depression/Anxiety"
+        {
+            let boardID = "DepressionAnxiety"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Advanced Directive"
+        {
+            let boardID = "AdvancedDirective"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "High Cholesterol/Diabetes"
+        {
+            let boardID = "HighCholesterolDiabetes"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Do You Smoke?"
+        {
+            let boardID = "Smoker"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+        if tableViewData[indexPath.section].title == "Cancer Screening"
+        {
+            let boardID = "CancerScreening"
+            let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
+            self.navigationController?.pushViewController(navigation, animated: true)
+        }
+    }
+    
+    
 }
     /*
     let sections = ["Congenital Heart Disease", "Kidney Disease", "Sickle Cell Disease", "Diabetes", "HIV/AIDS"]

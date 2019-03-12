@@ -68,6 +68,7 @@
 		EF203E6A22124DD300E58D81 /* HealthMaintenance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF203E6922124DD300E58D81 /* HealthMaintenance.swift */; };
 		EF86A7BF222834B9007D5B6B /* ImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF86A7BE222834B9007D5B6B /* ImportExport.swift */; };
 		FD3C557A221128C000034FAC /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3C5574221128C000034FAC /* Checklist.swift */; };
+		FD78EC232237596F00689700 /* ChecklistItems.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD78EC222237596F00689700 /* ChecklistItems.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		EF203E6922124DD300E58D81 /* HealthMaintenance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMaintenance.swift; sourceTree = "<group>"; };
 		EF86A7BE222834B9007D5B6B /* ImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportExport.swift; sourceTree = "<group>"; };
 		FD3C5574221128C000034FAC /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		FD78EC222237596F00689700 /* ChecklistItems.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChecklistItems.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +287,8 @@
 			isa = PBXGroup;
 			children = (
 				FD3C5574221128C000034FAC /* Checklist.swift */,
+				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
+				FD78EC222237596F00689700 /* ChecklistItems.storyboard */,
 				EF203E6922124DD300E58D81 /* HealthMaintenance.swift */,
 				15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */,
 				15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */,
@@ -328,7 +332,6 @@
 				EF86A7BE222834B9007D5B6B /* ImportExport.swift */,
 				AE7703B11F75BE4F004C2482 /* Info.plist */,
 				AE7703AE1F75BE4F004C2482 /* LaunchScreen.storyboard */,
-				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
 				15C523412236DCA500BD48C9 /* calendarViewController.swift */,
 				15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */,
 				6CA09A741FACEC4C00CEF949 /* MenuTableViewCell.swift */,
@@ -529,6 +532,7 @@
 				AE7703AD1F75BE4F004C2482 /* Assets.xcassets in Resources */,
 				6C18DAE31F83118600D0D1FF /* Base.lproj in Resources */,
 				AE7703AB1F75BE4F004C2482 /* Main.storyboard in Resources */,
+				FD78EC232237596F00689700 /* ChecklistItems.storyboard in Resources */,
 				9B3DB0281FCE22590031786E /* sqlcipher in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
