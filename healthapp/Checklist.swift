@@ -60,6 +60,7 @@ class checklist: UITableViewController{
         }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
         if tableViewData[indexPath.section].opened == true {
             tableViewData[indexPath.section].opened = false
             let sections = IndexSet.init(integer: indexPath.section)
@@ -68,6 +69,7 @@ class checklist: UITableViewController{
             tableViewData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
+        }
         }
 }
 }
