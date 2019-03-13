@@ -15,8 +15,15 @@ struct cellData {
     var sectionData = [String]()
 }
 
+var tableViewData = [cellData]()
+
+
 class checklist: UITableViewController{
-    var tableViewData = [cellData]()
+    
+    @IBOutlet weak var actionButton: UIButton!
+    var myIndex = 0
+    
+    
     override func viewDidLoad() {
         tableViewData = [cellData(opened: false, title: "Medications/Pharmacy", sectionData: ["Is your medication list up to date?", "When are you due for your refills?", "Do you want to set a reminder to call your pharmacy?"]),
                          cellData(opened: false, title: "Exercise", sectionData: ["Please talk to your physician about any potential exercise restrictions.", "Information regarding excersize:"]),
@@ -32,14 +39,9 @@ class checklist: UITableViewController{
                          cellData(opened: false, title: "Colon Cancer", sectionData: ["Last Colonoscopy and Result"])]
     }
     
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewData.count
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,7 +51,7 @@ class checklist: UITableViewController{
             return 1
         }
     }
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dataIndex = indexPath.row - 1
         if indexPath.row == 0 {
@@ -65,7 +67,20 @@ class checklist: UITableViewController{
 
             return cell
         }
+    }*/
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = tableViewData[indexPath.section].title
+        return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        myIndex = indexPath.row
+        performSegue(withIdentifier: "segue", sender: self)
+    }
+    
+    /*
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
         if tableViewData[indexPath.section].opened == true {
@@ -77,8 +92,9 @@ class checklist: UITableViewController{
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
             }
-                    }
-                    }
+        }
+    }
+ */
     /*
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0
