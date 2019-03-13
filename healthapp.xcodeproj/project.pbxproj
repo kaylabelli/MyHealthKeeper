@@ -287,12 +287,12 @@
 			isa = PBXGroup;
 			children = (
 				FD3C5574221128C000034FAC /* Checklist.swift */,
-				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
 				FD78EC222237596F00689700 /* ChecklistItems.storyboard */,
 				EF203E6922124DD300E58D81 /* HealthMaintenance.swift */,
 				15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */,
 				15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */,
 				6CF73BF51F998384009F36FC /* AllergiesViewController.swift */,
+				AE7703A91F75BE4F004C2482 /* Main.storyboard */,
 				AE7703A51F75BE4F004C2482 /* AppDelegate.swift */,
 				6C18DADD1F83118600D0D1FF /* Assets.xcassets */,
 				6C18DAD91F83118500D0D1FF /* Base.lproj */,

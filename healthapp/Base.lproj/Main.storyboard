@@ -5331,43 +5331,6 @@
             </objects>
             <point key="canvasLocation" x="9148.125" y="-121.47887323943662"/>
         </scene>
-        <!--Checklist-->
-        <scene sceneID="4Xw-p9-7jf">
-            <objects>
-                <viewController storyboardIdentifier="Checklist" id="mTB-w0-KwU" customClass="checklist" customModule="healthapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KRq-5B-Ols">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checklist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsS-Nq-8TJ" userLabel="Checklist">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="PuQ-dy-FJw">
-                                <rect key="frame" x="0.0" y="115.5" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PuQ-dy-FJw" id="5aH-16-MFQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <sections/>
-                        <connections>
-                            <outlet property="dataSource" destination="mTB-w0-KwU" id="AGh-Lk-yxK"/>
-                            <outlet property="delegate" destination="mTB-w0-KwU" id="9KQ-Zw-EVz"/>
-                        </connections>
-                    </tableView>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WPl-ao-BYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9832.5" y="-101.40845070422536"/>
-        </scene>
         <!--Import Export-->
         <scene sceneID="qfN-Yp-bfC">
             <objects>

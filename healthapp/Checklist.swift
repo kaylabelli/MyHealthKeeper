@@ -16,20 +16,23 @@ struct cellData {
 }
 
 class checklist: UITableViewController{
-    
     var tableViewData = [cellData]()
-    let checklistItems = UIStoryboard(name: "ChecklistItems", bundle: nil)
     override func viewDidLoad() {
         tableViewData = [cellData(opened: false, title: "Medications/Pharmacy", sectionData: ["Is your medication list up to date?", "When are you due for your refills?", "Do you want to set a reminder to call your pharmacy?"]),
                          cellData(opened: false, title: "Exercise", sectionData: ["Please talk to your physician about any potential exercise restrictions.", "Information regarding excersize:"]),
                          cellData(opened: false, title: "Insurance", sectionData: ["When does your insurance expire?", "Do you want to set a reminder to renew insurance?"]),
                          cellData(opened: false, title: "Immunizations", sectionData: ["When was your last flu shot?", "Do you want to set a reminder to get a flu shot?"]),
                          cellData(opened: false, title: "Depression/Anxiety", sectionData: ["Patients with chronic medical conditions are at higher risk of having depression and/or anxiety. Please get screened routinely for depression and anxiety and speak to your physician if you are feeling anxious or sad.", "Last screen for depression/anxiety:"]),
-                         cellData(opened: false, title: "Advancecd Directive", sectionData: ["Please fill out advanced directive.", "Do you want to set a reminder to fill out advanced directives?"]),
+                         cellData(opened: false, title: "Advanced Directive", sectionData: ["Please fill out advanced directive.", "Do you want to set a reminder to fill out advanced directives?"]),
                          cellData(opened: false, title: "High Cholesterol/Diabetes", sectionData: ["Please speak to your doctor regarding how often you should get bloodwork to screen for high cholesterol and diabetes.", "Last cholesterol panel/diabetic profile", "Result of cholesterol panel", "Result of the diabetic profile"]),
                          cellData(opened: false, title: "Do You Smoke?", sectionData: ["If so are you interested in quitting?", "Information on quitting smoking"]),
-                         cellData(opened: false, title: "Cancer Screening", sectionData: ["Please speak to your primary care doctor to find out which of the following tests would apply to you and how often you should be screened for them.", "Breast Cancer", "Last Mammogram and Result", "Do you want to set a reminder to schedule a mammogram?", "Cervical Cancer", "Last pap smear and result", "Colon Cancer", "Last Colonoscopy and result"])]
+                         cellData(opened: false, title: "Cancer Screening", sectionData: ["Please speak to your primary care doctor to find out which of the following tests would apply to you and how often you should be screened for them."]),
+                         cellData(opened: false, title: "Breast Cancer", sectionData: ["Last Mammogram and Result", "Do you want to set a reminder to schedule a mammogram?"]),
+                         cellData(opened: false, title: "Cervical Cancer", sectionData: ["Last Pap Smear and Result"]),
+                         cellData(opened: false, title: "Colon Cancer", sectionData: ["Last Colonoscopy and Result"])]
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,8 +76,29 @@ class checklist: UITableViewController{
             tableViewData[indexPath.section].opened = true
             let sections = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(sections, with: .none)
+            }
+                    }
+                    }
+    /*
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0
+        {
+            if tableViewData[indexPath.section].opened == true {
+                return 250
+            } else {
+                return 50
+            }
         }
-        }
+        return 50
+    }
+ */
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return tableViewData[section].title
+    }
+    
+    
+}
+        /*
         if tableViewData[indexPath.section].title == "Medications/Pharmacy"
         {
             let boardID = "MedicationsPharmacy"
@@ -122,11 +146,10 @@ class checklist: UITableViewController{
             let boardID = "CancerScreening"
             let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
             self.navigationController?.pushViewController(navigation, animated: true)
-        }
-    }
+        }*/
     
     
-}
+
     /*
     let sections = ["Congenital Heart Disease", "Kidney Disease", "Sickle Cell Disease", "Diabetes", "HIV/AIDS"]
     let heart = ["Heart Checkup", "Colonoscopy", "Dietary Guidelines"]
