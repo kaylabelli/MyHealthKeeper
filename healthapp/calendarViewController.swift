@@ -25,7 +25,7 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     let Months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    let numOfDays = [38, 35, 38, 37, 38, 37, 38, 37, 38, 37, 38, 37]
+    let numOfDays = [38, 35, 38, 37, 38, 37, 38, 38, 37, 38, 37, 38]
     
     @IBOutlet weak var calendar: UICollectionView!
     @IBOutlet weak var currentCalendarLabel: UILabel!

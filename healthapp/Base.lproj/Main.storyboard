@@ -6039,7 +6039,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-6N-QxN">
-                                <rect key="frame" x="16" y="140" width="288" height="278"/>
+                                <rect key="frame" x="16" y="140" width="288" height="328"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="MQm-Wd-sE7">
                                     <size key="itemSize" width="40" height="40"/>
@@ -6084,7 +6084,7 @@
                         <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="K5J-qO-fAs" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="76" id="AmT-6e-bFm"/>
-                            <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="mRB-6N-QxN" secondAttribute="bottom" constant="150" id="Bug-LW-oJZ"/>
+                            <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="mRB-6N-QxN" secondAttribute="bottom" constant="100" id="Bug-LW-oJZ"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="trailing" secondItem="BRT-1i-yqx" secondAttribute="trailingMargin" id="D4U-c5-MQo"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="top" secondItem="K5J-qO-fAs" secondAttribute="bottom" constant="8" id="DXj-Za-tcS"/>
                             <constraint firstItem="50P-bJ-HnL" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="20" id="FI5-1t-Z6d"/>
