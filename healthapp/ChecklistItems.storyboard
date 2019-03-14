@@ -34,7 +34,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to Set Reminder"/>
                                 <connections>
-                                    <action selector="goToSetReminder:" destination="1HS-6s-dIv" eventType="touchUpInside" id="ZgP-aI-MkW"/>
+                                    <action selector="goToSetReminder:" destination="1HS-6s-dIv" eventType="touchUpInside" id="WRL-ev-Kco"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C8-o5-caD" userLabel="Info Label">
@@ -91,7 +91,9 @@
                         <viewLayoutGuide key="safeArea" id="HN6-YY-27b"/>
                     </view>
                     <connections>
+                        <outlet property="goToSetReminder" destination="SfH-e7-V9J" id="B2C-Yx-BGc"/>
                         <outlet property="inputTextField" destination="76w-Iy-ayZ" id="uBC-44-7qM"/>
+                        <outlet property="reminderLabel" destination="puA-ex-ycc" id="JwQ-YI-31r"/>
                         <outlet property="titleView" destination="gat-ds-o1Y" id="NAC-QG-P1X"/>
                     </connections>
                 </viewController>

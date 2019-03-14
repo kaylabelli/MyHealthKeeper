@@ -10,15 +10,17 @@ import UIKit
 class checklistTargetViewController: UIViewController {
     
     let main = UIStoryboard(name: "Main", bundle: nil)
-    
+    var boardID: String = ""
+    var linkURL: String = ""
+
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var inputTextField: UILabel!
-    @IBAction func linkButton(_ sender: Any) {
-        guard let url = URL(string: linkURL) else { return }
-        UIApplication.shared.open(url)
-    }
+    @IBOutlet weak var reminderLabel: UILabel!
+    @IBOutlet weak var goToSetReminder: UIButton!
     
-    var linkURL:String = "Printed off string"
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +28,22 @@ class checklistTargetViewController: UIViewController {
         titleView.text = tableViewData[myIndex].title
         inputTextField.text = tableViewData[myIndex].field	
         linkURL = tableViewData[myIndex].link
-        print(linkURL)
-
+        
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func linkButton(_ sender: Any) {
+        guard let url = URL(string: linkURL) else { return }
+        UIApplication.shared.open(url)
     }
-    */
+    
+    
+    @IBAction func goToSetReminder(_ sender: Any) {
+        boardID = "Set Reminder"
+        let navigation = main.instantiateViewController(withIdentifier: boardID)
+        self.navigationController?.pushViewController(navigation, animated: true)
+    }
+    
+    
 
 }
