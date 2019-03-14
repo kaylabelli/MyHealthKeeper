@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-let date = Date()
+let dateCalendar = Date()
 let currentCalendar = Calendar.current
 
-var day = currentCalendar.component(.day, from: date)
-var weekday = currentCalendar.component(.weekday, from: date)
-var month = currentCalendar.component(.month, from: date) - 1
-var year = currentCalendar.component(.year, from: date)
+var day = currentCalendar.component(.day, from: dateCalendar)
+var weekday = currentCalendar.component(.weekday, from: dateCalendar)
+var month = currentCalendar.component(.month, from: dateCalendar) - 1
+var year = currentCalendar.component(.year, from: dateCalendar)
 
 class calendarViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
 {
@@ -27,6 +27,9 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     let dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     let numOfDays = [38, 35, 38, 37, 38, 37, 38, 38, 37, 38, 37, 38]
     
+    var monthDates: [String] = []
+    var monthReminders: [Bool] = []
+    
     @IBOutlet weak var calendar: UICollectionView!
     @IBOutlet weak var currentCalendarLabel: UILabel!
     
@@ -37,12 +40,21 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     var direction = 0
     var positionIndex = 0
     
+    var uName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        day = currentCalendar.component(.day, from: date)
-        weekday = currentCalendar.component(.weekday, from: date)
-        month = currentCalendar.component(.month, from: date) - 1
-        year = currentCalendar.component(.year, from: date)
+        
+        let defaults:UserDefaults = UserDefaults.standard
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            uName=opened
+        }
+        
+        day = currentCalendar.component(.day, from: dateCalendar)
+        weekday = currentCalendar.component(.weekday, from: dateCalendar)
+        month = currentCalendar.component(.month, from: dateCalendar) - 1
+        year = currentCalendar.component(.year, from: dateCalendar)
         
         currentMonth = Months[month]
         
@@ -54,6 +66,30 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             weekday = 7
         }
         
+        let totalDays = numOfDays[month] - 6
+        var i = 1
+        while i != totalDays
+        {
+            var monthInDateFormat = "\(month + 1)"
+            switch month
+            {
+            case 0...8:
+                monthInDateFormat = "0\(monthInDateFormat)"
+            default:
+                break
+            }
+            var dayInDateFormat = "\(i)"
+            switch i
+            {
+            case 1...9:
+                dayInDateFormat = "0\(dayInDateFormat)"
+            default:
+                break
+            }
+            monthDates.append("\(monthInDateFormat)-\(dayInDateFormat)-\(year)")
+            
+            i += 1
+        }
     }
     
     
@@ -68,6 +104,32 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             currentMonth = Months[month]
             currentCalendarLabel.text = "\(currentMonth) \(year)"
             calendar.reloadData()
+            monthDates.removeAll()
+            monthReminders.removeAll()
+            let totalDays = numOfDays[month] - 6
+            var i = 1
+            while i != totalDays
+            {
+                var monthInDateFormat = "\(month + 1)"
+                switch month
+                {
+                case 0...8:
+                    monthInDateFormat = "0\(monthInDateFormat)"
+                default:
+                    break
+                }
+                var dayInDateFormat = "\(i)"
+                switch i
+                {
+                case 1...9:
+                    dayInDateFormat = "0\(dayInDateFormat)"
+                default:
+                    break
+                }
+                monthDates.append("\(monthInDateFormat)-\(dayInDateFormat)-\(year)")
+                
+                i += 1
+            }
         default:
             month -= 1
             direction = -1
@@ -76,6 +138,32 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             currentMonth = Months[month]
             currentCalendarLabel.text = "\(currentMonth) \(year)"
             calendar.reloadData()
+            monthDates.removeAll()
+            monthReminders.removeAll()
+            let totalDays = numOfDays[month] - 6
+            var i = 1
+            while i != totalDays
+            {
+                var monthInDateFormat = "\(month + 1)"
+                switch month
+                {
+                case 0...8:
+                    monthInDateFormat = "0\(monthInDateFormat)"
+                default:
+                    break
+                }
+                var dayInDateFormat = "\(i)"
+                switch i
+                {
+                case 1...9:
+                    dayInDateFormat = "0\(dayInDateFormat)"
+                default:
+                    break
+                }
+                monthDates.append("\(monthInDateFormat)-\(dayInDateFormat)-\(year)")
+                
+                i += 1
+            }
         }
     }
     
@@ -91,6 +179,32 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             currentMonth = Months[month]
             currentCalendarLabel.text = "\(currentMonth) \(year)"
             calendar.reloadData()
+            monthDates.removeAll()
+            monthReminders.removeAll()
+            let totalDays = numOfDays[month] - 6
+            var i = 1
+            while i != totalDays
+            {
+                var monthInDateFormat = "\(month + 1)"
+                switch month
+                {
+                case 0...8:
+                    monthInDateFormat = "0\(monthInDateFormat)"
+                default:
+                    break
+                }
+                var dayInDateFormat = "\(i)"
+                switch i
+                {
+                case 1...9:
+                    dayInDateFormat = "0\(dayInDateFormat)"
+                default:
+                    break
+                }
+                monthDates.append("\(monthInDateFormat)-\(dayInDateFormat)-\(year)")
+                
+                i += 1
+            }
         default:
             direction = 1
             GetStartDateDayPosition()
@@ -100,6 +214,32 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             currentMonth = Months[month]
             currentCalendarLabel.text = "\(currentMonth) \(year)"
             calendar.reloadData()
+            monthDates.removeAll()
+            monthReminders.removeAll()
+            let totalDays = numOfDays[month] - 6
+            var i = 1
+            while i != totalDays
+            {
+                var monthInDateFormat = "\(month + 1)"
+                switch month
+                {
+                case 0...8:
+                    monthInDateFormat = "0\(monthInDateFormat)"
+                default:
+                    break
+                }
+                var dayInDateFormat = "\(i)"
+                switch i
+                {
+                case 1...9:
+                    dayInDateFormat = "0\(dayInDateFormat)"
+                default:
+                    break
+                }
+                monthDates.append("\(monthInDateFormat)-\(dayInDateFormat)-\(year)")
+                
+                i += 1
+            }
         }
     }
     
@@ -152,6 +292,7 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         cell.backgroundColor = UIColor.clear
         cell.Date.textColor = UIColor.black
+        cell.Date.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         if (cell.isHidden)
         {
             cell.isHidden = false
@@ -165,10 +306,55 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             switch direction{
             case 0:
                 cell.Date.text = String(indexPath.row - 6 - numOfEmpty)
+                if indexPath.row - 6 - numOfEmpty > 0
+                {
+                    var hasReminder: Bool = false
+                    let appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - numOfEmpty - 1])
+                    for i in appointmentReminders
+                    {
+                        if i.reminderName != ""
+                        {
+                            cell.Date.textColor = UIColor.red
+                            cell.Date.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize + 2)
+                            hasReminder = true
+                        }
+                    }
+                    monthReminders.append(hasReminder)
+                }
             case 1...:
                 cell.Date.text = String(indexPath.row - 6 - nextNumofEmpty)
+                if indexPath.row - 6 - nextNumofEmpty > 0
+                {
+                    var hasReminder: Bool = false
+                    let appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - nextNumofEmpty - 1])
+                    for i in appointmentReminders
+                    {
+                        if i.reminderName != ""
+                        {
+                            cell.Date.textColor = UIColor.red
+                            cell.Date.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize + 2)
+                            hasReminder = true
+                        }
+                    }
+                    monthReminders.append(hasReminder)
+                }
             case -1:
                 cell.Date.text = String(indexPath.row - 6 - previousNumOfEmpty)
+                if indexPath.row - 6 - previousNumOfEmpty > 0
+                {
+                    var hasReminder: Bool = false
+                    let appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - previousNumOfEmpty - 1])
+                    for i in appointmentReminders
+                    {
+                        if i.reminderName != ""
+                        {
+                            cell.Date.textColor = UIColor.red
+                            cell.Date.font = UIFont.boldSystemFont(ofSize: UIFont.systemFontSize + 2)
+                            hasReminder = true
+                        }
+                    }
+                    monthReminders.append(hasReminder)
+                }
             default:
                 fatalError()
             }
@@ -182,7 +368,7 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
         }
         
-        if currentMonth == Months[currentCalendar.component(.month, from: date) - 1] && year == currentCalendar.component(.year, from: date) && indexPath.row - 6 == day + numOfEmpty{
+        if currentMonth == Months[currentCalendar.component(.month, from: dateCalendar) - 1] && year == currentCalendar.component(.year, from: dateCalendar) && indexPath.row - 6 == day + numOfEmpty{
             cell.backgroundColor = UIColor.blue
         }
         
@@ -190,11 +376,85 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let main = UIStoryboard(name: "Main", bundle: nil)
         if (indexPath.row > 6)
         {
-            let Alert1 = UIAlertController(title: "\(indexPath.row - 6 - numOfEmpty)", message: "Cell selected", preferredStyle: UIAlertController.Style.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-            self.present(Alert1,animated: true, completion:nil)
+            switch direction{
+            case 0:
+                if monthReminders[indexPath.row - 6 - numOfEmpty - 1]
+                {
+                    let boardID = "Reminder Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else
+                {
+                    let Alert = UIAlertController(title: "No Reminders", message: "\(monthDates[indexPath.row - 6 - numOfEmpty - 1])", preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Set Reminder", style:UIAlertAction.Style.default, handler: {
+                        (action) -> Void in
+                        do {
+                            let boardID = "Set Reminder"
+                            let navigation = main.instantiateViewController(withIdentifier: boardID)
+                            self.navigationController?.pushViewController(navigation, animated: true)
+                        }
+                    }))
+                    
+                    Alert.addAction(UIAlertAction(title:"Back", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
+                }
+            case 1...:
+                if monthReminders[indexPath.row - 6 - nextNumofEmpty - 1]
+                {
+                    let boardID = "Reminder Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else
+                {
+                    let Alert = UIAlertController(title: "No Reminders", message: "\(monthDates[indexPath.row - 6 - nextNumofEmpty - 1])", preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Set Reminder", style:UIAlertAction.Style.default, handler: {
+                        (action) -> Void in
+                        do {
+                            let boardID = "Set Reminder"
+                            let navigation = main.instantiateViewController(withIdentifier: boardID)
+                            self.navigationController?.pushViewController(navigation, animated: true)
+                        }
+                    }))
+                    
+                    Alert.addAction(UIAlertAction(title:"Back", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
+                }
+            case -1:
+                if monthReminders[indexPath.row - 6 - previousNumOfEmpty - 1]
+                {
+                    let boardID = "Reminder Summary"
+                    let navigation = main.instantiateViewController(withIdentifier: boardID)
+                    self.navigationController?.pushViewController(navigation, animated: true)
+                }
+                else
+                {
+                    let Alert = UIAlertController(title: "No Reminders", message: "\(monthDates[indexPath.row - 6 - previousNumOfEmpty - 1])", preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Set Reminder", style:UIAlertAction.Style.default, handler: {
+                        (action) -> Void in
+                        do {
+                            let boardID = "Set Reminder"
+                            let navigation = main.instantiateViewController(withIdentifier: boardID)
+                            self.navigationController?.pushViewController(navigation, animated: true)
+                        }
+                    }))
+                    
+                    Alert.addAction(UIAlertAction(title:"Back", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
+                }
+            default:
+                fatalError()
+            }
         }
     }
 }
