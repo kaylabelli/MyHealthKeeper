@@ -8,15 +8,25 @@
 import UIKit
 
 class checklistTargetViewController: UIViewController {
+    
+    let main = UIStoryboard(name: "Main", bundle: nil)
+    
     @IBOutlet weak var titleView: UILabel!
-    @IBOutlet weak var inputTextField: UITextField!
-    @IBOutlet weak var goToSetReminder: UIButton!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var inputTextField: UILabel!
+    @IBAction func linkButton(_ sender: Any) {
+        guard let url = URL(string: linkURL) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    var linkURL:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        titleView.text = tableViewData[myIndex].title
+        inputTextField.text = tableViewData[myIndex].field	
+        linkURL = tableViewData[myIndex].link
+        print(linkURL)
 
         // Do any additional setup after loading the view.
     }
