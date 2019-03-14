@@ -18,7 +18,7 @@ class checklistTargetViewController: UIViewController {
         UIApplication.shared.open(url)
     }
     
-    var linkURL:String = ""
+    var linkURL:String = "Printed off string"
     
     override func viewDidLoad() {
         super.viewDidLoad()

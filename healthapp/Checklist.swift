@@ -35,14 +35,14 @@ class checklist: UITableViewController{
     override func viewDidLoad() {
        
     }
-    
+    /*
     override func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewData.count
         
     }
-    
+    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return tableViewData.count
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,7 +64,7 @@ class checklist: UITableViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = tableViewData[indexPath.section].title
+        cell.textLabel?.text = tableViewData[indexPath.row].title
         return cell
     }
     
@@ -101,10 +101,11 @@ class checklist: UITableViewController{
         return 50
     }
  */
+    /*
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return tableViewData[section].title
     }
-    
+    */
     
 }
         /*
