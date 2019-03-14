@@ -17,17 +17,53 @@ class checklistTargetViewController: UIViewController {
     @IBOutlet weak var inputTextField: UILabel!
     @IBOutlet weak var reminderLabel: UILabel!
     @IBOutlet weak var goToSetReminder: UIButton!
-    
-    
-    
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var yesNoLabel: UILabel!
+    @IBOutlet weak var dateField: UITextField!
+
+    @IBOutlet weak var yesNoSwitch: UISwitch!
+    @IBOutlet weak var linkLabel: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         titleView.text = tableViewData[myIndex].title
-        inputTextField.text = tableViewData[myIndex].field	
-        linkURL = tableViewData[myIndex].link
+        if tableViewData[myIndex].field != ""
+        {
+            inputTextField.text = tableViewData[myIndex].field
+        }
+        else {
+            inputTextField.isHidden = true
+            dateField.isHidden = true
+        }
+        if tableViewData[myIndex].yesNo != ""
+        {
+            yesNoLabel.text = tableViewData[myIndex].yesNo
+        }
+        else {
+            yesNoLabel.isHidden = true
+            yesNoSwitch.isHidden = true
+        }
+        
+        infoLabel.text = tableViewData[myIndex].info
+        if tableViewData[myIndex].link != ""
+        {
+            linkURL = tableViewData[myIndex].link
+        }
+        else {
+            linkLabel.isHidden = true
+        }
+        
+        if tableViewData[myIndex].remind != ""
+        {
+            reminderLabel.text = tableViewData[myIndex].remind
+        }
+        else {
+            reminderLabel.isHidden = true
+            goToSetReminder.isHidden = true
+        }
+        
         
         // Do any additional setup after loading the view.
     }
