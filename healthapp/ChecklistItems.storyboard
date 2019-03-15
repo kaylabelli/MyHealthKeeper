@@ -65,7 +65,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MMDDYYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gti-aJ-SzI">
-                                <rect key="frame" x="249" y="283" width="110" height="30"/>
+                                <rect key="frame" x="259" y="283" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -101,6 +101,14 @@
                                     <action selector="goToSetReminder:" destination="1HS-6s-dIv" eventType="touchUpInside" id="WRL-ev-Kco"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKn-iR-U5i">
+                                <rect key="frame" x="310" y="307" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submitButtonAction:" destination="1HS-6s-dIv" eventType="touchUpInside" id="ZtH-co-HZx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -117,6 +125,7 @@
                         <outlet property="inputTextField" destination="76w-Iy-ayZ" id="uBC-44-7qM"/>
                         <outlet property="linkLabel" destination="qJe-WT-I1V" id="NeP-nR-QRd"/>
                         <outlet property="reminderLabel" destination="puA-ex-ycc" id="JwQ-YI-31r"/>
+                        <outlet property="submitButtonOutlet" destination="pKn-iR-U5i" id="GTc-T7-60z"/>
                         <outlet property="titleView" destination="gat-ds-o1Y" id="NAC-QG-P1X"/>
                         <outlet property="yesNoLabel" destination="Tvb-qY-I88" id="xJT-jT-lmj"/>
                         <outlet property="yesNoSwitch" destination="thw-1X-SFq" id="BEg-Dt-iwS"/>

@@ -21,6 +21,7 @@ class checklistTargetViewController: UIViewController {
     @IBOutlet weak var yesNoLabel: UILabel!
     @IBOutlet weak var dateField: UITextField!
 
+    @IBOutlet weak var submitButtonOutlet: UIButton!
     @IBOutlet weak var yesNoSwitch: UISwitch!
     @IBOutlet weak var linkLabel: UIButton!
     
@@ -80,6 +81,30 @@ class checklistTargetViewController: UIViewController {
         self.navigationController?.pushViewController(navigation, animated: true)
     }
     
+    func isValidDate(DoBString: String) -> Bool{
+        // expression for MM/DD/YYYY
+        let DoBRegEx = "^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\\d\\d$|^$"
+        do{
+            
+            let regex1 = try NSRegularExpression(pattern: DoBRegEx)
+            let nsString1 = DoBString as NSString
+            let results1 = regex1.matches(in: DoBString, range: NSRange(location: 0, length: nsString1.length))
+            if(results1.count == 0)
+            {
+                return false
+            }
+        }
+        catch let error as NSError{
+            
+            print ("Invalid regex: \(error.localizedDescription)")
+            
+            return  false
+        }
+        return true
+        
+    }
+    @IBAction func submitButtonAction(_ sender: Any) {
+        
+    }
     
-
 }
