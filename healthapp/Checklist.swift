@@ -63,6 +63,24 @@ class checklist: UITableViewController{
     }*/
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var uName = ""
+        let defaults:UserDefaults = UserDefaults.standard
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            uName = opened
+        }
+        
+        if (!ifExist(type: tableViewData[indexPath.row].title, username: uName))
+        {
+            let create = DBManager.shared.insertChecklist(reminderUser: uName, checklistType: tableViewData[indexPath.row].title)
+            print (create)
+        }
+        else
+        {
+            print("\(tableViewData[indexPath.row].title) already exists")
+        }
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = tableViewData[indexPath.row].title
         return cell
@@ -71,6 +89,18 @@ class checklist: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         myIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)
+    }
+    
+    func ifExist(type: String, username: String) -> Bool
+    {
+        if DBManager.shared.ifExistChecklist(reminderUser: username, checklistType: type)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
     }
     
     /*

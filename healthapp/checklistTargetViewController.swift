@@ -12,6 +12,7 @@ class checklistTargetViewController: UIViewController {
     let main = UIStoryboard(name: "Main", bundle: nil)
     var boardID: String = ""
     var linkURL: String = ""
+    var uName = ""
 
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var inputTextField: UILabel!
@@ -29,10 +30,19 @@ class checklistTargetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults:UserDefaults = UserDefaults.standard
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            uName = opened
+        }
+        
+        let checklistTypeInfo = DBManager.shared.getInfoChecklist(reminderUser: uName, checklistType: tableViewData[myIndex].title)
+        
         titleView.text = tableViewData[myIndex].title
         if tableViewData[myIndex].field != ""
         {
             inputTextField.text = tableViewData[myIndex].field
+            dateField.text = checklistTypeInfo.date
         }
         else {
             inputTextField.isHidden = true
@@ -41,6 +51,14 @@ class checklistTargetViewController: UIViewController {
         if tableViewData[myIndex].yesNo != ""
         {
             yesNoLabel.text = tableViewData[myIndex].yesNo
+            if ((checklistTypeInfo.yesNo == "") || (checklistTypeInfo.yesNo == "No"))
+            {
+                yesNoSwitch.isOn = false
+            }
+            else
+            {
+                yesNoSwitch.isOn = true
+            }
         }
         else {
             yesNoLabel.isHidden = true
@@ -104,7 +122,30 @@ class checklistTargetViewController: UIViewController {
         
     }
     @IBAction func submitButtonAction(_ sender: Any) {
+        var isValid: Bool = true
+        var yesNoValue: String = "No"
         
+        if (!isValidDate(DoBString: dateField.text ?? ""))
+        {
+            isValid = false
+        }
+        
+        if (isValid)
+        {
+            if (yesNoSwitch.isOn)
+            {
+                yesNoValue = "Yes"
+            }
+            
+            _ = DBManager.shared.updateChecklist(reminderUser: uName, checklistType: tableViewData[myIndex].title, date: dateField.text ?? "", yesNo: yesNoValue)
+        }
+        else
+        {
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Date fields must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            
+            self.present(regAlert1,animated: true, completion:nil)
+        }
     }
     
 }
