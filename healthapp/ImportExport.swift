@@ -30,7 +30,8 @@
             override func viewDidLoad() {
                 super.viewDidLoad()
                 self.Export.isHidden = true
-                disclaimer.text = "IMPORT"
+                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
+                
                 Import.Design()
             }
             
@@ -40,13 +41,13 @@
                 switch (index)
                 {
                 case 0:
-                    disclaimer.text = "IMPORT"
+                      disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                     self.Import.isHidden = false
                     self.Export.isHidden = true
                      Import.Design()
                 case 1:
 
-                    disclaimer.text = "EXPORT"
+                    disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user.  The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported."
                     self.Import.isHidden = true
                     self.Export.isHidden = false
                     Export.Design()
