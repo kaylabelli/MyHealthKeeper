@@ -33,6 +33,22 @@
                 disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                 
                 Import.Design()
+                
+                // Encryption example
+                let str: String = "Encrypt this"
+                let data: Data = str.data(using: .utf8)!
+                let password = "Secret password"
+                let ciphertext = RNCryptor.encrypt(data: data, withPassword: password)
+                print (ciphertext.base64EncodedString())
+                
+                // Decryption example
+                do {
+                    let originalData = try RNCryptor.decrypt(data: ciphertext, withPassword: password)
+                    let originalStr = String(bytes: originalData, encoding: .utf8)
+                    print (originalStr!)
+                } catch {
+                    print(error)
+                }
             }
             
             @IBAction func segmentSelected(_ sender: Any) {
@@ -213,7 +229,7 @@
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
                 }
                 print("Read from the file: \(inString)")
-                    
+                
                 }
          
          

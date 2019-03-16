@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		15355A942219F6C300CFFD9A /* HealthMaintenanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */; };
 		15B0F1F42221AE0F00C57FD3 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */; };
+		15B34D74223DA1FD00BAC136 /* Cryptor.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B34D73223DA1FD00BAC136 /* Cryptor.c */; };
+		15B34D7D223DA30700BAC136 /* RNCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B34D7C223DA30700BAC136 /* RNCryptor.swift */; };
 		15C523422236DCA500BD48C9 /* calendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C523412236DCA500BD48C9 /* calendarViewController.swift */; };
 		15C523442236F6B500BD48C9 /* calendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */; };
 		15D59187220E77BD00C10A67 /* ReminderMedicationEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */; };
@@ -132,6 +134,9 @@
 /* Begin PBXFileReference section */
 		15355A932219F6C300CFFD9A /* HealthMaintenanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthMaintenanceCell.swift; sourceTree = "<group>"; };
 		15B0F1F32221AE0F00C57FD3 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCell.swift; sourceTree = "<group>"; };
+		15B34D73223DA1FD00BAC136 /* Cryptor.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Cryptor.c; sourceTree = "<group>"; };
+		15B34D7B223DA25F00BAC136 /* RNCryptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNCryptor.h; sourceTree = "<group>"; };
+		15B34D7C223DA30700BAC136 /* RNCryptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNCryptor.swift; sourceTree = "<group>"; };
 		15C523412236DCA500BD48C9 /* calendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewController.swift; sourceTree = "<group>"; };
 		15C523432236F6B500BD48C9 /* calendarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		15D59181220E77BD00C10A67 /* ReminderMedicationEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReminderMedicationEditController.swift; sourceTree = "<group>"; };
@@ -321,6 +326,9 @@
 				6C18DAD31F83118500D0D1FF /* FMDatabaseQueue.m */,
 				6C18DAD21F83118500D0D1FF /* FMDB.h */,
 				6C18DADC1F83118600D0D1FF /* FMResultSet.h */,
+				15B34D73223DA1FD00BAC136 /* Cryptor.c */,
+				15B34D7B223DA25F00BAC136 /* RNCryptor.h */,
+				15B34D7C223DA30700BAC136 /* RNCryptor.swift */,
 				6C18DADE1F83118600D0D1FF /* FMResultSet.m */,
 				AE3BE1451F8D9EEB00D72FC6 /* healthapp-Bridging-Header.h */,
 				6C18DAD01F83118400D0D1FF /* healthapp-Bridging-Header.h */,
@@ -573,6 +581,7 @@
 				9B7B77FD1F92758C007E0F9E /* DocumentTableViewController.swift in Sources */,
 				9B39B0341FB6821E008B0C1B /* ExpandableCell.swift in Sources */,
 				15C523422236DCA500BD48C9 /* calendarViewController.swift in Sources */,
+				15B34D7D223DA30700BAC136 /* RNCryptor.swift in Sources */,
 				6CF336941FC9EB8700F05934 /* Edit_Vaccine_ViewController.swift in Sources */,
 				6C18DAE41F83118600D0D1FF /* FMDatabase.m in Sources */,
 				6CBEAD6F1FCA100000839D64 /* Edit_Medication_ViewController.swift in Sources */,
@@ -595,6 +604,7 @@
 				9B7B78011F92DB64007E0F9E /* DocumentDBManager.swift in Sources */,
 				6CAAEA011F93E55500246A00 /* Summary.swift in Sources */,
 				6C4E29161F93B27300B5CEDD /* DbmanagerMadicalinfo.swift in Sources */,
+				15B34D74223DA1FD00BAC136 /* Cryptor.c in Sources */,
 				9BF0E16B1FB77586001879C4 /* DocumentHeader.swift in Sources */,
 				EF203E6A22124DD300E58D81 /* HealthMaintenance.swift in Sources */,
 				6C18DAE61F83118600D0D1FF /* FMResultSet.m in Sources */,
