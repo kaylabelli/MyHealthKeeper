@@ -33,22 +33,6 @@
                 disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                 
                 Import.Design()
-                
-                // Encryption example
-                let str: String = "Encrypt this"
-                let data: Data = str.data(using: .utf8)!
-                let password = "Secret password"
-                let ciphertext = RNCryptor.encrypt(data: data, withPassword: password)
-                print (ciphertext.base64EncodedString())
-                
-                // Decryption example
-                do {
-                    let originalData = try RNCryptor.decrypt(data: ciphertext, withPassword: password)
-                    let originalStr = String(bytes: originalData, encoding: .utf8)
-                    print (originalStr!)
-                } catch {
-                    print(error)
-                }
             }
             
             @IBAction func segmentSelected(_ sender: Any) {
@@ -131,7 +115,7 @@
             
             //REad from the file that the user would like to import
             func readFile(url: URL){
-  
+                var decryptedText: String = ""
                 
                 let dir = try? FileManager.default.url(for: .documentDirectory,
                                                        in: .userDomainMask, appropriateFor: nil, create: true)
@@ -150,7 +134,8 @@
                     }
                     
                     inString = try String(contentsOf: fileURL)
-                    let textFromFile = inString.components(separatedBy: .newlines)
+                    decryptedText = decryptText(text: inString)
+                    let textFromFile = decryptedText.components(separatedBy: .newlines)
                     for i in textFromFile
                     {
                         let line = i.components(separatedBy: ",")
@@ -228,7 +213,7 @@
                 } catch {
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
                 }
-                print("Read from the file: \(inString)")
+               // print("Read from the file: \(decryptedText)")
                 
                 }
          
@@ -592,14 +577,18 @@
             }
             //END REMINDER MONTHLY TABLE
             
+            // encrypted text
+            let encryptedText = encryptText(text: text)
+            
             //write all items in the text array to the csv file.
             let fileName = "MyHealthKeeper.csv"
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
             
             do {
-                try text.joined(separator:"").write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                //try encryptedText.joined(separator:"").write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                try encryptedText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
             }catch{
-                print(text)
+                print(encryptedText)
             }
             
             // set up activity view controller
@@ -613,5 +602,41 @@
             self.present(activityViewController, animated: true, completion: nil)
             
          }
+            
+        
+            func encryptText(text: [String]) -> String
+            {
+                var encryptedText: String = ""
+                
+                for i in text
+                {
+                    encryptedText.append(i)
+                }
+                
+                let data: Data = encryptedText.data(using: String.Encoding.utf8)!
+                let password = "Secret password" // label.text
+                let ciphertext = RNCryptor.encrypt(data: data, withPassword: password)
+                
+                return ciphertext.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+            }
+            
+            func decryptText (text: String) -> String
+            {
+                print ("IN DECRYPTION")
+                var decryptedText: String = ""
+                //let data: Data = text.data(using: .utf8)!
+                let data = Data(base64Encoded: text, options: Data.Base64DecodingOptions(rawValue: 0))
+                
+                
+                do {
+                    let originalData = try RNCryptor.decrypt(data: data!, withPassword: "Secret password") // label.text
+                    decryptedText = String(bytes: originalData, encoding: .utf8)!
+                } catch {
+                    print(error)
+                }
+                
+                print("EXIT DECRYPTION")
+                return decryptedText
+            }
         
 }
