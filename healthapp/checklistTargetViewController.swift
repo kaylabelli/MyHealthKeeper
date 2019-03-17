@@ -47,6 +47,7 @@ class checklistTargetViewController: UIViewController {
         else {
             inputTextField.isHidden = true
             dateField.isHidden = true
+            submitButtonOutlet.isHidden = true
         }
         if tableViewData[myIndex].yesNo != ""
         {
