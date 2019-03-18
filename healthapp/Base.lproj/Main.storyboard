@@ -199,6 +199,7 @@
                             <constraint firstItem="DMG-H2-9wi" firstAttribute="top" secondItem="m3F-w5-vtL" secondAttribute="bottom" priority="200" constant="126.66666666666663" id="Z3l-Z2-ksV"/>
                             <constraint firstItem="DnO-oj-n3H" firstAttribute="top" secondItem="aKQ-zf-T7c" secondAttribute="bottom" priority="250" constant="50" id="ats-SP-iYQ"/>
                             <constraint firstItem="m3F-w5-vtL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JI2-Cf-We7" secondAttribute="bottom" constant="25" id="ctC-ci-HSe"/>
+                            <constraint firstItem="dw8-It-bKr" firstAttribute="top" secondItem="w6v-aP-BLp" secondAttribute="bottom" constant="25" id="ib2-a6-27A"/>
                             <constraint firstItem="DnO-oj-n3H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kr5-0H-zgy"/>
                             <constraint firstItem="JI2-Cf-We7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="l6s-Ez-n1u"/>
                             <constraint firstItem="DMG-H2-9wi" firstAttribute="top" secondItem="dw8-It-bKr" secondAttribute="bottom" id="nur-iX-RJA"/>
@@ -483,7 +484,7 @@
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FEX-YN-z7U">
-                                        <rect key="frame" x="0.0" y="498" width="320" height="80.5"/>
+                                        <rect key="frame" x="-20" y="498" width="320" height="80.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ZrA-aD-ecj" customClass="ReminderTableViewCell" customModule="healthapp" customModuleProvider="target">
@@ -608,8 +609,12 @@
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwB-iZ-sbd">
                                                 <rect key="frame" x="0.0" y="285" width="187" height="30"/>
-                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Save"/>
+                                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="createMedicationReminder:" destination="azN-wY-8Gw" eventType="touchUpInside" id="dsC-RX-cBz"/>
                                                 </connections>
@@ -633,6 +638,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Igw-kF-7qL" firstAttribute="top" secondItem="0KZ-yL-Fgp" secondAttribute="top" constant="20" id="23h-VM-XQk"/>
+                                    <constraint firstItem="7a1-I1-Qf8" firstAttribute="leading" secondItem="0KZ-yL-Fgp" secondAttribute="leading" constant="66.5" id="3r6-fC-Jao"/>
                                     <constraint firstItem="C2l-JE-JEV" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="-50" id="7hx-xL-h30"/>
                                     <constraint firstItem="FEX-YN-z7U" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="A0B-0z-OZZ"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="centerX" secondItem="0KZ-yL-Fgp" secondAttribute="centerX" id="AMX-5B-yhZ"/>
@@ -663,6 +669,7 @@
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="width" secondItem="0KZ-yL-Fgp" secondAttribute="width" multiplier="2:3" constant="-26.666666666666629" id="tgo-vH-PKV"/>
                                     <constraint firstItem="p0k-LB-pAi" firstAttribute="top" secondItem="C2l-JE-JEV" secondAttribute="bottom" constant="15.000000000000028" id="uuO-Kr-H1I"/>
                                     <constraint firstItem="7a1-I1-Qf8" firstAttribute="top" secondItem="Igw-kF-7qL" secondAttribute="bottom" constant="95" id="whM-ct-QLj"/>
+                                    <constraint firstAttribute="trailing" secondItem="7a1-I1-Qf8" secondAttribute="trailing" constant="66.5" id="xR3-uQ-JSx"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -683,6 +690,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="AddReminderDesign" destination="4cc-F1-xSu" id="rhi-VE-vmL"/>
+                        <outlet property="AddReminderMedication" destination="gwB-iZ-sbd" id="YkX-Sg-OUI"/>
                         <outlet property="LocationField" destination="VQJ-6f-HP3" id="gKa-Ai-J7M"/>
                         <outlet property="appointmentStack" destination="p0k-LB-pAi" id="5Jt-P9-Ked"/>
                         <outlet property="dosagePicker" destination="7Fp-1L-hnM" id="VS4-TW-0Tj"/>
@@ -1267,7 +1275,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="106" width="25" height="25"/>
+                                <rect key="frame" x="175" y="106" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1872,7 +1880,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="219" y="163.5" width="80" height="34"/>
+                                <rect key="frame" x="232" y="163.5" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -1915,7 +1923,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="163.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="163.5" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -2142,7 +2150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="155" width="25" height="25"/>
+                                <rect key="frame" x="185" y="155" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2808,7 +2816,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="94" width="80" height="34"/>
+                                <rect key="frame" x="242" y="94" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2819,7 +2827,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="94" width="25" height="25"/>
+                                <rect key="frame" x="185" y="94" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5380,7 +5388,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MPE-3J-3W5">
-                                <rect key="frame" x="0.0" y="220" width="320" height="128"/>
+                                <rect key="frame" x="0.0" y="194" width="320" height="180"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="288" id="Gia-Eg-A7j"/>
@@ -6125,8 +6133,8 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Hj-22G"/>

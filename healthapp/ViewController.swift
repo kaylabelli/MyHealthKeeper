@@ -41,6 +41,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     @IBOutlet weak var reminderTable: UITableView!
     
     @IBOutlet weak var AddReminderDesign: UIButton!
+    @IBOutlet weak var AddReminderMedication: UIButton!
     
     @IBOutlet weak var MedicalDesign: UIButton!
     
@@ -111,6 +112,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         {
             
             AddReminderDesign.Design()
+        }
+        if (AddReminderMedication != nil)
+        {
+            AddReminderMedication.Design()
         }
         //Main UIview color
         backgroundCol()
