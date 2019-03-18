@@ -15,7 +15,7 @@
 # The toplevel directory of the source tree.  This is the directory
 # that contains this "Makefile.in" and the "configure.in" script.
 #
-TOP = /Users/mooty/Desktop/MyHealthKeeper/sqlcipher
+TOP = /Users/mooty/Documents/MyHealthKeeper/sqlcipher
 
 
 # C Compiler and options for use in building executables that

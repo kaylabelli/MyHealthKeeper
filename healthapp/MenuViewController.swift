@@ -68,6 +68,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let shouldExp = !ExpendedSection.contains(section)
         print(shouldExp)
         let main = UIStoryboard(name: "Main", bundle: nil)
+        let checklistItems = UIStoryboard(name: "ChecklistItems", bundle: nil)
         var boardID: String
         
         if(section == 1)
@@ -135,7 +136,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             else if(section == 9){
                 boardID = "Checklist"
-                let navigation = main.instantiateViewController(withIdentifier: boardID)
+                let navigation = checklistItems.instantiateViewController(withIdentifier: boardID)
                 self.navigationController?.pushViewController(navigation, animated: true)
             }
                 //end Kayla Belli

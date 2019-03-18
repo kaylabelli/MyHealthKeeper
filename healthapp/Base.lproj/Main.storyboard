@@ -2150,7 +2150,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="155" width="38" height="38"/>
+                                <rect key="frame" x="185" y="155" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5339,42 +5339,6 @@
             </objects>
             <point key="canvasLocation" x="9148.125" y="-121.47887323943662"/>
         </scene>
-        <!--Checklist-->
-        <scene sceneID="4Xw-p9-7jf">
-            <objects>
-                <viewController storyboardIdentifier="Checklist" id="mTB-w0-KwU" customClass="checklist" customModule="healthapp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="KRq-5B-Ols">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congenital Checklist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CsS-Nq-8TJ">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="PuQ-dy-FJw">
-                                <rect key="frame" x="0.0" y="115.5" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PuQ-dy-FJw" id="5aH-16-MFQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="mTB-w0-KwU" id="AGh-Lk-yxK"/>
-                            <outlet property="delegate" destination="mTB-w0-KwU" id="9KQ-Zw-EVz"/>
-                        </connections>
-                    </tableView>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WPl-ao-BYP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="9832.5" y="-101.40845070422536"/>
-        </scene>
         <!--Import Export-->
         <scene sceneID="qfN-Yp-bfC">
             <objects>
@@ -5493,51 +5457,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WwZ-8w-o77" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="9505" y="617"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="mWP-bq-Pfd">
-            <objects>
-                <viewController storyboardIdentifier="SickleCell" id="OYB-us-y8S" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="egb-0C-cMh"/>
-                        <viewControllerLayoutGuide type="bottom" id="65V-Ta-Co9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Jr3-ZS-M1F">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bc1-gp-UTG">
-                                <rect key="frame" x="0.0" y="142" width="320" height="426"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="260" id="D5Q-7K-kW6"/>
-                                    <constraint firstAttribute="height" constant="344" id="qds-c2-qam"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sickle Cell Disease" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ykk-gy-XdU">
-                                <rect key="frame" x="0.0" y="54" width="320" height="70"/>
-                                <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ykk-gy-XdU" firstAttribute="top" secondItem="egb-0C-cMh" secondAttribute="bottom" id="5F9-tv-GC4"/>
-                            <constraint firstItem="Bc1-gp-UTG" firstAttribute="centerX" secondItem="Jr3-ZS-M1F" secondAttribute="centerX" id="Imi-2Z-hmo"/>
-                            <constraint firstItem="ykk-gy-XdU" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Jr3-ZS-M1F" secondAttribute="width" constant="10" id="Kb7-di-f09"/>
-                            <constraint firstItem="ykk-gy-XdU" firstAttribute="centerX" secondItem="Jr3-ZS-M1F" secondAttribute="centerX" id="cPd-0S-MmN"/>
-                            <constraint firstItem="Bc1-gp-UTG" firstAttribute="centerY" secondItem="Jr3-ZS-M1F" secondAttribute="centerY" id="zzk-JG-vnx"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="juu-50-8a3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="10460.625" y="-107.74647887323944"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="d4u-zY-V8f">

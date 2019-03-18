@@ -884,6 +884,140 @@ class DBManager: NSObject {
         return date
     }
     
+    //*********** CheckList *******************************
+    
+    func insertChecklist(reminderUser:String, checklistType:String) -> Bool {
+        print(reminderUser)
+        print(checklistType)
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            
+            return false;
+        }
+        //create table if not already created
+        let createHealthAppTableQuery = " create table checklist (reminderUser text not null, date text not null, checklistType text not null, yesNo text not null)"
+        
+        do{
+            try database2.executeUpdate(createHealthAppTableQuery, values:nil)
+            
+        }
+        catch{
+            print("Failed to create table ")
+            print(error.localizedDescription)
+        }
+        //insert data into database
+        let query="insert into checklist ('reminderUser', 'date', 'checklistType', 'yesNo') values ('\(reminderUser)', '', '\(checklistType)', '');"
+        if !database2.executeStatements(query) {
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        return true;
+    }
+    
+    func updateChecklist(reminderUser:String, checklistType:String, date:String, yesNo:String) -> Bool {
+        //  open database
+        if !openEncrypted() {
+            print("Failed to Open database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        //insert data into database
+        let query="update checklist set date = ?, yesNo = ? where reminderUser = ? and checklistType = ? ;"
+        do{
+            try(database2.executeUpdate(query, values: [date, yesNo, reminderUser, checklistType]))
+            
+        }
+        catch{
+            print("Failed to insert initial data into the database2.")
+            print(database2.lastError(), database2.lastErrorMessage())
+            return false;
+        }
+        
+        return true;
+    }
+    
+    func ifExistChecklist(reminderUser:String, checklistType:String) -> Bool
+    {
+        var counter = 0
+        if openEncrypted()
+        {
+            let query = "select * from checklist where reminderUser = ? and checklistType = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser, checklistType])
+                
+                while results.next()
+                {
+                    counter = counter + 1
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        if (counter > 0)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
+    
+    func getInfoChecklist(reminderUser:String, checklistType:String) -> checklistInfo
+    {
+        var info: checklistInfo = checklistInfo()
+        if openEncrypted()
+        {
+            let query = "select * from checklist where reminderUser = ? and checklistType = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser, checklistType])
+                
+                while results.next()
+                {
+                    info.date = results.string(forColumn: "date") ?? ""
+                    info.yesNo = results.string(forColumn: "yesNo") ?? ""
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        return info
+    }
+    
+    struct checklistInfo
+    {
+        var date: String!
+        var yesNo: String!
+        init()
+        {
+            self.date = ""
+            self.yesNo = ""
+        }
+        init(date: String!, yesNo: String!)
+        {
+            self.date = date
+            self.yesNo = yesNo
+        }
+    }
+    
+    
     //*********** MONTHLY REMINDERS ***********************
     
     //    create table and insert data test function -Melissa Heredia
