@@ -42,6 +42,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var totalAmount: UITextField!
     @IBOutlet weak var perUse: UITextField!
     @IBOutlet weak var dosage: UITextField!
+    @IBOutlet weak var ReminderDesign: UIButton!
     
     @IBOutlet weak var typePicker: UIPickerView!
     var medicationTypeList = ["Solid", "Liquid"]
@@ -161,6 +162,10 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         
         
         //Main UIview color
+        if (ReminderDesign != nil)
+        {
+            ReminderDesign.Design()
+        }
         backgroundCol()
         
         //button

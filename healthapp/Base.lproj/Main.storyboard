@@ -5964,8 +5964,11 @@
                                     </pickerView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLU-B7-VYl">
                                         <rect key="frame" x="0.0" y="285" width="187" height="30"/>
-                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Save"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="createMedicationReminder:" destination="azN-wY-8Gw" eventType="touchUpInside" id="ed0-NU-fX2"/>
                                             <action selector="updateMedicationReminder:" destination="W3o-3o-fCs" eventType="touchUpInside" id="3Ca-Eb-KDp"/>
@@ -5981,6 +5984,8 @@
                             <constraint firstAttribute="trailing" secondItem="tMx-Ul-pdx" secondAttribute="trailing" id="F5Q-Jo-U5u"/>
                             <constraint firstItem="tMx-Ul-pdx" firstAttribute="top" secondItem="Kew-xu-gE5" secondAttribute="bottom" constant="15" id="KQH-Uh-Zin"/>
                             <constraint firstItem="2IY-QY-gmc" firstAttribute="top" secondItem="tMx-Ul-pdx" secondAttribute="bottom" id="TTQ-T4-JOo"/>
+                            <constraint firstItem="RCY-Bf-F3d" firstAttribute="leading" secondItem="ejH-H3-oyD" secondAttribute="leadingMargin" constant="50.5" id="XcO-cy-t1z"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RCY-Bf-F3d" secondAttribute="trailing" constant="50.5" id="Z0q-u7-CYj"/>
                             <constraint firstItem="tMx-Ul-pdx" firstAttribute="centerX" secondItem="ejH-H3-oyD" secondAttribute="centerX" id="bI1-dP-uko"/>
                             <constraint firstItem="RCY-Bf-F3d" firstAttribute="top" secondItem="UKa-59-YWd" secondAttribute="bottom" constant="20" id="x7l-cP-ZZ7"/>
                         </constraints>
@@ -5993,6 +5998,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ReminderDesign" destination="gLU-B7-VYl" id="jB6-JS-lVb"/>
                         <outlet property="dosage" destination="zva-BA-dsk" id="K8L-Gy-Pzf"/>
                         <outlet property="dosagePicker" destination="PLn-kn-BUt" id="RFX-B0-tUb"/>
                         <outlet property="medicationName" destination="Wbd-Hd-2qr" id="xd6-mA-7Yv"/>
@@ -6137,14 +6143,14 @@
         <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9SN-Hj-22G"/>
+        <segue reference="GTm-Hl-6Tj"/>
         <segue reference="EGs-ke-pmL"/>
-        <segue reference="gp7-Sx-oSS"/>
+        <segue reference="Nl3-F2-eMS"/>
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
         <segue reference="maL-vH-yXy"/>
-        <segue reference="NHS-B9-Lrd"/>
+        <segue reference="vbZ-5b-9yE"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="5Zg-Ed-Ahp"/>

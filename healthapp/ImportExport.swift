@@ -25,6 +25,8 @@
             @IBOutlet weak var Import: UIButton!
             
             @IBOutlet weak var Export: UIButton!
+            
+            var password: UITextField!
 
             
             override func viewDidLoad() {
@@ -68,13 +70,21 @@
                 
                 //Display import warning and Okay and Cancel options.
                let ImportAlert = UIAlertController(title: "WARNING", message: "Are you sure you would like to Import and override all current data in the MyHealthKeeper Applicaiton?", preferredStyle: .alert)
+                ImportAlert.addTextField(configurationHandler: Password)
                 ImportAlert.addAction(UIAlertAction(title: "Yes, Import Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
-                        //let user choose file they want to import
-                        let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
-                        documentPickerController.delegate = self as? UIDocumentPickerDelegate
-                        self.present(documentPickerController, animated: true, completion: nil)
+                        if(self.password.text == ""){
+                            let alertController = UIAlertController(title: "ERROR", message: "Password field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                            alertController.addAction(alertControllerNo)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        else{
+                            let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
+                            documentPickerController.delegate = self as? UIDocumentPickerDelegate
+                            self.present(documentPickerController, animated: true, completion: nil)
+                        }
                         
                         //display file that was chosen
                         /*func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
@@ -95,11 +105,19 @@
             //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
                 let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? ", preferredStyle: .alert)
+                ExportAlert.addTextField(configurationHandler: Password)
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
-                        self.createFile()
-                    
+                        if(self.password.text == ""){
+                            let alertController = UIAlertController(title: "ERROR", message: "Password field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                            alertController.addAction(alertControllerNo)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        else{
+                            self.createFile()
+                        }
                         
                     }
                 }))
@@ -614,8 +632,8 @@
                 }
                 
                 let data: Data = encryptedText.data(using: String.Encoding.utf8)!
-                let password = "Secret password" // label.text
-                let ciphertext = RNCryptor.encrypt(data: data, withPassword: password)
+                let passcode = self.password.text! // label.text
+                let ciphertext = RNCryptor.encrypt(data: data, withPassword: passcode)
                 
                 return ciphertext.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
             }
@@ -623,13 +641,14 @@
             func decryptText (text: String) -> String
             {
                 print ("IN DECRYPTION")
+                let passcode = self.password.text!
                 var decryptedText: String = ""
                 //let data: Data = text.data(using: .utf8)!
                 let data = Data(base64Encoded: text, options: Data.Base64DecodingOptions(rawValue: 0))
                 
                 
                 do {
-                    let originalData = try RNCryptor.decrypt(data: data!, withPassword: "Secret password") // label.text
+                    let originalData = try RNCryptor.decrypt(data: data!, withPassword: passcode) // label.text
                     decryptedText = String(bytes: originalData, encoding: .utf8)!
                 } catch {
                     print(error)
@@ -637,6 +656,11 @@
                 
                 print("EXIT DECRYPTION")
                 return decryptedText
+            }
+            
+            func Password(textfield: UITextField!){
+                password = textfield
+                password?.placeholder = "Password*"
             }
         
 }
