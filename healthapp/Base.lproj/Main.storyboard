@@ -1275,7 +1275,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="106" width="38" height="38"/>
+                                <rect key="frame" x="175" y="106" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1880,7 +1880,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="232" y="163.5" width="80" height="34"/>
+                                <rect key="frame" x="219" y="163.5" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -1923,7 +1923,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="163.5" width="38" height="38"/>
+                                <rect key="frame" x="175" y="163.5" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -2816,7 +2816,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="242" y="94" width="80" height="34"/>
+                                <rect key="frame" x="229" y="94" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2827,7 +2827,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="94" width="38" height="38"/>
+                                <rect key="frame" x="185" y="94" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5468,11 +5468,11 @@
                         <constraints>
                             <constraint firstItem="1bP-aN-hlT" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="18N-vV-JTv"/>
                             <constraint firstItem="LWo-f0-PDj" firstAttribute="top" secondItem="1bP-aN-hlT" secondAttribute="bottom" constant="40" id="4as-1i-Jp2"/>
+                            <constraint firstItem="MPE-3J-3W5" firstAttribute="top" secondItem="LWo-f0-PDj" secondAttribute="bottom" constant="30" id="74b-7j-N8H"/>
                             <constraint firstItem="1bP-aN-hlT" firstAttribute="bottom" secondItem="Bp9-sA-Vja" secondAttribute="bottom" constant="50" id="8rR-iZ-7VR"/>
                             <constraint firstItem="Bp9-sA-Vja" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="AGi-6I-4BN"/>
                             <constraint firstItem="MPE-3J-3W5" firstAttribute="centerX" secondItem="JaU-wS-E61" secondAttribute="centerX" id="Chf-PS-Vj1"/>
                             <constraint firstAttribute="trailing" secondItem="MPE-3J-3W5" secondAttribute="trailing" id="JHP-M7-2nm"/>
-                            <constraint firstItem="MPE-3J-3W5" firstAttribute="centerY" secondItem="JaU-wS-E61" secondAttribute="centerY" id="LGy-pb-gQq"/>
                             <constraint firstItem="Bp9-sA-Vja" firstAttribute="top" secondItem="tcj-ag-B3K" secondAttribute="bottom" constant="20" id="Nc4-IF-HQg"/>
                             <constraint firstItem="MPE-3J-3W5" firstAttribute="leading" secondItem="JaU-wS-E61" secondAttribute="leading" id="OKM-zF-s6C"/>
                             <constraint firstItem="pzz-X4-IyM" firstAttribute="top" secondItem="bWu-9I-lok" secondAttribute="bottom" constant="60" id="Oyy-4N-QBf"/>
@@ -6139,8 +6139,8 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
-        <image name="smallmenuIcon" width="128" height="128"/>
+        <image name="icons8-below" width="25" height="25"/>
+        <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="GTm-Hl-6Tj"/>

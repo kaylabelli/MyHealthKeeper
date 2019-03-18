@@ -104,7 +104,8 @@
             
             //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
-                let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? ", preferredStyle: .alert)
+               let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? ", preferredStyle: .alert)
+               //let ExportAlert = UIAlertController(title: "asdfasdf", message: "Aasdfasdfasdfasd ", preferredStyle: .alert)
                 ExportAlert.addTextField(configurationHandler: Password)
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
@@ -124,7 +125,8 @@
                 
                 ExportAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.default, handler: nil))
                 
-                self.present(ExportAlert, animated: true)
+                self.present(ExportAlert, animated: false)
+               
                 
             }
             
@@ -139,6 +141,7 @@
                                                        in: .userDomainMask, appropriateFor: nil, create: true)
             
                 let fileURL = url
+    
                     
                 // Then reading it back from the file
                 var inString = ""
@@ -228,6 +231,11 @@
                             print("error")
                         }
                     }
+                    let ImportStatus = UIAlertController(title: "Import Succesful", message: " ", preferredStyle: .alert)
+                    
+                    ImportStatus.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(ImportStatus, animated: true)
                 } catch {
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
                 }
@@ -617,7 +625,14 @@
             // exclude some activity types from the list
             activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
             
-            self.present(activityViewController, animated: true, completion: nil)
+            self.present(activityViewController, animated: true)
+            
+            let ExportStatus = UIAlertController(title: "Export Succesful", message: " ", preferredStyle: .alert)
+            
+            ExportStatus.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
+            
+            self.present(ExportStatus, animated: true)
+       
             
          }
             
