@@ -18,7 +18,7 @@ struct cellData {
     var remind = String()
 }
 var myIndex = 0
-var tableViewData = [cellData(title: "Medications/Pharmacy", yesNo: "Is your medication list                                 up to date?" , field: "When are you due for your refills?", info: "", link: "", remind: "Do you want to set a reminder to call your pharmacy?"),
+var tableViewData = [cellData(title: "Medications/Pharmacy", yesNo: "Is your medication list up to date?" , field: "When are you due for your refills?", info: "", link: "", remind: "Do you want to set a reminder to call your pharmacy?"),
                      cellData(title: "Exercise", yesNo: "", field: "", info: "Please talk to your physician about any potential exercise restrictions.", link: "https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-infographic", remind: ""),
                      cellData(title: "Insurance", yesNo: "", field: "When does your insurance expire?", info: "", link: "", remind: "Do you want to set a reminder to renew your insurance?"),
                      cellData(title: "Immunizations", yesNo: "", field: "When was your last flu shot?", info: "", link: "", remind: "Do you want to set a reminder to get a flu shot?"),
