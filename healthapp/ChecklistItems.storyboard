@@ -187,6 +187,9 @@
                             <outlet property="delegate" destination="6TT-bv-LzO" id="7KM-uZ-mQS"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="PQ0-Jt-fiq">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="smallmenuIcon" id="UW2-FY-hzx"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="1HS-6s-dIv" kind="show" identifier="segue" id="cga-xo-gEx"/>
                     </connections>
@@ -195,5 +198,52 @@
             </objects>
             <point key="canvasLocation" x="9832.5" y="-101.40845070422536"/>
         </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="h0e-gD-HWr">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" id="6Zl-Mr-sKm" customClass="MenuViewController" customModule="healthapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Ct-vP-SfB"/>
+                        <viewControllerLayoutGuide type="bottom" id="FSs-Vb-vT7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pbg-3v-KNG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="swh-VK-qfJ">
+                                <rect key="frame" x="0.0" y="0.0" width="250" height="623"/>
+                                <color key="backgroundColor" red="0.23137254900000001" green="0.28235294119999998" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="menu_cell" id="t0h-BB-wQR" customClass="MenuTableViewCell" customModule="healthapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="250" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t0h-BB-wQR" id="86K-bg-375">
+                                            <rect key="frame" x="0.0" y="0.0" width="217" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="swh-VK-qfJ" firstAttribute="height" secondItem="pbg-3v-KNG" secondAttribute="height" constant="-44" id="5nH-4c-ciL"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="swh-VK-qfJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Nwo-5q-6js"/>
+                            <constraint firstItem="swh-VK-qfJ" firstAttribute="width" secondItem="pbg-3v-KNG" secondAttribute="width" multiplier="2:3" id="ZCQ-Ig-Q5v"/>
+                            <constraint firstItem="swh-VK-qfJ" firstAttribute="top" secondItem="1Ct-vP-SfB" secondAttribute="bottom" constant="-20" id="dvl-Qm-m1O"/>
+                            <constraint firstItem="swh-VK-qfJ" firstAttribute="leading" secondItem="pbg-3v-KNG" secondAttribute="leading" id="uCJ-VG-dV7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="y4b-Sb-Fkn"/>
+                    </view>
+                    <connections>
+                        <outlet property="menu_tableView" destination="swh-VK-qfJ" id="LQ4-9a-f9b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ASh-QP-JAd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8335" y="-121"/>
+        </scene>
     </scenes>
+
 </document>
