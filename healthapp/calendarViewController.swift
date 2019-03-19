@@ -90,6 +90,11 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             
             i += 1
         }
+        
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menu_vc.view.isHidden = true
+        //hide back button show menu
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
     }
     
     
@@ -456,6 +461,44 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
                 fatalError()
             }
         }
+    }
+    
+    var menu_vc : MenuViewController!
+    var menu_bool = true
+    @objc func menu_Action(_ sender: UIBarButtonItem) {
+        if menu_vc.view.isHidden{
+            UIView.animate(withDuration: 0.3){ () -> Void in
+                self.show_menu()
+            }
+        }
+        else {
+            UIView.animate(withDuration: 0.3){ () -> Void in
+                self.close_menu()
+            }
+        }
+    }
+    
+    @IBAction func menu_Action_Reminder(_ sender: UIBarButtonItem) {
+        if menu_vc.view.isHidden{
+            self.show_menu()
+        }
+        else {
+            self.close_menu()
+        }
+    }
+    
+    func show_menu()
+    {
+        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.addChild(self.menu_vc)
+        self.view.addSubview(self.menu_vc.view)
+        self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
+        self.menu_vc.view.isHidden = false
+    }
+    func close_menu()
+    {
+        self.menu_vc.view.removeFromSuperview()
+        self.menu_vc.view.isHidden = true
     }
 }
 

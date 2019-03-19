@@ -31,10 +31,14 @@
             
             override func viewDidLoad() {
                 super.viewDidLoad()
+                Import.Design()
                 self.Export.isHidden = true
                 disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                 
-                Import.Design()
+                menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+                menu_vc.view.isHidden = true
+                //hide back button show menu
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
                
             }
             
@@ -47,7 +51,7 @@
                       disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                     self.Import.isHidden = false
                     self.Export.isHidden = true
-                     Import.Design()
+                    Import.Design()
                 case 1:
 
                     disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user.  The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported."
@@ -241,7 +245,7 @@
                             print("error")
                         }
                     }
-                    let ImportStatus = UIAlertController(title: "Import Succesful", message: " ", preferredStyle: .alert)
+                    let ImportStatus = UIAlertController(title: "Import Successful", message: " ", preferredStyle: .alert)
                     
                     ImportStatus.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
                     
@@ -637,7 +641,7 @@
             
             self.present(activityViewController, animated: true)
             
-            let ExportStatus = UIAlertController(title: "Export Succesful", message: " ", preferredStyle: .alert)
+            let ExportStatus = UIAlertController(title: "Export Successful", message: " ", preferredStyle: .alert)
             
             ExportStatus.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
             
@@ -686,6 +690,44 @@
             func Password(textfield: UITextField!){
                 password = textfield
                 password?.placeholder = "Password*"
+            }
+            
+            var menu_vc : MenuViewController!
+            var menu_bool = true
+            @objc func menu_Action(_ sender: UIBarButtonItem) {
+                if menu_vc.view.isHidden{
+                    UIView.animate(withDuration: 0.3){ () -> Void in
+                        self.show_menu()
+                    }
+                }
+                else {
+                    UIView.animate(withDuration: 0.3){ () -> Void in
+                        self.close_menu()
+                    }
+                }
+            }
+            
+            @IBAction func menu_Action_Reminder(_ sender: UIBarButtonItem) {
+                if menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+                else {
+                    self.close_menu()
+                }
+            }
+            
+            func show_menu()
+            {
+                //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                self.addChild(self.menu_vc)
+                self.view.addSubview(self.menu_vc.view)
+                self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
+                self.menu_vc.view.isHidden = false
+            }
+            func close_menu()
+            {
+                self.menu_vc.view.removeFromSuperview()
+                self.menu_vc.view.isHidden = true
             }
         
 }

@@ -37,7 +37,9 @@ class checklist: UITableViewController{
     
     
     override func viewDidLoad() {
-       
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menu_vc.view.isHidden = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
     }
     /*
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -90,6 +92,39 @@ class checklist: UITableViewController{
         }
     }
     
+    var menu_vc : MenuViewController!
+    @IBAction func menu_Action(_ sender: UIBarButtonItem) {
+        if menu_vc.view.isHidden{
+            self.show_menu()
+        }
+        else {
+            self.close_menu()
+        }
+        
+    }
+    
+    
+    func show_menu()
+    {
+        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+        self.addChild(self.menu_vc)
+        self.view.addSubview(self.menu_vc.view)
+        
+        let yvalue = self.tableView.contentOffset.y+84
+        self.menu_vc.view.frame = CGRect(x: 0, y: yvalue, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
+        self.menu_vc.view.isHidden = false
+    }
+    func close_menu()
+    {
+        self.menu_vc.view.removeFromSuperview()
+        self.menu_vc.view.isHidden = true
+    }
+    
+    //When scrolling starts, menu is hidden
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.menu_vc.view.removeFromSuperview()
+        self.menu_vc.view.isHidden = true
+    }
 }
 
 
