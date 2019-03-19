@@ -1154,6 +1154,54 @@ class DBManager: NSObject {
         return val;
     }
     
+    //KAyla Belli
+    //**************************Delete all tables in this file***************************************
+    func DeleteAll(sameUser: String = "") -> Bool
+    {
+        
+        var deleted = false
+        
+        if openEncrypted(){
+            
+            
+            var query = "DELETE FROM reminder where reminderUser = ?"
+            
+            do{
+                try database2.executeUpdate(query, values: [sameUser])
+                deleted = true
+            }
+            catch{
+                deleted = false
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM reminderMedication where reminderUser = ?"
+            
+            do{
+                try database2.executeUpdate(query, values: [sameUser])
+                deleted = true
+            }
+            catch{
+                deleted = false
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM reminderMonthly where reminderUser = ?"
+            
+            do{
+                try database2.executeUpdate(query, values: [sameUser])
+                deleted = true
+            }
+            catch{
+                deleted = false
+                print(error.localizedDescription)
+            }
+            
+        }
+        database2.close()
+        return deleted
+   
+    }
 
 /*
 ///RETRIEVE ALL INFO FOR EXPORT

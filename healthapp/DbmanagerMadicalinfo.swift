@@ -33,6 +33,7 @@
 import Foundation
 import UIKit
 
+
 class DbmanagerMadicalinfo: NSObject {
     
     static let shared1: DbmanagerMadicalinfo = DbmanagerMadicalinfo()
@@ -99,7 +100,119 @@ class DbmanagerMadicalinfo: NSObject {
     //open eyncypted database
     
     
+    //KAyla Belli
+    //**************************Delete all tables in this file***************************************
+    func DeleteAll(sameUser: String = "") -> Bool
+    {
+        
+        var deleted = false
+        
+        if openDatabase(){
+        
+            var query = "DELETE FROM PersonalInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                //AllergiesViewController().deleteAllergies()
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+
+            query = "DELETE FROM Allergies where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                //AllergiesViewController().deleteAllergies()
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Doctor where SameUser = ?" //where SameUser = \(sameUser)"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Illnesses where SameUser = ?" //where SameUser = \(sameUser)"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Medicinelist where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Surgery where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Vaccines where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM InsuranceInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM MedicalInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            
+        }
+        database.close()
+        deleted = true
+        return deleted
+        
+        
+    }
     
+
     
     
     func openDatabase() ->Bool
