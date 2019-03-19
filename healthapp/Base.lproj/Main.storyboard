@@ -4349,7 +4349,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eae-fW-NOt">
-                                <rect key="frame" x="0.0" y="0.0" width="213.5" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="213.5" height="524"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.28235294117647058" blue="0.33725490196078434" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -4369,7 +4369,7 @@
                             <constraint firstItem="eae-fW-NOt" firstAttribute="width" secondItem="9fO-dQ-8To" secondAttribute="width" multiplier="2:3" id="26p-Nv-wPJ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eae-fW-NOt" secondAttribute="trailing" constant="20" symbolic="YES" id="A7d-4Q-fhP"/>
                             <constraint firstItem="eae-fW-NOt" firstAttribute="top" secondItem="yPH-fe-oKv" secondAttribute="bottom" constant="-20" id="ACM-cg-BIh"/>
-                            <constraint firstItem="eae-fW-NOt" firstAttribute="height" secondItem="9fO-dQ-8To" secondAttribute="height" id="mNx-Lb-fed"/>
+                            <constraint firstItem="eae-fW-NOt" firstAttribute="height" secondItem="9fO-dQ-8To" secondAttribute="height" constant="-44" id="mNx-Lb-fed"/>
                             <constraint firstItem="eae-fW-NOt" firstAttribute="leading" secondItem="9fO-dQ-8To" secondAttribute="leading" id="oMq-op-tAE"/>
                         </constraints>
                     </view>
