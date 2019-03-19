@@ -35,6 +35,7 @@
                 disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
                 
                 Import.Design()
+               
             }
             
             @IBAction func segmentSelected(_ sender: Any) {
@@ -81,6 +82,15 @@
                             self.present(alertController, animated: true, completion: nil)
                         }
                         else{
+                            let defaults:UserDefaults = UserDefaults.standard
+                            var currentUser = ""
+                            if let opened:String = defaults.string(forKey: "userNameKey" )
+                            {
+                                currentUser=opened
+                                print(opened)
+                            }
+                            _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
+                            _ = DBManager.shared.DeleteAll(sameUser: currentUser)
                             let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
                             documentPickerController.delegate = self as? UIDocumentPickerDelegate
                             self.present(documentPickerController, animated: true, completion: nil)
