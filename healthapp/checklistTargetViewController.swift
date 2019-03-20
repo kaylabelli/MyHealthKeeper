@@ -84,6 +84,9 @@ class checklistTargetViewController: UIViewController {
             goToSetReminder.isHidden = true
         }
         
+        goToSetReminder.Design()
+        submitButtonOutlet.Design()
+        linkLabel.Design()
         
         // Do any additional setup after loading the view.
     }
@@ -139,6 +142,11 @@ class checklistTargetViewController: UIViewController {
             }
             
             _ = DBManager.shared.updateChecklist(reminderUser: uName, checklistType: tableViewData[myIndex].title, date: dateField.text ?? "", yesNo: yesNoValue)
+            
+            let regAlert1 = UIAlertController(title: "Success", message: "Data was successfully saved.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            
+            self.present(regAlert1,animated: true, completion:nil)
         }
         else
         {
