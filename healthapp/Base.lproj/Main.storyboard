@@ -4164,7 +4164,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.55608636140000001" green="0.83351856469999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                            <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                             <nil key="highlightedColor"/>
                             <variation key="heightClass=regular-widthClass=regular">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
@@ -6059,14 +6059,16 @@
         <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="7HV-uX-Ihm"/>
+        <segue reference="Cgh-uD-9eQ"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="Nl3-F2-eMS"/>
         <segue reference="wIY-ro-ndP"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="teX-8L-zr0"/>
-        <segue reference="Cs9-zs-vBU"/>
-        <segue reference="NHS-B9-Lrd"/>
+        <segue reference="Cop-1Y-Nhy"/>
+        <segue reference="vbZ-5b-9yE"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
         <segue reference="eWA-4f-dh2"/>
