@@ -76,6 +76,7 @@ class checklist: UITableViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCell.AccessoryType.checkmark
         myIndex = indexPath.row
         performSegue(withIdentifier: "segue", sender: self)
     }
