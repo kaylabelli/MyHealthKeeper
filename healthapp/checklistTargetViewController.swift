@@ -86,7 +86,7 @@ class checklistTargetViewController: UIViewController {
         
         goToSetReminder.Design()
         submitButtonOutlet.Design()
-        linkLabel.Design()
+        linkLabel.Design2()
         
         // Do any additional setup after loading the view.
     }

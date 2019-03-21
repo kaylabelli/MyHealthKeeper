@@ -33,7 +33,7 @@
                 super.viewDidLoad()
                 Import.Design()
                 self.Export.isHidden = true
-                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
+                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application, it will not add data to currently existing data. Be sure that you have already exported data and have the MyHealthKeeper.csv file saved somewhere accessable.  After selecting to import, the data that is in the app now will be deleted. Press the 'Import Data' button if you would like to import."
                 
                 menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
                 menu_vc.view.isHidden = true
@@ -690,6 +690,7 @@
             func Password(textfield: UITextField!){
                 password = textfield
                 password?.placeholder = "Password*"
+                password.isSecureTextEntry = true
             }
             
             var menu_vc : MenuViewController!

@@ -54,7 +54,7 @@ class summary: UITableViewController {
         additional = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: CurrentUser) ?? [MedicaInfo()]
         
         //tableView.backgroundColor = UIColor(hue: 219/360, saturation: 79/100, brightness: 89/100, alpha: 1.0)
-        tableView.backgroundColor = UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0)
+      //  tableView.backgroundColor = UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0)
         // backgroundCol()
         
         // menu
@@ -144,6 +144,7 @@ class summary: UITableViewController {
         let cell:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell") as UITableViewCell
         let cell1:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell1") as UITableViewCell
         cell.detailTextLabel?.textColor = UIColor.black
+        //cell1.backgroundColor
         // cell.detailTextLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
         // passs same user for all information
         
