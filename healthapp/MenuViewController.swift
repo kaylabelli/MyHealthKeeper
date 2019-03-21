@@ -351,7 +351,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else if (section == 3)
         {
-            image.image = UIImage(named: "ekg")
+            image.image = UIImage(named: "calendar")
         }
         else if (section == 4)
         {
@@ -377,7 +377,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }*/
         else if (section == 8)
         {
-            image.image = UIImage(named: "history")
+            image.image = UIImage(named: "checklist")
         }
             //end Kayla Belli
         else if (section == 9)
@@ -386,7 +386,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else if (section == 10)
         {
-            image.image = UIImage(named: "logout")
+            image.image = UIImage(named: "expand1")
         }
         else if (section == 11)
         {
