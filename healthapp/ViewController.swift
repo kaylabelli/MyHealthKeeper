@@ -532,6 +532,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(reminderError,animated: true, completion:nil)
         }
+        else if (medTAmountNum == 0 || medAmountNum == 0)
+        {
+            let reminderError = UIAlertController(title: "ERROR", message: "Amounts cannot be zero.", preferredStyle: UIAlertController.Style.alert)
+            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(reminderError,animated: true, completion:nil)
+        }
         else   //if the entry is valid
         {
             //fomat the reminder date from date picker

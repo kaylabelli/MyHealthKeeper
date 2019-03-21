@@ -374,7 +374,8 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
         
         if currentMonth == Months[currentCalendar.component(.month, from: dateCalendar) - 1] && year == currentCalendar.component(.year, from: dateCalendar) && indexPath.row - 6 == day + numOfEmpty{
-            cell.backgroundColor = UIColor.blue
+            //cell.backgroundColor = UIColor.blue
+            cell.backgroundColor = UIColor.black.withAlphaComponent(0.125)
         }
         
         return cell
