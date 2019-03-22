@@ -464,6 +464,45 @@ class DBManager: NSObject {
         return reminders
     }
     
+    func monthAppointmentReminder(reminderUser:String, reminderMonth:String) -> [ReminderInfo] {
+        var reminders: [ReminderInfo] = [ReminderInfo()]
+        if openEncrypted()
+        {
+            let query = "select * from reminder where reminderUser = ? AND reminderDate LIKE '\(reminderMonth)%'"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser])
+                
+                while results.next() {
+                    let reminder = ReminderInfo(reminderId: Int(results.int(forColumn: field_Reminder_ID)),
+                                                reminderName: results.string( forColumn: field_Reminder_Name),
+                                                reminderLocation: results.string( forColumn: field_Reminder_Location),
+                                                reminderReason: results.string( forColumn: field_Reminder_Reason),
+                                                reminderDate: results.string( forColumn: field_Reminder_Date),
+                                                reminderUser: results.string( forColumn: field_Reminder_User)
+                    )
+                    
+                    
+                    if reminders==nil {
+                        reminders=[ReminderInfo]()
+                    }
+                    reminders.append(reminder)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+                let reminder = ReminderInfo()
+                reminders.append(reminder)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return reminders
+    }
+    
     
     //*********** Medication Reminders ********************
     
