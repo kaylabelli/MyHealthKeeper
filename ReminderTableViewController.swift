@@ -35,7 +35,8 @@ class ReminderTableViewController: UITableViewController {
             print("USERNAME2")
             print(opened)
         }
-        items=DBManager.shared.loadReminders(reminderUser:uName) ?? [ReminderInfo()]
+        items = DBManager.shared.loadReminders(reminderUser:uName) ?? [ReminderInfo()]
+        items.sort {$0.reminderDate < $1.reminderDate}
      //  items=DBManager.shared.loadReminders() ?? [ReminderInfo()]
         tableView.reloadData()
        print("IN table view controller!!!!!")
@@ -159,7 +160,7 @@ class ReminderTableViewController: UITableViewController {
         let DateFormat=DateFormatter()
         var dateDisplay=""
         var labelimage = "🔔 "
-        DateFormat.dateFormat="MMMM d yyyy',' H:mm a"
+        DateFormat.dateFormat="MMMM d yyyy',' h:mm a"
         if(date != nil)
         {
             dateDisplay = DateFormat.string(from: date!)

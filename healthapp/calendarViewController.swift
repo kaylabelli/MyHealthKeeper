@@ -475,15 +475,48 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let main = UIStoryboard(name: "Main", bundle: nil)
+        let timeFormat = DateFormatter()
+        timeFormat.dateFormat = "h:mm a"
+        let DateFormats=DateFormatter()
+        DateFormats.dateFormat = "MM-dd-yyyy HH:mm"
+        
         if (indexPath.row > 6)
         {
             switch direction{
             case 0:
                 if monthReminders[indexPath.row - 6 - 1]
                 {
-                    let boardID = "Reminder Summary"
-                    let navigation = main.instantiateViewController(withIdentifier: boardID)
-                    self.navigationController?.pushViewController(navigation, animated: true)
+                    var list: String = ""
+                    var appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - numOfEmpty - 1])
+                    
+                    appointmentReminders.sort {$0.reminderDate < $1.reminderDate}
+                    
+                    var i = 0
+                    while (i < appointmentReminders.count)
+                    {
+                        if appointmentReminders[i].reminderName != ""
+                        {
+                            let date = DateFormats.date(from: appointmentReminders[i].reminderDate)
+                            appointmentReminders[i].reminderDate = timeFormat.string(from: date!)
+                        }
+                        
+                        i = i + 1
+                    }
+                    
+                    for i in appointmentReminders
+                    {
+                        if (i.reminderName! != "")
+                        {
+                            list.append("\(i.reminderName!) at \(i.reminderDate!)")
+                            list.append("\n")
+                        }
+                    }
+                    
+                    let Alert = UIAlertController(title: "\(monthDates[indexPath.row - 6 - numOfEmpty - 1])", message: list, preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Ok", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
                 }
                 else
                 {
@@ -505,9 +538,37 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             case 1...:
                 if monthReminders[indexPath.row - 6 - 1]
                 {
-                    let boardID = "Reminder Summary"
-                    let navigation = main.instantiateViewController(withIdentifier: boardID)
-                    self.navigationController?.pushViewController(navigation, animated: true)
+                    var list: String = ""
+                    var appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - nextNumofEmpty - 1])
+                    
+                    appointmentReminders.sort {$0.reminderDate < $1.reminderDate}
+                    
+                    var i = 0
+                    while (i < appointmentReminders.count)
+                    {
+                        if appointmentReminders[i].reminderName != ""
+                        {
+                            let date = DateFormats.date(from: appointmentReminders[i].reminderDate)
+                            appointmentReminders[i].reminderDate = timeFormat.string(from: date!)
+                        }
+                        
+                        i = i + 1
+                    }
+                    
+                    for i in appointmentReminders
+                    {
+                        if (i.reminderName! != "")
+                        {
+                            list.append("\(i.reminderName!) at \(i.reminderDate!)")
+                            list.append("\n")
+                        }
+                    }
+                    
+                    let Alert = UIAlertController(title: "\(monthDates[indexPath.row - 6 - nextNumofEmpty - 1])", message: list, preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Ok", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
                 }
                 else
                 {
@@ -529,9 +590,37 @@ class calendarViewController: UIViewController, UICollectionViewDelegate, UIColl
             case -1:
                 if monthReminders[indexPath.row - 6 - 1]
                 {
-                    let boardID = "Reminder Summary"
-                    let navigation = main.instantiateViewController(withIdentifier: boardID)
-                    self.navigationController?.pushViewController(navigation, animated: true)
+                    var list: String = ""
+                    var appointmentReminders = DBManager.shared.todayAppointmentReminder(reminderUser: uName, reminderDate: monthDates[indexPath.row - 6 - previousNumOfEmpty - 1])
+                    
+                    appointmentReminders.sort {$0.reminderDate < $1.reminderDate}
+                    
+                    var i = 0
+                    while (i < appointmentReminders.count)
+                    {
+                        if appointmentReminders[i].reminderName != ""
+                        {
+                            let date = DateFormats.date(from: appointmentReminders[i].reminderDate)
+                            appointmentReminders[i].reminderDate = timeFormat.string(from: date!)
+                        }
+                        
+                        i = i + 1
+                    }
+                    
+                    for i in appointmentReminders
+                    {
+                        if (i.reminderName! != "")
+                        {
+                            list.append("\(i.reminderName!) at \(i.reminderDate!)")
+                            list.append("\n")
+                        }
+                    }
+                    
+                    let Alert = UIAlertController(title: "\(monthDates[indexPath.row - 6 - previousNumOfEmpty - 1])", message: list, preferredStyle: UIAlertController.Style.alert)
+                    
+                    Alert.addAction(UIAlertAction(title:"Ok", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(Alert,animated: true, completion:nil)
                 }
                 else
                 {
