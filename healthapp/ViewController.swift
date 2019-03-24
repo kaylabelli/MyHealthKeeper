@@ -139,6 +139,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //reminderTable.delegate = self
             //reminderTable.dataSource = self as! UITableViewDataSource
             //Hide title on navigation bar
+            createDatePicker()
+            create2DatePicker()
+            create3DatePicker()
+            
             self.navigationItem.title = ""
             
             //hide Keyboard on tap
@@ -150,10 +154,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.LocationField.delegate=self
             
             self.medicationName.delegate=self
-            self.medicationType.delegate=self
+//            self.medicationType.delegate=self
             self.medicationAmount.delegate=self
             self.medicationTotalAmount.delegate=self
-            self.dosageText.delegate=self
+//            self.dosageText.delegate=self
+            self.firstTime.delegate = self
+            self.secondTime.delegate = self
+            self.thirdTime.delegate = self
             
             reminderLabel.text = "Setup Appointment Reminder"
             //Changes to 'Done'
@@ -163,8 +170,11 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             
             self.medicationView.isHidden = true
             self.saveMedicationButton.isHidden = true
-            self.typeMedicationPicker.isHidden = true
-            self.dosagePicker.isHidden = true
+            self.hourlyControl.isHidden = true
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+//            self.typeMedicationPicker.isHidden = true
+//            self.dosagePicker.isHidden = true
             
             //request authroization for notification
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
@@ -411,6 +421,71 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     //Submit Reminder -Melissa Heredia
     
     @IBOutlet weak var segmentPicker: UISegmentedControl!
+    @IBOutlet weak var dailyHourlyPicker: UISegmentedControl!
+    @IBOutlet weak var hourlyControl: UISegmentedControl!
+    @IBOutlet weak var dailyControl: UISegmentedControl!
+    
+    @IBAction func dailyHourly(_ sender: Any) {
+        let index = dailyHourlyPicker.selectedSegmentIndex
+        
+        switch index {
+        case 0:
+            dailyControl.selectedSegmentIndex = 0
+            self.dailyControl.isHidden = false
+            self.hourlyControl.isHidden = true
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
+        case 1:
+            hourlyControl.selectedSegmentIndex = 0
+            self.hourlyControl.isHidden = false
+            self.dailyControl.isHidden = true
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
+
+        default:
+            print("none")
+        }
+    }
+    
+    @IBAction func hourlyPicker(_ sender: Any) {
+        let index = hourlyControl.selectedSegmentIndex
+        
+        switch index {
+        case 0...3:
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+        default:
+            print("none")
+        }
+    }
+    
+    @IBAction func dailyPicker(_ sender: Any) {
+        let index = dailyControl.selectedSegmentIndex
+        
+        switch index {
+        case 0:
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            secondTime.text = ""
+            thirdTime.text = ""
+        case 1:
+            self.secondTime.isHidden = false
+            self.thirdTime.isHidden = true
+            thirdTime.text = ""
+        case 2:
+            self.secondTime.isHidden = false
+            self.thirdTime.isHidden = false
+        default:
+            print("none")
+        }
+    }
+    
     @IBAction func reminderType(_ sender: Any) {
         let index = segmentPicker.selectedSegmentIndex
         
@@ -423,10 +498,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.appointmentStack.isHidden = false
             self.medicationView.isHidden = true
             self.saveMedicationButton.isHidden = true
-            self.typeMedicationPicker.isHidden = true
-            self.dosagePicker.isHidden = true
-            typeMedicationPicker.isHidden = true
-            dosagePicker.isHidden = true
+//            self.typeMedicationPicker.isHidden = true
+//            self.dosagePicker.isHidden = true
+//            typeMedicationPicker.isHidden = true
+//            dosagePicker.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
             reminderLabel.text = "Setup Appointment Reminder"
         case 1:
             print(index)
@@ -435,10 +513,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.appointmentStack.isHidden = true
             self.medicationView.isHidden = false
             self.saveMedicationButton.isHidden = false
-            self.typeMedicationPicker.isHidden = false
-            self.dosagePicker.isHidden = false
-            typeMedicationPicker.isHidden = true
-            dosagePicker.isHidden = true
+//            self.typeMedicationPicker.isHidden = false
+//            self.dosagePicker.isHidden = false
+//            typeMedicationPicker.isHidden = true
+//            dosagePicker.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
             reminderLabel.text = "Setup Medication Reminder"
         default:
             print("none")
@@ -452,6 +533,73 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     @IBOutlet weak var medicationAmount: UITextField!
     @IBOutlet weak var medicationTotalAmount: UITextField!
     @IBOutlet weak var dosageText: UITextField!
+    @IBOutlet weak var firstTime: UITextField!
+    @IBOutlet weak var secondTime: UITextField!
+    @IBOutlet weak var thirdTime: UITextField!
+    
+    var datePicker = UIDatePicker()
+    var secondDatePicker = UIDatePicker()
+    var thirdDatePicker = UIDatePicker()
+    
+    func createDatePicker()
+    {
+        datePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        toolbar.setItems([doneButton], animated: true)
+        firstTime.inputAccessoryView = toolbar
+        
+        firstTime.inputView = datePicker
+    }
+    
+    @objc func doneAction()
+    {
+        firstTime.text = "\(datePicker.date)"
+        self.view.endEditing(true)
+    }
+    
+    func create2DatePicker()
+    {
+        secondDatePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done2Action))
+        toolbar.setItems([doneButton], animated: true)
+        secondTime.inputAccessoryView = toolbar
+        
+        secondTime.inputView = secondDatePicker
+    }
+    
+    @objc func done2Action()
+    {
+        secondTime.text = "\(secondDatePicker.date)"
+        self.view.endEditing(true)
+    }
+    
+    func create3DatePicker()
+    {
+        thirdDatePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done3Action))
+        toolbar.setItems([doneButton], animated: true)
+        thirdTime.inputAccessoryView = toolbar
+        
+        thirdTime.inputView = thirdDatePicker
+    }
+    
+    @objc func done3Action()
+    {
+        thirdTime.text = "\(thirdDatePicker.date)"
+        self.view.endEditing(true)
+    }
     
     @IBOutlet weak var reminderName: UITextField!
     @IBOutlet weak var LocationField: UITextField!
@@ -464,10 +612,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     @IBAction func createMedicationReminder(_ sender: Any) {
         
         let medName=String(medicationName.text!)
-        let medType=String(medicationType.text!)
+        let medType = ""
         let medAmount = String(medicationAmount.text!)
         let medTAmount = String(medicationTotalAmount.text!)
-        let dos = String(dosageText.text!)
+        let dos = ""
         
         let medAmountNum:Int = Int(medicationAmount.text!) ?? 0
         let medTAmountNum:Int = Int(medicationTotalAmount.text!) ?? 1
@@ -476,10 +624,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         
         //clears the textfeilds
         medicationName.text!=""
-        medicationType.text!=""
         medicationAmount.text!=""
         medicationTotalAmount.text!=""
-        dosageText.text!=""
+        firstTime.text = ""
+        secondTime.text = ""
+        thirdTime.text = ""
+        
         if(medName=="")//invalid entry-check if the Reminder Name is empty
         {
             // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
@@ -488,12 +638,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //Add close action to alert
             reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             //Present the alert
-            self.present(reminderError,animated: true, completion:nil)
-        }
-        else if (medType == "")
-        {
-            let reminderError = UIAlertController(title: "ERROR", message: "Medication type field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(reminderError,animated: true, completion:nil)
         }
         else if (medAmount == "")
@@ -517,12 +661,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         else if (CheckTotal == false)
         {
             let reminderError = UIAlertController(title: "ERROR", message: "Medication total amount field is invalid. Please enter a number.", preferredStyle: UIAlertController.Style.alert)
-            reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-            self.present(reminderError,animated: true, completion:nil)
-        }
-        else if (dos == "")
-        {
-            let reminderError = UIAlertController(title: "ERROR", message: "Dosage field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(reminderError,animated: true, completion:nil)
         }
@@ -1222,7 +1360,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if title == "Reminders"
         {
-            if (textField == medicationType)
+           /* if (textField == medicationType)
             {
                 medicationType.inputView = UIView()
                 if typeMedicationPicker.isHidden
@@ -1252,7 +1390,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }
             else if (textField == medicationName)
             {
-                typeMedicationPicker.isHidden = true
+               typeMedicationPicker.isHidden = true
                 dosagePicker.isHidden = true
             }
             else if (textField == medicationAmount)
@@ -1265,7 +1403,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 typeMedicationPicker.isHidden = true
                 dosagePicker.isHidden = true
             }
-            
+            */
         }
     }
     

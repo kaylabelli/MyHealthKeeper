@@ -550,7 +550,7 @@
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7a1-I1-Qf8">
-                                        <rect key="frame" x="66.5" y="145" width="187" height="315"/>
+                                        <rect key="frame" x="66.5" y="145" width="187" height="339"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-qe-mxy">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
@@ -561,54 +561,74 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dl-ql-vRe">
-                                                <rect key="frame" x="0.0" y="35" width="187" height="30"/>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="qNu-da-bUs">
+                                                <rect key="frame" x="0.0" y="35" width="187" height="29"/>
+                                                <segments>
+                                                    <segment title="Daily"/>
+                                                    <segment title="Hourly"/>
+                                                </segments>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="dailyHourly:" destination="azN-wY-8Gw" eventType="valueChanged" id="Jrp-ba-vVS"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="vSC-q5-akN">
+                                                <rect key="frame" x="0.0" y="68" width="187" height="29"/>
+                                                <segments>
+                                                    <segment title="12 Hrs"/>
+                                                    <segment title="8 Hrs"/>
+                                                    <segment title="6 Hrs"/>
+                                                    <segment title="4 Hrs"/>
+                                                </segments>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="hourlyPicker:" destination="azN-wY-8Gw" eventType="valueChanged" id="Dna-WU-XUK"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Tqg-Wk-A5P">
+                                                <rect key="frame" x="0.0" y="101" width="187" height="29"/>
+                                                <segments>
+                                                    <segment title="Once"/>
+                                                    <segment title="Twice"/>
+                                                    <segment title="Thrice"/>
+                                                </segments>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="dailyPicker:" destination="azN-wY-8Gw" eventType="valueChanged" id="ho0-gu-QDm"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6W-MP-2Db">
+                                                <rect key="frame" x="0.0" y="134" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyp-TC-NJA">
-                                                <rect key="frame" x="0.0" y="70" width="187" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="1IX-X1-Yu6"/>
-                                                    <constraint firstAttribute="height" constant="50" id="v1R-L5-HTb"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="azN-wY-8Gw" id="SxI-I4-e11"/>
-                                                    <outlet property="delegate" destination="azN-wY-8Gw" id="D0G-tr-XeZ"/>
-                                                </connections>
-                                            </pickerView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-Ta-OHc">
+                                                <rect key="frame" x="0.0" y="169" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Third Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00P-pS-Svl">
+                                                <rect key="frame" x="0.0" y="204" width="187" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="koc-mA-oTH">
-                                                <rect key="frame" x="0.0" y="125" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="239" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount Per Use" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-04-gLJ">
-                                                <rect key="frame" x="0.0" y="160" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="274" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dosage" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wCB-Pt-uzT">
-                                                <rect key="frame" x="0.0" y="195" width="187" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Fp-1L-hnM">
-                                                <rect key="frame" x="0.0" y="230" width="187" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="1q9-cO-mOU"/>
-                                                    <constraint firstAttribute="height" constant="50" id="rQg-eI-C2b"/>
-                                                </constraints>
-                                                <connections>
-                                                    <outlet property="dataSource" destination="azN-wY-8Gw" id="gVZ-Ye-lPq"/>
-                                                    <outlet property="delegate" destination="azN-wY-8Gw" id="N9U-ke-zQh"/>
-                                                </connections>
-                                            </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwB-iZ-sbd">
-                                                <rect key="frame" x="0.0" y="285" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="309" width="187" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -693,12 +713,13 @@
                         <outlet property="AddReminderMedication" destination="gwB-iZ-sbd" id="YkX-Sg-OUI"/>
                         <outlet property="LocationField" destination="VQJ-6f-HP3" id="gKa-Ai-J7M"/>
                         <outlet property="appointmentStack" destination="p0k-LB-pAi" id="5Jt-P9-Ked"/>
-                        <outlet property="dosagePicker" destination="7Fp-1L-hnM" id="VS4-TW-0Tj"/>
-                        <outlet property="dosageText" destination="wCB-Pt-uzT" id="j7M-lB-vSI"/>
+                        <outlet property="dailyControl" destination="Tqg-Wk-A5P" id="nYR-uw-gzz"/>
+                        <outlet property="dailyHourlyPicker" destination="qNu-da-bUs" id="Kki-Oo-AdX"/>
+                        <outlet property="firstTime" destination="d6W-MP-2Db" id="Hqc-uL-PUf"/>
+                        <outlet property="hourlyControl" destination="vSC-q5-akN" id="jyT-HC-t1M"/>
                         <outlet property="medicationAmount" destination="XOj-04-gLJ" id="WHq-RC-Sv2"/>
                         <outlet property="medicationName" destination="3Xp-qe-mxy" id="sR7-DD-T5A"/>
                         <outlet property="medicationTotalAmount" destination="koc-mA-oTH" id="LHE-nT-HES"/>
-                        <outlet property="medicationType" destination="4dl-ql-vRe" id="gvK-HI-Arq"/>
                         <outlet property="medicationView" destination="7a1-I1-Qf8" id="dVk-vC-DDa"/>
                         <outlet property="reasonField" destination="Gvg-VZ-auC" id="8bd-8a-6tS"/>
                         <outlet property="reminderDate" destination="ilO-O8-FYx" id="w1U-Tn-XQE"/>
@@ -706,8 +727,9 @@
                         <outlet property="reminderName" destination="Yvm-fi-6yr" id="CD7-VM-hes"/>
                         <outlet property="reminderTable" destination="FEX-YN-z7U" id="QyX-7R-Qa3"/>
                         <outlet property="saveMedicationButton" destination="gwB-iZ-sbd" id="HYo-zs-0Vj"/>
+                        <outlet property="secondTime" destination="u6A-Ta-OHc" id="nrj-NV-wXt"/>
                         <outlet property="segmentPicker" destination="N1A-vA-VUM" id="DQd-wK-olO"/>
-                        <outlet property="typeMedicationPicker" destination="lyp-TC-NJA" id="JmN-1E-Zzf"/>
+                        <outlet property="thirdTime" destination="00P-pS-Svl" id="lhe-x7-9pM"/>
                         <segue destination="1LF-Uv-tE5" kind="show" identifier="ViewReminders" id="W6E-5a-M9A"/>
                         <segue destination="YQi-YK-jP0" kind="show" identifier="ViewMedicationReminders" id="9SN-Hj-22G"/>
                     </connections>
@@ -1269,7 +1291,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="106" width="25" height="25"/>
+                                <rect key="frame" x="175" y="106" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1868,7 +1890,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="219" y="163.5" width="80" height="34"/>
+                                <rect key="frame" x="232" y="163.5" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -1911,7 +1933,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="163.5" width="25" height="25"/>
+                                <rect key="frame" x="175" y="163.5" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -2132,7 +2154,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="155" width="25" height="25"/>
+                                <rect key="frame" x="185" y="155" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2795,7 +2817,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="94" width="80" height="34"/>
+                                <rect key="frame" x="242" y="94" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2806,7 +2828,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="94" width="25" height="25"/>
+                                <rect key="frame" x="185" y="94" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -6055,12 +6077,10 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="7HV-uX-Ihm"/>
-        <segue reference="Cgh-uD-9eQ"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="Nl3-F2-eMS"/>
@@ -6071,7 +6091,7 @@
         <segue reference="vbZ-5b-9yE"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>
-        <segue reference="eWA-4f-dh2"/>
+        <segue reference="5Zg-Ed-Ahp"/>
         <segue reference="iDV-28-2t0"/>
         <segue reference="WKG-Xj-E1R"/>
         <segue reference="j5B-R0-3Bu"/>
