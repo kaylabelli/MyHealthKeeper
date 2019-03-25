@@ -44,11 +44,229 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     @IBOutlet weak var dosage: UITextField!
     @IBOutlet weak var ReminderDesign: UIButton!
     
+    @IBOutlet weak var dailyHourlyPicker: UISegmentedControl!
+    @IBOutlet weak var hourlyControl: UISegmentedControl!
+    @IBOutlet weak var dailyControl: UISegmentedControl!
+    
+    @IBOutlet weak var firstTime: UITextField!
+    @IBOutlet weak var secondTime: UITextField!
+    @IBOutlet weak var thirdTime: UITextField!
+    
     @IBOutlet weak var typePicker: UIPickerView!
     var medicationTypeList = ["Solid", "Liquid"]
     
     @IBOutlet weak var dosagePicker: UIPickerView!
     var dosageList = ["1 Time per Day", "2 Times per Day", "3 Times per Day", "4 Times per Day", "Every 4 Hours", "Every 6 Hours", "Every 8 Hours"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //hide keyboard when user taps screen
+        self.hideKeyboard()
+        
+        createDatePicker()
+        create2DatePicker()
+        create3DatePicker()
+        
+        self.firstTime.delegate = self
+        self.secondTime.delegate = self
+        self.thirdTime.delegate = self
+        
+        //hide keyboard when user presses enter on keyboard
+        
+        self.medicationName.delegate = self
+        //        self.medicationType.delegate = self
+        //        self.medicationType.delegate = self
+        self.totalAmount.delegate = self
+        self.perUse.delegate = self
+        //        self.dosage.delegate = self
+        
+        medicationName.returnKeyType = UIReturnKeyType.done
+        //        medicationType.returnKeyType = UIReturnKeyType.done
+        totalAmount.returnKeyType = UIReturnKeyType.done
+        perUse.returnKeyType = UIReturnKeyType.done
+        //       dosage.returnKeyType = UIReturnKeyType.done
+        
+        //        self.dosagePicker.dataSource = self
+        //        self.dosagePicker.delegate = self
+        //        self.typePicker.dataSource = self
+        //        self.typePicker.delegate = self
+        
+        //        self.typePicker.isHidden = true
+        //        self.dosagePicker.isHidden = true
+        
+        //reapplies color when switching to landscape mode
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        //if user flips phone to landscape mode the background is reapplied
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
+        
+        
+        //Main UIview color
+        if (ReminderDesign != nil)
+        {
+            ReminderDesign.Design()
+        }
+        backgroundCol()
+        
+        //button
+        //
+        //   Update.Design()
+        // menu
+        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        menu_vc.view.isHidden = true
+        
+        // print(id)
+        //prepopulate page
+        let useNum: Int = curitem?.medicationTotalAmount ?? 1
+        let totalNum: Int = curitem?.medicationAmount ?? 0
+        
+        medicationName?.text = curitem?.medicationName
+        //        medicationType?.text = curitem?.medicationType
+        totalAmount.text = String(totalNum)
+        perUse.text = String(useNum)
+        //        dosage?.text = curitem?.dosage
+        
+        
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="MM-dd-yyyy HH:mm"
+        // var dateR=DateFormat.string(from: reminderDate.date)
+        //let datecurrent=DateFormat.date(from: (curitem?.reminderDate)!)
+        /*if datecurrent != nil
+         {
+         ReminderDate.setDate(datecurrent!, animated: true)
+         }*/
+        //ReminderReason.text = item![1].reminderReason
+        //Do any additional setup after loading the view.
+        //check if user has authorized
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
+    }
+    
+    @IBAction func dailyHourly(_ sender: Any) {
+        let index = dailyHourlyPicker.selectedSegmentIndex
+        
+        switch index {
+        case 0:
+            dailyControl.selectedSegmentIndex = 0
+            self.dailyControl.isHidden = false
+            self.hourlyControl.isHidden = true
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
+        case 1:
+            hourlyControl.selectedSegmentIndex = 0
+            self.hourlyControl.isHidden = false
+            self.dailyControl.isHidden = true
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            firstTime.text = ""
+            secondTime.text = ""
+            thirdTime.text = ""
+            
+        default:
+            print("none")
+        }
+    }
+    
+    @IBAction func hourlyPicker(_ sender: Any) {
+        let index = hourlyControl.selectedSegmentIndex
+        
+        switch index {
+        case 0...3:
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+        default:
+            print("none")
+        }
+    }
+    
+    @IBAction func dailyPicker(_ sender: Any) {
+        let index = dailyControl.selectedSegmentIndex
+        
+        switch index {
+        case 0:
+            self.secondTime.isHidden = true
+            self.thirdTime.isHidden = true
+            secondTime.text = ""
+            thirdTime.text = ""
+        case 1:
+            self.secondTime.isHidden = false
+            self.thirdTime.isHidden = true
+            thirdTime.text = ""
+        case 2:
+            self.secondTime.isHidden = false
+            self.thirdTime.isHidden = false
+        default:
+            print("none")
+        }
+    }
+    
+    var datePicker = UIDatePicker()
+    var secondDatePicker = UIDatePicker()
+    var thirdDatePicker = UIDatePicker()
+    
+    func createDatePicker()
+    {
+        datePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        toolbar.setItems([doneButton], animated: true)
+        firstTime.inputAccessoryView = toolbar
+        
+        firstTime.inputView = datePicker
+    }
+    
+    @objc func doneAction()
+    {
+        firstTime.text = "\(datePicker.date)"
+        self.view.endEditing(true)
+    }
+    
+    func create2DatePicker()
+    {
+        secondDatePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done2Action))
+        toolbar.setItems([doneButton], animated: true)
+        secondTime.inputAccessoryView = toolbar
+        
+        secondTime.inputView = secondDatePicker
+    }
+    
+    @objc func done2Action()
+    {
+        secondTime.text = "\(secondDatePicker.date)"
+        self.view.endEditing(true)
+    }
+    
+    func create3DatePicker()
+    {
+        thirdDatePicker.datePickerMode = .time
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done3Action))
+        toolbar.setItems([doneButton], animated: true)
+        thirdTime.inputAccessoryView = toolbar
+        
+        thirdTime.inputView = thirdDatePicker
+    }
+    
+    @objc func done3Action()
+    {
+        thirdTime.text = "\(thirdDatePicker.date)"
+        self.view.endEditing(true)
+    }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
@@ -124,82 +342,6 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                 typePicker.isHidden = true
                 dosagePicker.isHidden = true
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //hide keyboard when user taps screen
-        self.hideKeyboard()
-        
-        //hide keyboard when user presses enter on keyboard
-        
-        self.medicationType.delegate = self
-        self.medicationType.delegate = self
-        self.totalAmount.delegate = self
-        self.perUse.delegate = self
-        self.dosage.delegate = self
-        
-        medicationName.returnKeyType = UIReturnKeyType.done
-        medicationType.returnKeyType = UIReturnKeyType.done
-        totalAmount.returnKeyType = UIReturnKeyType.done
-        perUse.returnKeyType = UIReturnKeyType.done
-        dosage.returnKeyType = UIReturnKeyType.done
-        
-        self.dosagePicker.dataSource = self
-        self.dosagePicker.delegate = self
-        self.typePicker.dataSource = self
-        self.typePicker.delegate = self
-        
-        self.typePicker.isHidden = true
-        self.dosagePicker.isHidden = true
-        
-        //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
-        //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
-        
-        
-        //Main UIview color
-        if (ReminderDesign != nil)
-        {
-            ReminderDesign.Design()
-        }
-        backgroundCol()
-        
-        //button
-        //
-        //   Update.Design()
-        // menu
-        menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
-        menu_vc.view.isHidden = true
-        
-        // print(id)
-        //prepopulate page
-        let useNum: Int = curitem?.medicationTotalAmount ?? 1
-        let totalNum: Int = curitem?.medicationAmount ?? 0
-        
-        medicationName?.text = curitem?.medicationName
-        medicationType?.text = curitem?.medicationType
-        totalAmount.text = String(totalNum)
-        perUse.text = String(useNum)
-        dosage?.text = curitem?.dosage
-        
-        
-        let DateFormat=DateFormatter()
-        DateFormat.dateFormat="MM-dd-yyyy HH:mm"
-        // var dateR=DateFormat.string(from: reminderDate.date)
-        //let datecurrent=DateFormat.date(from: (curitem?.reminderDate)!)
-        /*if datecurrent != nil
-        {
-            ReminderDate.setDate(datecurrent!, animated: true)
-        }*/
-        //ReminderReason.text = item![1].reminderReason
-        //Do any additional setup after loading the view.
-        //check if user has authorized
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
     }
     
     override func didReceiveMemoryWarning() {
@@ -531,7 +673,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
             let defaults:UserDefaults = UserDefaults.standard
             if let opened:String = defaults.string(forKey: "userNameKey" ){uName=opened}
             //insert reminder information into the Reminder table in the database and returns the sucess status
-            var sucess=DBManager.shared.insertReminderMedicationTable(medicationName: medName, medicationType: medType, medicationTotalAmount: medAmountNum, medicationAmount: medTAmountNum, dosage: dos, reminderUser: uName)
+            //var sucess=DBManager.shared.insertReminderMedicationTable(medicationName: medName, medicationType: medType, medicationTotalAmount: medAmountNum, medicationAmount: medTAmountNum, dosage: dos, reminderUser: uName)
+            var sucess = false
             
             let previousInsert = DBManager.shared.lastReminderMedication()
             
