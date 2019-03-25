@@ -177,12 +177,12 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ek-WV-UJT">
-                                <rect key="frame" x="280" y="20" width="40" height="40"/>
+                                <rect key="frame" x="285" y="30" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="LVF-y4-bgJ"/>
-                                    <constraint firstAttribute="height" constant="40" id="dmG-nf-rUR"/>
+                                    <constraint firstAttribute="width" constant="25" id="LVF-y4-bgJ"/>
+                                    <constraint firstAttribute="height" constant="25" id="dmG-nf-rUR"/>
                                 </constraints>
-                                <state key="normal" image="medicalinfo"/>
+                                <state key="normal" image="info"/>
                                 <connections>
                                     <action selector="InfoClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J18-xd-fWh"/>
                                 </connections>
@@ -199,11 +199,11 @@
                             <constraint firstItem="m3F-w5-vtL" firstAttribute="top" secondItem="JI2-Cf-We7" secondAttribute="bottom" priority="500" constant="50" id="GRs-GA-AiR"/>
                             <constraint firstItem="DMG-H2-9wi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m3F-w5-vtL" secondAttribute="bottom" constant="20" id="HXR-W2-Jx9"/>
                             <constraint firstItem="JI2-Cf-We7" firstAttribute="top" secondItem="DnO-oj-n3H" secondAttribute="bottom" constant="20" id="HrB-Gh-qr3"/>
-                            <constraint firstItem="2ek-WV-UJT" firstAttribute="top" secondItem="aKQ-zf-T7c" secondAttribute="bottom" id="IWN-BF-fil"/>
+                            <constraint firstItem="2ek-WV-UJT" firstAttribute="top" secondItem="aKQ-zf-T7c" secondAttribute="bottom" constant="10" id="IWN-BF-fil"/>
                             <constraint firstItem="m3F-w5-vtL" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1:3" id="KQs-o0-Nn4">
                                 <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="2ek-WV-UJT" secondAttribute="trailing" id="MFW-yU-QK4"/>
+                            <constraint firstAttribute="trailing" secondItem="2ek-WV-UJT" secondAttribute="trailing" constant="10" id="MFW-yU-QK4"/>
                             <constraint firstItem="dw8-It-bKr" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="OPE-BR-ElF"/>
                             <constraint firstItem="dw8-It-bKr" firstAttribute="top" secondItem="nWc-Ag-HLk" secondAttribute="bottom" id="Rus-bH-Vzc"/>
                             <constraint firstAttribute="trailing" secondItem="dw8-It-bKr" secondAttribute="trailing" id="VUe-st-MQ5"/>
@@ -2831,7 +2831,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="242" y="94" width="80" height="34"/>
+                                <rect key="frame" x="229" y="94" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2842,7 +2842,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="94" width="38" height="38"/>
+                                <rect key="frame" x="185" y="94" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -6181,9 +6181,8 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-
         <image name="icons8-below" width="25" height="25"/>
-        <image name="medicalinfo" width="50" height="50"/>
+        <image name="info" width="50" height="50"/>
         <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
