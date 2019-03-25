@@ -219,7 +219,8 @@
                            _ = DBManager.shared.insertMonthlyReminderTable(reminderStatus: Bool(line[2])!, reminderUser: currentUser)
                             break
                         case "reminderMedication":
-                            _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
+                           // _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
+                            print("needs work")
                             break
                         case "Medicinelist":
                             _ = DbmanagerMadicalinfo.shared1.insertmedicationInformationTable(MedName: line[2], dose: line[4], status: line[3], sameuser: currentUser)
@@ -582,13 +583,9 @@
                 text.append(",")
                 text.append(reminderMedicationItems[i].medicationName)
                 text.append(",")
-                text.append(reminderMedicationItems[i].medicationType)
-                text.append(",")
                 text.append(String(reminderMedicationItems[i].medicationTotalAmount))
                 text.append(",")
                 text.append(String(reminderMedicationItems[i].medicationAmount))
-                text.append(",")
-                text.append(reminderMedicationItems[i].dosage)
                 text.append(",")
                 text.append(reminderMedicationItems[i].reminderUser)
                 

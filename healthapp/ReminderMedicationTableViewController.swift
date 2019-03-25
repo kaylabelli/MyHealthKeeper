@@ -35,6 +35,10 @@ class ReminderMedicationTableViewController: UITableViewController
         }
         items = DBManager.shared.loadRemindersMedication(reminderUser: uName) ?? [ReminderMedicationInfo()]
         //  items=DBManager.shared.loadReminders() ?? [ReminderInfo()]
+        for i in items
+        {
+            print(i)
+        }
         tableView.reloadData()
         print("IN table view controller!!!!!")
         // Uncomment the following line to preserve selection between presentations
@@ -162,7 +166,7 @@ class ReminderMedicationTableViewController: UITableViewController
          dateDisplay = DateFormat.string(from: date!)
          }*/
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\n" + self.items[indexPath.row].dosage + "\nAmount per Dose: \(self.items[indexPath.row].medicationTotalAmount!)"
+        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\nAmount per Dose: \(self.items[indexPath.row].medicationTotalAmount!)"
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.numberOfLines = 0
         return cell

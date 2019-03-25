@@ -506,9 +506,8 @@ class DBManager: NSObject {
     
     //*********** Medication Reminders ********************
     
-    func insertReminderMedicationTable(medicationName:String, medicationType:String, medicationTotalAmount:Int, medicationAmount:Int, dosage:String, reminderUser:String) -> Bool {
+    func insertReminderMedicationTable(medicationName:String, dailyHourly:Int, hourlyControl:Int, dailyControl:Int, firstTime:String, secondTime:String, thirdTime:String, medicationTotalAmount:Int, medicationAmount:Int, reminderUser:String) -> Bool {
         print(medicationName)
-        print(medicationType)
         print(medicationAmount)
         print(medicationTotalAmount)
         print(reminderUser)
@@ -520,7 +519,7 @@ class DBManager: NSObject {
             return false;
         }
         //create table if not already created
-        let createHealthAppTableQuery = " create table reminderMedication (reminderID integer primary key not null, medicationName text not null, medicationType text not null, medicationTotalAmount integer not null, medicationAmount integer not null, dosage text not null, reminderUser text )"
+        let createHealthAppTableQuery = " create table reminderMedication (reminderID integer primary key not null, medicationName text not null, dailyHourly integer not null, hourlyControl integer not null, dailyControl integer not null, firstTime text not null, secondTime text not null, thirdTime text not null, medicationTotalAmount integer not null, medicationAmount integer not null, reminderUser text)"
         
         do{
             try database2.executeUpdate(createHealthAppTableQuery, values:nil)
@@ -531,7 +530,7 @@ class DBManager: NSObject {
             print(error.localizedDescription)
         }
         //insert data into database
-        let query="insert into reminderMedication ('reminderID', 'medicationName', 'medicationType', 'medicationTotalAmount', 'medicationAmount', 'dosage', 'reminderUser') values (NULL,'\(medicationName)','\(medicationType)', '\(medicationTotalAmount)', '\(medicationAmount)', '\(dosage)','\(reminderUser)');"
+        let query="insert into reminderMedication ('reminderID', 'medicationName', 'dailyHourly', 'hourlyControl', 'dailyControl', 'firstTime', 'secondTime', 'thirdTime', 'medicationTotalAmount', 'medicationAmount', 'reminderUser') values (NULL,'\(medicationName)', \(dailyHourly), \(hourlyControl), \(dailyControl), '\(firstTime)', '\(secondTime)', '\(thirdTime)', '\(medicationTotalAmount)', '\(medicationAmount)','\(reminderUser)');"
         if !database2.executeStatements(query) {
             print("Failed to insert initial data into the database2.")
             print(database2.lastError(), database2.lastErrorMessage())
@@ -581,7 +580,7 @@ class DBManager: NSObject {
                 let results = try database2.executeQuery(query, values: [reminderUser])
                 
                 while results.next() {
-                    let reminder = ReminderMedicationInfo(reminderId: Int(results.int(forColumn: "reminderID")), medicationName: results.string(forColumn: "medicationName"), medicationType: results.string(forColumn: "medicationType"), medicationTotalAmount: Int(results.int(forColumn: "medicationTotalAmount")), medicationAmount: Int(results.int(forColumn: "medicationAmount")), dosage: results.string(forColumn: "dosage"), reminderUser: results.string( forColumn: "reminderUser"))
+                    let reminder = ReminderMedicationInfo(reminderId: Int(results.int(forColumn: "reminderID")), medicationName: results.string(forColumn: "medicationName"), dailyHourly: Int(results.int(forColumn: "dailyHourly")), hourlyControl: Int(results.int(forColumn: "hourlyControl")), dailyControl: Int(results.int(forColumn: "dailyControl")), firstTime: results.string(forColumn: "firstTime"), secondTime: results.string(forColumn: "secondTime"), thirdTime: results.string(forColumn: "thirdTime"), medicationTotalAmount: Int(results.int(forColumn: "medicationTotalAmount")), medicationAmount: Int(results.int(forColumn: "medicationAmount")), reminderUser: results.string( forColumn: "reminderUser"))
                     
                     
                     if reminders==nil {
@@ -1315,27 +1314,40 @@ struct  ReminderInfo {
 struct  ReminderMedicationInfo {
     var reminderId: Int!
     var medicationName: String!
-    var medicationType: String!
+    var dailyHourly: Int!
+    var hourlyControl: Int!
+    var dailyControl: Int!
+    var firstTime: String!
+    var secondTime: String!
+    var thirdTime: String!
     var medicationTotalAmount: Int!
     var medicationAmount: Int!
     var dosage: String!
     var reminderUser: String!
-    init(reminderId:Int!, medicationName:String! , medicationType:String!,medicationTotalAmount:Int!, medicationAmount:Int!, dosage:String!,reminderUser:String!) {
+    init(reminderId:Int!, medicationName:String!, dailyHourly: Int!, hourlyControl: Int!, dailyControl: Int!, firstTime: String!, secondTime: String!, thirdTime: String!,medicationTotalAmount:Int!, medicationAmount:Int!, reminderUser:String!) {
         self.reminderId=reminderId
         self.medicationName=medicationName
-        self.medicationType=medicationType
+        self.dailyHourly = dailyHourly
+        self.hourlyControl = hourlyControl
+        self.dailyControl = dailyControl
+        self.firstTime = firstTime
+        self.secondTime = secondTime
+        self.thirdTime = thirdTime
         self.medicationTotalAmount=medicationTotalAmount
         self.medicationAmount=medicationAmount
-        self.dosage = dosage
         self.reminderUser=reminderUser
     }
     init() {
         self.reminderId = -1
         self.medicationName = ""
-        self.medicationType = ""
+        self.dailyHourly = 0
+        self.hourlyControl = 0
+        self.dailyControl = 0
+        self.firstTime = ""
+        self.secondTime = ""
+        self.thirdTime = ""
         self.medicationAmount = -1
         self.medicationTotalAmount = -1
-        self.dosage = ""
         self.reminderUser = ""
     }
 }
