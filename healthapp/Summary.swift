@@ -80,14 +80,13 @@ class summary: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if(personal[0].firstname == "" && doctor[0].rowID == -1 && illness[0].rowID == -1 && medicine[0].medid == -1 && surgery[0].rowID == -1 && allergy[0].rowID == -1 && vaccine[0].rowID == -1 && insurance[0].insuranceName == "" && additional[0].Family_history == ""){
-            let alertController = UIAlertController(title: "Medical Information Not Uploaded!", message: "You have not completed any Medical Information.", preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Medical Information Not Uploaded", message: "You have not completed any Medical Information.", preferredStyle: UIAlertController.Style.alert)
             let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerOK)
             self.present(alertController, animated: true, completion: nil)
         }
-        
+ 
         if section == 0
         {
             return 8
@@ -151,7 +150,7 @@ class summary: UITableViewController {
         //personal
         if indexPath.section == 0
         {
-            let  person=["Last Name: ", "FirstName: ", "Date of Birth: ", "Gender: ", "Street: ", "City: ", "Zipcode: ", "State: ", "Current User: "]
+            let  person=["Last Name: ", "First Name: ", "Date of Birth: ", "Gender: ", "Street: ", "City: ", "Zipcode: ", "State: ", "Current User: "]
             
             let i=0
             print(personal[i].lastname,personal[i].firstname,personal[i].dob,personal[i].gender,personal[i].street,personal[i].city,personal[i].zipcode,personal[i].state,personal[i].sameuser)
@@ -479,132 +478,3 @@ class summary: UITableViewController {
     //Thanjila - End
     
 }
-
-
-
-
-
-/* override func viewWillAppear(_ animated: Bool) {
- //Expand row size
- tableView.estimatedRowHeight = 200
- tableView.rowHeight = UITableViewAutomaticDimension
- }
- */
-
-/*override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
- let section = indexPath.section
- 
- if (section == 8 || section == 9)
- {
- return 175
- }
- else
- {
- return UITableViewAutomaticDimension
- }
- 
- }
- */
-// print(getPesonalInfo[1.lastname])
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*  override func scrollViewDidScroll(_ scrollView: UIScrollView) {
- for cell in tableView.visibleCells {
- if let currentCellPath = tableView.indexPath(for: cell),
- let selectedCellPath = tableView.indexPathForSelectedRow {
- guard currentCellPath != selectedCellPath else {
- continue
- }
- }
- 
- //  glayer.colors =  [UIColor(hue: 219/360, saturation: 79/100, brightness: 89/100, alpha: 1.0).cgColor, UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0).cgColor]
- // glayer.locations = [0.0,0.5,1.0]
- let red = Float(cell.frame.origin.y / scrollView.contentSize.height)
- cell.contentView.backgroundColor = UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0)
- //  table.contentView.backgroundColor = UIColor.white
- 
- }
- } */
-
-/*
- override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
- 
- 
- if section == 0
- {
- return "Personal Information"
- }
- else if section == 1
- {
- return "Doctor Information"
- }
- else if section == 2
- {
- return "Illness Information"
- 
- }
- else if section == 3
- {
- return "Medication Information"
- 
- }
- else if section == 4
- {
- return "Surgeries Information"
- 
- }
- else if section == 5
- {
- return "Allergies Information"
- 
- }
- else if section == 6
- {
- return "Vaccine Information"
- 
- }
- else if section == 7
- {
- 
- return "Insurance Information"
- }
- else if section == 8
- {
- 
- return "Family history"
- }
- else if section == 9
- {
- 
- return "Note"
- }
- 
- return " "
- }
- */
-
-/*
- override func tableView(_ tableView: UITableView, willDisplayHeaderView view:UIView, forSection: Int) {
- if let headerTitle = view as? UITableViewHeaderFooterView {
- //cell.detailTextLabel?.textColor = UIColor.white
- // cell.detailTextLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
- headerTitle.textLabel?.textColor = UIColor.white
- headerTitle.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
- 
- 
- }
- }
- 
- */
-
