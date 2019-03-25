@@ -36,6 +36,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     var todaySchedule: [scheduleStruct] = []
     var tmrwSchedule: [scheduleStruct] = []
     
+    @IBOutlet weak var Info: UIButton!
     
     @IBOutlet weak var scheduleView: UITableView!
     @IBOutlet weak var reminderTable: UITableView!
@@ -1733,6 +1734,14 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             else {
                 self.close_menu()
             }
+    }
+    
+    @IBAction func InfoClicked(_ sender: Any) {
+         let main = UIStoryboard(name: "Main", bundle: nil)
+        var boardID = "Info"
+        let navigation = main.instantiateViewController(withIdentifier: boardID)
+        self.navigationController?.pushViewController(navigation, animated: true)
+         //self.performSegue(withIdentifier: "Info", sender: nil)
     }
     
     func isValidDigit(DigitString: String) -> Bool{
