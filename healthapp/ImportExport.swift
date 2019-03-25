@@ -213,7 +213,7 @@
                             break
                         case "reminderMedication":
                            // _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], medicationType: line[3], medicationTotalAmount: Int(line[4])!, medicationAmount: Int(line[5])!, dosage: line[6], reminderUser: currentUser)
-                            print("needs work")
+                            _ = DBManager.shared.insertReminderMedicationTable(medicationName: line[2], dailyHourly: Int(line[6])!, hourlyControl: Int(line[7])!, dailyControl: Int(line[8])!, firstTime: line[9], secondTime: line[10], thirdTime: line[11], medicationTotalAmount: Int(line[3])!, medicationAmount: Int(line[4])!, reminderUser: currentUser)
                             break
                         case "Medicinelist":
                             _ = DbmanagerMadicalinfo.shared1.insertmedicationInformationTable(MedName: line[2], dose: line[4], status: line[3], sameuser: currentUser)
@@ -550,6 +550,18 @@
                 text.append(String(reminderMedicationItems[i].medicationAmount))
                 text.append(",")
                 text.append(reminderMedicationItems[i].reminderUser)
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].dailyHourly))
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].hourlyControl))
+                text.append(",")
+                text.append(String(reminderMedicationItems[i].dailyControl))
+                text.append(",")
+                text.append(reminderMedicationItems[i].firstTime)
+                text.append(",")
+                text.append(reminderMedicationItems[i].secondTime)
+                text.append(",")
+                text.append(reminderMedicationItems[i].thirdTime)
                 
                 text.append("\n")
                 i = i - 1
