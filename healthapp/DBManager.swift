@@ -925,6 +925,22 @@ class DBManager: NSObject {
     
     //*********** CheckList *******************************
     
+    struct checklistInfo
+    {
+        var date: String!
+        var yesNo: String!
+        init()
+        {
+            self.date = ""
+            self.yesNo = ""
+        }
+        init(date: String!, yesNo: String!)
+        {
+            self.date = date
+            self.yesNo = yesNo
+        }
+    }
+    
     func insertChecklist(reminderUser:String, checklistType:String) -> Bool {
         print(reminderUser)
         print(checklistType)
@@ -1039,22 +1055,44 @@ class DBManager: NSObject {
         }
         return info
     }
-    
-    struct checklistInfo
+
+   /*
+    func getInfoChecklist2(reminderUser:String) -> [checklistInfo2]!
     {
-        var date: String!
-        var yesNo: String!
-        init()
+      
+        var info: [checklistInfo2]!
+        if openEncrypted()
         {
-            self.date = ""
-            self.yesNo = ""
+            let query = "select * from checklist where reminderUser = ?"
+            
+            do{
+                let  results = try database2.executeQuery(query, values: [reminderUser])
+                
+                while results.next()
+                {
+                    
+                    let info2 = checklistInfo2(date: results.string(forColumn: "date"), yesNo: (results.string(forColumn: "yesNo"))
+                    )
+                    
+                    
+                    if info == nil {
+                        info = [checklistInfo2]()
+                    }
+                    info.append(info2)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
         }
-        init(date: String!, yesNo: String!)
-        {
-            self.date = date
-            self.yesNo = yesNo
-        }
+        return info
     }
+
+    */
     
     
     //*********** MONTHLY REMINDERS ***********************
@@ -1242,47 +1280,6 @@ class DBManager: NSObject {
    
     }
 
-/*
-///RETRIEVE ALL INFO FOR EXPORT
-//Kayla
-func retrieveMedicationReminderTable() -> [ReminderMedicationInfo]!{
-    
-    var reminders: [ReminderMedicationInfo]!
-    if openEncrypted()
-    {
-        let query = ("SELECT * FROM reminderMedication")
-        
-        do{
-            let results = try database2.executeQuery(query, values: [])
-            
-            while results.next() {
-                let reminder = ReminderMedicationInfo(reminderId: Int(results.int(forColumn: "reminderID")), medicationName: results.string(forColumn: "medicationName"), medicationType: results.string(forColumn: "medicationType"), medicationTotalAmount: Int(results.int(forColumn: "medicationTotalAmount")), medicationAmount: Int(results.int(forColumn: "medicationAmount")), dosage: results.string(forColumn: "dosage"), reminderUser: results.string( forColumn: "reminderUser"))
-                
-                if reminders==nil {
-                    reminders=[ReminderMedicationInfo]()
-                }
-                reminders.append(reminder)
-                print(reminders)
-            }
-        }
-        catch{
-            print(error.localizedDescription)
-        }
-        
-        
-        database2.close()
-        
-    }
-    
-    return reminders
-    
-    
-}
-
-
-///END RETRIEVE ALL INFO FOR EXPORT
-//END Kayla
-    */
 }
 
 //structure holding reminder information-Melissa
@@ -1382,7 +1379,6 @@ struct medicationStruct
         self.reminderID = -1
     }
 }
-
 
 
 

@@ -33,7 +33,7 @@
                 super.viewDidLoad()
                 Import.Design()
                 self.Export.isHidden = true
-                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application, it will not add data to currently existing data. Be sure that you have already exported data and have the MyHealthKeeper.csv file saved somewhere accessable.  After selecting to import, the data that is in the app now will be deleted. Press the 'Import Data' button if you would like to import."
+                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import.  You will need to use the passcode that was used when the MyHealthKeeper.csv file was exported."
                 
                 menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
                 menu_vc.view.isHidden = true
@@ -48,13 +48,13 @@
                 switch (index)
                 {
                 case 0:
-                      disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import."
+                      disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import.  You will need to use the passcode that was used when the MyHealthKeeper.csv file was exported."
                     self.Import.isHidden = false
                     self.Export.isHidden = true
                     Import.Design()
                 case 1:
 
-                    disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user.  The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported."
+                    disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user.  The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported.  Press the 'Export' button if you would like to continue.  You will need to remember the passcode you enter in order to import the file at a later time. "
                     self.Import.isHidden = true
                     self.Export.isHidden = false
                     Export.Design()
@@ -100,13 +100,6 @@
                             self.present(documentPickerController, animated: true, completion: nil)
                         }
                         
-                        //display file that was chosen
-                        /*func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-                            print("file picked: ")
-                            documentPicker.dismiss(animated: true, completion: nil)
-                        }
-                       //Call read file function
-                        self.readFile()*/
                     }
                 }))
                 
@@ -118,30 +111,30 @@
             
             //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
-               let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? ", preferredStyle: .alert)
-               //let ExportAlert = UIAlertController(title: "asdfasdf", message: "Aasdfasdfasdfasd ", preferredStyle: .alert)
+               let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? Please remember the passcode you type here in order to import this file later on. ", preferredStyle: .alert)
                 ExportAlert.addTextField(configurationHandler: Password)
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
                         if(self.password.text == ""){
-                            let alertController = UIAlertController(title: "ERROR", message: "Password field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                            let alertController = UIAlertController(title: "ERROR", message: "Passcode field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
                             let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                             alertController.addAction(alertControllerNo)
                             self.present(alertController, animated: true, completion: nil)
                         }
                         else{
                             self.createFile()
+                            
                         }
-                        
                     }
+                  
                 }))
+                
                 
                 ExportAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.default, handler: nil))
                 
                 self.present(ExportAlert, animated: false)
                
-                
             }
             
 
@@ -230,6 +223,9 @@
                         case "Vaccines":
                             _ = DbmanagerMadicalinfo.shared1.insertVaccinesInformationTable(vaccinesName: line[2], vaccinesdate: line[3], SameuUser: currentUser)
                             break
+                        case "checklist":
+                          
+                            break
                         case "MedicalInformation":
                              var medicalItems: [MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: currentUser) ?? [MedicaInfo()]
                              if (medicalItems[0].sameuser == "")
@@ -252,10 +248,9 @@
                     self.present(ImportStatus, animated: true)
                 } catch {
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
-                }
-               // print("Read from the file: \(decryptedText)")
+            }
                 
-                }
+    }
          
          
 
@@ -502,40 +497,7 @@
             }
             }
             //END PERSONAL INFO TABLE
-            
-            
-            //SECURITY TABLE
-            /*var securityItems: [securityQAndAInfo] = DBFeatures.sharedFeatures.RetrieveSecurityQuestionsAndAnswers(username: currentUser) ?? [securityQAndAInfo()]
-            i = securityItems.count - 1
-            
-            while i >= 0 {
-                text.append("Security")
-                text.append(",")
-                text.append(securityItems[i].secQ1)
-                text.append(",")
-                text.append(securityItems[i].secQ2)
-                text.append(",")
-                text.append(securityItems[i].secQ3)
-                text.append(",")
-                text.append(securityItems[i].secA1)
-                text.append(",")
-                text.append(securityItems[i].secA2)
-                text.append(",")
-                text.append(securityItems[i].secA3)
-             
-               
-                
-                text.append("\n")
-                i = i - 1
-                
-            }
-            //END SECURITY TABLE
-            */
-            
-            //HEALTH MAINTANANCE TABLE
-            
-            //END HEALTH MAINTANCE TABLE
-            
+
             //APPOINTMENT REMINDER TABLE
             var reminderAppointmentItems: [ReminderInfo] = DBManager.shared.loadReminders(reminderUser: currentUser) ?? [ReminderInfo()]
             
@@ -617,6 +579,11 @@
             }
             //END REMINDER MONTHLY TABLE
             
+            //CHECKLIST TABLE
+
+            
+            //END CHECKLIST TABLE
+            
             // encrypted text
             let encryptedText = encryptText(text: text)
             
@@ -627,11 +594,14 @@
             do {
                 //try encryptedText.joined(separator:"").write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 try encryptedText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
+                
             }catch{
                 print(encryptedText)
+                let wrongPassword = UIAlertController(title: "Incorrect Passcode", message: "", preferredStyle: .alert)
+                wrongPassword.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                self.present(wrongPassword, animated: true)
+                
             }
-            
-            // set up activity view controller
             
             let activityViewController = UIActivityViewController(activityItems: [path] , applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
@@ -640,14 +610,6 @@
             activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
             
             self.present(activityViewController, animated: true)
-            
-            let ExportStatus = UIAlertController(title: "Export Successful", message: " ", preferredStyle: .alert)
-            
-            ExportStatus.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
-            
-            self.present(ExportStatus, animated: true)
-       
-            
          }
             
         
@@ -681,6 +643,10 @@
                     decryptedText = String(bytes: originalData, encoding: .utf8)!
                 } catch {
                     print(error)
+                    let wrongPassword = UIAlertController(title: "Incorrect Passcode", message: "", preferredStyle: .alert)
+                    wrongPassword.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                    self.present(wrongPassword, animated: true)
+                    
                 }
                 
                 print("EXIT DECRYPTION")
@@ -689,7 +655,7 @@
             
             func Password(textfield: UITextField!){
                 password = textfield
-                password?.placeholder = "Password*"
+                password?.placeholder = "Passcode*"
                 password.isSecureTextEntry = true
             }
             
