@@ -620,6 +620,9 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         let time1 = String(firstTime.text!)
         let time2 = String(secondTime.text!)
         let time3 = String(thirdTime.text!)
+        let daiHou = dailyHourlyPicker.selectedSegmentIndex
+        let houCon = hourlyControl.selectedSegmentIndex
+        let daiCon = dailyControl.selectedSegmentIndex
         
         let medAmountNum:Int = Int(medicationAmount.text!) ?? 0
         let medTAmountNum:Int = Int(medicationTotalAmount.text!) ?? 1
@@ -730,7 +733,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             let defaults:UserDefaults = UserDefaults.standard
             if let opened:String = defaults.string(forKey: "userNameKey" ){uName=opened}
             
-            var sucess = DBManager.shared.insertReminderMedicationTable(medicationName: medName, medicationType: "", medicationTotalAmount: medAmountNum, medicationAmount: medTAmountNum, dosage: "", reminderUser: uName)
+            var sucess = DBManager.shared.insertReminderMedicationTable(medicationName: medName, dailyHourly: daiHou, hourlyControl: houCon, dailyControl: daiCon, firstTime: time1, secondTime: time2, thirdTime: time3, medicationTotalAmount: medAmountNum, medicationAmount: medTAmountNum, reminderUser: uName)
             
             let previousInsert = DBManager.shared.lastReminderMedication()
             
