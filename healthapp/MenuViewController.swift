@@ -193,12 +193,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         // cell.backgroundColor = colorForIndex(index: indexPath.row)
         
         
-        let redColorValue = CGFloat(indexPath.row)/CGFloat(tableView.numberOfRows(inSection: indexPath.section))
-        cell.backgroundColor = UIColor.init(red: redColorValue, green: 1.0, blue: 1.5, alpha: 0.9)
+        //let redColorValue = CGFloat(indexPath.row)/CGFloat(tableView.numberOfRows(inSection: indexPath.section))
+        //cell.backgroundColor = UIColor.init(red: redColorValue, green: 1.0, blue: 1.5, alpha: 0.9)
         
         
         if (indexPath.section == 1){
-            //cell.textLabel?.textColor = UIColor.white
+
             cell.textLabel?.text = row1[indexPath.row]
             var image = UIImageView()
             image = UIImageView.init(frame: CGRect(x: 33, y: 12, width: 25, height: 20))
@@ -246,7 +246,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             else if(indexPath.row == 1)
             {
-                image.image = UIImage(named: "clock")
+                image.image = UIImage(named: "medication")
             }
             
             cell.addSubview(image)
