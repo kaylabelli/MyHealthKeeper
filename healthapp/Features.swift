@@ -390,26 +390,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         return 0;
     }
 
-    /*
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) ->String?{
-        if(title=="Security")
-        {
-        if pickerView == picker1{
-           // picker1.isHidden = true
-            return sQuestion1[row]
-        }
-        else if pickerView == picker2{
-          //  picker2.isHidden = true
-            return sQuestion2[row]
-        }
-        else{
-          //  picker3.isHidden = true
-            return sQuestion3[row]
-        }
-        }
-        return ""
-    }
-    */
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel: UILabel? = (view as? UILabel)
         if(title=="Security"){
@@ -434,6 +414,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
         return pickerLabel!
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(title=="Security")
         {
@@ -453,7 +434,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker2.isHidden = true
             picker3.isHidden = true
         }
-   //     return ""
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -548,86 +528,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             let pAnswer2 = String(answer2.text!)
             let pAnswer3 = String(answer3.text!)
             
-            
-            
-    //        if((textField == question1) || (textField == question2) || (textField == question3)){
-    //        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    //        }
-            
-      //  else
-           /* if (textField == question1){
-                
-                if((pQuestion1.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == question2){
-                
-                if((pQuestion2.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == question3){
-                
-                if((pQuestion3.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer1){
-                
-                if((pAnswer1.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer2){
-                
-                if((pAnswer2.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer3){
-                
-                if((pAnswer3.isEmpty))
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertController.Style.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-        }*/
         //else
             if(title=="Registration"){
             
@@ -1211,7 +1111,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         let allowpAnswer3 = pAnswer3.replacingOccurrences(of: "'", with: "''")
         
         
-        if((pQuestion1.isEmpty) || (pQuestion2.isEmpty) || (pQuestion3.isEmpty) || (pAnswer1.isEmpty) || (pAnswer2.isEmpty) || (pAnswer3.isEmpty))
+        if((pQuestion1.isEmpty) || (pAnswer1.isEmpty)) //|| (pQuestion3.isEmpty) || (pAnswer1.isEmpty) || (pAnswer2.isEmpty) || (pAnswer3.isEmpty))
         {
             
             let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
