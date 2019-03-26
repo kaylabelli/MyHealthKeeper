@@ -672,16 +672,26 @@
                 var decryptedText: String = ""
                 //let data: Data = text.data(using: .utf8)!
                 let data = Data(base64Encoded: text, options: Data.Base64DecodingOptions(rawValue: 0))
+                let error: Data = "Error".data(using: .utf8)!
                 
                 
                 do {
-                    let originalData = try RNCryptor.decrypt(data: data!, withPassword: passcode) // label.text
+                    let originalData = try RNCryptor.decrypt(data: data ?? error, withPassword: passcode)// label.text
                     decryptedText = String(bytes: originalData, encoding: .utf8)!
                 } catch {
                     print(error)
-                    let wrongPassword = UIAlertController(title: "Incorrect Passcode", message: "", preferredStyle: .alert)
-                    wrongPassword.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
-                    self.present(wrongPassword, animated: true)
+                    if (data == nil)
+                    {
+                        let wrongFile = UIAlertController(title: "Incorrect File Type", message: "", preferredStyle: .alert)
+                        wrongFile.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                        self.present(wrongFile, animated: true)
+                    }
+                    else
+                    {
+                        let wrongPassword = UIAlertController(title: "Incorrect Passcode", message: "", preferredStyle: .alert)
+                        wrongPassword.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                        self.present(wrongPassword, animated: true)
+                    }
                     
                 }
                 
