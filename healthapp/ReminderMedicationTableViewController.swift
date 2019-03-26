@@ -156,6 +156,7 @@ class ReminderMedicationTableViewController: UITableViewController
         //string to date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+        var dosage: String = ""
         // let date = dateFormatter.date(from: self.items[indexPath.row].reminderDate)
         //date to string
         let DateFormat=DateFormatter()
@@ -165,8 +166,41 @@ class ReminderMedicationTableViewController: UITableViewController
          {
          dateDisplay = DateFormat.string(from: date!)
          }*/
+        switch items[indexPath.row].dailyHourly
+        {
+        case 0:
+            print("daily")
+            switch items[indexPath.row].dailyControl
+            {
+            case 0:
+                dosage = "1 Time Per Day"
+            case 1:
+                dosage = "2 Times Per Day"
+            case 2:
+                dosage = "3 Times Per Day"
+            default:
+                print("error")
+            }
+        case 1:
+            print("hourly")
+            switch items[indexPath.row].hourlyControl
+            {
+            case 0:
+                dosage = "Every 12 Hours"
+            case 1:
+                dosage = "Every 8 Hours"
+            case 2:
+                dosage = "Every 6 Hours"
+            case 3:
+                dosage = "Every 4 Hours"
+            default:
+                print("error")
+            }
+        default:
+            print("error")
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\nAmount per Dose: \(self.items[indexPath.row].medicationTotalAmount!)"
+        cell.textLabel?.text=labelimage + self.items[indexPath.row].medicationName + "\n\(dosage)" + "\nAmount per Dose: \(self.items[indexPath.row].medicationTotalAmount!)"
         cell.accessoryType = .disclosureIndicator
         cell.textLabel?.numberOfLines = 0
         return cell

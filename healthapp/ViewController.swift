@@ -770,14 +770,15 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
+                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                             
@@ -786,7 +787,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                                 reminderCount = reminderCount + 1
-                            }
                         }
                     }
                     else{
@@ -833,14 +833,15 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 var request = UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
                                 UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                                 firstReminder.addTimeInterval(86400)
@@ -853,9 +854,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                     trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                                     sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                     request = UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
-                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                        if let theError = error{
-                                            print(theError.localizedDescription)
+                                    if(isGrantedNotificationAccess) //User has granted notification access
+                                    {
+                                        UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                            if let theError = error{
+                                                print(theError.localizedDescription)
+                                            }
                                         }
                                     }
                                     secondReminder.addTimeInterval(86400)
@@ -866,7 +870,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             }
-                        }
                     }
                     else{
                         print("Insert error")
@@ -912,14 +915,15 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 var request = UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
+                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                                 firstReminder.addTimeInterval(86400)
@@ -932,9 +936,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                     trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                                     sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                     request = UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
-                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                        if let theError = error{
-                                            print(theError.localizedDescription)
+                                    if(isGrantedNotificationAccess) //User has granted notification access
+                                    {
+                                        UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                            if let theError = error{
+                                                print(theError.localizedDescription)
+                                            }
                                         }
                                     }
                                     secondReminder.addTimeInterval(86400)
@@ -948,9 +955,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                     trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats: false)
                                     sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                     request = UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))", content: content, trigger: trigger)
-                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                        if let theError = error{
-                                            print(theError.localizedDescription)
+                                    if(isGrantedNotificationAccess) //User has granted notification access
+                                    {
+                                        UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                            if let theError = error{
+                                                print(theError.localizedDescription)
+                                            }
                                         }
                                     }
                                     thirdReminder.addTimeInterval(86400)
@@ -961,7 +971,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                             }
-                        }
                     }
                     else{
                         print("Insert error")
@@ -1013,14 +1022,15 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
+                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                                 
@@ -1030,7 +1040,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                                 reminderCount = reminderCount + 1
                             }
-                        }
                     }
                     else{
                         print("Insert error")
@@ -1075,14 +1084,15 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
+                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                                 
@@ -1092,7 +1102,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                                 reminderCount = reminderCount + 1
                             }
-                        }
                     }
                     else{
                         print("Insert error")
@@ -1137,16 +1146,17 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         
                         while (reminderCount != totalReminders)
                         {
-                            if(isGrantedNotificationAccess) //User has granted notification access
-                            {
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
+                            if(isGrantedNotificationAccess) //User has granted notification access
+                            {
                                 UNUserNotificationCenter.current().add(request) { (error:Error?) in
                                     if let theError = error{
                                         print(theError.localizedDescription)
                                     }
                                 }
+                            }
                                 
                                 firstReminder.addTimeInterval(21600)
                                 dateR = DateFormat.string(from: firstReminder)
@@ -1154,7 +1164,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:false )
                                 reminderCount = reminderCount + 1
                             }
-                        }
                     }
                     else{
                         print("Insert error")
@@ -1204,9 +1213,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                                 //Set up notification request to the notification center with Unique identifier
                                 sucess = DBManager.shared.insertMoreReminderMedication(reminderID: previousInsert, reminderDate: dateR, reminderUser: uName)
                                 let request=UNNotificationRequest(identifier:"Reminder\(previousInsert).\(DBManager.shared.lastReminderMedication(reminderID: previousInsert))" , content: content, trigger: trigger)
-                                UNUserNotificationCenter.current().add(request) { (error:Error?) in
-                                    if let theError = error{
-                                        print(theError.localizedDescription)
+                                if(isGrantedNotificationAccess) //User has granted notification access
+                                {
+                                    UNUserNotificationCenter.current().add(request) { (error:Error?) in
+                                        if let theError = error{
+                                            print(theError.localizedDescription)
+                                        }
                                     }
                                 }
                                 
