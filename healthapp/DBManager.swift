@@ -603,6 +603,38 @@ class DBManager: NSObject {
     }
     
     
+    func loadRemindersMedicationList(reminderUser:String) -> [ReminderMedicationInfoList]! {
+        var reminders: [ReminderMedicationInfoList]!
+        if openEncrypted()
+        {
+            let query = "select * from reminderList where reminderUser = ?"
+            
+            do{
+                let results = try database2.executeQuery(query, values: [reminderUser])
+                
+                while results.next() {
+                    let reminder = ReminderMedicationInfoList(reminderDate: results.string(forColumn: "reminderDate"), reminderID: Int(results.int(forColumn: "reminderID")))
+                    
+                    
+                    if reminders==nil {
+                        reminders=[ReminderMedicationInfoList]()
+                    }
+                    reminders.append(reminder)
+                }
+            }
+            catch{
+                print(error.localizedDescription)
+            }
+            
+            
+            database2.close()
+            
+        }
+        
+        return reminders
+        
+    }
+    
    
 
     //delete Reminder Items
@@ -924,22 +956,6 @@ class DBManager: NSObject {
     
     //*********** CheckList *******************************
     
-    struct checklistInfo
-    {
-        var date: String!
-        var yesNo: String!
-        init()
-        {
-            self.date = ""
-            self.yesNo = ""
-        }
-        init(date: String!, yesNo: String!)
-        {
-            self.date = date
-            self.yesNo = yesNo
-        }
-    }
-    
     func insertChecklist(reminderUser:String, checklistType:String) -> Bool {
         print(reminderUser)
         print(checklistType)
@@ -1055,11 +1071,10 @@ class DBManager: NSObject {
         return info
     }
 
-   /*
-    func getInfoChecklist2(reminderUser:String) -> [checklistInfo2]!
+    func getAllChecklist(reminderUser:String) -> [checklistInfo]!
     {
       
-        var info: [checklistInfo2]!
+        var info: [checklistInfo]!
         if openEncrypted()
         {
             let query = "select * from checklist where reminderUser = ?"
@@ -1070,12 +1085,11 @@ class DBManager: NSObject {
                 while results.next()
                 {
                     
-                    let info2 = checklistInfo2(date: results.string(forColumn: "date"), yesNo: (results.string(forColumn: "yesNo"))
-                    )
+                    let info2 = checklistInfo(date: results.string(forColumn: "date"), yesNo: (results.string(forColumn: "yesNo")), checkListType: results.string(forColumn: "checklistType"))
                     
                     
                     if info == nil {
-                        info = [checklistInfo2]()
+                        info = [checklistInfo]()
                     }
                     info.append(info2)
                 }
@@ -1090,8 +1104,6 @@ class DBManager: NSObject {
         }
         return info
     }
-
-    */
     
     
     //*********** MONTHLY REMINDERS ***********************
@@ -1349,6 +1361,25 @@ struct  ReminderMedicationInfo {
     }
 }
 
+struct  ReminderMedicationInfoList {
+    // reminders integer primary key not null, reminderDate text not null, reminderID int not null, reminderUser text not null,
+    
+    var reminderDate: String!
+    var reminderID: Int!
+    
+    init()
+    {
+        self.reminderDate = ""
+        self.reminderID = -1
+    }
+    
+    init(reminderDate: String!, reminderID: Int!)
+    {
+        self.reminderDate = reminderDate
+        self.reminderID = reminderID
+    }
+}
+
 
 //structure holding reminder information-Melissa
 struct  MonthlyReminderInfo {
@@ -1389,6 +1420,25 @@ struct medicationStruct
         self.medName = ""
         self.date = ""
         self.reminderID = -1
+    }
+}
+
+struct checklistInfo
+{
+    var date: String!
+    var yesNo: String!
+    var checkListType: String!
+    init()
+    {
+        self.date = ""
+        self.yesNo = ""
+        checkListType = ""
+    }
+    init(date: String!, yesNo: String!, checkListType: String!)
+    {
+        self.date = date
+        self.yesNo = yesNo
+        self.checkListType = checkListType
     }
 }
 

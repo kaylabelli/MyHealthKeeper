@@ -224,7 +224,17 @@
                         case "Vaccines":
                             _ = DbmanagerMadicalinfo.shared1.insertVaccinesInformationTable(vaccinesName: line[2], vaccinesdate: line[3], SameuUser: currentUser)
                             break
-                        case "checklist":
+                        case "Checklist":
+                            
+                            if (!ifExist(type: line[3], username: currentUser))
+                            {
+                                _ = DBManager.shared.insertChecklist(reminderUser: currentUser, checklistType: line[3])
+                                _ = DBManager.shared.updateChecklist(reminderUser: currentUser, checklistType: line[3], date: line[1], yesNo: line[2])
+                            }
+                            else
+                            {
+                                _ = DBManager.shared.updateChecklist(reminderUser: currentUser, checklistType: line[3], date: line[1], yesNo: line[2])
+                            }
                           
                             break
                         case "MedicalInformation":
@@ -589,7 +599,24 @@
             //END REMINDER MONTHLY TABLE
             
             //CHECKLIST TABLE
-
+            var checklistItems: [checklistInfo] = DBManager.shared.getAllChecklist(reminderUser: currentUser) ?? [checklistInfo()]
+            i = checklistItems.count - 1
+            
+            if (checklistItems.count != 1)
+            {
+                while i >= 0 {
+                    text.append("Checklist")
+                    text.append(",")
+                    text.append(checklistItems[i].date)
+                    text.append(",")
+                    text.append(checklistItems[i].yesNo)
+                    text.append(",")
+                    text.append(checklistItems[i].checkListType)
+                    
+                    text.append("\n")
+                    i = i - 1
+                }
+            }
             
             //END CHECKLIST TABLE
             
@@ -666,6 +693,18 @@
                 password = textfield
                 password?.placeholder = "Passcode*"
                 password.isSecureTextEntry = true
+            }
+            
+            func ifExist(type: String, username: String) -> Bool
+            {
+                if DBManager.shared.ifExistChecklist(reminderUser: username, checklistType: type)
+                {
+                    return true
+                }
+                else
+                {
+                    return false
+                }
             }
             
             var menu_vc : MenuViewController!

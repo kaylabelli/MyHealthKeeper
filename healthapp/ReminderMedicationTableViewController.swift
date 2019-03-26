@@ -226,7 +226,7 @@ class ReminderMedicationTableViewController: UITableViewController
             //store the id of reminder
             print("Delete Row")
             let idDeleteItem = self.items[indexPath.row].reminderId!
-            let list: [String] = DBManager.shared.listReminderID(reminderID: idDeleteItem)
+            let list: [String] = DBManager.shared.listReminderID(reminderID: idDeleteItem) ?? [""]
             let error=DBManager.shared.deleteReminderMedicationItem(reminderID: idDeleteItem)
             
             if(error==true)

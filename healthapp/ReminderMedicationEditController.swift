@@ -462,7 +462,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
             var dateR = DateFormat.string(from: firstReminder)
             
             let idDeleteItem = t
-            let list: [String] = DBManager.shared.listReminderID(reminderID: idDeleteItem)
+            let list: [String] = DBManager.shared.listReminderID(reminderID: idDeleteItem) ?? [""]
             let error=DBManager.shared.deleteReminderMedicationItem(reminderID: idDeleteItem)
             
             if(error==true)
