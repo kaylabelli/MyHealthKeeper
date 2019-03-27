@@ -6,6 +6,19 @@
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
 	<string>MyHealthKeeper</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>MHK custom data type</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>com.myhealthkeeper.customUTIHandler.mhk</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,6 +37,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow app to store and save selected image</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Face id</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow app to store and save selected image</string>
 	<key>NSRemindersUsageDescription</key>
@@ -44,7 +59,25 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSFaceIDUsageDescription</key>
-	<string>Face id</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+				<string>public.archive</string>
+			</array>
+			<key>UTTypeIconFiles</key>
+			<array/>
+			<key>UTTypeIdentifier</key>
+			<string>com.myhealthkeeper.customUTIHandler.mhk</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict/>
+	</array>
 </dict>
 </plist>

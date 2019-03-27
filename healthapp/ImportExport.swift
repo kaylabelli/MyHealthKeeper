@@ -95,7 +95,7 @@
                             }
                             _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
                             _ = DBManager.shared.DeleteAll(sameUser: currentUser)
-                            let documentPickerController = UIDocumentPickerViewController(documentTypes: [ String(kUTTypePlainText)], in: .import)
+                            let documentPickerController = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
                             documentPickerController.delegate = self as? UIDocumentPickerDelegate
                             self.present(documentPickerController, animated: true, completion: nil)
                         }
@@ -148,8 +148,10 @@
                                                        in: .userDomainMask, appropriateFor: nil, create: true)
             
                 let fileURL = url
-    
-                    
+                   
+                
+                
+                if url.absoluteString.range(of: ".mhk") != nil {
                 // Then reading it back from the file
                 var inString = ""
                 do {
@@ -260,6 +262,15 @@
                 } catch {
                     print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
             }
+        }
+        else{
+                    let ImportStatus = UIAlertController(title: "Incorrect File Type", message: "The import file you select must have the file extension .mhk ", preferredStyle: .alert)
+                    
+                    ImportStatus.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                    
+                    self.present(ImportStatus, animated: true)
+        }
+           
                 
     }
          
@@ -624,7 +635,7 @@
             let encryptedText = encryptText(text: text)
             
             //write all items in the text array to the csv file.
-            let fileName = "MyHealthKeeper.csv"
+            let fileName = "MyHealthKeeper.mhk"
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
             
             do {
