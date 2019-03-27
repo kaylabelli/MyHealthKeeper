@@ -1285,6 +1285,16 @@ class DBManager: NSObject {
                 print(error.localizedDescription)
             }
             
+            query = "DELETE FROM checklist where reminderUser = ?"
+            do{
+                try database2.executeUpdate(query, values: [sameUser])
+                deleted = true
+            }
+            catch{
+                deleted = false
+                print(error.localizedDescription)
+            }
+            
         }
         database2.close()
         return deleted
