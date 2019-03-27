@@ -1304,7 +1304,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="106" width="25" height="25"/>
+                                <rect key="frame" x="175" y="106" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2834,7 +2834,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="104" width="80" height="34"/>
+                                <rect key="frame" x="242" y="104" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2845,7 +2845,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="104" width="25" height="25"/>
+                                <rect key="frame" x="185" y="104" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5998,22 +5998,6 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5J-qO-fAs">
-                                <rect key="frame" x="16" y="96" width="41.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="&lt;"/>
-                                <connections>
-                                    <action selector="previousMonth:" destination="VSv-lG-tu0" eventType="touchUpInside" id="6NP-MF-0nr"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsC-ea-KSp">
-                                <rect key="frame" x="262.5" y="96" width="41.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="&gt;"/>
-                                <connections>
-                                    <action selector="nextMonth:" destination="VSv-lG-tu0" eventType="touchUpInside" id="3lR-I5-liB"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-6N-QxN">
                                 <rect key="frame" x="16" y="153.5" width="288" height="314.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6050,12 +6034,6 @@
                                     <outlet property="delegate" destination="VSv-lG-tu0" id="ew9-GE-TfN"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September 9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4T-I0-K1N">
-                                <rect key="frame" x="90" y="121" width="140" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cga-1a-X2f">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                 <items>
@@ -6064,33 +6042,52 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="n7M-9y-DRz">
+                                <rect key="frame" x="16" y="96" width="288" height="36"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5J-qO-fAs">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="&lt;"/>
+                                        <connections>
+                                            <action selector="previousMonth:" destination="VSv-lG-tu0" eventType="touchUpInside" id="6NP-MF-0nr"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="September 9999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4T-I0-K1N">
+                                        <rect key="frame" x="74" y="8" width="140" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsC-ea-KSp">
+                                        <rect key="frame" x="258" y="0.0" width="30" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="&gt;"/>
+                                        <connections>
+                                            <action selector="nextMonth:" destination="VSv-lG-tu0" eventType="touchUpInside" id="3lR-I5-liB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.55294117649999996" green="0.83137254900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="cga-1a-X2f" secondAttribute="bottom" constant="528" id="6fP-0I-pHh"/>
                             <constraint firstItem="cga-1a-X2f" firstAttribute="top" secondItem="BRT-1i-yqx" secondAttribute="top" id="8Ga-dz-vqz"/>
-                            <constraint firstItem="K5J-qO-fAs" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="76" id="AmT-6e-bFm"/>
                             <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="mRB-6N-QxN" secondAttribute="bottom" constant="100" id="Bug-LW-oJZ"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="trailing" secondItem="BRT-1i-yqx" secondAttribute="trailingMargin" id="D4U-c5-MQo"/>
                             <constraint firstItem="50P-bJ-HnL" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="40" id="FI5-1t-Z6d"/>
-                            <constraint firstItem="W4T-I0-K1N" firstAttribute="centerX" secondItem="BRT-1i-yqx" secondAttribute="centerX" id="G0h-ES-LSO"/>
-                            <constraint firstItem="mRB-6N-QxN" firstAttribute="top" secondItem="W4T-I0-K1N" secondAttribute="bottom" constant="12" id="HO2-AV-SE1"/>
+                            <constraint firstItem="mRB-6N-QxN" firstAttribute="top" secondItem="n7M-9y-DRz" secondAttribute="bottom" constant="21.5" id="HEt-by-mxc"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="leading" secondItem="BRT-1i-yqx" secondAttribute="leadingMargin" id="HOR-Uw-SXn"/>
-                            <constraint firstItem="PsC-ea-KSp" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="76" id="IU9-F3-rU5"/>
-                            <constraint firstItem="PsC-ea-KSp" firstAttribute="trailing" secondItem="BRT-1i-yqx" secondAttribute="trailingMargin" id="OAA-d3-jyy"/>
+                            <constraint firstItem="n7M-9y-DRz" firstAttribute="top" secondItem="50P-bJ-HnL" secondAttribute="bottom" constant="8" id="JJX-y8-1ui"/>
                             <constraint firstItem="cga-1a-X2f" firstAttribute="centerX" secondItem="BRT-1i-yqx" secondAttribute="centerX" id="VIu-ga-F3N"/>
                             <constraint firstItem="cga-1a-X2f" firstAttribute="leading" secondItem="BRT-1i-yqx" secondAttribute="leading" id="Vug-sS-aOq"/>
                             <constraint firstItem="50P-bJ-HnL" firstAttribute="width" secondItem="50P-bJ-HnL" secondAttribute="height" multiplier="191:34" id="Wg7-il-rnW"/>
-                            <constraint firstItem="W4T-I0-K1N" firstAttribute="top" secondItem="50P-bJ-HnL" secondAttribute="bottom" constant="33" id="WjS-2x-40L"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="centerX" secondItem="BRT-1i-yqx" secondAttribute="centerX" id="btQ-Kc-9Iz"/>
                             <constraint firstItem="50P-bJ-HnL" firstAttribute="centerX" secondItem="BRT-1i-yqx" secondAttribute="centerX" id="fm1-KM-AHI"/>
-                            <constraint firstItem="PsC-ea-KSp" firstAttribute="leading" secondItem="W4T-I0-K1N" secondAttribute="trailing" constant="32.5" id="g2C-Jp-zdC"/>
-                            <constraint firstItem="W4T-I0-K1N" firstAttribute="leading" secondItem="K5J-qO-fAs" secondAttribute="trailing" constant="32.5" id="hBY-ld-FbD"/>
-                            <constraint firstItem="W4T-I0-K1N" firstAttribute="leading" secondItem="K5J-qO-fAs" secondAttribute="trailing" constant="32.5" id="htM-N9-yVx"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="leading" secondItem="BRT-1i-yqx" secondAttribute="leadingMargin" id="jQn-lJ-iCo"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="trailing" secondItem="BRT-1i-yqx" secondAttribute="trailingMargin" id="sRX-FN-EPd"/>
-                            <constraint firstItem="PsC-ea-KSp" firstAttribute="leading" secondItem="W4T-I0-K1N" secondAttribute="trailing" constant="32.5" id="scw-cz-UV8"/>
-                            <constraint firstItem="K5J-qO-fAs" firstAttribute="leading" secondItem="BRT-1i-yqx" secondAttribute="leadingMargin" id="uVH-8h-cVq"/>
+                            <constraint firstItem="n7M-9y-DRz" firstAttribute="centerX" secondItem="BRT-1i-yqx" secondAttribute="centerX" id="zjP-Nz-5tt"/>
                         </constraints>
                     </view>
                     <connections>
@@ -6193,9 +6190,9 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="info" width="50" height="50"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="info" width="37.5" height="37.5"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Hj-22G"/>
