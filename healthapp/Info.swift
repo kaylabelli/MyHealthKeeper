@@ -15,6 +15,9 @@ class info: UIViewController {
     
     
     @IBOutlet weak var Delete: UIButton!
+    
+    var password: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,11 +35,12 @@ class info: UIViewController {
     }
     
     @IBAction func Delete(_ sender: Any) {
-          let DeleteAlert = UIAlertController(title: "WARNING", message: "Are you sure you want to delete all data in the MyHealthKeeper application?", preferredStyle: .alert)
-        
+          let DeleteAlert = UIAlertController(title: "WARNING", message: "Are you sure you want to delete all data in the MyHealthKeeper application? Please type password to continue.", preferredStyle: .alert)
+        DeleteAlert.addTextField(configurationHandler: self.Password)
         DeleteAlert.addAction(UIAlertAction(title: "Yes, Delete Data", style: UIAlertAction.Style.default, handler: {
             (action) -> Void in
             do {
+                
                 let defaults:UserDefaults = UserDefaults.standard
                 var currentUser = ""
                 if let opened:String = defaults.string(forKey: "userNameKey" )
@@ -44,17 +48,34 @@ class info: UIViewController {
                     currentUser=opened
                     print(opened)
                 }
+                
+                let validLogin =  DBFeatures.sharedFeatures.checkLogin(pUsername: currentUser, pPassword:String(self.password.text!))
+                if (validLogin==true){
                 _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
                 _ = DBManager.shared.DeleteAll(sameUser: currentUser)
                 
                  let DeleteSuccess = UIAlertController(title: "Data Deletion Complete", message: "", preferredStyle: .alert)
+                
                 DeleteSuccess.addAction(UIAlertAction(title:"Done", style:UIAlertAction.Style.default, handler: nil))
                 self.present(DeleteSuccess, animated: true)
+                }
+                else{
+                    let DeleteFail = UIAlertController(title: "Incorrect Password", message: "", preferredStyle: .alert)
+                    
+                    DeleteFail.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
+                    self.present(DeleteFail, animated: true)
+                }
             }
         }))
         DeleteAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.default, handler: nil))
         
         self.present(DeleteAlert, animated: true)
+    }
+    
+    func Password(textfield: UITextField!){
+        password = textfield
+        password?.placeholder = "Password*"
+        password.isSecureTextEntry = true
     }
     
     var menu_vc : MenuViewController!

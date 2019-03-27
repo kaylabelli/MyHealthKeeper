@@ -2834,7 +2834,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="242" y="104" width="80" height="34"/>
+                                <rect key="frame" x="229" y="104" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2845,7 +2845,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="104" width="38" height="38"/>
+                                <rect key="frame" x="185" y="104" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -6152,7 +6152,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sWE-S3-Zd5">
-                                <rect key="frame" x="109.5" y="486" width="101" height="34"/>
+                                <rect key="frame" x="109.5" y="509" width="101" height="34"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Delete Data">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6169,8 +6169,8 @@
                             <constraint firstItem="f1w-1D-bo9" firstAttribute="centerX" secondItem="s9X-u6-2Wa" secondAttribute="centerX" id="45u-ib-WOa"/>
                             <constraint firstItem="sWE-S3-Zd5" firstAttribute="centerX" secondItem="s9X-u6-2Wa" secondAttribute="centerX" id="5Vh-ar-ejg"/>
                             <constraint firstItem="wRx-K0-zPc" firstAttribute="top" secondItem="CCp-xO-L0j" secondAttribute="bottom" constant="40" id="F1D-Nc-qbB"/>
-                            <constraint firstItem="sWE-S3-Zd5" firstAttribute="top" secondItem="40a-eL-RQd" secondAttribute="bottom" constant="30" id="RYq-nW-qkc"/>
                             <constraint firstItem="f1w-1D-bo9" firstAttribute="top" secondItem="wRx-K0-zPc" secondAttribute="bottom" constant="15" id="U77-fi-biX"/>
+                            <constraint firstItem="GvV-Dz-iEP" firstAttribute="top" secondItem="sWE-S3-Zd5" secondAttribute="bottom" constant="25" id="WhX-0v-ddZ"/>
                             <constraint firstItem="mCQ-qt-kcV" firstAttribute="top" secondItem="s9X-u6-2Wa" secondAttribute="top" id="cjf-Ep-t3d"/>
                             <constraint firstAttribute="trailing" secondItem="40a-eL-RQd" secondAttribute="trailing" id="ibe-Js-FDz"/>
                             <constraint firstItem="40a-eL-RQd" firstAttribute="centerX" secondItem="s9X-u6-2Wa" secondAttribute="centerX" id="iik-Vk-Cd8"/>
@@ -6190,9 +6190,9 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
-        <image name="info" width="37.5" height="37.5"/>
-        <image name="smallmenuIcon" width="128" height="128"/>
+        <image name="icons8-below" width="25" height="25"/>
+        <image name="info" width="50" height="50"/>
+        <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Hj-22G"/>
