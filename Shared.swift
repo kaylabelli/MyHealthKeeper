@@ -20,7 +20,7 @@ extension UIViewController {
         
     }
     //when tap is found
-    func dismissKeyboard()
+    @objc func dismissKeyboard()
     {
         view.endEditing(true)
     }
@@ -35,7 +35,7 @@ extension UIViewController {
      //background color for main UI
     func backgroundCol()
     {
-        let glayer = CAGradientLayer()
+       /* let glayer = CAGradientLayer()
         glayer.frame = self.view.frame
         //  glayer.colors = [UIColor.red.cgColor,UIColor.blue.cgColor,UIColor(red:124/255.5, green:14/255, blue:54/255.5, alpha:1.0).cgColor]
         glayer.colors =  [UIColor(hue: 219/360, saturation: 79/100, brightness: 89/100, alpha: 1.0).cgColor, UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0).cgColor]
@@ -44,14 +44,14 @@ extension UIViewController {
         //  glayer.endPoint=CGPoint(x:1.0,y:0.0)
         self.view.layer.insertSublayer(glayer,at:0)
         referenceToLastLayer=glayer
-        
+        */
     }
 
     
     
     //checks if user rotates device and fixes backgroumd
     func rotatedDevice() {
-        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+        if UIDevice.current.orientation.isLandscape {
             print("Landscape Mode")
             //reapply background
             
@@ -60,7 +60,7 @@ extension UIViewController {
             backgroundCol()
         }
         
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        if UIDevice.current.orientation.isPortrait {
             print("Portrait Mode")
             //reapply backgroudn
             referenceToLastLayer.removeFromSuperlayer()

@@ -33,6 +33,7 @@
 import Foundation
 import UIKit
 
+
 class DbmanagerMadicalinfo: NSObject {
     
     static let shared1: DbmanagerMadicalinfo = DbmanagerMadicalinfo()
@@ -46,12 +47,6 @@ class DbmanagerMadicalinfo: NSObject {
     //let databaseFileName = "myHealthApp.sqlite"
      let databaseFileName = "HealthAppEncrypted5.sqlite"
     
-    //initilize variables with name of DB fields
-    //nameing convention of DB field variables field_TableName_FieldName
-    //let path="/Users/melissaheredia/Desktop/NEW"
-      //let path="/Users/gayu/Desktop/"
-     // let path="/Users/thanjilauddin/Desktop/NEW"
-    // let path="Users/gopikamenon/Desktop/New"
     
     override init() {
         super.init()
@@ -99,7 +94,119 @@ class DbmanagerMadicalinfo: NSObject {
     //open eyncypted database
     
     
+    //KAyla Belli
+    //**************************Delete all tables in this file***************************************
+    func DeleteAll(sameUser: String = "") -> Bool
+    {
+        
+        var deleted = false
+        
+        if openDatabase(){
+        
+            var query = "DELETE FROM PersonalInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                //AllergiesViewController().deleteAllergies()
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+
+            query = "DELETE FROM Allergies where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                //AllergiesViewController().deleteAllergies()
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Doctor where SameUser = ?" //where SameUser = \(sameUser)"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Illnesses where SameUser = ?" //where SameUser = \(sameUser)"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+                
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Medicinelist where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Surgery where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM Vaccines where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM InsuranceInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            query = "DELETE FROM MedicalInformation where SameUser = ?"
+            
+            do{
+                try database.executeUpdate(query, values: [sameUser])
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            
+        }
+        database.close()
+        deleted = true
+        return deleted
+        
+        
+    }
     
+
     
     
     func openDatabase() ->Bool
@@ -1671,31 +1778,6 @@ struct medicineInfo{
     
 }
 
-
-
-
-
-
-
-//open database ficntion
-/*
- func openDatabase() -> Bool {
- //if FMdatabase file doesn't exist create one
- if database == nil {
- if FileManager.default.fileExists(atPath: pathToDatabase) {
- database = FMDatabase(path: pathToDatabase)
- }
- }
- //if FMdatabase file does exist open the database
- if database != nil {
- if database.open() {
- return true
- }
- }
- 
- return false
- }
- */
 
 
 

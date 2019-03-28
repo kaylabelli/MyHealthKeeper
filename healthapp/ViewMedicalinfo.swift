@@ -113,7 +113,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate, UITa
             selectedIndex = indexPath.row
         }
         tableView.beginUpdates()
-        tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
         tableView.endUpdates()
         
     }
@@ -246,54 +246,54 @@ UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate, UITa
             print(opened)
         }
         
-        if (TextField.text! == "")
+        if (TextField.text! != "" && TextField2.text! == "" && TextField3.text! == "")
         {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let Alert1 = UIAlertController(title: "Missing Fields", message: "Medication Dosage\n\nStatus", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(Alert1,animated: true, completion:nil)
             
         }
-        else if(TextField2.text! == "" )//invalid entry
+        else if(TextField.text! != "" && TextField2.text! != "" && TextField3.text! == "")//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            let Alert1 = UIAlertController(title: "Missing Field", message: "Status", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(Alert1, animated: true, completion: nil)
         }
-        else if((TextField3.text != "current") && (TextField3.text != "Current")&&(TextField3.text != "Past")&&(TextField3.text != "past"))//invalid entry
+        else if(TextField.text! != "" && TextField2.text! == "" && (TextField3.text! == "Current" || TextField3.text! == "Past"))
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            let Alert1 = UIAlertController(title: "Missing Field", message: "Medication Dosage", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(Alert1, animated: true, completion: nil)
         }
-        
-       else
+       else if(TextField.text! != "" && TextField2.text! != "" && TextField3.text! != "")
           {
-            
-           
-
-
-            let size=0
-            // load data to text field
-            array.append(TextField.text!)
-            array2.append(TextField2.text!)
-            array3.append(TextField3.text!)
+            if (TextField3.text! == "Current" || TextField3.text! == "Past")
+            {
+                let size=0
+                // load data to text field
+                array.append(TextField.text!)
+                array2.append(TextField2.text!)
+                array3.append(TextField3.text!)
           
-            TableView.reloadData()
+                TableView.reloadData()
             
             // insrting data in database
             
-            DbmanagerMadicalinfo.shared1.insertmedicationInformationTable(MedName: TextField.text!, dose: TextField2.text!, status: TextField3.text!,sameuser: CurrentName)
+                DbmanagerMadicalinfo.shared1.insertmedicationInformationTable(MedName: TextField.text!, dose: TextField2.text!, status: TextField3.text!,sameuser: CurrentName)
            
-            print("In medication list")
-            var getMedInfo:[medicineInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedListInfo(SameUser: CurrentName) ?? [medicineInfo()]
-              array4.append((getMedInfo.popLast()?.medid)!)
+                print("In medication list")
+                var getMedInfo:[medicineInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedListInfo(SameUser: CurrentName) ?? [medicineInfo()]
+                array4.append((getMedInfo.popLast()?.medid)!)
             // clear data from text field
-            TextField.text = ""
-            TextField2.text = ""
-            TextField3.text = ""
-            
+                TextField.text = ""
+                TextField2.text = ""
+                TextField3.text = ""
+            }
+            else {
+                let Alert1 = UIAlertController(title: "Invalid Entry", message: "Status Field must be 'Current' or 'Past'", preferredStyle: UIAlertController.Style.alert)
+                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                self.present(Alert1, animated: true, completion: nil)
+            }
         }
         
     }   // list medication ends
@@ -301,14 +301,18 @@ UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate, UITa
    
     @IBAction func GotoSurgery(_ sender: Any) {
         
-        if(array.count==0 )//invalid entry
+        if(TextField.text! != "")//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Medication list cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                self.performSegue(withIdentifier: "GoToSurgery", sender: self)
+            }));
+            
+            self.present(Alert1,animated: true, completion:nil)
         }
-        
         else
         {
             performSegue(withIdentifier: "GoToSurgery", sender: self)
@@ -329,6 +333,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
       if (title == "PersonalInfo")
       {
         self.picker1.isHidden = true
+        self.genderPicker.isHidden = true
     }
     else if (title == "Medication")
       {
@@ -337,10 +342,9 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -493,7 +497,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
             //Expand row size
             TableView.estimatedRowHeight = 50
-            TableView.rowHeight = UITableViewAutomaticDimension
+            TableView.rowHeight = UITableView.automaticDimension
                         
            //  self.navigationItem.setHidesBackButton(true, animated: false)
             // keybord dissmis
@@ -552,6 +556,9 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
    
     @IBOutlet weak var StateDropDown: UITextField!
     @IBOutlet weak var picker1: UIPickerView!
+    @IBOutlet weak var genderPicker: UIPickerView!
+    @IBOutlet weak var genderDropDown: UITextField!
+    
     var StateList=["Alaska","Alabama","Arkansas","Arizona","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Iowa","Idaho","Illinois","Indiana",
                    "Kansas","Kentucky","Louisiana","Massachusetts","Maryland","Maine","Michigan","Minnesota","Missouri","Mississippi","Montana","North Carolina","North Dakota",
                    "Nebraska","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
@@ -560,6 +567,8 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
      @IBOutlet weak var picker2: UIPickerView!
     var SatusList = ["Current","Past"]
+    
+    var genderList = ["Male", "Female"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -570,8 +579,17 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if (title == "PersonalInfo")
             {
-            picker1.isHidden = true
-            return StateList.count
+                if pickerView == picker1
+                {
+                    // picker1.isHidden = true
+                    picker1.isHidden = true
+                    return StateList.count
+                }
+                else if pickerView == genderPicker
+                {
+                    genderPicker.isHidden = true
+                    return genderList.count
+                }
             }
             
             else if (title=="Medication")
@@ -593,14 +611,25 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
             return SatusList[row]
         }
+        else if pickerView == genderPicker
+        {
+            return genderList[row]
+        }
         return ""
     }
         
     func pickerView(_ pickerView: UIPickerView,didSelectRow row:Int,inComponent:Int){
         if(title=="PersonalInfo")
         {
-        StateDropDown.text=StateList[row]
-        // picker1.isHidden = true
+            if pickerView == picker1
+            {
+                // picker1.isHidden = true
+                StateDropDown.text=StateList[row]
+            }
+            else if pickerView == genderPicker
+            {
+                genderDropDown.text = genderList[row]
+            }
         }
         else if(title=="Medication")
         {
@@ -613,10 +642,22 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if (textField == StateDropDown){
             StateDropDown.inputView = UIView()
             picker1.isHidden = false
+            genderPicker.isHidden = true
+            textField.endEditing(true)
+            print("found it")
+        }
+        else if (textField == genderDropDown)
+        {
+            genderDropDown.inputView = UIView()
+            genderPicker.isHidden = false
+            picker1.isHidden = true
+            textField.endEditing(true)
+            print("here")
         }
         else
         {
-             picker1.isHidden = true
+            genderPicker.isHidden = true
+            picker1.isHidden = true
         }
           
     
@@ -631,6 +672,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
             if textField == TextField3{
                 picker2.isHidden = false
+                textField.endEditing(true)
             }
             else
             {
@@ -664,11 +706,12 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     @IBOutlet weak var SaveLName: UITextField!
     @IBOutlet var SaveFName: UITextField!
     @IBOutlet var SaveDOB: UITextField!
-    @IBOutlet var SaveGender: UITextField!
     @IBOutlet var SaveStreet: UITextField!
+    @IBOutlet var SaveGender: UITextField!
     @IBOutlet var SaveCity: UITextField!
     @IBOutlet var SaveZipCode: UITextField!
     @IBOutlet var SaveState: UITextField!
+    
     
     
      @IBOutlet weak var ZipscrollView: UIScrollView!
@@ -685,85 +728,85 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let H=String(SaveState.text!)
         
         print ("second time")
-        print(A!)
-        print(B!)
-        print(C!)
-        print(D!)
-        print(E!)
-        print(F!)
-        print(G!)
-        print(H!)
+        print(A)
+        print(B)
+        print(C)
+        print(D)
+        print(E)
+        print(F)
+        print(G)
+        print(H)
         
         
-        let CheckLname = isValidString(nameString: A!)
-        let CheckFname = isValidString(nameString: B!)
-        let CheckValidDoB = isDoBValid(DoBString: C!)
-        let CheckGender = isValidString(nameString: D!)
-        let CheckCity = isValidString(nameString: F!)
-        let CheckZipCode = isValidDigit(DigitString: G!)
-        let CheckState = isValidString(nameString: H!)
+        let CheckLname = isValidString(nameString: A)
+        let CheckFname = isValidString(nameString: B)
+        let CheckValidDoB = isDoBValid(DoBString: C)
+        let CheckGender = isValidString(nameString: D)
+        let CheckCity = isValidString(nameString: F)
+        let CheckZipCode = isValidDigit(DigitString: G)
+        let CheckState = isValidString(nameString: H)
         
         // check if last name is valid or not
-        if (CheckLname == false)
+        if ((CheckLname == false) || (A == ""))
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Last Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Last Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
             
         }
             // check if first name is valid or not
-        else  if (CheckFname == false)
+        else  if ((CheckFname == false) || (B == ""))
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "First name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "First name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
         }
             // check if Dob is valid or not
-        else if (CheckValidDoB == false){
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+        else if ((CheckValidDoB == false) || (C == "")){
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
 
             self.present(regAlert1,animated: true, completion:nil)
         }  // check if gender is valid or not
-        else  if (CheckGender == false)
+        else  if ((CheckGender == false) || (D == ""))
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Gender field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Gender field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
 
             self.present(regAlert1,animated: true, completion:nil)
             
         }
             // street can not be empty
-        else  if (E! == "")
+        else  if (E == "")
         {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Street field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let Alert1 = UIAlertController(title: "ERROR", message: "Street field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
 
             self.present(Alert1,animated: true, completion:nil)
             
         }
             // check city
-        else  if (CheckCity == false)
+        else  if ((CheckCity == false) || (F == ""))
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "City field is not valid", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "City field is not valid", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
         }  // check valid Zip Code
         else  if (CheckZipCode == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Zip Code field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Zip Code field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
         }
             // Check state
-        else  if (CheckState == false)
+        else  if ((CheckState == false) || (H == ""))
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "State field is Not Valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "State field is Not Valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
         }
@@ -783,12 +826,13 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             var getPesonalInfo:[PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: CurrentName) ?? [PersonalInfo()]
             //if user already entered informaton into database
             print(getPesonalInfo.count)
-            if(getPesonalInfo.count<1 || getPesonalInfo[0].lastname==""){ //if last name, which is requrened text feild is empty then we should insert
-                DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: A!, FirstName: B!, DateOfBirth: C!, Gender: D!, Street: E!, City: F!, ZipCode: G!, State: H!,SameUser: CurrentName)
+            //Kayla change 1 to 2
+            if(getPesonalInfo[0].sameuser == ""){ //if last name, which is requrened text feild is empty then we should insert
+                DbmanagerMadicalinfo.shared1.insertPersonalInformationTable(LastName: A, FirstName: B, DateOfBirth: C, Gender: D, Street: E, City: F, ZipCode: G, State: H,SameUser: CurrentName)
             }
             else //we update information
             {
-                DbmanagerMadicalinfo.shared1.updatePersonalInformationTable(LastName: A!, FirstName: B!, DateOfBirth: C!, Gender: D!, Street: E!, City: F!, ZipCode: G!, State: H!,SameUser: CurrentName)
+                DbmanagerMadicalinfo.shared1.updatePersonalInformationTable(LastName: A, FirstName: B, DateOfBirth: C, Gender: D, Street: E, City: F, ZipCode: G, State: H,SameUser: CurrentName)
             }
             
         }
@@ -796,34 +840,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     }  // save personal information ends
     
     
-    
-    
-    func textViewDidEndEditing(_ textView: UITextView){
-        if (title == "historyANDNote")
-        {
-            if (textView == SaveFamilyHistory){
-                
-                if (SaveFamilyHistory.text! == "")
-                {
-                    let Alert1 = UIAlertController(title: "ERROR", message: "Family History field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    
-                    self.present(Alert1,animated: true, completion:nil)
-                }
-            }
-            else if (textView == SaveNote){
-                
-                if (SaveNote.text! == "")
-                {
-                    let Alert1 = UIAlertController(title: "ERROR", message: "Note field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    
-                    self.present(Alert1,animated: true, completion:nil)
-                    
-                }
-            }
-        }
-    }
     
     
     
@@ -848,212 +864,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 
         
-        if (textField == SaveLName)
-        {
-            if (CheckLname == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Last Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-        }
-        else if (textField == SaveFName)
-        {
-            // check if first name is valid or not
-            if (CheckFname == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "First name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-        }
-        else if (textField == SaveDOB)
-        {
-            if ((C?.isEmpty)!){
-                
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-            
-           else if (CheckValidDoB == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Date of Birth field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                
-                self.present(regAlert1,animated: true, completion:nil)
-           }
-        }
-   
-        else if (textField == SaveGender)
-        {
-            if (CheckGender == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Gender field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                
-                self.present(regAlert1,animated: true, completion:nil)
-                
-            }
-        }
-        else if (textField == SaveStreet)
-        {
-            if ((E?.isEmpty)!)
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Street field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                
-                self.present(Alert1,animated: true, completion:nil)
-                
-            }
-        }
-        else if (textField == SaveCity)
-        {
-            if (CheckCity == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "City field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-                
-            }
-        }
-        else if (textField == SaveZipCode)
-        {
-                if(textField == SaveZipCode){
-                    ZipscrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                }
-            if (CheckZipCode == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Zip Code field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-                
-            }
-            // Check state
-        }
-        else if (textField == SaveState)
-        {
-            if (CheckState == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "State field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-                
-            }
-        }
-    }
-        else if (title == "Insurance")
-        {
-            
-            let Q=String(SaveInsuranceType.text!)
-            let R=String(SaveInsuranceName.text!)
-            let T=String(SaveMemberID.text!)
-            let V=String(SaveExpDate.text!)
-            
-            let CheckinsuranceType = isValidString(nameString: Q!)
-            let CheckinsuranceName = isValidString(nameString: R!)
-            let CheckValidInsuranceDoB = isDoBValid(DoBString: V!)
-
-            
-            if (textField == SaveInsuranceType)
-            {
-                if ((Q?.isEmpty)!)
-                {
-                    let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Type field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert1,animated: true, completion:nil)
-                    
-                }
-                
-                else if (CheckinsuranceType == false)
-                {
-                    let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Type field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert1,animated: true, completion:nil)
-                    
-                }
-            }
-            else if (textField == SaveInsuranceName)
-            {
-                
-                if ((R?.isEmpty)!)
-                {
-                    let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert1,animated: true, completion:nil)
-                    
-                }
-                
-                else if (CheckinsuranceName == false)
-                {
-                    let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert1,animated: true, completion:nil)
-                    
-                }
-                
-            }
-            else if(textField == SaveMemberID){
-                if ((T?.isEmpty)!)
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Group ID field can not be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                
-                self.present(Alert1,animated: true, completion:nil)
-                    }
-            }
-                
-        else if (textField == SaveExpDate){
-
-                if (CheckValidInsuranceDoB == false){
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Expiration Date field is not in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-                else if ((V?.isEmpty)!){
-                    let regAlert1 = UIAlertController(title: "ERROR", message: "Expiration Date field is not in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert1,animated: true, completion:nil)
-            
-        }
- 
-        }
-    }
-       
-            
-        else if (title == "Medication")
-        {
-            
-            
-            if(textField == TextField){
-                
-                if (TextField.text! == "")
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                self.present(Alert1,animated: true, completion:nil)
-                }
-            }
-            else if (textField == TextField2){
-                
-                if (TextField2.text! == "")//invalid entry
-            {
-                let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-                alertController.addAction(alertControllerNo)
-                self.present(alertController, animated: true, completion: nil)
-            }
-            }
-            else if (textField == TextField3){
-                if((TextField3.text! != "current") && (TextField3.text! != "Current") && (TextField3.text! != "Past") && (TextField3.text! != "past"))//invalid entry
-            {
-                let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
-                alertController.addAction(alertControllerNo)
-                self.present(alertController, animated: true, completion: nil)
-            }
-            }
+        
         }
 
     
@@ -1076,21 +887,21 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let T=String(SaveMemberID.text!)
         let V=String(SaveExpDate.text!)
         
-        let CheckinsuranceType = isValidString(nameString: Q!)
-        let CheckinsuranceName = isValidString(nameString: R!)
+        let CheckinsuranceType = isValidString(nameString: Q)
+        let CheckinsuranceName = isValidString(nameString: R)
         
         print ("second time")
         
-        print(Q!)
-        print(R!)
-        print(T!)
-        print(V!)
+        print(Q)
+        print(R)
+        print(T)
+        print(V)
         
-        let CheckValidInsuranceDoB = isDoBValid(DoBString: V!)
+        let CheckValidInsuranceDoB = isDoBValid(DoBString: V)
         if (CheckinsuranceType == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Type field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Type field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
             
@@ -1098,27 +909,36 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
         else  if (CheckinsuranceName == false)
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Name field is not valid.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Insurance Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
-            
-        }
-        else  if (T! == "")
-        {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Group ID field can not be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-
-            self.present(Alert1,animated: true, completion:nil)
             
         }
        
         else if (CheckValidInsuranceDoB == false){
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Expiration Date field is not in the following format: MM/DD/YYYY", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Expiration Date field is not in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
             }
             
-        
+        else if (Q != "" && R == "" && V == "")
+        {
+            let Alert1 = UIAlertController(title: "Missing Fields", message: "Insurance Name\n\nExpiration Date", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else if (Q != "" && R != "" && V == "")
+        {
+            let Alert1 = UIAlertController(title: "Missing Fields", message: "Expiration Date", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else if (Q != "" && R == "" && V != "")
+        {
+            let Alert1 = UIAlertController(title: "Missing Fields", message: "Insurance Name", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(Alert1,animated: true, completion:nil)
+        }
         else {
           // user default
             let defaults:UserDefaults = UserDefaults.standard
@@ -1134,25 +954,25 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             
             var getInsuranceinfo:[InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: CurrentName) ?? [InsuranceInfo()]
             print (getInsuranceinfo.count)
-            if (getInsuranceinfo.count < 1 || getInsuranceinfo[0].insuranceType == "")
+            if (getInsuranceinfo[0].sameuser == "")
             {
                 
-        let error2=DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: Q!, Insurance_Name :R!, Member_ID :T!,Expiration_Date:V!,SameUser: CurrentName)
+                let error2=DbmanagerMadicalinfo.shared1.insertInsuranceInformationTable(Insurance_Type: Q, Insurance_Name :R, Member_ID :T,Expiration_Date:V,SameUser: CurrentName)
            
             }
             else
             {
-                let error2=DbmanagerMadicalinfo.shared1.updateInsuranceInformationTable(Insurance_Type: Q!, Insurance_Name :R!, Member_ID :T!,Expiration_Date:V!,SameUser: CurrentName)
+                let error2=DbmanagerMadicalinfo.shared1.updateInsuranceInformationTable(Insurance_Type: Q, Insurance_Name :R, Member_ID :T,Expiration_Date:V,SameUser: CurrentName)
             }
         }
          // This action will take user to Summary page or Upload Document page
         // Constant variable
-        let ActionAlert = UIAlertController(title: "Upload Document?", message: "Would you like to Upload a Document?", preferredStyle: UIAlertControllerStyle.alert)
+        let ActionAlert = UIAlertController(title: "Upload Document?", message: "Would you like to Upload a Document?", preferredStyle: UIAlertController.Style.alert)
 
-        let alert1 = UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: {(action) -> Void in self.performSegue(withIdentifier: "GoTOSummary", sender: self)
+        let alert1 = UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: {(action) -> Void in self.performSegue(withIdentifier: "GoTOSummary", sender: self)
         }
         )
-        let alert2 = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler:
+        let alert2 = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler:
         {
             (action) -> Void in
             
@@ -1184,28 +1004,8 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let O=String(SaveFamilyHistory.text!)
         let P=String(SaveNote.text!)
         
-        print(O!)
-        print(P!)
-        
-        if (O! == "")
-        {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Family History field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-
-            self.present(Alert1,animated: true, completion:nil)
-            
-        }
-        else  if (P! == "")
-        {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Note field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-
-            self.present(Alert1,animated: true, completion:nil)
-            
-        }
-        
-     
-        else{
+        print(O)
+        print(P)
             //validation showed no errors in input
             // user default
             let defaults:UserDefaults = UserDefaults.standard
@@ -1221,15 +1021,13 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             var getmedicalInfo:[MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: CurrentName) ?? [MedicaInfo()]
             //if user already entered informaton into database
             print(getmedicalInfo.count)
-            if(getmedicalInfo.count<1 || getmedicalInfo[0].Family_history==""){ //if last name, which is requrened text feild is empty then we should insert
-                let error1=DbmanagerMadicalinfo.shared1.insertMedicalInformationTable(Family_History:O!,Note:P!,SameUser: CurrentName)
+            if((getmedicalInfo[0].sameuser == "")){ //if last name, which is requrened text feild is empty then we should insert
+                let error1=DbmanagerMadicalinfo.shared1.insertMedicalInformationTable(Family_History:O,Note:P,SameUser: CurrentName)
             }
             else //we update information
             {
-                 let error1=DbmanagerMadicalinfo.shared1.updatemedicalInformationTable(Family_History:O!,Note:P!,SameUser: CurrentName)
+                 let error1=DbmanagerMadicalinfo.shared1.updatemedicalInformationTable(Family_History:O,Note:P,SameUser: CurrentName)
             }
-            
-        }
         
         
     }  //store family history ends   (gayatri Patel)
@@ -1267,7 +1065,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     // *****************************************Function that validates Data of Birth*******************************
     func isDoBValid(DoBString: String) -> Bool{
         // expression for MM/DD/YYYY
-        let DoBRegEx = "^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\\d\\d$"
+        let DoBRegEx = "^(0[1-9]|1[012])[/](0[1-9]|[12][0-9]|3[01])[/](19|20)\\d\\d$|^$"
         do{
             
             let regex1 = try NSRegularExpression(pattern: DoBRegEx)
@@ -1296,7 +1094,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         // expression for String
       //  let LnameRegEx = "^[A-Za-z']{2,60}$"
-        let LnameRegEx = "^[a-zA-Z][a-zA-Z\\s]{2,60}+$"
+        let LnameRegEx = "^[a-zA-Z][a-zA-Z\\s]+$|^$"
         do{
             
             let regex1 = try NSRegularExpression(pattern: LnameRegEx)
@@ -1322,7 +1120,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func isValidDigit(DigitString: String) -> Bool{
         
         // expression for String
-        let LnameRegEx = "^[0-9]{2,10}$"
+        let LnameRegEx = "^[0-9]{0,10}$"
         do{
             
             let regex1 = try NSRegularExpression(pattern: LnameRegEx)
@@ -1345,24 +1143,43 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
     //menu
     
+    // for personal info
     var menu_vc : MenuViewController!
     @IBAction func menu_Action(_ sender: UIBarButtonItem) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
-            action in
+        let defaults:UserDefaults = UserDefaults.standard
+        var CurrentName=""
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            CurrentName=opened
+            print("USERNAME2")
+            print(opened)
+        }
+        
+        var getPesonalInfo:[PersonalInfo] = DbmanagerMadicalinfo.shared1.RetrievePersonalInfo(SameUser: CurrentName) ?? [PersonalInfo()]
+        
+        if (((SaveFName.text! != getPesonalInfo[0].firstname) || (SaveLName.text! != getPesonalInfo[0].lastname) || (SaveDOB.text! != getPesonalInfo[0].dob) || (SaveGender.text! != getPesonalInfo[0].gender) || (SaveStreet.text! != getPesonalInfo[0].street) || (SaveCity.text! != getPesonalInfo[0].city) ||
+            (SaveState.text! != getPesonalInfo[0].state) || (SaveZipCode.text! != getPesonalInfo[0].zipcode)) && (self.menu_vc.view.isHidden))
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
-        
-        
+        }
     }
     
     @IBAction func menu_Action_medication(_ sender: Any) {
@@ -1375,61 +1192,107 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     }
     
     @IBAction func menu_Action_additionalInfo(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
-            action in
+        let defaults:UserDefaults = UserDefaults.standard
+        var CurrentName=""
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            CurrentName=opened
+            print("USERNAME2")
+            print(opened)
+        }
+        
+        var getMedicalInfo:[MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: CurrentName) ?? [MedicaInfo()]
+        
+        if (((SaveFamilyHistory.text! != getMedicalInfo[0].Family_history) || (SaveNote.text! != getMedicalInfo[0].Note)) && (self.menu_vc.view.isHidden))
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
     
-    
+    // for medication page
     @IBAction func menu_Action_MedicationInfo(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
-            action in
+        if TextField.text! != "" && self.menu_vc.view.isHidden
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
     
     @IBAction func menu_Action_insurance(_ sender: Any) {
-        let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertControllerStyle.alert)
-        Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler: {
-            action in
+        let defaults:UserDefaults = UserDefaults.standard
+        var CurrentName=""
+        if let opened:String = defaults.string(forKey: "userNameKey" )
+        {
+            CurrentName=opened
+            print("USERNAME2")
+            print(opened)
+        }
+        
+         var getInsuranceInfo:[InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: CurrentName) ?? [InsuranceInfo()]
+        
+        if (((SaveInsuranceName.text! != getInsuranceInfo[0].insuranceName) || (SaveInsuranceType.text! != getInsuranceInfo[0].insuranceType) || (SaveMemberID.text! != getInsuranceInfo[0].memberid) || (SaveExpDate.text! != getInsuranceInfo[0].ExpDate)) && (self.menu_vc.view.isHidden))
+        {
+            let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
+                action in
+                
+                if self.menu_vc.view.isHidden{
+                    self.show_menu()
+                }
+            }));
             
+            self.present(Alert1,animated: true, completion:nil)
+        }
+        else {
             if self.menu_vc.view.isHidden{
                 self.show_menu()
             }
             else {
                 self.close_menu()
             }
-        }));
-        
-        self.present(Alert1,animated: true, completion:nil)
+        }
     }
     
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -1448,41 +1311,6 @@ extension ViewMedicalinfo{
  }
  
     
-    
-
-
-
-/* @IBAction func OpenMoreText(_ sender: Any) {
- self.TextField2.isHidden = !self.TextField2.isHidden
- self.TextField3.isHidden = !self.TextField3.isHidden
- }
- */
-
-
-
-
-
-
-/*   //function to delete
- func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
- 
- 
- if editingStyle == UITableViewCellEditingStyle .delete {
- // delete function
- let idDeleteItem = self.array4[indexPath.row]
- let RemoveSuccess = DbmanagerMadicalinfo.shared1.deleteMedicationItem(medid:idDeleteItem)
- if (RemoveSuccess == true )
- {
- array.remove(at: indexPath.row)
- array2.remove(at: indexPath.row)
- array3.remove(at: indexPath.row)
- array4.remove(at: indexPath.row)
- }
- TableView.reloadData()
- 
- }
- }
- */
 
 
 

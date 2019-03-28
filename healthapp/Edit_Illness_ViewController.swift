@@ -29,8 +29,8 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         if (IllnessName.text! == "")
         {
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Disease/Illness Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Disease/Illness Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
             
             
@@ -41,9 +41,9 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
          let UpDateIllness = DbmanagerMadicalinfo.shared1.updateIllnessTable(illnesseName: IName!, rowID: i!)
         // GoBackToDoctorPage
         
-        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertControllerStyle.alert)
+        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
         // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToIllnessPage", sender: self)}));
         //present message to user
         self.present(UpdateAlert,animated: true, completion:nil)
@@ -57,7 +57,7 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         // Do any additional setup after loading the view.
         
@@ -134,7 +134,7 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -146,15 +146,7 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
 }
 

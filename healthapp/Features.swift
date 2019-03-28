@@ -8,6 +8,9 @@ import Foundation
 import UIKit
 import CoreGraphics
 
+//Kayla Belli
+import LocalAuthentication
+//END KAYLA BELLI
 
 var selectAlert = true
 var imageInView = false
@@ -101,31 +104,31 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         //call email validity function
         if (checkValidEmail == false){
-            let regAlert1 = UIAlertController(title: "ERROR", message: "Please enter a valid email address", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert1 = UIAlertController(title: "ERROR", message: "Please enter a valid email address", preferredStyle: UIAlertController.Style.alert)
+            regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert1,animated: true, completion:nil)
         }
        
             
             //call username validity function
         else if (checkValidUsername == false){
-            let regAlert2 = UIAlertController(title: "ERROR", message: "Username must be 6-10 characters in length with letters and numbers(optional)", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert2.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert2 = UIAlertController(title: "ERROR", message: "Username must be 6-10 characters in length with letters and numbers(optional)", preferredStyle: UIAlertController.Style.alert)
+            regAlert2.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert2,animated: true, completion:nil)
         }
     
             
             //call cellphone validity function
         else if (checkValidCellphone == false){
-            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222", preferredStyle: UIAlertController.Style.alert)
+            regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert4,animated: true, completion:nil)
         }
         
             //call existing username function
         else if (checkExistingUsername == false){
-            let regAlert5 = UIAlertController(title: "ERROR.", message: "Username already exists. Please enter a different username.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert5.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert5 = UIAlertController(title: "ERROR.", message: "Username already exists. Please enter a different username.", preferredStyle: UIAlertController.Style.alert)
+            regAlert5.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert5,animated: true, completion:nil)
             
           
@@ -133,11 +136,11 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
       
       
             //check if required fields are empty
-        else if(((pFirstName?.isEmpty)! || (pLastName?.isEmpty)! || (pUsername?.isEmpty)! || (pPassword?.isEmpty)! || (((pEmail?.isEmpty)! && (pCellPhone?.isEmpty)!))))
+        else if(((pFirstName.isEmpty) || (pLastName.isEmpty) || (pUsername.isEmpty) || (pPassword.isEmpty) || (((pEmail.isEmpty) && (pCellPhone.isEmpty)))))
         {
             
-            let regAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let regAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(regAlert,animated: true, completion:nil)
             
         }
@@ -148,15 +151,15 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             defaults.set(pUsername,forKey: "userNameKey")
             defaults.set(true, forKey:"monthlyNotificationStatus")
             //set default switch on reminder page to be true
-            DBManager.shared.insertMonthlyReminderTable(reminderStatus: true, reminderUser: pUsername!)
+            DBManager.shared.insertMonthlyReminderTable(reminderStatus: true, reminderUser: pUsername)
             //posible bug in FMDB warpper
-            DBManager.shared.updateMonthlyReminderTable(reminderStatus: true, reminderUser: pUsername!)
+            DBManager.shared.updateMonthlyReminderTable(reminderStatus: true, reminderUser: pUsername)
             //  if (validRegistration==true) {
             print("You have successfully registered")
             self.performSegue(withIdentifier: "Register", sender: self)
             
             //successful connection to database - GM
-            let success = DBFeatures.sharedFeatures.insertRegistrationTable(pFirstName: pFirstName!, pLastName: pLastName!, pUsername: pUsername!, pPassword: pPassword!, pEmail: pEmail!, pCellPhone: pCellPhone!)
+            let success = DBFeatures.sharedFeatures.insertRegistrationTable(pFirstName: pFirstName, pLastName: pLastName, pUsername: pUsername, pPassword: pPassword, pEmail: pEmail, pCellPhone: pCellPhone)
         }
     }
     
@@ -179,7 +182,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         super.viewDidLoad()
         
         
-        
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -198,11 +200,15 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
    
         //reapplies color when switching to landscape mode
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         // Do any additional setup after loading the view, typically from a nib.
         hideKeyboard()
         if(title == "SignIn"){
-            
+            //Kayla Belli
+            //retrive last username that was typed in and autofill in the username text field on the login page
+            let name = UserDefaults.standard.string(forKey: "username")
+            sUsername.text = name
+            //Kayla belli end
             
             if((RoundImage) != nil)
             {
@@ -279,10 +285,10 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 imageLabel.isHidden = false
 
            
-            let alert = UIAlertController(title: "Select an Image to Print?", message: "Would you like to print an image?", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Select an Image to Print?", message: "Would you like to print an image?", preferredStyle: UIAlertController.Style.alert)
             
-            let alert1 = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler:nil)
-            let alert2 = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler:
+                let alert1 = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler:nil)
+                let alert2 = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler:
             {
                 (action) -> Void in
                 do {
@@ -384,26 +390,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         return 0;
     }
 
-    /*
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) ->String?{
-        if(title=="Security")
-        {
-        if pickerView == picker1{
-           // picker1.isHidden = true
-            return sQuestion1[row]
-        }
-        else if pickerView == picker2{
-          //  picker2.isHidden = true
-            return sQuestion2[row]
-        }
-        else{
-          //  picker3.isHidden = true
-            return sQuestion3[row]
-        }
-        }
-        return ""
-    }
-    */
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var pickerLabel: UILabel? = (view as? UILabel)
         if(title=="Security"){
@@ -428,6 +414,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
         return pickerLabel!
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         if(title=="Security")
         {
@@ -443,8 +430,10 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             question3.text = sQuestion3[row]
             picker3.isHidden = true
         }
+            picker1.isHidden = true
+            picker2.isHidden = true
+            picker3.isHidden = true
         }
-   //     return ""
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -463,6 +452,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker2.isHidden = true
             picker3.isHidden = true
             
+            textField.endEditing(true)
+            
         }
         else if (textField == question2){
             
@@ -473,6 +464,9 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker2.isHidden = false
             picker1.isHidden = true
             picker3.isHidden = true
+            
+            textField.endEditing(true)
+            
             }
         else if (textField == question3){
             
@@ -483,7 +477,15 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             picker3.isHidden = false
             picker1.isHidden = true
             picker2.isHidden = true
+            
+            textField.endEditing(true)
 
+        }
+        else
+        {
+            picker3.isHidden = true
+            picker1.isHidden = true
+            picker2.isHidden = true
         }
         }
         
@@ -526,87 +528,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             let pAnswer2 = String(answer2.text!)
             let pAnswer3 = String(answer3.text!)
             
-            
-            
-    //        if((textField == question1) || (textField == question2) || (textField == question3)){
-    //        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    //        }
-            
-      //  else
-            if (textField == question1){
-                
-                if((pQuestion1?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == question2){
-                
-                if((pQuestion2?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == question3){
-                
-                if((pQuestion3?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please select a Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer1){
-                
-                if((pAnswer1?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer2){
-                
-                if((pAnswer2?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-            else if (textField == answer3){
-                
-                if((pAnswer3?.isEmpty)!)
-                {
-                    
-                    let regAlert = UIAlertController(title: "ERROR", message: "Please answer the Security Question.", preferredStyle: UIAlertControllerStyle.alert)
-                    regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
-                    self.present(regAlert,animated: true, completion:nil)
-                    
-                }
-            }
-            
-        }
-        else if(title=="Registration"){
+        //else
+            if(title=="Registration"){
             
             if((textField == email) || (textField == cellPhone)){
                 scrollView2.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
@@ -619,8 +542,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             let pLastName = String(lastName.text!)
             let pUsername = String(username.text!)
             let pPassword = String(password.text!)
-            let pEmail = String(email.text!)
-            let pCellPhone = String(cellPhone.text!)
+            _ = String(email.text!)
+            _ = String(cellPhone.text!)
             
             
            
@@ -636,60 +559,60 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
             if(textField == firstName){
             
-            if((pFirstName?.isEmpty)!)
+                if((pFirstName.isEmpty))
             {
                 
-                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the First Name field.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the First Name field.", preferredStyle: UIAlertController.Style.alert)
+                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert,animated: true, completion:nil)
                 
             }
             }
             else if(textField == lastName){
             
-            if((pLastName?.isEmpty)!)
+                if((pLastName.isEmpty))
             {
                 
-                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Last Name field.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Last Name field.", preferredStyle: UIAlertController.Style.alert)
+                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert,animated: true, completion:nil)
                 
             }
             }
             else if(textField == username){
                 
-            if((pUsername?.isEmpty)!)
+                if((pUsername.isEmpty))
             {
                 
-                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Username field.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Username field.", preferredStyle: UIAlertController.Style.alert)
+                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert,animated: true, completion:nil)
                 
             }
           
             else if (checkValidUsername == false)
             {
-                let regAlert2 = UIAlertController(title: "ERROR", message: "Username must be 6-10 characters in length with letters and numbers(optional)", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert2.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert2 = UIAlertController(title: "ERROR", message: "Username must be 6-10 characters in length with letters and numbers(optional)", preferredStyle: UIAlertController.Style.alert)
+                regAlert2.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert2,animated: true, completion:nil)
                 
             }
              
             else if (checkExistingUsername == false)
             {
-                let regAlert5 = UIAlertController(title: "ERROR", message: "Username already exists. Please enter a different username.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert5.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert5 = UIAlertController(title: "ERROR", message: "Username already exists. Please enter a different username.", preferredStyle: UIAlertController.Style.alert)
+                regAlert5.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert5,animated: true, completion:nil)
                 
             }
             }
             else if(textField == password){
             
-            if((pPassword?.isEmpty)!)
+                if((pPassword.isEmpty))
             {
                 
-                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Password field.", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert = UIAlertController(title: "ERROR", message: "Please enter a value in the Password field.", preferredStyle: UIAlertController.Style.alert)
+                regAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert,animated: true, completion:nil)
                 }
             }
@@ -698,8 +621,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             if (checkValidEmail == false)
             {
                 
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Please enter a valid email address", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert1 = UIAlertController(title: "ERROR", message: "Please enter a valid email address", preferredStyle: UIAlertController.Style.alert)
+                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert1,animated: true, completion:nil)
                 }
             }
@@ -708,8 +631,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             if (checkValidCellphone == false)
             {
                 
-                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222", preferredStyle: UIAlertControllerStyle.alert)
-                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222", preferredStyle: UIAlertController.Style.alert)
+                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(regAlert4,animated: true, completion:nil)
                 
             }
@@ -718,7 +641,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
         }
     }
-    
+    }
     
     
     
@@ -768,7 +691,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         var pInfo : UIPrintInfo = UIPrintInfo.printInfo()
         pInfo.outputType = .general
-        pInfo.orientation = UIPrintInfoOrientation.portrait
+        pInfo.orientation = UIPrintInfo.Orientation.portrait
         
         pInfo.jobName = "Standard Report"
        
@@ -861,11 +784,11 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
             image = resizeImage(image: image!, newWidth:200)
             
-            var imageV = UIImageView(image: image)
+            let imageV = UIImageView(image: image)
             let printController = UIPrintInteractionController.shared
             printController.printFormatter = formatter
             
-            var newImage = imageV.viewPrintFormatter()
+            let newImage = imageV.viewPrintFormatter()
             
             let printRenderer = UIPrintPageRenderer()
             printRenderer.addPrintFormatter(formatter, startingAtPageAt: 0)
@@ -926,7 +849,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         var pInfo : UIPrintInfo = UIPrintInfo.printInfo()
         pInfo.outputType = .general
-        pInfo.orientation = UIPrintInfoOrientation.portrait
+        pInfo.orientation = UIPrintInfo.Orientation.portrait
         
         pInfo.jobName = "Detailed Report"
 
@@ -1028,12 +951,12 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
 
             
             image = resizeImage(image: image!, newWidth:200)
-            var imageV = UIImageView(image: image)
+            let imageV = UIImageView(image: image)
             
             let printController = UIPrintInteractionController.shared
             printController.printFormatter = formatter
             
-            var newImage = imageV.viewPrintFormatter()
+            let newImage = imageV.viewPrintFormatter()
             
             let printRenderer = UIPrintPageRenderer()
             printRenderer.addPrintFormatter(formatter, startingAtPageAt: 0)
@@ -1158,10 +1081,10 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         var returnValue5 = true
         
         //if(String(username.text!) == pUsername)}
-        var exists =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
+        var exists = DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
         
         
-        print(exists)
+        print(exit)
         return exists
         
     }
@@ -1180,19 +1103,19 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         let pAnswer3 = String(answer3.text!)
         
         //Alow apostrophes
-        let allowpQuestion1 = pQuestion1?.replacingOccurrences(of: "'", with: "''")
-        let allowpQuestion2 = pQuestion2?.replacingOccurrences(of: "'", with: "''")
-        let allowpQuestion3 = pQuestion3?.replacingOccurrences(of: "'", with: "''")
-        let allowpAnswer1 = pAnswer1?.replacingOccurrences(of: "'", with: "''")
-        let allowpAnswer2 = pAnswer2?.replacingOccurrences(of: "'", with: "''")
-        let allowpAnswer3 = pAnswer3?.replacingOccurrences(of: "'", with: "''")
+        let allowpQuestion1 = pQuestion1.replacingOccurrences(of: "'", with: "''")
+        let allowpQuestion2 = pQuestion2.replacingOccurrences(of: "'", with: "''")
+        let allowpQuestion3 = pQuestion3.replacingOccurrences(of: "'", with: "''")
+        let allowpAnswer1 = pAnswer1.replacingOccurrences(of: "'", with: "''")
+        let allowpAnswer2 = pAnswer2.replacingOccurrences(of: "'", with: "''")
+        let allowpAnswer3 = pAnswer3.replacingOccurrences(of: "'", with: "''")
         
         
-        if((pQuestion1?.isEmpty)! || (pQuestion2?.isEmpty)! || (pQuestion3?.isEmpty)! || (pAnswer1?.isEmpty)! || (pAnswer2?.isEmpty)! || (pAnswer3?.isEmpty)!)
+        if((pQuestion1.isEmpty) || (pAnswer1.isEmpty)) //|| (pQuestion3.isEmpty) || (pAnswer1.isEmpty) || (pAnswer2.isEmpty) || (pAnswer3.isEmpty))
         {
             
-            let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            secAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            secAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(secAlert,animated: true, completion:nil)
         }
         else{
@@ -1217,7 +1140,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
             
             //successful connection to database - GM
-            let success1 = DBFeatures.sharedFeatures.insertSecurityTable(pQuestion1: allowpQuestion1!, pQuestion2: allowpQuestion2!, pQuestion3: allowpQuestion3!, pAnswer1: allowpAnswer1!, pAnswer2: allowpAnswer2!, pAnswer3: allowpAnswer3!, pUser:currentUser)
+            let success1 = DBFeatures.sharedFeatures.insertSecurityTable(pQuestion1: allowpQuestion1, pQuestion2: allowpQuestion2, pQuestion3: allowpQuestion3, pAnswer1: allowpAnswer1, pAnswer2: allowpAnswer2, pAnswer3: allowpAnswer3, pUser:currentUser)
             
             print(success1)
         }
@@ -1229,8 +1152,8 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     //function to save Sign In Info to database - GM
     @IBAction func saveSignInInfo(_ sender: Any) {
-        let signInUsername = String(sUsername.text!)
-        let signInPassword = String(sPassword.text!)
+        _ = String(sUsername.text!)
+        _ = String(sPassword.text!)
         
         
         //successful connection to database - GM
@@ -1244,12 +1167,12 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         //  if (String(username.text!) == pUsername){
        
-        var exists =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
+        let exists =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
         
         //Input Username
         if (exists == false){
-            let usernameRegAlert = UIAlertController(title: "ERROR", message: "The username already exists. Please enter a different username.", preferredStyle: UIAlertControllerStyle.alert)
-            usernameRegAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let usernameRegAlert = UIAlertController(title: "ERROR", message: "The username already exists. Please enter a different username.", preferredStyle: UIAlertController.Style.alert)
+            usernameRegAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(usernameRegAlert,animated: true, completion:nil)
         }
     }
@@ -1257,29 +1180,35 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     @IBAction func LoginCheck(_ sender: Any) {
         
+        //Kayla Belli
+        //save username to be autofilled on login screen
+        let name = sUsername.text
+        UserDefaults.standard.set(name, forKey: "username")
+        //Kayla Belli
+        
         if( String(sUsername.text!) == "" || (String(sPassword.text!) == "") )
         {
 
-            let iLoginAlert = UIAlertController(title: "ERROR", message: "Please enter a username and password.", preferredStyle: UIAlertControllerStyle.alert)
-            iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let iLoginAlert = UIAlertController(title: "ERROR", message: "Please enter a username and password.", preferredStyle: UIAlertController.Style.alert)
+            iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(iLoginAlert,animated: true, completion:nil)
         }
         else{ //if user has entered info
-            var validLogin =  DBFeatures.sharedFeatures.checkLogin(pUsername:String(sUsername.text!), pPassword:String(sPassword.text!))
+            let validLogin =  DBFeatures.sharedFeatures.checkLogin(pUsername:String(sUsername.text!), pPassword:String(sPassword.text!))
             if (validLogin==true) {
                 print("You are logged in")
                 let defaults:UserDefaults = UserDefaults.standard
                 defaults.set(String(sUsername.text!),forKey: "userNameKey")
              //   DBManager.shared.insertMonthlyReminderTable(reminderStatus: true, reminderUser: sUsername.text!)
-                let loginAlert = UIAlertController(title: "Login Status", message: "You are logged in.", preferredStyle: UIAlertControllerStyle.alert)
+                _ = UIAlertController(title: "Login Status", message: "You are logged in.", preferredStyle: UIAlertController.Style.alert)
                 
                 self.performSegue(withIdentifier: "Login", sender: self)
                       }
             else
             {
                
-                let iLoginAlert = UIAlertController(title: "ERROR", message:"Username or password is not valid. If you are a first time user, please Register.", preferredStyle: UIAlertControllerStyle.alert)
-                iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let iLoginAlert = UIAlertController(title: "ERROR", message:"Username or password is not valid. If you are a first time user, please Register.", preferredStyle: UIAlertController.Style.alert)
+                iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(iLoginAlert,animated: true, completion:nil)
             }
         }
@@ -1290,13 +1219,13 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     @IBAction func ForgetPssNeedToPutUSer(_ sender: Any) {
         
-        var validuser =  DBFeatures.sharedFeatures.CheckUserName(pUsername:String(sUsername.text!))
+        let validuser =  DBFeatures.sharedFeatures.CheckUserName(pUsername:String(sUsername.text!))
         //InputUser
         if (String (sUsername.text!) == "" || validuser == false)
         {
 
-            let iLoginAlert = UIAlertController(title: "ERROR", message: "Please enter a valid username.", preferredStyle: UIAlertControllerStyle.alert)
-            iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let iLoginAlert = UIAlertController(title: "ERROR", message: "Please enter a valid username.", preferredStyle: UIAlertController.Style.alert)
+            iLoginAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(iLoginAlert,animated: true, completion:nil)
         }
             
@@ -1327,7 +1256,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -1339,6 +1268,66 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
     
     
-}
+
 
 // End code by GM
+    
+    
+//Code by Kayla Belli
+    @IBAction func BiometricAuthentication(_ sender: Any) {
+
+        let context = LAContext()
+        
+        //save username to be autofilled on login screen
+        let name = sUsername.text
+        UserDefaults.standard.set(name, forKey: "username")
+
+        // If the Device can use biometric authentication
+        if context.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: nil)
+        {
+            context.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Touch to Login", reply: { (success, error) in
+                if success {
+                    //Fingerprint recognized
+                    DispatchQueue.main.async {
+                        let UnameDoesntExist =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(self.sUsername.text!))
+                        if( String(self.sUsername.text!) == "")
+                        {
+                            //if no username is entered
+                            let alert = UIAlertController(title: "ERROR", message: "Please enter a username.", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                            self.present(alert,animated: true, completion:nil)
+                        }
+                        else if (UnameDoesntExist == true){
+                            let alert = UIAlertController(title: "ERROR", message: "The username entered does not exist.", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+                            self.present(alert,animated: true, completion:nil)
+                        }
+                        else{
+                            //Login 
+                            let defaults:UserDefaults = UserDefaults.standard
+                            defaults.set(String(self.sUsername.text!),forKey: "userNameKey")
+                            self.performSegue(withIdentifier: "Login", sender: self)
+                        }
+                    }
+                }
+                else {
+                    //Authentication Failed
+                    //Pre defined apple error will appear
+                    print("Authentication failure")
+                }
+            })
+        }
+        else{
+            let alert = UIAlertController(title: "Biometrics unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true)
+            
+        }
+
+    }
+
+    //End Kayla belli
+}
+
+
+

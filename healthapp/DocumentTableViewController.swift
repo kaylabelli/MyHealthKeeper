@@ -85,8 +85,8 @@ class DocumentTableViewController: UITableViewController {
         {
              if (self.doc[0].rowID == -1)
              {
-                let alertController = UIAlertController(title: "ERROR", message: "You have not uploaded any images.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                let alertController = UIAlertController(title: "ERROR", message: "You have not uploaded any images.", preferredStyle: UIAlertController.Style.alert)
+                let alertControllerOK = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 alertController.addAction(alertControllerOK)
                 self.present(alertController, animated: true, completion: nil)
                 return 0
@@ -124,9 +124,9 @@ class DocumentTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         
-        let alert = UIAlertController(title:"Image Status", message: "Would you like to select and print this image in your report?", preferredStyle: UIAlertControllerStyle.alert)
-        let alert1 = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
-        let alert2 = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler:
+        let alert = UIAlertController(title:"Image Status", message: "Would you like to select and print this image in your report?", preferredStyle: UIAlertController.Style.alert)
+        let alert1 = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
+        let alert2 = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler:
         {
             
             (action) -> Void in
@@ -212,9 +212,9 @@ class DocumentTableViewController: UITableViewController {
     // This function will take user to Summary page or Reminder page
     @IBAction func ToReminder(_ sender: UIButton)
     {
-        let alert = UIAlertController(title: "Would you like to Set a Reminder?", message: "", preferredStyle: UIAlertControllerStyle.alert)
-        let alert1 = UIAlertAction(title: "No", style: UIAlertActionStyle.cancel, handler: nil)
-        let alert2 = UIAlertAction(title: "Yes", style: UIAlertActionStyle.default, handler:
+        let alert = UIAlertController(title: "Would you like to Set a Reminder?", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert1 = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
+        let alert2 = UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler:
         {
             (action) -> Void in self.performSegue(withIdentifier: "GoToReminder", sender: self)
         })
@@ -237,7 +237,7 @@ class DocumentTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
 
             // Delete the row from the data source
@@ -285,47 +285,8 @@ class DocumentTableViewController: UITableViewController {
             print(error.debugDescription)
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-/*
-    let check = self.doc[indexPath.row].docImage
-    //print(self.doc[indexPath.row].docImage)
-    //Changes the full path name from a string to an url
-    let url = self.documentsURL.appendingPathComponent(check!)
     
-    do {
-    //Access contents of the url
-    let imageData = try Data(contentsOf: url)
-    let SB = UIStoryboard(name: "Main", bundle: nil)
-    let feat_vc = SB.instantiateViewController(withIdentifier: "Print Preview") as! Features
-    feat_vc.getImage = UIImage(data:imageData)!
-    
-    self.navigationController?.pushViewController(feat_vc,animated: true)*/
-    
-    func imageTapped(_ sender: UITapGestureRecognizer) {
+    @objc func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let imagesomething: UIImage = imageView.image!
        // let newImageView = UIImageView(image: imageView.image)
@@ -336,43 +297,7 @@ class DocumentTableViewController: UITableViewController {
         feat_vc.getImage = imagesomething
         
         self.navigationController?.pushViewController(feat_vc,animated: true)
-        /*
-        let yvalue = tableView.contentOffset.y+4
-        newImageView.frame = UIScreen.main.bounds
-        //newImageView.frame = CGRect(x: 0, y: yvalue, width: tableView.frame.size.width, height: tableView.frame.size.height)
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit //Makes image bigger but keeps aspect ratio
-        newImageView.center = view.center
-        newImageView.clipsToBounds = true
-            self.tableView.isScrollEnabled = false
-
-
-        newImageView.isUserInteractionEnabled = true
-        // let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
         
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
- 
-    }
-    
-    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-        sender.view?.removeFromSuperview()
-        self.tableView.isScrollEnabled = true
-    }
- 
-    func prepare(for segue: UIStoryboardSegue, sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView!
-        if segue.identifier == "ExpandSummary"
-        {
-            let target = segue.destination as? ExpandImageViewController
-            target?.getImage = UIImageView(image: imageView!.image)
-        }
-        */
     }
 
      //menu
@@ -393,7 +318,7 @@ class DocumentTableViewController: UITableViewController {
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         
         let yvalue = self.tableView.contentOffset.y+84

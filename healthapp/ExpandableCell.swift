@@ -21,8 +21,8 @@ class ExpandableCell: UITableViewCell {
     
     var showDetails = false {
         didSet {
-            Secondheightconstraint.priority = showDetails ? 250 : 999
-            HeighConstrain.priority = showDetails ? 300 : 1000
+            Secondheightconstraint.priority = UILayoutPriority(rawValue: (showDetails ? 250 : 999))
+            HeighConstrain.priority = UILayoutPriority(rawValue: (showDetails ? 300 : 1000))
         }
     }
     
@@ -38,8 +38,8 @@ class ExpandableCell: UITableViewCell {
     
     var showDetails2 = false {
         didSet {
-            SecondheightconstraintAllergy.priority = showDetails2 ? 250 : 999
-            HeighConstrainAllergy.priority = showDetails2 ? 249 : 998
+            SecondheightconstraintAllergy.priority = UILayoutPriority(rawValue: (showDetails2 ? 250 : 999))
+            HeighConstrainAllergy.priority = UILayoutPriority(rawValue: (showDetails2 ? 249 : 998))
         }
     }
     
@@ -60,9 +60,9 @@ class ExpandableCell: UITableViewCell {
     
     var showDetails3 = false {
         didSet {
-            SecondheightconstraintDoctor.priority = showDetails3 ? 250 : 999
-            ThirdHeighConstrainDoctor.priority = showDetails3 ? 249 : 998
-            forthHeighConstrainDoctor.priority = showDetails3 ? 248 : 997
+            SecondheightconstraintDoctor.priority = UILayoutPriority(rawValue: (showDetails3 ? 250 : 999))
+            ThirdHeighConstrainDoctor.priority = UILayoutPriority(rawValue: (showDetails3 ? 249 : 998))
+            forthHeighConstrainDoctor.priority = UILayoutPriority(rawValue: (showDetails3 ? 248 : 997))
         }
     }
     
@@ -84,7 +84,7 @@ class ExpandableCell: UITableViewCell {
     
     var showDetails4 = false {
         didSet {
-            SecondVaccineHeight.priority = showDetails4 ? 250 : 999
+            SecondVaccineHeight.priority = UILayoutPriority(rawValue: (showDetails4 ? 250 : 999))
         }
     }
     
@@ -101,8 +101,8 @@ class ExpandableCell: UITableViewCell {
      
      var showDetails5 = false {
      didSet {
-     SecondheightconstraintMedication.priority = showDetails5 ? 250 : 999
-     HeighConstrainMedication.priority = showDetails5 ? 249 : 998
+     SecondheightconstraintMedication.priority = UILayoutPriority(rawValue: (showDetails5 ? 250 : 999))
+     HeighConstrainMedication.priority = UILayoutPriority(rawValue: (showDetails5 ? 249 : 998))
           }
         
      }

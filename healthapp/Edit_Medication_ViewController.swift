@@ -72,22 +72,22 @@ UIPickerViewDelegate {
         
         if (MedicationName.text! == "")
         {
-            let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+            let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+            Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
             self.present(Alert1,animated: true, completion:nil)
             
         }
         else if(MDosage.text! == "" )//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerNo)
             self.present(alertController, animated: true, completion: nil)
         }
         else if((MStatus.text != "current") && (MStatus.text != "Current")&&(MStatus.text != "Past")&&(MStatus.text != "past"))//invalid entry
         {
-            let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertControllerStyle.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+            let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertController.Style.alert)
+            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alertController.addAction(alertControllerNo)
             self.present(alertController, animated: true, completion: nil)
         }
@@ -98,9 +98,9 @@ UIPickerViewDelegate {
        
         
         // alert will disply when user update information
-        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertControllerStyle.alert)
+        let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
         // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
-        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertActionStyle.default, handler: {(action) -> Void in
+        UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToMedicationPage", sender: self)}));
         //present message to user
         self.present(UpdateAlert,animated: true, completion:nil)
@@ -116,7 +116,7 @@ UIPickerViewDelegate {
         
         
         //if user flips phone to landscape mode the background is reapplied
-        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         //hide keyboard when user taps screen
         self.hideKeyboard()
@@ -172,8 +172,8 @@ UIPickerViewDelegate {
             
             if (MedicationName.text! == "")
             {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertActionStyle.default, handler:nil));
+                let Alert1 = UIAlertController(title: "ERROR", message: "Medication Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
                 self.present(Alert1,animated: true, completion:nil)
             }
         }
@@ -181,8 +181,8 @@ UIPickerViewDelegate {
             
             if (MDosage.text! == "")//invalid entry
             {
-                let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                let alertController = UIAlertController(title: "ERROR", message: "Medication Dosage field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
+                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 alertController.addAction(alertControllerNo)
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -191,8 +191,8 @@ UIPickerViewDelegate {
             
             if((MStatus.text! != "current") && (MStatus.text! != "Current") && (MStatus.text! != "Past") && (MStatus.text! != "past"))//invalid entry
             {
-                let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertControllerStyle.alert)
-                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                let alertController = UIAlertController(title: "ERROR", message: "Medication Status must be set to Current or Past.", preferredStyle: UIAlertController.Style.alert)
+                let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                 alertController.addAction(alertControllerNo)
                 self.present(alertController, animated: true, completion: nil)
             }
@@ -250,7 +250,7 @@ UIPickerViewDelegate {
     func show_menu()
     {
         //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
-        self.addChildViewController(self.menu_vc)
+        self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)
         self.menu_vc.view.isHidden = false
@@ -262,14 +262,6 @@ UIPickerViewDelegate {
     }
     
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    
     
 }
