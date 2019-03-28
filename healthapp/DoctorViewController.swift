@@ -206,40 +206,6 @@ class DoctorViewController: UIViewController ,UITableViewDelegate,UITableViewDat
         return true
     }
     
-    /*func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        
-        let checkDoctorName = isValidString(nameString: DocNameText.text!)
-        let cellphoneInput = DocContact.text
-        let checkValidCellphone = isCellphoneValid (cellphoneString: cellphoneInput!)
-        
-        if(textField == DocNameText){
-            
-            if (DocNameText.text! == "")
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-                
-            else if (checkDoctorName == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Doctor Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-        }
-        else if(textField == DocContact)
-        {
-            
-            if (checkValidCellphone == false){
-                let regAlert4 = UIAlertController(title: "ERROR", message: "Please enter a 10 digit cellphone number in the following format: 3331112222.", preferredStyle: UIAlertController.Style.alert)
-                regAlert4.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert4,animated: true, completion:nil)
-            }
-        }
-        
-    }*/
     
     // list of doctors
     @IBOutlet weak var TableView: UITableView!

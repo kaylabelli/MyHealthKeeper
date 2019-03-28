@@ -241,32 +241,7 @@ class SurgeryViewController: UIViewController  ,UITableViewDelegate,UITableViewD
         }
     }
     
-    
-    /*func textFieldDidEndEditing(_ textField: UITextField){
-        
-        let checkdate = SurgeryDate.text
-        let Date = isDoBValid(DoBString: checkdate!)
-        
-        if (textField == SurgeryNameText){
-            
-            if (SurgeryNameText.text! == "")
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Surgery Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(Alert1,animated: true, completion:nil)
-            }
-        }
-        else if(textField == SurgeryDate){
-            
-            
-            if (Date == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-        }
-    }*/
+  
     
     
     // action for next page

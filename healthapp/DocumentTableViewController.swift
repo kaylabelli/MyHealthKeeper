@@ -285,45 +285,6 @@ class DocumentTableViewController: UITableViewController {
             print(error.debugDescription)
         }
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-/*
-    let check = self.doc[indexPath.row].docImage
-    //print(self.doc[indexPath.row].docImage)
-    //Changes the full path name from a string to an url
-    let url = self.documentsURL.appendingPathComponent(check!)
-    
-    do {
-    //Access contents of the url
-    let imageData = try Data(contentsOf: url)
-    let SB = UIStoryboard(name: "Main", bundle: nil)
-    let feat_vc = SB.instantiateViewController(withIdentifier: "Print Preview") as! Features
-    feat_vc.getImage = UIImage(data:imageData)!
-    
-    self.navigationController?.pushViewController(feat_vc,animated: true)*/
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
@@ -336,43 +297,7 @@ class DocumentTableViewController: UITableViewController {
         feat_vc.getImage = imagesomething
         
         self.navigationController?.pushViewController(feat_vc,animated: true)
-        /*
-        let yvalue = tableView.contentOffset.y+4
-        newImageView.frame = UIScreen.main.bounds
-        //newImageView.frame = CGRect(x: 0, y: yvalue, width: tableView.frame.size.width, height: tableView.frame.size.height)
-        newImageView.backgroundColor = .black
-        newImageView.contentMode = .scaleAspectFit //Makes image bigger but keeps aspect ratio
-        newImageView.center = view.center
-        newImageView.clipsToBounds = true
-            self.tableView.isScrollEnabled = false
-
-
-        newImageView.isUserInteractionEnabled = true
-        // let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage(sender:)))
-        newImageView.addGestureRecognizer(tap)
-        self.view.addSubview(newImageView)
         
-        self.navigationController?.isNavigationBarHidden = true
-        self.tabBarController?.tabBar.isHidden = true
- 
-    }
-    
-    func dismissFullscreenImage(sender: UITapGestureRecognizer) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-        sender.view?.removeFromSuperview()
-        self.tableView.isScrollEnabled = true
-    }
- 
-    func prepare(for segue: UIStoryboardSegue, sender: UITapGestureRecognizer) {
-        let imageView = sender.view as! UIImageView!
-        if segue.identifier == "ExpandSummary"
-        {
-            let target = segue.destination as? ExpandImageViewController
-            target?.getImage = UIImageView(image: imageView!.image)
-        }
-        */
     }
 
      //menu

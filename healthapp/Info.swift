@@ -22,11 +22,11 @@ class info: UIViewController {
         super.viewDidLoad()
         
         Delete.Design()
-        let firstString = "The MyHealthKeeper mobile app is designed for patients aged 16 - 25 with chronic medical conditions.  The goal is to help these patients learn how to handle all of their own medical information as they transition into adult hood. It allows users to enter, view, and edit medical data.  Set reminders for both appointments and medications. Upload and print important documents. As well as import and export the data saved in the app so that they don't risk losing any of it.  All data stored in the app will be stored locally on the user's device so that it complies with HIPPA's policies."
+        let firstString = "The MyHealthKeeper mobile app is designed to help patients track their medical information. The application allows users to enter, view, and edit medical data, set reminders for both appointments and medications, upload and print important documents, and import and export their data, as to not risk losing any of it when transferring to a new device.  All data stored in the application is stored locally so that it complies with HIPPA guidelines."
         
-        let secondString = "If you would like to clear all data within the app and get a fresh start, click the 'Delete Data' button below."
+        let secondString = "If you would like to clear all data within the application, tap the 'Delete Data' button below."
         
-        textView.text = firstString + "\n\n" + secondString
+        textView.text = firstString + "\n\n\n\n\n\n\n" + secondString
    
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -35,7 +35,7 @@ class info: UIViewController {
     }
     
     @IBAction func Delete(_ sender: Any) {
-          let DeleteAlert = UIAlertController(title: "WARNING", message: "Are you sure you want to delete all data in the MyHealthKeeper application? Please type password to continue.", preferredStyle: .alert)
+          let DeleteAlert = UIAlertController(title: "WARNING", message: "Are you sure you want to delete all data in the MyHealthKeeper application? Please enter your password to continue.", preferredStyle: .alert)
         DeleteAlert.addTextField(configurationHandler: self.Password)
         DeleteAlert.addAction(UIAlertAction(title: "Yes, Delete Data", style: UIAlertAction.Style.default, handler: {
             (action) -> Void in

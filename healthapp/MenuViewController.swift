@@ -406,33 +406,6 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 50
     }
     
-    
-    //Color for cell
-    /*
-     func colorForIndex(index: Int) -> UIColor {
-     let itemCount = title_arr.count - 1
-     let color = (CGFloat(index)/CGFloat(itemCount)) * 0.6
-     return UIColor(red: 1.0, green: color, blue: 0.0, alpha: 1.0)
-     }
-     
-     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath){
-     cell.backgroundColor = colorForIndex(index: indexPath.row)
-     }
-     */
-    
-    
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

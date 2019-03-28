@@ -47,12 +47,6 @@ class DbmanagerMadicalinfo: NSObject {
     //let databaseFileName = "myHealthApp.sqlite"
      let databaseFileName = "HealthAppEncrypted5.sqlite"
     
-    //initilize variables with name of DB fields
-    //nameing convention of DB field variables field_TableName_FieldName
-    //let path="/Users/melissaheredia/Desktop/NEW"
-      //let path="/Users/gayu/Desktop/"
-     // let path="/Users/thanjilauddin/Desktop/NEW"
-    // let path="Users/gopikamenon/Desktop/New"
     
     override init() {
         super.init()
@@ -1784,31 +1778,6 @@ struct medicineInfo{
     
 }
 
-
-
-
-
-
-
-//open database ficntion
-/*
- func openDatabase() -> Bool {
- //if FMdatabase file doesn't exist create one
- if database == nil {
- if FileManager.default.fileExists(atPath: pathToDatabase) {
- database = FMDatabase(path: pathToDatabase)
- }
- }
- //if FMdatabase file does exist open the database
- if database != nil {
- if database.open() {
- return true
- }
- }
- 
- return false
- }
- */
 
 
 

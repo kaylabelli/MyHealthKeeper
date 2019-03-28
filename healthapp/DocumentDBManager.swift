@@ -54,12 +54,6 @@ class DocumentDBManager : NSObject {
         pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
        
         
-    //  var path="/Users/melissaheredia/Desktop/NEW"
-      //var path="/Users/gayu/Desktop/"
-      // var path="/Users/thanjilauddin/Desktop/NEW"
-      //  var path = "/Users/gopikamenon/Desktop/New"
-      //   pathToDatabase = path.appending("/\(databaseFileName)")
-     // pathToDatabase = path.appending("/HealthAppEncrypted5.sqlite")
        
         //   pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
         // pathToDatabase=databaseFileName
@@ -94,49 +88,7 @@ class DocumentDBManager : NSObject {
         return true
     }
     //create database function
-/*    func createDatabase() -> Bool {
-        var created = false
-        //if the database file doesn't already exist at the given path
-        if !FileManager.default.fileExists(atPath: pathToDatabase) {
-            database = FMDatabase(path: pathToDatabase!) //construct a FM database file in path given
-            //if database file has been created sucessfully
-            if database != nil {
-                // Open the database.
-                if database.open() {
-                    
-                   
-                    database.close()
-                    
-                }
-                else {
-                    print("Could not open the database.")
-                    
-                }
-            }
-        }
-        
-        return created
-    }
- */
-   
-    /*
-    func openDatabase() -> Bool {
-        //if FMdatabase file doesn't exist create one
-        if database == nil {
-            if FileManager.default.fileExists(atPath: pathToDatabase) {
-                database = FMDatabase(path: pathToDatabase)
-            }
-        }
-        //if FMdatabase file does exist open the database
-        if database != nil {
-            if database.open() {
-                return true
-            }
-        }
-        
-        return false
-    }
-    */
+
     //Thanjila: START
     //    create table and insert data text function
     func insertDocumentTable(docName:String, docDescription:String, docImage:String, docUser:String) -> Bool {
@@ -170,35 +122,7 @@ class DocumentDBManager : NSObject {
         return true;
     }
     
-    /*
-    //create table for image
-    func insertImageTable(docImage:String, docUser:String) -> Bool {
-        print(docImage)
-        //  open database
-        if !openDatabase() {
-            print("Failed to Open database.")
-            print(database.lastError(), database.lastErrorMessage())
-            return false;
-        }
-       // let createImageTableQuery = "create table Image (\(field_Document_Image) text not null, \(field_DocumentImage_Id) integer, foreign key (\(field_DocumentImage_Id)) references Document (\(field_Document_Id)) on DELETE CASCADE);"
-        let createImageTableQuery = "create table Image (\(field_Document_Id) integer primary key not null, \(field_Document_Image) text not null, \(field_Document_User) text);"
-        do{
-            try database.executeUpdate(createImageTableQuery, values: nil)
-        }
-        catch{
-            print("Failed to create table")
-            print(error.localizedDescription)
-        }
-        //insert data
-        let query="insert into Image ('rowID', 'docImage', 'docUser') values (NULL, '\(docImage)', '\(docUser)');"
-        if !database.executeStatements(query) {
-            print("Failed to insert initial data into the database.")
-            print(database.lastError(), database.lastErrorMessage())
-            return false;
-        }
-        return true;
-    }
- */
+    
     
     //Display document text fields
     func loadDocText(docUser:String = "") -> [documentText]! {
@@ -229,32 +153,7 @@ class DocumentDBManager : NSObject {
         return Document
     }
     
-    /*
-    func loadDocImage(docUser:String = "") -> [documentImage]! {
-        var dImagearray: [documentImage]!
-        if openDatabase()
-        {
-            let query = "select * from Image where docUser = ?"
-            do {
-                let results = try database.executeQuery(query, values: [docUser])
-                while results.next() {
-                    let dI = documentImage(rowID: Int(results.int(forColumn: field_Document_Id)),
-                                           docImage: results.string(forColumn: field_Document_Image),
-                                           docUser: results.string(forColumn: field_Document_User))
-                    if dImagearray == nil {
-                        dImagearray=[documentImage]()
-                    }
-                    dImagearray.append(dI)
-                }
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-            database.close()
-        }
-        return dImagearray
-    }
-    */
+   
     
     //Delete document Text
     func deleteDocumentText(rowID: Int) -> Bool {
@@ -319,24 +218,7 @@ struct documentText{
         self.docUser=""
     }
 }
-/*
-struct documentImage{
-    var rowID:Int!
-    var docImage:String!
-    var docUser:String!
-    init(rowID:Int!, docImage:String!, docUser:String!){
-        self.rowID=rowID
-        self.docImage=docImage
-        self.docUser=docUser
-    }
-    init(){
-        self.rowID = -1
-        self.docImage = ""
-        self.docUser = ""
-    }
- 
-}
- */
+
 //Thanjila: END
 
 

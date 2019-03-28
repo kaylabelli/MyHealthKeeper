@@ -52,32 +52,11 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     @IBOutlet weak var RoundImage: UIImageView!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /*self.AddReminderDesign.isHidden = true
-        self.reminderDate.isHidden = true
-        self.appointmentStack.isHidden = true
-        self.medicationView.isHidden = true
-        self.saveMedicationButton.isHidden = true
-        self.typeMedicationPicker.isHidden = true
-        self.dosagePicker.isHidden = true*/
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /*if (medicationType.isEditing)
-        {
-            self.typeMedicationPicker.isHidden = false
-        }
-        else
-        {
-            self.typeMedicationPicker.isHidden = true
-        }
-        if (dosageText.isEditing)
-        {
-            self.dosagePicker.isHidden = false
-        }
-        else
-        {
-            self.dosagePicker.isHidden = true
-        }*/
+       
     }
     
     override func viewDidLoad() {
@@ -760,8 +739,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -823,8 +802,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -905,8 +884,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -1012,8 +991,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -1074,8 +1053,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -1136,8 +1115,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -1198,8 +1177,8 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -1322,50 +1301,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if title == "Reminders"
         {
-           /* if (textField == medicationType)
-            {
-                medicationType.inputView = UIView()
-                if typeMedicationPicker.isHidden
-                {
-                    typeMedicationPicker.isHidden = false
-                }
-                else
-                {
-                    typeMedicationPicker.isHidden = true
-                }
-                dosagePicker.isHidden = true
-                textField.endEditing(true)
-            }
-            else if (textField == dosageText)
-            {
-                dosageText.inputView = UIView()
-                if dosagePicker.isHidden
-                {
-                    dosagePicker.isHidden = false
-                }
-                else
-                {
-                    dosagePicker.isHidden = true
-                }
-                typeMedicationPicker.isHidden = true
-                textField.endEditing(true)
-            }
-            else if (textField == medicationName)
-            {
-               typeMedicationPicker.isHidden = true
-                dosagePicker.isHidden = true
-            }
-            else if (textField == medicationAmount)
-            {
-                typeMedicationPicker.isHidden = true
-                dosagePicker.isHidden = true
-            }
-            else if (textField == medicationTotalAmount)
-            {
-                typeMedicationPicker.isHidden = true
-                dosagePicker.isHidden = true
-            }
-            */
+          
         }
     }
     
@@ -1782,108 +1718,3 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     
 }
-
-
-
-
-/*
- if(itemsR[0].reminderStatus == true)
- {
- NotificationStatus.setOn(true, animated: false)
- }
- else
- {
- NotificationStatus.setOn(false, animated: true)
- }
- */
-
-
-
-
-
-
-/*     var MonthlyReminder=true
- let defaults:UserDefaults = UserDefaults.standard
- if let opened:Bool = defaults.bool(forKey: "monthlyNotificationStatus" )
- {
- MonthlyReminder=opened
- }*/
-//gets username
-
-
-
-
-
-
-
-
-//Thanjila - Start
-/*
- let values = ["View Medical History Summary", "View Uploaded Documents Summary", "View Appointment Reminders Summary", "Print", "Logout"]
- @IBOutlet weak var menuLabel: UIButton!
- @IBOutlet weak var menuview: UITableView!
- 
- func numberOfSections(in tableView: UITableView) -> Int {
- return 1
- }
- 
- func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
- return values.count
- }
- 
- func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
- let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
- cell.textLabel?.text = values [indexPath.row]
- //Change Color
- /*
- if (indexPath.row % 2 == 0)
- {
- cell.backgroundColor = UIColor.cyan
- } else {
- cell.backgroundColor = UIColor.white
- }
- */
- return cell
- }
- 
- func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- let cell = tableView.cellForRow(at:indexPath)
- //menuLabel.setTitle(cell?.textLabel?.text, for: .normal)
- self.menuview.isHidden = true
- 
- let segueIdentifier: String
- switch indexPath.row {
- case 0: //For "one"
- segueIdentifier = "GoToMedicalSummary"
- case 1: //For "two"
- segueIdentifier = "GoToDocumentSummary"
- case 2:
- segueIdentifier = "GoToRemindersSummary"
- case 3:
- segueIdentifier = "GoToPrint"
- case 4:
- segueIdentifier = "GoToSignIn"
- default: //For "three"
- segueIdentifier = "GoToMedicalSummary"
- }
- self.performSegue(withIdentifier: segueIdentifier, sender: self)
- }
- 
- 
- @IBAction func ButtonPressed(_ sender: Any) {
- self.menuview.isHidden = !self.menuview.isHidden
- }
- */
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -33,8 +33,8 @@
                 super.viewDidLoad()
                 Import.Design()
                 self.Export.isHidden = true
-                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import.  You will need to use the passcode that was used when the MyHealthKeeper.csv file was exported."
-                
+                disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application. Importing is specifically meant for loading new data into the app. It will not add data where there is already existing data. Press the 'Import Data' button if you would like to begin the import process. You will need to enter the passcode that was provided when the MyHealthKeeper file was exported."
+                disclaimer.isEditable = false
                 menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
                 menu_vc.view.isHidden = true
                 //hide back button show menu
@@ -48,13 +48,13 @@
                 switch (index)
                 {
                 case 0:
-                      disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application.  Importing is specifically meant for loading all new data into the app, it will not add data to currently existing data.  Press the 'Import Data' button if you would like to import.  You will need to use the passcode that was used when the MyHealthKeeper.csv file was exported."
+                      disclaimer.text = "IMPORT WARNING \n\n Importing data will override all current data in the application. Importing is specifically meant for loading new data into the app. It will not add data where there is already existing data. Press the 'Import Data' button if you would like to begin the import process. You will need to enter the passcode that was provided when the MyHealthKeeper file was exported."
                     self.Import.isHidden = false
                     self.Export.isHidden = true
                     Import.Design()
                 case 1:
 
-                    disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user.  The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported.  Press the 'Export' button if you would like to continue.  You will need to remember the passcode you enter in order to import the file at a later time. "
+                    disclaimer.text = "EXPORT WARNING \n\n  Although exported data will be protected, the data within the exported file will still be the responsibiilty of the user. The MyHealthKeeper App will no longer be responsible for the security of user data once it has been exported. Press the 'Export' button if you would like to continue. You will need to remember the passcode provided in order to import the file once the process is complete, so please write it down."
                     self.Import.isHidden = true
                     self.Export.isHidden = false
                     Export.Design()
@@ -111,7 +111,7 @@
             
             //Export data to csv file and send to user with iOS Share sheet
             @IBAction func ExportData(_ sender: Any) {
-               let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App.  Are you sure you would like to export? Please remember the passcode you type here in order to import this file later on. ", preferredStyle: .alert)
+               let ExportAlert = UIAlertController(title: "WARNING", message: "All exported data is no longer the responsibility of the MyHealthKeeper App. Are you sure you would like to export? Please remember this passcode in order to import this file later on.", preferredStyle: .alert)
                 ExportAlert.addTextField(configurationHandler: Password)
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
@@ -264,7 +264,7 @@
             }
         }
         else{
-                    let ImportStatus = UIAlertController(title: "Incorrect File Type", message: "The import file you select must have the file extension .mhk ", preferredStyle: .alert)
+                    let ImportStatus = UIAlertController(title: "Incorrect File Type", message: "The import file you select must have the file extension .mhk", preferredStyle: .alert)
                     
                     ImportStatus.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
                     

@@ -74,22 +74,4 @@ class TextInputTableViewCell: UITableViewCell ,UITextViewDelegate,UITextFieldDel
 
 
 
-//  textView1.accessibilityLabel = placeholder
-
-
-// resign keyboard
-/* func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
- if (text == "\n")
- {
- textView1.resignFirstResponder()
- }
- return true
- } */
-
-// func textViewDidEndEditing(_ textView: UITextView) {
-
-//   textView1.resignFirstResponder()
-
-
-
 

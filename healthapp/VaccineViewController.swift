@@ -209,35 +209,7 @@ class VaccineViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         }
     }
     
-   /* func textFieldDidEndEditing(_ textField: UITextField){
-        
-        let vaccineneamecheck = String (VaccineNameText.text!)
-        let checkdate = opentext1.text
-        let vaccinecheckdate = isDoBValid(DoBString: checkdate!)
-        
-        
-        if(textField == VaccineNameText){
-            if ((vaccineneamecheck.isEmpty))
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Vaccine Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(Alert1,animated: true, completion:nil)
-            }
-        }
-            
-            
-        else if (textField == opentext1){
-            
-            if (vaccinecheckdate == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Date field must be in the following format: MM/DD/YYYY", preferredStyle: UIAlertController.Style.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-            }
-            
-        }
-    }
- */
+  
     
     // will go to Family history page
     

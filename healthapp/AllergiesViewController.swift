@@ -243,44 +243,13 @@ class AllergiesViewController: UIViewController ,UITableViewDelegate,UITableView
     }
     
     
-    /*func textFieldDidEndEditing(_ textField: UITextField){
-        
-        let checkAllergiesName = isValidString(nameString: AllergiesNameText.text!)
-        
-        if(textField == AllergiesNameText)
-        {
-            
-            if (AllergiesNameText.text! == "")
-            {
-                let Alert1 = UIAlertController(title: "ERROR", message: "Allergy Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(Alert1,animated: true, completion:nil)
-            }
-                
-            else if (checkAllergiesName == false)
-            {
-                let regAlert1 = UIAlertController(title: "ERROR", message: "Allergy Name field is not valid.", preferredStyle: UIAlertController.Style.alert)
-                regAlert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(regAlert1,animated: true, completion:nil)
-                
-            }
-        }
-        
-    }*/
-    
-    
-    
-    
     // will take user to Vaccine page
     
     @IBAction func GotovaccinePage(_ sender: Any) {
         
         if(AllergiesNameText.text! != "")//invalid entry
         {
-            /*let alertController = UIAlertController(title: "ERROR", message: "Allergy List cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-            let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            alertController.addAction(alertControllerNo)
-            self.present(alertController, animated: true, completion: nil)*/
+            
             let Alert1 = UIAlertController(title: "Unsaved Changes", message: "Are you sure you want to continue?", preferredStyle: UIAlertController.Style.alert)
             Alert1.addAction(UIAlertAction(title:"Cancel", style:UIAlertAction.Style.cancel, handler:nil));
             Alert1.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: {
@@ -433,15 +402,6 @@ class AllergiesViewController: UIViewController ,UITableViewDelegate,UITableView
         self.menu_vc.view.isHidden = true
     }
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     
     //alerts user about unsaved info

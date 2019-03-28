@@ -507,7 +507,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
                         
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
@@ -570,8 +570,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -652,8 +652,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -759,8 +759,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -821,8 +821,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -883,8 +883,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
@@ -945,8 +945,8 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
-                        reminderStatusMessage = "Insert of " + medName + " was successful."
-                        
+                        reminderStatusMessage = "Added " + medName + " to Medication Reminders."
+
                         //if the user has not granted the application permission to send notificatoins
                         if(!isGrantedNotificationAccess){
                             //Appends a warning to the reminder Status message to tell user they need to give application permisson to send notifications
