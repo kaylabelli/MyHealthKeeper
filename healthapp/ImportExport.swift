@@ -95,6 +95,7 @@
                             }
                             _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
                             _ = DBManager.shared.DeleteAll(sameUser: currentUser)
+                            _ = DocumentDBManager.Docshared.deleteAllDocuments(docUser: currentUser)
                             let documentPickerController = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
                             documentPickerController.delegate = self as? UIDocumentPickerDelegate
                             self.present(documentPickerController, animated: true, completion: nil)

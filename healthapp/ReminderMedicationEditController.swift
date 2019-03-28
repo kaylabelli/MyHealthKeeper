@@ -252,7 +252,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     
     @objc func doneAction()
     {
-        firstTime.text = "\(datePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: datePicker.date)
+        
+        firstTime.text = "\(date)"
         self.view.endEditing(true)
     }
     
@@ -272,7 +277,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     
     @objc func done2Action()
     {
-        secondTime.text = "\(secondDatePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: secondDatePicker.date)
+        
+        secondTime.text = "\(date)"
         self.view.endEditing(true)
     }
     
@@ -292,7 +302,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     
     @objc func done3Action()
     {
-        thirdTime.text = "\(thirdDatePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: thirdDatePicker.date)
+        
+        thirdTime.text = "\(date)"
         self.view.endEditing(true)
     }
     

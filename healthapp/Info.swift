@@ -27,6 +27,8 @@ class info: UIViewController {
         let secondString = "If you would like to clear all data within the application, tap the 'Delete Data' button below."
         
         textView.text = firstString + "\n\n\n\n\n\n\n" + secondString
+        
+        textView.isEditable = false
    
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -53,6 +55,7 @@ class info: UIViewController {
                 if (validLogin==true){
                 _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
                 _ = DBManager.shared.DeleteAll(sameUser: currentUser)
+                _ = DocumentDBManager.Docshared.deleteAllDocuments(docUser: currentUser)
                 
                  let DeleteSuccess = UIAlertController(title: "Data Deletion Complete", message: "", preferredStyle: .alert)
                 

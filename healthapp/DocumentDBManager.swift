@@ -193,6 +193,31 @@ class DocumentDBManager : NSObject {
         }
         return deleted
     }
+    
+    func deleteAllDocuments(docUser: String!) -> Bool {
+        var deleted=false;
+        if openDatabase()
+        {
+            print(docUser)
+            let query = "DELETE FROM Document where docUser = ?"
+            
+            do{
+                
+                try database.executeUpdate(query, values: [docUser])
+                deleted=true
+            }
+            catch{
+                
+                print(error.localizedDescription)
+            }
+            
+            
+            database.close()
+            
+        }
+        
+        return deleted
+    }
 }
 
 

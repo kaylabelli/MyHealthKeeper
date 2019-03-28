@@ -1304,7 +1304,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="101" width="25" height="25"/>
+                                <rect key="frame" x="175" y="101" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2166,7 +2166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="105" width="25" height="25"/>
+                                <rect key="frame" x="185" y="105" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2828,7 +2828,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="99" width="80" height="34"/>
+                                <rect key="frame" x="242" y="99" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2839,7 +2839,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="99" width="25" height="25"/>
+                                <rect key="frame" x="185" y="99" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5993,7 +5993,7 @@
                                 </variation>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mRB-6N-QxN">
-                                <rect key="frame" x="16" y="153.5" width="288" height="314.5"/>
+                                <rect key="frame" x="16" y="153.5" width="288" height="364.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="MQm-Wd-sE7">
                                     <size key="itemSize" width="40" height="40"/>
@@ -6068,7 +6068,7 @@
                         <constraints>
                             <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="cga-1a-X2f" secondAttribute="bottom" constant="528" id="6fP-0I-pHh"/>
                             <constraint firstItem="cga-1a-X2f" firstAttribute="top" secondItem="BRT-1i-yqx" secondAttribute="top" id="8Ga-dz-vqz"/>
-                            <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="mRB-6N-QxN" secondAttribute="bottom" constant="100" id="Bug-LW-oJZ"/>
+                            <constraint firstItem="CKE-gq-ybC" firstAttribute="top" secondItem="mRB-6N-QxN" secondAttribute="bottom" constant="50" id="Bug-LW-oJZ"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="trailing" secondItem="BRT-1i-yqx" secondAttribute="trailingMargin" id="D4U-c5-MQo"/>
                             <constraint firstItem="50P-bJ-HnL" firstAttribute="top" secondItem="3Vn-ek-Q3P" secondAttribute="bottom" constant="40" id="FI5-1t-Z6d"/>
                             <constraint firstItem="mRB-6N-QxN" firstAttribute="top" secondItem="n7M-9y-DRz" secondAttribute="bottom" constant="21.5" id="HEt-by-mxc"/>
@@ -6184,9 +6184,9 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="info" width="50" height="50"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="info" width="37.5" height="37.5"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Hj-22G"/>

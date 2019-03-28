@@ -537,7 +537,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     @objc func doneAction()
     {
-        firstTime.text = "\(datePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: datePicker.date)
+        
+        firstTime.text = "\(date)"
         self.view.endEditing(true)
     }
     
@@ -557,7 +562,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     @objc func done2Action()
     {
-        secondTime.text = "\(secondDatePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: secondDatePicker.date)
+        
+        secondTime.text = "\(date)"
         self.view.endEditing(true)
     }
     
@@ -577,7 +587,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     @objc func done3Action()
     {
-        thirdTime.text = "\(thirdDatePicker.date)"
+        let DateFormat=DateFormatter()
+        DateFormat.dateFormat="hh:mm a"
+        
+        let date = DateFormat.string(from: thirdDatePicker.date)
+        
+        thirdTime.text = "\(date)"
         self.view.endEditing(true)
     }
     
@@ -1611,23 +1626,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             return updatedText.count <= 30
         }
         return true
-    }
-    
-    
-    
-    func textFieldDidEndEditing(_ textField: UITextField){
-        
-        let remName=String(reminderName.text!)
-        
-        if (textField == reminderName){
-            
-            if(remName == "")//invalid entry-Reminder Name is empty
-            {
-                let reminderError = UIAlertController(title: "ERROR", message: "Reminder Name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
-                reminderError.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
-                self.present(reminderError,animated: true, completion:nil)
-            }
-        }
     }
     
     
