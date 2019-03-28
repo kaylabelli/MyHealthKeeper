@@ -1304,7 +1304,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="101" width="38" height="38"/>
+                                <rect key="frame" x="175" y="101" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1901,7 +1901,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkZ-al-nt4">
-                                <rect key="frame" x="219" y="105" width="80" height="34"/>
+                                <rect key="frame" x="232" y="105" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -1944,7 +1944,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJ4-ih-beC">
-                                <rect key="frame" x="175" y="105" width="25" height="25"/>
+                                <rect key="frame" x="175" y="105" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <size key="titleShadowOffset" width="1" height="0.0"/>
                                 <state key="normal" image="icons8-below">
@@ -2166,7 +2166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="105" width="38" height="38"/>
+                                <rect key="frame" x="185" y="105" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2828,7 +2828,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="242" y="99" width="80" height="34"/>
+                                <rect key="frame" x="229" y="99" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2839,7 +2839,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="99" width="38" height="38"/>
+                                <rect key="frame" x="185" y="99" width="25" height="25"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -5742,7 +5742,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="lGl-Ix-13j">
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="lGl-Ix-13j">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.55608636140000001" green="0.83351856469999996" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -5785,7 +5785,7 @@
                             <outlet property="delegate" destination="V08-tt-Ifo" id="rln-18-dIR"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="View Reminders" id="dcL-1b-fvu">
+                    <navigationItem key="navigationItem" id="dcL-1b-fvu">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="smallmenuIcon" id="uLl-On-SJD">
                             <connections>
                                 <action selector="menu_Action:" destination="V08-tt-Ifo" id="81u-9L-2DN"/>
@@ -6184,9 +6184,9 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
-        <image name="info" width="37.5" height="37.5"/>
-        <image name="smallmenuIcon" width="128" height="128"/>
+        <image name="icons8-below" width="25" height="25"/>
+        <image name="info" width="50" height="50"/>
+        <image name="smallmenuIcon" width="42" height="42"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9SN-Hj-22G"/>
