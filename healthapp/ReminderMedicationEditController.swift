@@ -562,7 +562,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -644,7 +644,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -745,7 +745,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -814,7 +814,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -876,7 +876,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -938,7 +938,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
@@ -1003,7 +1003,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                         (action) -> Void in
                         do {
                             //Performs Segue to go to View Reminder Page
-                            self.performSegue(withIdentifier: "ViewMedicationReminders", sender: self)
+                            self.performSegue(withIdentifier: "UpdateMedicationReminder", sender: self)
                         }
                     }))
                     
