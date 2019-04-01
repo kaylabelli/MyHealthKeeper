@@ -68,6 +68,7 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
   
         
         //if user flips phone to landscape mode the background is reapplied
@@ -91,7 +92,9 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
             //print("USERNAME2")
             //print(opened)
         }
- 
+
+        
+        
         hideKeyboard()
       
         //Changes to done
@@ -99,14 +102,30 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
         checkanswer2.returnKeyType = UIReturnKeyType.done
         checkanswer3.returnKeyType = UIReturnKeyType.done
         
-        var retrieve : [securityQInfo?]=DBFeatures.sharedFeatures.RetrieveSecurityQuestions(username: CurrentName) ?? [securityQInfo()]
+        var retrieveQuestions : [securityQInfo?]=DBFeatures.sharedFeatures.RetrieveSecurityQuestions(username: CurrentName) ?? [securityQInfo()]
+        
+        var retrieveAnswers :
+            [securityQAndAInfo?]=DBFeatures.sharedFeatures.RetrieveSecurityQuestionsAndAnswers(username: CurrentName) ?? [securityQAndAInfo()]
         
         
+        question1.text = retrieveQuestions[0]?.secQ1
+        question2.text = retrieveQuestions[0]?.secQ2
+        question3.text = retrieveQuestions[0]?.secQ3
         
-        question1.text = retrieve[0]?.secQ1
-        question2.text = retrieve[0]?.secQ2
-        question3.text = retrieve[0]?.secQ3
-
+        var A1 = retrieveAnswers[0]?.secA1
+        var A2 = retrieveAnswers[0]?.secA2
+        var A3 = retrieveAnswers[0]?.secA3
+        
+        if (A1 == ""){
+            checkanswer1.isHidden = true
+        }
+        else if(A2 == ""){
+            checkanswer2.isHidden = true
+        }
+        else if(A3 == ""){
+            checkanswer3.isHidden = true
+        }
+        
         // Do any additional setup after loading the view.
     }
 
