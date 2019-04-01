@@ -1111,7 +1111,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         let allowpAnswer3 = pAnswer3.replacingOccurrences(of: "'", with: "''")
         
         
-        if((pQuestion1.isEmpty) || (pAnswer1.isEmpty)) //|| (pQuestion3.isEmpty) || (pAnswer1.isEmpty) || (pAnswer2.isEmpty) || (pAnswer3.isEmpty))
+        if((pQuestion1.isEmpty) || (pAnswer1.isEmpty)) || (!(pQuestion2.isEmpty) && (pAnswer2.isEmpty)) || (!(pQuestion3.isEmpty) && (pAnswer3.isEmpty))
         {
             
             let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
