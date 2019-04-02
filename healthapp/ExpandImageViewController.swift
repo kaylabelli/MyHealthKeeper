@@ -8,12 +8,7 @@
 import UIKit
 
 class ExpandImageViewController: UIViewController {
-
-    
-    
-    
-    
-    
+ 
     var CurrentItem1:documentText = documentText()
     
     @IBOutlet weak var expanded: UIImageView!
@@ -24,9 +19,7 @@ class ExpandImageViewController: UIViewController {
         super.viewDidLoad()
         self.expanded.image = getImage
         self.navigationItem.setHidesBackButton(true, animated: false)
-      //  self.navigationController
-          self.navigationController?.isNavigationBarHidden = true
-        //let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GoToSummary()))
+        self.navigationController?.isNavigationBarHidden = true
         
         
         // Do any additional setup after loading the view.

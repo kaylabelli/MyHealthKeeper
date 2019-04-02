@@ -55,7 +55,6 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
       
              // alert will disply when user update information
         let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
-        // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
         UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToVaccinePage", sender: self)}));
         //present message to user
@@ -105,10 +104,8 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         //prepopulate page
         print(CurrentItem1.vaccinesname)
-       // print(CurrentItem1.VaccineDate)
         VaccineName?.text=CurrentItem1.vaccinesname
         VaccineDate?.text=CurrentItem1.Date
-        //  CurrentItem1.rowID=
     }
     
     
@@ -219,7 +216,6 @@ class Edit_Vaccine_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

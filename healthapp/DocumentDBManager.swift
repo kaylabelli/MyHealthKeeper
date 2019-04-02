@@ -53,10 +53,6 @@ class DocumentDBManager : NSObject {
         
         pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
        
-        
-       
-        //   pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
-        // pathToDatabase=databaseFileName
         print(pathToDatabase)
     }
     
@@ -81,7 +77,6 @@ class DocumentDBManager : NSObject {
             }
         }
      
-        //    FMDatabase *db = [FMDatabase databaseWithPath:[self getDatabasePath]];
         database.open()
         database.setKey("TGMG2017")
       
@@ -180,7 +175,6 @@ class DocumentDBManager : NSObject {
         if openDatabase()
         {
             print(rowID)
-            //let query = "DELETE FROM Image, Document where docID = \(Image.docID) and \(Image.docID) = \(Document.docID)"
             let query = "DELETE FROM Image WHERE rowID = \(rowID)"
             do{
                 try database.executeUpdate(query, values: nil)

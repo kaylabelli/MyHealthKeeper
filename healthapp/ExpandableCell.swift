@@ -66,7 +66,7 @@ class ExpandableCell: UITableViewCell {
         }
     }
     
-   // var isExpanded:Bool = false
+
 
     // vaccine cell
     @IBOutlet weak var FirstVaccine: UIView!

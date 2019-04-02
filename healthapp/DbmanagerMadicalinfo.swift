@@ -54,12 +54,7 @@ class DbmanagerMadicalinfo: NSObject {
           let documentsDirectory = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString) as String
         
          pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
-        
-        
-        
-        
-       // pathToDatabase = path.appending("/\(databaseFileName)")
-       // pathToDatabase = path.appending("/HealthAppEncrypted5.sqlite")
+
         print (pathToDatabase)
     }
     
@@ -608,15 +603,11 @@ class DbmanagerMadicalinfo: NSObject {
     }   // ends retriving illness data
     
     
-      // Update illness
-         //var Field_illnesses_name = "illnesseName"
     func updateIllnessTable (illnesseName:String,rowID: Int) -> Bool {
-        
-        //(reminderName:String, reminderLocation:String, reminderReason:String, reminderDate:String, reminderID:Int) -> Bool {
+
         print(illnesseName)
        
         print (rowID)
-        //print(String(reminderDate)!)
         //  open database
         if !openDatabase() {
             print("Failed to Open database.")

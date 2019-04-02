@@ -176,7 +176,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBOutlet weak var detailedDesign: UIButton!
     
     //WebView associated with Print function - GM
- //   @IBOutlet var webView: UIWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,7 +214,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 RoundImage.layer.cornerRadius = RoundImage.frame.size.width/2
                 RoundImage.clipsToBounds = true
             }
-             // backgroundCol()
+
             if((signInDesign) != nil)
             {
                 signInDesign.Design()
@@ -235,7 +234,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             sUsername.returnKeyType = UIReturnKeyType.done
             sPassword.returnKeyType = UIReturnKeyType.done
             
-          //  self.text.delegate=self
             //Hide Back button
             self.navigationItem.setHidesBackButton(true, animated: true)
         }
@@ -274,8 +272,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 
                 //Hide Back button and replace with Home
                 self.navigationItem.setHidesBackButton(true, animated:true)
-                // let displayButton = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(Features.clickButton(sender:)))
-                // self.navigationItem.leftBarButtonItem = displayButton
+            
             
             
             //if no image displayed........
@@ -324,15 +321,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
         if(title=="Security")
         {
-            /*
-            self.question1.delegate = self
-            self.question2.delegate = self
-            self.question3.delegate = self
-            
-            question1.inputView = picker1
-            question2.inputView = picker2
-            question3.inputView = picker3
-           */
+
             self.navigationItem.setHidesBackButton(true, animated:true)
         }
         if(title=="Registration")
@@ -444,7 +433,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
         if (textField == question1){
             
-      //  scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
             
             question1.inputView = UIView()
             
@@ -457,7 +445,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         }
         else if (textField == question2){
             
-     //   scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
 
             question2.inputView = UIView()
 
@@ -470,7 +457,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             }
         else if (textField == question3){
             
-      //  scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
 
             question3.inputView = UIView()
 
@@ -656,8 +642,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         if let opened:String = defaults.string(forKey: "userNameKey" )
         {
             CurrentName=opened
-            //print("USERNAME2")
-            //print(opened)
+
         }
         
        
@@ -819,8 +804,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         if let opened:String = defaults.string(forKey: "userNameKey" )
         {
             CurrentName=opened
-            //print("USERNAME2")
-            //print(opened)
+
         }
         
         
@@ -1080,7 +1064,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         
         var returnValue5 = true
         
-        //if(String(username.text!) == pUsername)}
         var exists = DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
         
         
@@ -1121,8 +1104,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         else{
             
             let defaults:UserDefaults = UserDefaults.standard
-            //      defaults.set(sUsername.text!),forKey: "userNameKey")
-            //  if (validRegistration==true) {
+
             print("You have successfully registered")
             self.performSegue(withIdentifier: "Security", sender: self)
             
@@ -1130,7 +1112,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
             
             
             var currentUser=""
-            //  let defaults:UserDefaults = UserDefaults.standard
             if let opened:String = defaults.string(forKey: "userNameKey" )
             {
                 currentUser=opened
@@ -1154,18 +1135,12 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBAction func saveSignInInfo(_ sender: Any) {
         _ = String(sUsername.text!)
         _ = String(sPassword.text!)
-        
-        
-        //successful connection to database - GM
-    //    let success2 = DBFeatures.sharedFeatures.insertSignInTable(signInUsername: signInUsername!, signInPassword: signInPassword!)
-        
-        
+       
     }
     
     
     func usernameCheck(_ sender: Any){
         
-        //  if (String(username.text!) == pUsername){
        
         let exists =  DBFeatures.sharedFeatures.existingUsername(pUsername:String(username.text!))
         
@@ -1199,7 +1174,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
                 print("You are logged in")
                 let defaults:UserDefaults = UserDefaults.standard
                 defaults.set(String(sUsername.text!),forKey: "userNameKey")
-             //   DBManager.shared.insertMonthlyReminderTable(reminderStatus: true, reminderUser: sUsername.text!)
+
                 _ = UIAlertController(title: "Login Status", message: "You are logged in.", preferredStyle: UIAlertController.Style.alert)
                 
                 self.performSegue(withIdentifier: "Login", sender: self)
@@ -1255,7 +1230,6 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

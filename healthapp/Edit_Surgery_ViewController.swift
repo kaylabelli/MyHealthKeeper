@@ -22,10 +22,6 @@ class Edit_Surgery_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     
     
     
-    
-    
-    
-    
     @IBAction func Surgery(_ sender: Any) {
         let SName = SurgeryName.text
         let SDate = SurgetDate.text
@@ -57,7 +53,6 @@ class Edit_Surgery_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         // alert will disply when user update information
         let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
-        // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
         UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToSurgeryPage", sender: self)}));
         //present message to user
@@ -111,12 +106,12 @@ class Edit_Surgery_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         //prepopulate page
         print(CurrentItem1.SurgeryName)
-        // print(CurrentItem1.VaccineDate)
+
         SurgeryName?.text=CurrentItem1.SurgeryName
         SurgetDate?.text=CurrentItem1.Date
         SurgetDescription?.text = CurrentItem1.Description
         
-        //  CurrentItem1.rowID=
+
     }
     
     
@@ -235,7 +230,6 @@ class Edit_Surgery_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

@@ -61,7 +61,7 @@ class Edit_Allergy_ViewController: UIViewController ,UITextFieldDelegate,UITextV
        
         // alert will disply when user update information
         let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
-        // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
+
         UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToAllegiesPage", sender: self)}));
         //present message to user
@@ -110,7 +110,7 @@ class Edit_Allergy_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         
         //prepopulate page
         print(CurrentItem1.allergiesName)
-        // print(CurrentItem1.VaccineDate)
+       
         AllergyName?.text=CurrentItem1.allergiesName
         Med?.text=CurrentItem1.AllergyMedi
         Treat?.text = CurrentItem1.treatment
@@ -157,7 +157,7 @@ class Edit_Allergy_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     func isValidString(nameString: String) -> Bool{
         
         // expression for String
-        //  let LnameRegEx = "^[A-Za-z']{2,60}$"
+       
         let LnameRegEx = "^[a-zA-Z][a-zA-Z\\s]+$"
         do{
             
@@ -246,7 +246,6 @@ class Edit_Allergy_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

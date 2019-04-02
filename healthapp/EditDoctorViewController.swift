@@ -28,13 +28,9 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
         let DName = DocName.text
         let DSpecicality = DocSpe.text
         let DContact = DocContact.text
-        //let DAddress = DocAddress.text
         let i = (CurrentItem1.rowID)
         
-       
-        
-        
-        
+
         let checkDoctorName = isValidString(nameString: DocName.text!)
         let cellphoneInput = DocContact.text
         let checkValidCellphone = isCellphoneValid (cellphoneString: cellphoneInput!)
@@ -77,7 +73,7 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
             
             
         let UpdateAlert = UIAlertController(title: "Edit Status", message: " Update was successful", preferredStyle: UIAlertController.Style.alert)
-       // UpdateAlert.addAction(UIAlertAction(title:"Cancel", style:UIAlertActionStyle.cancel, handler:nil));
+
         UpdateAlert.addAction(UIAlertAction(title:"View Updated Information", style:UIAlertAction.Style.default, handler: {(action) -> Void in
             self.performSegue(withIdentifier: "GoBackToDoctorPage", sender: self)}));
         //present message to user
@@ -94,10 +90,6 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
         //if user flips phone to landscape mode the background is reapplied
         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
-      //  DocAddress.text = "Enter Address (Optional)"
-      //  DocAddress.font = UIFont.systemFont(ofSize: 15)
-      //  DocAddress.textColor = UIColor.lightGray
-      //  self.DocAddress.layer.cornerRadius = 5
         
       //  }
         
@@ -335,7 +327,6 @@ class EditDoctorViewController: UIViewController,UITextFieldDelegate,UITextViewD
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

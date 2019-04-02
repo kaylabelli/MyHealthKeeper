@@ -89,7 +89,7 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
         //prepopulate page
         print(CurrentItem1.disease)
         IllnessName?.text=CurrentItem1.disease
-          //  CurrentItem1.rowID=
+
     }
     
     
@@ -133,7 +133,6 @@ class Edit_Illness_ViewController: UIViewController ,UITextFieldDelegate,UITextV
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

@@ -31,7 +31,6 @@ class DocumentTableViewController: UITableViewController {
         self.tableView.separatorStyle = .none
         
         self.navigationItem.setHidesBackButton(true, animated: false)
-        //tableView.register(DocumentTableViewCell.self, forCellReuseIdentifier: "FirstCell")
         
         let defaults:UserDefaults = UserDefaults.standard
         var uName=""
@@ -52,8 +51,7 @@ class DocumentTableViewController: UITableViewController {
                 self.editButtonItem.title="Delete"
             }
         }
-        
-      //  NotificationCenter.default.addObserver(self, selector: #selector(imageTapped(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+
         tableView.reloadData()
     }
     
@@ -289,9 +287,7 @@ class DocumentTableViewController: UITableViewController {
     @objc func imageTapped(_ sender: UITapGestureRecognizer) {
         let imageView = sender.view as! UIImageView
         let imagesomething: UIImage = imageView.image!
-       // let newImageView = UIImageView(image: imageView.image)
-
-        //let check = self.doc[indexPath.row].docImage
+       
         let SB = UIStoryboard(name: "Main", bundle: nil)
         let feat_vc = SB.instantiateViewController(withIdentifier: "Expand") as! ExpandImageViewController
         feat_vc.getImage = imagesomething
@@ -303,7 +299,7 @@ class DocumentTableViewController: UITableViewController {
      //menu
     
     var menu_vc : MenuViewController!
-    //var menu_bool = true
+    
     @IBAction func menu_Action(_ sender: UIBarButtonItem) {
         if menu_vc.view.isHidden{
             self.show_menu()
@@ -317,7 +313,6 @@ class DocumentTableViewController: UITableViewController {
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         
