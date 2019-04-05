@@ -77,6 +77,7 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var cellPhone: UITextField!
+    @IBOutlet weak var biometricButton: UIButton!
     
     //function to save Registration Info to database - GM
     @IBAction func saveRegistrationInfo(_ sender: Any) {
@@ -180,7 +181,32 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let context = LAContext()
         
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
+        {
+                if #available(iOS 11.0, *) {
+                    if (context.biometryType == .faceID)
+                    {
+                        let btnImage = UIImage(named: "biometrics2")
+                        self.biometricButton.setImage(btnImage, for: UIControl.State.normal)
+                    }
+                    else if (context.biometryType == .touchID)
+                    {
+                        let btnImage = UIImage(named: "biometrics")
+                        self.biometricButton.setImage(btnImage, for: UIControl.State.normal)
+                    }
+                    else
+                    {
+                        self.biometricButton.isHidden = true
+                    }
+                }
+        }
+        else
+        {
+            let btnImage = UIImage(named: "biometrics")
+            self.biometricButton.setImage(btnImage, for: UIControl.State.normal)
+        }
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
