@@ -1304,7 +1304,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Sv-nI-P9H">
-                                <rect key="frame" x="175" y="101" width="25" height="25"/>
+                                <rect key="frame" x="175" y="101" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2166,7 +2166,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-IO-UMp">
-                                <rect key="frame" x="185" y="105" width="25" height="25"/>
+                                <rect key="frame" x="185" y="105" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -2828,7 +2828,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLS-oS-O8n">
-                                <rect key="frame" x="229" y="99" width="80" height="34"/>
+                                <rect key="frame" x="242" y="99" width="80" height="34"/>
                                 <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Add">
@@ -2839,7 +2839,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jmp-Du-bIv">
-                                <rect key="frame" x="185" y="99" width="25" height="25"/>
+                                <rect key="frame" x="185" y="99" width="38" height="38"/>
                                 <accessibility key="accessibilityConfiguration" label="Arrow to expand text fields"/>
                                 <state key="normal" image="icons8-below">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -3568,96 +3568,107 @@
                                         <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="24"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ehO-lH-AeI">
-                                        <rect key="frame" x="22" y="142" width="276" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1dA-Mh-CpC">
-                                        <rect key="frame" x="22" y="220.5" width="276" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x0Z-gn-URf">
-                                        <rect key="frame" x="22" y="301" width="276" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-ma-DFd">
-                                        <rect key="frame" x="22" y="113.5" width="276" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iN9-fW-sem">
-                                        <rect key="frame" x="22" y="192" width="276" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-OQ-Yep">
-                                        <rect key="frame" x="22" y="272.5" width="276" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="heightClass=compact-widthClass=compact">
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=regular">
-                                            <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        </variation>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="8QE-ee-tDL">
+                                        <rect key="frame" x="60" y="113.5" width="200" height="216.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMw-ma-DFd">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ehO-lH-AeI">
+                                                <rect key="frame" x="0.0" y="33.5" width="200" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iN9-fW-sem">
+                                                <rect key="frame" x="0.0" y="76.5" width="200" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1dA-Mh-CpC">
+                                                <rect key="frame" x="0.0" y="110" width="200" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="11" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kMd-OQ-Yep">
+                                                <rect key="frame" x="0.0" y="153" width="200" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Answer" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x0Z-gn-URf">
+                                                <rect key="frame" x="0.0" y="186.5" width="200" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                <variation key="heightClass=compact-widthClass=compact">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                </variation>
+                                                <variation key="heightClass=compact-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                </variation>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                </variation>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="kMw-ma-DFd" firstAttribute="width" secondItem="ehO-lH-AeI" secondAttribute="width" id="1rc-ZR-y8o"/>
+                                            <constraint firstItem="kMd-OQ-Yep" firstAttribute="width" secondItem="x0Z-gn-URf" secondAttribute="width" id="9FA-05-wOn"/>
+                                            <constraint firstItem="iN9-fW-sem" firstAttribute="width" secondItem="1dA-Mh-CpC" secondAttribute="width" id="Ara-kZ-HZf"/>
+                                            <constraint firstItem="1dA-Mh-CpC" firstAttribute="width" secondItem="kMd-OQ-Yep" secondAttribute="width" id="IFz-1f-pMV"/>
+                                        </constraints>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BZA-Wb-t5z">
                                         <rect key="frame" x="97.5" y="376" width="125" height="30"/>
                                         <color key="backgroundColor" red="0.1588058134" green="0.54309320930000005" blue="0.73857812619999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3685,33 +3696,17 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="iN9-fW-sem" firstAttribute="width" secondItem="1dA-Mh-CpC" secondAttribute="width" id="5ZM-VP-ODH"/>
-                                    <constraint firstItem="kMd-OQ-Yep" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="5wX-rs-0yQ"/>
-                                    <constraint firstItem="kMw-ma-DFd" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="7Pq-kF-5Kg"/>
-                                    <constraint firstItem="kMw-ma-DFd" firstAttribute="top" secondItem="MGN-u9-vbi" secondAttribute="bottom" constant="52" id="Asy-Dv-bTg"/>
-                                    <constraint firstItem="iN9-fW-sem" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="EpK-qq-6wb"/>
-                                    <constraint firstItem="x0Z-gn-URf" firstAttribute="top" secondItem="kMd-OQ-Yep" secondAttribute="bottom" constant="8" id="HTo-5f-WBO"/>
-                                    <constraint firstItem="kMd-OQ-Yep" firstAttribute="top" secondItem="1dA-Mh-CpC" secondAttribute="bottom" constant="22" id="P1J-gP-BgH"/>
-                                    <constraint firstItem="kMd-OQ-Yep" firstAttribute="width" secondItem="x0Z-gn-URf" secondAttribute="width" id="QJu-dp-S0R"/>
-                                    <constraint firstItem="x0Z-gn-URf" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="RI7-0L-n3v"/>
+                                    <constraint firstAttribute="trailing" secondItem="8QE-ee-tDL" secondAttribute="trailing" constant="60" id="0E5-1G-0GD"/>
+                                    <constraint firstItem="8QE-ee-tDL" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="5RN-m1-p8c"/>
+                                    <constraint firstItem="8QE-ee-tDL" firstAttribute="top" secondItem="MGN-u9-vbi" secondAttribute="bottom" constant="52" id="6fd-VR-jVY"/>
+                                    <constraint firstItem="BZA-Wb-t5z" firstAttribute="top" secondItem="8QE-ee-tDL" secondAttribute="bottom" constant="46" id="7dB-JM-z31"/>
+                                    <constraint firstItem="8QE-ee-tDL" firstAttribute="leading" secondItem="KOK-Ah-OsQ" secondAttribute="leading" constant="60" id="Srz-AX-xUQ"/>
                                     <constraint firstAttribute="bottom" secondItem="BZA-Wb-t5z" secondAttribute="bottom" constant="322" id="T9E-R2-hDS"/>
                                     <constraint firstItem="BZA-Wb-t5z" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="UrD-fG-sz8"/>
-                                    <constraint firstItem="iN9-fW-sem" firstAttribute="leading" secondItem="KOK-Ah-OsQ" secondAttribute="leading" constant="22" id="Xmb-Ue-df9"/>
-                                    <constraint firstAttribute="trailing" secondItem="kMw-ma-DFd" secondAttribute="trailing" constant="22" id="Y8w-MX-9TL"/>
-                                    <constraint firstAttribute="trailing" secondItem="iN9-fW-sem" secondAttribute="trailing" constant="22" id="Yjn-na-ih3"/>
-                                    <constraint firstItem="ehO-lH-AeI" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="eEj-2v-XML"/>
-                                    <constraint firstItem="iN9-fW-sem" firstAttribute="top" secondItem="ehO-lH-AeI" secondAttribute="bottom" constant="20" id="fYG-3U-B4w"/>
-                                    <constraint firstItem="1dA-Mh-CpC" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="jLa-zn-wb4"/>
-                                    <constraint firstItem="1dA-Mh-CpC" firstAttribute="top" secondItem="iN9-fW-sem" secondAttribute="bottom" constant="8" id="lqs-Mp-3Kz"/>
                                     <constraint firstItem="MGN-u9-vbi" firstAttribute="top" secondItem="KOK-Ah-OsQ" secondAttribute="top" constant="28" id="m8I-xH-FMf">
                                         <variation key="heightClass=regular-widthClass=regular" constant="48"/>
                                     </constraint>
-                                    <constraint firstItem="BZA-Wb-t5z" firstAttribute="top" secondItem="x0Z-gn-URf" secondAttribute="bottom" constant="45" id="nBQ-2O-BCA"/>
-                                    <constraint firstItem="kMw-ma-DFd" firstAttribute="width" secondItem="ehO-lH-AeI" secondAttribute="width" id="owN-H4-hk6"/>
                                     <constraint firstItem="MGN-u9-vbi" firstAttribute="centerX" secondItem="KOK-Ah-OsQ" secondAttribute="centerX" id="q3d-9e-Tl7"/>
-                                    <constraint firstItem="1dA-Mh-CpC" firstAttribute="width" secondItem="kMd-OQ-Yep" secondAttribute="width" id="qWe-PJ-cxt"/>
-                                    <constraint firstItem="kMw-ma-DFd" firstAttribute="leading" secondItem="KOK-Ah-OsQ" secondAttribute="leading" constant="22" id="vRr-Vi-4Q2"/>
-                                    <constraint firstItem="ehO-lH-AeI" firstAttribute="top" secondItem="kMw-ma-DFd" secondAttribute="bottom" constant="8" id="x0K-FU-Dt7"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -6184,18 +6179,19 @@
     <resources>
         <image name="biometrics" width="103" height="107"/>
         <image name="finallogo" width="553" height="465"/>
-        <image name="icons8-below" width="25" height="25"/>
-        <image name="info" width="50" height="50"/>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="icons8-below" width="38.297870635986328" height="38.297870635986328"/>
+        <image name="info" width="37.5" height="37.5"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Cgh-uD-9eQ"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="eJU-lM-vgf"/>
-        <segue reference="maL-vH-yXy"/>
+        <segue reference="nMF-ca-rd0"/>
         <segue reference="NHS-B9-Lrd"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>

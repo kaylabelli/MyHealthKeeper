@@ -119,10 +119,12 @@ class SecurityAnswer: UIViewController, UITextFieldDelegate {
         if (A1 == ""){
             checkanswer1.isHidden = true
         }
-        else if(A2 == ""){
+        
+        if(A2 == ""){
             checkanswer2.isHidden = true
         }
-        else if(A3 == ""){
+        
+        if(A3 == ""){
             checkanswer3.isHidden = true
         }
         

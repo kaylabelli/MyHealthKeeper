@@ -1094,7 +1094,13 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
         let allowpAnswer3 = pAnswer3.replacingOccurrences(of: "'", with: "''")
         
         
-        if((pQuestion1.isEmpty) || (pAnswer1.isEmpty)) || (!(pQuestion2.isEmpty) && (pAnswer2.isEmpty)) || (!(pQuestion3.isEmpty) && (pAnswer3.isEmpty))
+        if pQuestion1.isEmpty && pAnswer1.isEmpty && pQuestion2.isEmpty && pAnswer2.isEmpty && pQuestion3.isEmpty && pAnswer3.isEmpty
+        {
+            let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. You must enter at least one security question.", preferredStyle: UIAlertController.Style.alert)
+            secAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+            self.present(secAlert,animated: true, completion:nil)
+        }
+        else if(!(pQuestion1.isEmpty) && (pAnswer1.isEmpty)) || (!(pQuestion2.isEmpty) && (pAnswer2.isEmpty)) || (!(pQuestion3.isEmpty) && (pAnswer3.isEmpty))
         {
             
             let secAlert = UIAlertController(title: "ERROR", message: "One or more fields may be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
