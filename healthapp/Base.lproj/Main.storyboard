@@ -759,7 +759,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" sectionIndexMinimumDisplayRowCount="12" rowHeight="104" sectionHeaderHeight="28" sectionFooterHeight="28" id="nIR-0b-MGz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" red="0.39455282689999999" green="0.80754625800000002" blue="0.84753471609999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Reminders" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="Xuj-cz-zwA">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
@@ -771,6 +771,18 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                             </variation>
                         </label>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rcA-oI-qQ7">
+                            <rect key="frame" x="0.0" y="213" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="Add Reminder">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="addReminder:" destination="NTQ-GC-TOZ" eventType="touchUpInside" id="Z4m-Rq-Qcn"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="yKv-Xd-tgU">
                                 <rect key="frame" x="0.0" y="109" width="320" height="104"/>
@@ -813,6 +825,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="buttonDesign" destination="rcA-oI-qQ7" id="PIw-vS-QMf"/>
                         <segue destination="Ovu-vr-c9Y" kind="show" identifier="ReminderToHome" id="ggC-Wb-zY6"/>
                         <segue destination="oT4-Bx-XGd" kind="show" identifier="EditReminders" id="wSI-CB-RT9"/>
                     </connections>
@@ -4509,7 +4522,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHealthKeeper" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swh-24-mVs">
-                                <rect key="frame" x="0.0" y="45" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="45" width="322" height="30"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4520,7 +4533,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ino-Ct-1Qt">
-                                <rect key="frame" x="-1" y="175" width="320" height="26.5"/>
+                                <rect key="frame" x="-1" y="175" width="322" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4531,10 +4544,10 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pur-km-Rom">
-                                <rect key="frame" x="80" y="274.5" width="160" height="34"/>
+                                <rect key="frame" x="79.5" y="274.5" width="161" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13p-O2-bYZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="125" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -4544,7 +4557,7 @@
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJe-e4-wJ8">
-                                        <rect key="frame" x="126" y="0.0" width="34" height="34"/>
+                                        <rect key="frame" x="127" y="0.0" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="1n4-cR-fjD"/>
                                             <constraint firstAttribute="width" constant="34" id="c0j-EQ-Q15"/>
@@ -4598,7 +4611,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-dZ-myD">
-                                <rect key="frame" x="89" y="313.5" width="142" height="32"/>
+                                <rect key="frame" x="90" y="313.5" width="142" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -4611,7 +4624,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cDz-HY-0EC">
-                                <rect key="frame" x="80" y="221.5" width="160" height="34"/>
+                                <rect key="frame" x="80.5" y="221.5" width="161" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -5747,6 +5760,18 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="45"/>
                             </variation>
                         </label>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AMU-X5-kkv">
+                            <rect key="frame" x="0.0" y="213" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <state key="normal" title="Add Reminder">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="addReminder:" destination="V08-tt-Ifo" eventType="touchUpInside" id="NEC-Qu-4Ur"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="Opg-KA-BVS">
                                 <rect key="frame" x="0.0" y="109" width="320" height="104"/>
@@ -5789,6 +5814,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="buttonDesign" destination="AMU-X5-kkv" id="ByI-An-Ttc"/>
                         <segue destination="W3o-3o-fCs" kind="show" identifier="EditRemindersMedication" id="kkg-ko-x8a"/>
                     </connections>
                 </tableViewController>
@@ -6184,14 +6210,13 @@
         <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pkr-2a-HJ4"/>
         <segue reference="9SN-Hj-22G"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>
         <segue reference="M8x-XW-7y8"/>
         <segue reference="eJU-lM-vgf"/>
-        <segue reference="853-my-C7d"/>
+        <segue reference="nMF-ca-rd0"/>
         <segue reference="NHS-B9-Lrd"/>
         <segue reference="W6E-5a-M9A"/>
         <segue reference="bIj-1z-L0n"/>

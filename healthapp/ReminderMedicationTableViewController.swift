@@ -10,6 +10,7 @@ import UserNotifications
 
 class ReminderMedicationTableViewController: UITableViewController
 {
+    @IBOutlet weak var buttonDesign: UIButton!
     // @IBOutlet var tableView:UITableView!
     //table view functions
     var passedID = Int()
@@ -22,6 +23,7 @@ class ReminderMedicationTableViewController: UITableViewController
         //Main UIview color
         // backgroundCol()
         // menu
+        buttonDesign.Design()
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
         
@@ -72,6 +74,12 @@ class ReminderMedicationTableViewController: UITableViewController
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func addReminder(_ sender: Any) {
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let boardID = "Set Reminder"
+        let navigation = main.instantiateViewController(withIdentifier: boardID)
+        self.navigationController?.pushViewController(navigation, animated: true)
+    }
     //Home Button on Navigation Bar
     func clickButton(sender: UIBarButtonItem){
         self.performSegue(withIdentifier: "ReminderToHome", sender: nil)

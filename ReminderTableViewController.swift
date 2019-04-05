@@ -12,7 +12,8 @@ import UserNotifications
 class ReminderTableViewController: UITableViewController {
     
     
-   // @IBOutlet var tableView:UITableView!
+    @IBOutlet weak var buttonDesign: UIButton!
+    // @IBOutlet var tableView:UITableView!
     //table view functions
     var passedID = Int()
     var items: [ReminderInfo] = DBManager.shared.loadReminders() ?? [ReminderInfo()]
@@ -24,6 +25,7 @@ class ReminderTableViewController: UITableViewController {
         //Main UIview color
        // backgroundCol()
         // menu
+        buttonDesign.Design()
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
         
@@ -72,6 +74,13 @@ class ReminderTableViewController: UITableViewController {
     }
     
     //Home Button on Navigation Bar
+    @IBAction func addReminder(_ sender: Any) {
+        let main = UIStoryboard(name: "Main", bundle: nil)
+        let boardID = "Set Reminder"
+        let navigation = main.instantiateViewController(withIdentifier: boardID)
+        self.navigationController?.pushViewController(navigation, animated: true)
+    }
+    
     func clickButton(sender: UIBarButtonItem){
         self.performSegue(withIdentifier: "ReminderToHome", sender: nil)
     }
@@ -137,7 +146,7 @@ class ReminderTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = DocumentHeader()
         label.textAlignment = .center
-        label.text = "Tap row to edit reminder."
+        label.text = "Appointment Reminders"
         label.backgroundColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 18)
         return label
