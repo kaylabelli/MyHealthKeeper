@@ -23,8 +23,8 @@ class checklistTargetViewController: UIViewController {
     @IBOutlet weak var dateField: UITextField!
 
     @IBOutlet weak var submitButtonOutlet: UIButton!
-    @IBOutlet weak var yesNoSwitch: UISwitch!
     @IBOutlet weak var linkLabel: UIButton!
+    @IBOutlet weak var yesNoSegment: UISegmentedControl!
     
     
     override func viewDidLoad() {
@@ -54,16 +54,16 @@ class checklistTargetViewController: UIViewController {
             yesNoLabel.text = tableViewData[myIndex].yesNo
             if ((checklistTypeInfo.yesNo == "") || (checklistTypeInfo.yesNo == "No"))
             {
-                yesNoSwitch.isOn = false
+                yesNoSegment.selectedSegmentIndex = 1
             }
             else
             {
-                yesNoSwitch.isOn = true
+                yesNoSegment.selectedSegmentIndex = 0
             }
         }
         else {
             yesNoLabel.isHidden = true
-            yesNoSwitch.isHidden = true
+            yesNoSegment.isHidden = true
         }
         
         infoLabel.text = tableViewData[myIndex].info
@@ -136,7 +136,7 @@ class checklistTargetViewController: UIViewController {
         
         if (isValid)
         {
-            if (yesNoSwitch.isOn)
+            if (yesNoSegment.selectedSegmentIndex == 0)
             {
                 yesNoValue = "Yes"
             }

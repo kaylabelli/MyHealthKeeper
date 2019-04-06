@@ -142,6 +142,9 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.secondTime.delegate = self
             self.thirdTime.delegate = self
             
+            self.medicationName.adjustsFontSizeToFitWidth = true
+            self.medicationName.minimumFontSize = CGFloat(9.0)
+            
             reminderLabel.text = "Setup Appointment Reminder"
             //Changes to 'Done'
             reminderName.returnKeyType = UIReturnKeyType.done

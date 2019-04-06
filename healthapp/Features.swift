@@ -66,9 +66,9 @@ UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UI
     }
    
     
-    var sQuestion1 = ["What was your high school mascot?", "What was the name of your first pet?", "What city were you living in at age 10?"]
-    var sQuestion2 = ["What was the name of your third grade teacher?", "What company did you hold your first job?", "What was your childhood nickname?"]
-    var sQuestion3 = ["What was your first car?", "What was the name of your elementary school?", "What was the first film you saw in the theater?"]
+    var sQuestion1 = ["","What was your high school mascot?", "What was the name of your first pet?", "What city were you living in at age 10?"]
+    var sQuestion2 = ["","What was the name of your third grade teacher?", "What company did you hold your first job?", "What was your childhood nickname?"]
+    var sQuestion3 = ["","What was your first car?", "What was the name of your elementary school?", "What was the first film you saw in the theater?"]
     
     
     @IBOutlet weak var firstName: UITextField!

@@ -81,6 +81,9 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         self.perUse.delegate = self
         //        self.dosage.delegate = self
         
+        self.medicationName.adjustsFontSizeToFitWidth = true
+        self.medicationName.minimumFontSize = CGFloat(9.0)
+        
         medicationName.returnKeyType = UIReturnKeyType.done
         //        medicationType.returnKeyType = UIReturnKeyType.done
         totalAmount.returnKeyType = UIReturnKeyType.done

@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="auR-P1-Nxp">
-                                <rect key="frame" x="15" y="111" width="345" height="361"/>
+                                <rect key="frame" x="15" y="111" width="345" height="358"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C8-o5-caD" userLabel="Info Label">
                                         <rect key="frame" x="135" y="0.0" width="75" height="20.5"/>
@@ -70,17 +70,21 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thw-1X-SFq">
-                                        <rect key="frame" x="148" y="200.5" width="51" height="31"/>
-                                    </switch>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Wm-VX-CO2">
+                                        <rect key="frame" x="136" y="200.5" width="73" height="29"/>
+                                        <segments>
+                                            <segment title="Yes"/>
+                                            <segment title="No"/>
+                                        </segments>
+                                    </segmentedControl>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reminder Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="puA-ex-ycc" userLabel="Reminder Label">
-                                        <rect key="frame" x="113" y="246.5" width="119" height="20.5"/>
+                                        <rect key="frame" x="113" y="243.5" width="119" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfH-e7-V9J">
-                                        <rect key="frame" x="89" y="282" width="167" height="34"/>
+                                        <rect key="frame" x="89" y="279" width="167" height="34"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -92,7 +96,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-WT-I1V">
-                                        <rect key="frame" x="34" y="331" width="277" height="30"/>
+                                        <rect key="frame" x="34" y="328" width="277" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,7 +131,7 @@
                         <outlet property="submitButtonOutlet" destination="pKn-iR-U5i" id="GTc-T7-60z"/>
                         <outlet property="titleView" destination="gat-ds-o1Y" id="NAC-QG-P1X"/>
                         <outlet property="yesNoLabel" destination="Tvb-qY-I88" id="xJT-jT-lmj"/>
-                        <outlet property="yesNoSwitch" destination="thw-1X-SFq" id="BEg-Dt-iwS"/>
+                        <outlet property="yesNoSegment" destination="4Wm-VX-CO2" id="VcP-xX-YAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q8h-6J-IAL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -225,6 +229,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="smallmenuIcon" width="42" height="42"/>
+        <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
 </document>

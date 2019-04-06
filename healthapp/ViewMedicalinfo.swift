@@ -566,9 +566,9 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     
      @IBOutlet weak var picker2: UIPickerView!
-    var SatusList = ["Current","Past"]
+    var SatusList = ["","Current","Past"]
     
-    var genderList = ["Male", "Female"]
+    var genderList = ["","Male", "Female"]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
