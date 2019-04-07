@@ -564,7 +564,7 @@
                                         </variation>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="7a1-I1-Qf8">
-                                        <rect key="frame" x="66.5" y="115" width="187" height="339"/>
+                                        <rect key="frame" x="66.5" y="115" width="187" height="372"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3Xp-qe-mxy">
                                                 <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
@@ -580,6 +580,7 @@
                                                 <segments>
                                                     <segment title="Daily"/>
                                                     <segment title="Hourly"/>
+                                                    <segment title="Other"/>
                                                 </segments>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <connections>
@@ -611,38 +612,49 @@
                                                     <action selector="dailyPicker:" destination="azN-wY-8Gw" eventType="valueChanged" id="ho0-gu-QDm"/>
                                                 </connections>
                                             </segmentedControl>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NZ6-Yd-QcQ">
+                                                <rect key="frame" x="0.0" y="134" width="187" height="29"/>
+                                                <segments>
+                                                    <segment title="Weekly"/>
+                                                    <segment title="Alt. Day"/>
+                                                </segments>
+                                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="otherPicker:" destination="azN-wY-8Gw" eventType="valueChanged" id="qtO-YU-wqc"/>
+                                                </connections>
+                                            </segmentedControl>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d6W-MP-2Db">
-                                                <rect key="frame" x="0.0" y="134" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="167" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u6A-Ta-OHc">
-                                                <rect key="frame" x="0.0" y="169" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="202" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Third Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="00P-pS-Svl">
-                                                <rect key="frame" x="0.0" y="204" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="237" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="koc-mA-oTH">
-                                                <rect key="frame" x="0.0" y="239" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="272" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount Per Use" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XOj-04-gLJ">
-                                                <rect key="frame" x="0.0" y="274" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="307" width="187" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwB-iZ-sbd">
-                                                <rect key="frame" x="0.0" y="309" width="187" height="30"/>
+                                                <rect key="frame" x="0.0" y="342" width="187" height="30"/>
                                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -735,6 +747,7 @@
                         <outlet property="medicationName" destination="3Xp-qe-mxy" id="sR7-DD-T5A"/>
                         <outlet property="medicationTotalAmount" destination="koc-mA-oTH" id="LHE-nT-HES"/>
                         <outlet property="medicationView" destination="7a1-I1-Qf8" id="dVk-vC-DDa"/>
+                        <outlet property="otherControl" destination="NZ6-Yd-QcQ" id="wIB-1q-GpO"/>
                         <outlet property="reasonField" destination="Gvg-VZ-auC" id="8bd-8a-6tS"/>
                         <outlet property="reminderDate" destination="ilO-O8-FYx" id="w1U-Tn-XQE"/>
                         <outlet property="reminderLabel" destination="C2l-JE-JEV" id="J17-bJ-z0F"/>
@@ -4522,7 +4535,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyHealthKeeper" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swh-24-mVs">
-                                <rect key="frame" x="0.0" y="45" width="322" height="30"/>
+                                <rect key="frame" x="0.0" y="45" width="320" height="30"/>
                                 <fontDescription key="fontDescription" name="HiraMaruProN-W4" family="Hiragino Maru Gothic ProN" pointSize="30"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4533,7 +4546,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Sign In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ino-Ct-1Qt">
-                                <rect key="frame" x="-1" y="175" width="322" height="26.5"/>
+                                <rect key="frame" x="-1" y="175" width="320" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=compact-widthClass=compact">
@@ -4544,10 +4557,10 @@
                                 </variation>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="pur-km-Rom">
-                                <rect key="frame" x="79.5" y="274.5" width="161" height="34"/>
+                                <rect key="frame" x="80" y="274.5" width="160" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="13p-O2-bYZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="126" height="34"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="34"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -4557,7 +4570,7 @@
                                         </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BJe-e4-wJ8">
-                                        <rect key="frame" x="127" y="0.0" width="34" height="34"/>
+                                        <rect key="frame" x="126" y="0.0" width="34" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="1n4-cR-fjD"/>
                                             <constraint firstAttribute="width" constant="34" id="c0j-EQ-Q15"/>
@@ -4611,7 +4624,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-dZ-myD">
-                                <rect key="frame" x="90" y="313.5" width="142" height="32"/>
+                                <rect key="frame" x="89" y="313.5" width="142" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Forgot Password">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -4624,7 +4637,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cDz-HY-0EC">
-                                <rect key="frame" x="80.5" y="221.5" width="161" height="34"/>
+                                <rect key="frame" x="80" y="221.5" width="160" height="34"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" textContentType="username"/>
@@ -5858,7 +5871,7 @@
                                 </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RCY-Bf-F3d">
-                                <rect key="frame" x="66.5" y="119" width="187" height="339"/>
+                                <rect key="frame" x="66.5" y="119" width="187" height="372"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medication Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wbd-Hd-2qr">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
@@ -5874,6 +5887,7 @@
                                         <segments>
                                             <segment title="Daily"/>
                                             <segment title="Hourly"/>
+                                            <segment title="Other"/>
                                         </segments>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -5905,38 +5919,49 @@
                                             <action selector="dailyPicker:" destination="W3o-3o-fCs" eventType="valueChanged" id="mmY-n5-zgu"/>
                                         </connections>
                                     </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Wha-aj-A3j">
+                                        <rect key="frame" x="0.0" y="134" width="187" height="29"/>
+                                        <segments>
+                                            <segment title="Weekly"/>
+                                            <segment title="Alt. Day"/>
+                                        </segments>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="otherPicker:" destination="W3o-3o-fCs" eventType="valueChanged" id="eRW-2G-MFU"/>
+                                        </connections>
+                                    </segmentedControl>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Nf-UL-DwY">
-                                        <rect key="frame" x="0.0" y="134" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="167" width="187" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Second Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Knk-gm-y1A">
-                                        <rect key="frame" x="0.0" y="169" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="202" width="187" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Third Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-fn-Apw">
-                                        <rect key="frame" x="0.0" y="204" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="237" width="187" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Total Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fvj-tq-Mxe">
-                                        <rect key="frame" x="0.0" y="239" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="272" width="187" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount Per Use" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="85y-WC-dL6">
-                                        <rect key="frame" x="0.0" y="274" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="307" width="187" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLU-B7-VYl">
-                                        <rect key="frame" x="0.0" y="309" width="187" height="30"/>
+                                        <rect key="frame" x="0.0" y="342" width="187" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Save">
@@ -5977,6 +6002,7 @@
                         <outlet property="firstTime" destination="6Nf-UL-DwY" id="dYL-rT-eDk"/>
                         <outlet property="hourlyControl" destination="zgw-nb-xxp" id="DoN-Ad-xgS"/>
                         <outlet property="medicationName" destination="Wbd-Hd-2qr" id="xd6-mA-7Yv"/>
+                        <outlet property="otherControl" destination="Wha-aj-A3j" id="slr-NQ-6SR"/>
                         <outlet property="perUse" destination="85y-WC-dL6" id="2XA-3L-H7c"/>
                         <outlet property="secondTime" destination="Knk-gm-y1A" id="SRp-po-HTw"/>
                         <outlet property="thirdTime" destination="jcp-fn-Apw" id="Sle-85-op7"/>
@@ -6211,7 +6237,7 @@
         <image name="smallmenuIcon" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9SN-Hj-22G"/>
+        <segue reference="GTm-Hl-6Tj"/>
         <segue reference="EGs-ke-pmL"/>
         <segue reference="gp7-Sx-oSS"/>
         <segue reference="rE7-OR-7EK"/>

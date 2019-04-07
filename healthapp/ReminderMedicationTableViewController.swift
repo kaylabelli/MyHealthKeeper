@@ -204,6 +204,17 @@ class ReminderMedicationTableViewController: UITableViewController
             default:
                 print("error")
             }
+        case 2:
+            print("other")
+            switch items[indexPath.row].hourlyControl
+            {
+            case 0:
+                dosage = "Every Week"
+            case 1:
+                dosage = "Every Other Day"
+            default:
+                print("error")
+            }
         default:
             print("error")
         }
