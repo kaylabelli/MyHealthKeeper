@@ -633,6 +633,18 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
     
     @IBOutlet weak var reminderLabel: UILabel!
     
+    @IBAction func totalAmountButton(_ sender: Any) {
+        let infoButton = UIAlertController(title: "Total Amount", message: "Enter the total prescribed amount of the medicine you have (i.e: 20). This field must be greater than the 'Amount Per Use' field.", preferredStyle: UIAlertController.Style.alert)
+        infoButton.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+        self.present(infoButton,animated: true, completion:nil)
+    }
+    
+    @IBAction func perUseButton(_ sender: Any) {
+        let infoButton = UIAlertController(title: "Amount Per Use", message: "Enter the prescribed amount you'll take at each dose (i.e: 1). This field must be less than the 'Total Amount' field.", preferredStyle: UIAlertController.Style.alert)
+        infoButton.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler:nil));
+        self.present(infoButton,animated: true, completion:nil)
+    }
+    
     @IBAction func createMedicationReminder(_ sender: Any) {
         
         let medName=String(medicationName.text!)
