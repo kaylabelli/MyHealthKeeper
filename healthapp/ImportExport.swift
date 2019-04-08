@@ -86,19 +86,11 @@
                             self.present(alertController, animated: true, completion: nil)
                         }
                         else{
-                            let defaults:UserDefaults = UserDefaults.standard
-                            var currentUser = ""
-                            if let opened:String = defaults.string(forKey: "userNameKey" )
-                            {
-                                currentUser=opened
-                                print(opened)
-                            }
-                            _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
-                            _ = DBManager.shared.DeleteAll(sameUser: currentUser)
-                            _ = DocumentDBManager.Docshared.deleteAllDocuments(docUser: currentUser)
+                            
                             let documentPickerController = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
                             documentPickerController.delegate = self as? UIDocumentPickerDelegate
                             self.present(documentPickerController, animated: true, completion: nil)
+                            
                         }
                         
                     }
@@ -143,6 +135,8 @@
             
             //REad from the file that the user would like to import
             func readFile(url: URL){
+                
+                
                 var decryptedText: String = ""
                 
                 let dir = try? FileManager.default.url(for: .documentDirectory,
@@ -154,8 +148,6 @@
                 
                 if url.absoluteString.range(of: ".mhk") != nil {
                 // Then reading it back from the file
-                var inString = ""
-                do {
                     let defaults:UserDefaults = UserDefaults.standard
                     var currentUser = ""
                     if let opened:String = defaults.string(forKey: "userNameKey" )
@@ -164,14 +156,26 @@
                         print(opened)
                     }
                     
+                    
+                var inString = ""
+                do {
+ 
                     inString = try String(contentsOf: fileURL)
                     decryptedText = decryptText(text: inString)
                     let textFromFile = decryptedText.components(separatedBy: .newlines)
+                    //Delete all data before import
+                    if decryptedText != ""{
+                        _ = DbmanagerMadicalinfo.shared1.DeleteAll(sameUser: currentUser)
+                        _ = DBManager.shared.DeleteAll(sameUser: currentUser)
+                        _ = DocumentDBManager.Docshared.deleteAllDocuments(docUser: currentUser)
+                    }
+                    
                     for i in textFromFile
                     {
                         let line = i.components(separatedBy: ",")
                         switch line[0]
                         {
+                            
                         case "Allergies":
                             _ = DbmanagerMadicalinfo.shared1.insertallergiesInformationTable(allergiesName: line[2], allergiesmedi: line[3], allergiestreatment: line[4], SameUser: currentUser)
                             break
