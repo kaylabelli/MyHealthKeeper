@@ -19,17 +19,17 @@ struct cellData {
 }
 var myIndex = 0
 var tableViewData = [cellData(title: "Medications/Pharmacy", yesNo: "Is your medication list up to date?" , field: "When are you due for your refills?", info: "", link: "", remind: "Do you want to set a reminder to call your pharmacy?"),
-                     cellData(title: "Exercise", yesNo: "", field: "", info: "Please talk to your physician about any potential exercise restrictions.", link: "https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-infographic", remind: ""),
+                     cellData(title: "Exercise", yesNo: "", field: "", info: "The American Heart Association recommends 150 minutes a week of moderate-intensity exercise, 75 minutes a week of vigorous activity, or a mix of both.  Please speak to your doctor for recommendations how to incorporate these recommendations into your life and to see if they recommend any exercise restrictions.", link: "https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-infographic", remind: ""),
                      cellData(title: "Insurance", yesNo: "", field: "When does your insurance expire?", info: "", link: "", remind: "Do you want to set a reminder to renew your insurance?"),
                      cellData(title: "Immunizations", yesNo: "", field: "When was your last flu shot?", info: "", link: "", remind: "Do you want to set a reminder to get a flu shot?"),
                      cellData(title: "Depression/Anxiety", yesNo: "", field: "Last screening for depression/anxiety:", info: "Patients with chronic medical conditions are at higher risk of having depression and/or anxiety. Please get screened routinely for depression and anxiety and speak to your physician if you are feeling anxious or sad.", link: "", remind: ""),
                      cellData(title: "Advanced Directive", yesNo: "", field: "", info: "Please fill out your Advanced Directives at the link provided.", link: "http://www.caringinfo.org/i4a/pages/index.cfm?pageid=3285", remind: "Do you want to set a reminder to fill out your advanced directives?"),
                      cellData(title: "High Cholesterol/Diabetes", yesNo: "", field: "Last Cholesterol Panel/Diabetic Profile", info: "Please speak to your doctor regarding how often you should get bloodwork to screen for high cholesterol/diabetes.", link: "", remind: ""),
-                     cellData(title: "Do You Smoke?", yesNo: "", field: "", info: "If so, are you interested in quitting?", link: "https://smokefree.gov", remind: ""),
+                     cellData(title: "Do You Smoke?", yesNo: "", field: "", info: "If you are interested in quitting smoking, please speak to your physician regarding the different options for quitting smoking.", link: "https://smokefree.gov", remind: ""),
                      cellData(title: "Cancer Screening", yesNo: "", field: "", info: "Please speak to your primary care doctor to find out which of the following tests would apply to you and how often you should be screened for them.", link: "", remind: ""),
                      cellData(title: "Breast Cancer", yesNo: "", field: "Last Mammogram", info: "", link: "https://www.cdc.gov/cancer/breast/basic_info/screening.htm", remind: "Do you want to set a reminder to schedule a mammogram?"),
                      cellData(title: "Cervical Cancer", yesNo: "", field: "Last Pap Smear", info: "", link: "https://www.cdc.gov/cancer/cervical/basic_info/screening.htm", remind: ""),
-                     cellData(title: "Colon Cancer", yesNo: "", field: "Last Colonoscopy", info: "", link: "https://www.cdc.gov/cancer/colorectoral/basic_info/screening.htm", remind: "")]
+                     cellData(title: "Colon Cancer", yesNo: "", field: "Last Colonoscopy", info: "", link: "https://www.cdc.gov/cancer/colorectal/index.htm", remind: "")]
 
 class checklist: UITableViewController{
     
