@@ -20,11 +20,10 @@ class summary: UITableViewController {
     var vaccine: [VaccineInfo] = DbmanagerMadicalinfo.shared1.RetrieveVaccineInfo() ?? [VaccineInfo()]
     var insurance: [InsuranceInfo] = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo() ?? [InsuranceInfo()]
     var additional: [MedicaInfo] = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo() ?? [MedicaInfo()]
-    
-    //  backgroundCol1()
+
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    // appDelegate.backgroundCol1()
+
     
     // allwed user to acces NSDefault to retrive same user name
     let defaults:UserDefaults = UserDefaults.standard
@@ -53,9 +52,6 @@ class summary: UITableViewController {
         insurance = DbmanagerMadicalinfo.shared1.RetrieveInsuranceInfo(SameUser: CurrentUser) ?? [InsuranceInfo()]
         additional = DbmanagerMadicalinfo.shared1.RetrieveMedicalInfo(SameUser: CurrentUser) ?? [MedicaInfo()]
         
-        //tableView.backgroundColor = UIColor(hue: 219/360, saturation: 79/100, brightness: 89/100, alpha: 1.0)
-      //  tableView.backgroundColor = UIColor(hue: 181/360, saturation: 82/100, brightness: 89/100, alpha: 1.0)
-        // backgroundCol()
         
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
@@ -143,8 +139,7 @@ class summary: UITableViewController {
         let cell:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell") as UITableViewCell
         let cell1:  UITableViewCell = UITableViewCell(style:UITableViewCell.CellStyle.value1,reuseIdentifier:"cell1") as UITableViewCell
         cell.detailTextLabel?.textColor = UIColor.black
-        //cell1.backgroundColor
-        // cell.detailTextLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
+        
         // passs same user for all information
         
         //personal

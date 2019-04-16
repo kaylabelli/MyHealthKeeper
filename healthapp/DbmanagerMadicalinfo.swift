@@ -38,13 +38,11 @@ class DbmanagerMadicalinfo: NSObject {
     
     static let shared1: DbmanagerMadicalinfo = DbmanagerMadicalinfo()
     
-    //let databaseFileName = "myHealthApp.sqlite"
     
     var pathToDatabase: String!
     
     var database: FMDatabase!
-    
-    //let databaseFileName = "myHealthApp.sqlite"
+
      let databaseFileName = "HealthAppEncrypted5.sqlite"
     
     
@@ -102,7 +100,6 @@ class DbmanagerMadicalinfo: NSObject {
             
             do{
                 try database.executeUpdate(query, values: [sameUser])
-                //AllergiesViewController().deleteAllergies()
             }
             catch{
                 
@@ -113,14 +110,13 @@ class DbmanagerMadicalinfo: NSObject {
             
             do{
                 try database.executeUpdate(query, values: [sameUser])
-                //AllergiesViewController().deleteAllergies()
             }
             catch{
                 
                 print(error.localizedDescription)
             }
             
-            query = "DELETE FROM Doctor where SameUser = ?" //where SameUser = \(sameUser)"
+            query = "DELETE FROM Doctor where SameUser = ?"
             
             do{
                 try database.executeUpdate(query, values: [sameUser])
@@ -131,7 +127,7 @@ class DbmanagerMadicalinfo: NSObject {
                 print(error.localizedDescription)
             }
             
-            query = "DELETE FROM Illnesses where SameUser = ?" //where SameUser = \(sameUser)"
+            query = "DELETE FROM Illnesses where SameUser = ?"
             
             do{
                 try database.executeUpdate(query, values: [sameUser])
@@ -474,13 +470,13 @@ class DbmanagerMadicalinfo: NSObject {
      // update doctor
     func updateDoctorTable (DoctorName:String,DoctorSpeciallity: String,DoctorAddress: String,Doctorcontact: String,rowID: Int) -> Bool {
         
-        //(reminderName:String, reminderLocation:String, reminderReason:String, reminderDate:String, reminderID:Int) -> Bool {
+        
         print(DoctorName)
         print(DoctorSpeciallity)
         print(DoctorAddress)
         print(Doctorcontact)
         print (rowID)
-        //print(String(reminderDate)!)
+        
         //  open database
         if !openDatabase() {
             print("Failed to Open database.")

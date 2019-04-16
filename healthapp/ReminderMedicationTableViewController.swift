@@ -36,7 +36,6 @@ class ReminderMedicationTableViewController: UITableViewController
             print(opened)
         }
         items = DBManager.shared.loadRemindersMedication(reminderUser: uName) ?? [ReminderMedicationInfo()]
-        //  items=DBManager.shared.loadReminders() ?? [ReminderInfo()]
         for i in items
         {
             print(i)
@@ -44,7 +43,6 @@ class ReminderMedicationTableViewController: UITableViewController
         tableView.reloadData()
         print("IN table view controller!!!!!")
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
         if(self.items.count != 0)
@@ -60,8 +58,6 @@ class ReminderMedicationTableViewController: UITableViewController
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         //Replaces Back button in Navigation bar to the MenuLabel
-        // let displayButton = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(ReminderTableViewController.clickButton(sender:)))
-        // self.navigationItem.leftBarButtonItem = displayButton
         
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -170,10 +166,7 @@ class ReminderMedicationTableViewController: UITableViewController
         let DateFormat=DateFormatter()
         var dateDisplay=""
         var labelimage = "💊 "
-        /*if(date != nil)
-         {
-         dateDisplay = DateFormat.string(from: date!)
-         }*/
+       
         switch items[indexPath.row].dailyHourly
         {
         case 0:
@@ -227,14 +220,6 @@ class ReminderMedicationTableViewController: UITableViewController
     }
     
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -255,7 +240,7 @@ class ReminderMedicationTableViewController: UITableViewController
                 for i in list {
                     
                     print("Deleting item was successful")
-                    //    self.editButtonItem.title="Delete"
+        
                     //delete notif from notificaton center
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Reminder\(idDeleteItem).\(i)"])
                 
@@ -314,7 +299,6 @@ class ReminderMedicationTableViewController: UITableViewController
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         

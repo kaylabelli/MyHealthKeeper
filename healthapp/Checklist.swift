@@ -18,6 +18,7 @@ struct cellData {
     var remind = String()
 }
 var myIndex = 0
+//fill in fields for each of the pages within the checklist
 var tableViewData = [cellData(title: "Medications/Pharmacy", yesNo: "Is your medication list up to date?" , field: "When are you due for your refills?", info: "", link: "", remind: "Do you want to set a reminder to call your pharmacy?"),
                      cellData(title: "Exercise", yesNo: "", field: "", info: "The American Heart Association recommends 150 minutes a week of moderate-intensity exercise, 75 minutes a week of vigorous activity, or a mix of both.  Please speak to your doctor for recommendations how to incorporate these recommendations into your life and to see if they recommend any exercise restrictions.", link: "https://www.heart.org/en/healthy-living/fitness/fitness-basics/aha-recs-for-physical-activity-infographic", remind: ""),
                      cellData(title: "Insurance", yesNo: "", field: "When does your insurance expire?", info: "", link: "", remind: "Do you want to set a reminder to renew your insurance?"),
@@ -41,12 +42,7 @@ class checklist: UITableViewController{
         menu_vc.view.isHidden = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
     }
-    /*
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewData.count
-        
-    }
-    */
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewData.count
     }
@@ -104,10 +100,9 @@ class checklist: UITableViewController{
         
     }
     
-    
+    //create slide out menu button on the checklist page
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         

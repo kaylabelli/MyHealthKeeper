@@ -30,8 +30,7 @@ class ResetPassword: UIViewController,UITextFieldDelegate {
             if let opened:String = defaults.string(forKey: "userNameKey" )
             {
                 CurrentName=opened
-                //print("USERNAME2")
-                //print(opened)
+                
             }
             
             let resetSuccess = DBFeatures.sharedFeatures.resetPassword(pPassword: resetPassword.text!, pUsername: CurrentName)

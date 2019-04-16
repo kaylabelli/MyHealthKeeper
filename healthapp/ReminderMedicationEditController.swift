@@ -76,29 +76,19 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         //hide keyboard when user presses enter on keyboard
         
         self.medicationName.delegate = self
-        //        self.medicationType.delegate = self
-        //        self.medicationType.delegate = self
+ 
         self.totalAmount.delegate = self
         self.perUse.delegate = self
-        //        self.dosage.delegate = self
+    
         
         self.medicationName.adjustsFontSizeToFitWidth = true
         self.medicationName.minimumFontSize = CGFloat(9.0)
         
         medicationName.returnKeyType = UIReturnKeyType.done
-        //        medicationType.returnKeyType = UIReturnKeyType.done
+ 
         totalAmount.returnKeyType = UIReturnKeyType.done
         perUse.returnKeyType = UIReturnKeyType.done
-        //       dosage.returnKeyType = UIReturnKeyType.done
-        
-        //        self.dosagePicker.dataSource = self
-        //        self.dosagePicker.delegate = self
-        //        self.typePicker.dataSource = self
-        //        self.typePicker.delegate = self
-        
-        //        self.typePicker.isHidden = true
-        //        self.dosagePicker.isHidden = true
-        
+
         //reapplies color when switching to landscape mode
         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
         
@@ -113,14 +103,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         }
         backgroundCol()
         
-        //button
-        //
-        //   Update.Design()
+        
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
         
-        // print(id)
+    
         //prepopulate page
         let useNum: Int = curitem?.medicationTotalAmount ?? 1
         let totalNum: Int = curitem?.medicationAmount ?? 0
@@ -129,7 +117,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         firstTime.text = curitem?.firstTime
         secondTime.text = curitem?.secondTime
         thirdTime.text = curitem?.thirdTime
-        //        medicationType?.text = curitem?.medicationType
+     
         totalAmount.text = String(totalNum)
         perUse.text = String(useNum)
         
@@ -177,13 +165,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         
         let DateFormat=DateFormatter()
         DateFormat.dateFormat="MM-dd-yyyy HH:mm"
-        // var dateR=DateFormat.string(from: reminderDate.date)
-        //let datecurrent=DateFormat.date(from: (curitem?.reminderDate)!)
-        /*if datecurrent != nil
-         {
-         ReminderDate.setDate(datecurrent!, animated: true)
-         }*/
-        //ReminderReason.text = item![1].reminderReason
+      
         //Do any additional setup after loading the view.
         //check if user has authorized
         
@@ -362,7 +344,6 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
             if pickerView == typePicker
             {
-                // picker1.isHidden = true
                 return medicationTypeList.count
             }
             else if pickerView == dosagePicker
@@ -376,7 +357,6 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         
         if pickerView == typePicker
         {
-            // picker1.isHidden = true
             return medicationTypeList[row]
         }
         else if pickerView == dosagePicker
@@ -389,7 +369,6 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
     func pickerView(_ pickerView: UIPickerView,didSelectRow row:Int,inComponent:Int){
             if pickerView == typePicker
             {
-                // picker1.isHidden = true
                 medicationType.text = medicationTypeList[row]
             }
             else if pickerView == dosagePicker
@@ -442,7 +421,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
         
         if(medName=="")//invalid entry-check if the Reminder Name is empty
         {
-            // var reminderErrMess="Reminder Name field cannot be empty. Please enter a value."
+           
             //Create Add Reminder Error Alert
             let reminderError = UIAlertController(title: "ERROR", message: "Medication name field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
             //Add close action to alert
@@ -541,7 +520,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                 for i in list {
                     
                     print("Deleting item was successful")
-                    //    self.editButtonItem.title="Delete"
+                    
                     //delete notif from notificaton center
                     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Reminder\(idDeleteItem).\(i)"])
                 }
@@ -582,8 +561,7 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                     
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -639,14 +617,13 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                    
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                        
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -721,15 +698,13 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                    
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
-                        
+                       
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
 
@@ -828,14 +803,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                   
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -890,14 +863,13 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -952,14 +924,13 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                    
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if (sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1014,14 +985,13 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                   
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                        
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1087,14 +1057,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1153,14 +1121,12 @@ class ReminderMedicationEditController: UIViewController, UITextFieldDelegate, U
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."

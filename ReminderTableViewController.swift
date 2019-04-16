@@ -39,11 +39,10 @@ class ReminderTableViewController: UITableViewController {
         }
         items = DBManager.shared.loadReminders(reminderUser:uName) ?? [ReminderInfo()]
         items.sort {$0.reminderDate < $1.reminderDate}
-     //  items=DBManager.shared.loadReminders() ?? [ReminderInfo()]
+    
         tableView.reloadData()
        print("IN table view controller!!!!!")
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         
         if(self.items.count != 0)
@@ -55,12 +54,10 @@ class ReminderTableViewController: UITableViewController {
         }
         
         }
-       // editButtonItem.setTitle("Delete",for: .normal)
         
         self.navigationItem.setHidesBackButton(true, animated: false)
         //Replaces Back button in Navigation bar to the MenuLabel
-       // let displayButton = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(ReminderTableViewController.clickButton(sender:)))
-       // self.navigationItem.leftBarButtonItem = displayButton
+       
         
          self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
@@ -201,7 +198,7 @@ class ReminderTableViewController: UITableViewController {
                 print("Deleting item was successful")
                 items.remove(at: indexPath.row)
                 tableView.reloadData()
-              //    self.editButtonItem.title="Delete"
+              
                 //delete notif from notificaton center
                 UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Reminder"+"\(idDeleteItem)"])
                 

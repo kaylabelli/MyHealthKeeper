@@ -201,8 +201,7 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         //hide keyboard when user taps screen
         self.hideKeyboard()
-        
-        // self.tableview2.isHidden = true
+    
         //hide keyboard when user presses enter on keyboard
         self.IllnesseNameText.delegate=self
         
@@ -259,7 +258,6 @@ class IllnesseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

@@ -29,9 +29,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! ExpandableCell
-        
-       // var image = UIImageView()
-      //  image = UIImageView.init(frame: CGRect(x: 10, y: 10, width: 25, height: 25))
+    
         
         let name = " ➡️ Name:  "
         let name1 = " ⬇️ Name:  "
@@ -40,12 +38,12 @@ UINavigationControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate, UITa
         
         if(indexPath.row == selectedIndex)
         {
-           // image.image = UIImage(named: "forward")
+        
             cell.FirstViewlabelMedication.text  = name1 + array[indexPath.row]
             
         }
         else {
-           // image.image = UIImage(named: "expand1")
+           
             cell.FirstViewlabelMedication.text  = name + array[indexPath.row]
         }
          //cell.addSubview(image)
@@ -486,10 +484,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
            
             self.picker2.isHidden = true
-           //self.TextField2.isHidden = true
-
-          //  self.TextField3.isHidden = true
-            
+           
              // delete button
             self.navigationItem.rightBarButtonItem = self.editButtonItem
             self.editButtonItem.title="Edit"
@@ -499,7 +494,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             TableView.estimatedRowHeight = 50
             TableView.rowHeight = UITableView.automaticDimension
                         
-           //  self.navigationItem.setHidesBackButton(true, animated: false)
             // keybord dissmis
             self.TextField.delegate = self
             self.TextField2.delegate = self
@@ -604,7 +598,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if pickerView == picker1
         {
-        // picker1.isHidden = true
         return StateList[row]
         }
         else if pickerView==picker2
@@ -623,7 +616,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         {
             if pickerView == picker1
             {
-                // picker1.isHidden = true
                 StateDropDown.text=StateList[row]
             }
             else if pickerView == genderPicker
@@ -1043,7 +1035,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         }
         else
         {
-            //SaveFamilyHistory.isScrollEnabled
             self.SaveFamilyHistory.isScrollEnabled = true
              print("Scroll enabled")
         }
@@ -1055,7 +1046,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         }
         else
         {
-            //SaveFamilyHistory.isScrollEnabled
             self.SaveNote.isScrollEnabled = true
             print("Scroll enabled")
         }
@@ -1093,7 +1083,7 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     func isValidString(nameString: String) -> Bool{
         
         // expression for String
-      //  let LnameRegEx = "^[A-Za-z']{2,60}$"
+      
         let LnameRegEx = "^[a-zA-Z][a-zA-Z\\s]+$|^$"
         do{
             
@@ -1291,7 +1281,6 @@ override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     
     func show_menu()
     {
-        //self.menu_vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         self.addChild(self.menu_vc)
         self.view.addSubview(self.menu_vc.view)
         self.menu_vc.view.frame = CGRect(x: 0, y: 14, width: menu_vc.view.frame.width, height: menu_vc.view.frame.height)

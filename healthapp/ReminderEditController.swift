@@ -53,10 +53,7 @@ var isGrantedNotificationAccess: Bool=false
         
         //Main UIview color
         backgroundCol()
-        
-        //button
-        //
-     //   Update.Design()
+    
         // menu
         menu_vc = self.storyboard?.instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
         menu_vc.view.isHidden = true
@@ -69,7 +66,7 @@ var isGrantedNotificationAccess: Bool=false
 
         let DateFormat=DateFormatter()
         DateFormat.dateFormat="MM-dd-yyyy HH:mm"
-       // var dateR=DateFormat.string(from: reminderDate.date)
+      
       let datecurrent=DateFormat.date(from: (curitem?.reminderDate)!)
         if datecurrent != nil
        {

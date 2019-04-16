@@ -12,6 +12,7 @@
          
          class ImportExport: UIViewController, UIDocumentMenuDelegate, UIDocumentPickerDelegate, UINavigationControllerDelegate{
             
+            
             func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
                 print("file picked: ")
                 documentPicker.dismiss(animated: true, completion: nil)
@@ -63,6 +64,7 @@
                 }
             }
             
+            //returns the URL of the document that was chosen for import
             func documentPicker(_ documentPicker: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
                 print("file picked: \(urls)")
                 documentPicker.dismiss(animated: true, completion: nil)
@@ -79,6 +81,7 @@
                 ImportAlert.addAction(UIAlertAction(title: "Yes, Import Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
+                        //if the password text field is empty, display an error.
                         if(self.password.text == ""){
                             let alertController = UIAlertController(title: "ERROR", message: "Password field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
                             let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
@@ -86,7 +89,7 @@
                             self.present(alertController, animated: true, completion: nil)
                         }
                         else{
-                            
+                            //allow user to choose a document from the files app
                             let documentPickerController = UIDocumentPickerViewController(documentTypes: [kUTTypeItem as String], in: .import)
                             documentPickerController.delegate = self as? UIDocumentPickerDelegate
                             self.present(documentPickerController, animated: true, completion: nil)
@@ -109,6 +112,7 @@
                 ExportAlert.addAction(UIAlertAction(title: "Yes, Export Data", style: UIAlertAction.Style.default, handler: {
                     (action) -> Void in
                     do {
+                        //if passcode field is empty, display an error
                         if(self.password.text == ""){
                             let alertController = UIAlertController(title: "ERROR", message: "Passcode field cannot be empty. Please enter a value.", preferredStyle: UIAlertController.Style.alert)
                             let alertControllerNo = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
@@ -170,6 +174,7 @@
                         _ = DocumentDBManager.Docshared.deleteAllDocuments(docUser: currentUser)
                     }
                     
+                    //Add data from file to database tables depending on the first line of each row
                     for i in textFromFile
                     {
                         let line = i.components(separatedBy: ",")
@@ -269,6 +274,7 @@
             }
         }
         else{
+                    //if file chosen is not of type ".mhk" throw error
                     let ImportStatus = UIAlertController(title: "Incorrect File Type", message: "The import file you select must have the file extension .mhk", preferredStyle: .alert)
                     
                     ImportStatus.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
@@ -280,7 +286,7 @@
     }
          
          
-
+            //Create the export .mhk file and write all data in the app to it
          func createFile(){
              var text = [String]()
             
@@ -644,7 +650,6 @@
             let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
             
             do {
-                //try encryptedText.joined(separator:"").write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 try encryptedText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 
             }catch{
@@ -664,7 +669,7 @@
             self.present(activityViewController, animated: true)
          }
             
-        
+        //encrypt the text in the file being exported
             func encryptText(text: [String]) -> String
             {
                 var encryptedText: String = ""
@@ -681,12 +686,13 @@
                 return ciphertext.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
             }
             
+            //decrypt text when file is imported
             func decryptText (text: String) -> String
             {
                 print ("IN DECRYPTION")
                 let passcode = self.password.text!
                 var decryptedText: String = ""
-                //let data: Data = text.data(using: .utf8)!
+    
                 let data = Data(base64Encoded: text, options: Data.Base64DecodingOptions(rawValue: 0))
                 let error: Data = "Error".data(using: .utf8)!
                 
@@ -715,6 +721,7 @@
                 return decryptedText
             }
             
+            //format the passcode text field when user tries to import and export
             func Password(textfield: UITextField!){
                 password = textfield
                 password?.placeholder = "Passcode*"
@@ -733,6 +740,7 @@
                 }
             }
             
+            //create the slide out menu button on the import/export page
             var menu_vc : MenuViewController!
             var menu_bool = true
             @objc func menu_Action(_ sender: UIBarButtonItem) {

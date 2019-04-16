@@ -52,9 +52,6 @@ class DBFeatures: NSObject {
          pathToDatabase = documentsDirectory.appending("/\(databaseFileName)")
 
 
-
-        
-       // pathToDatabase = path.appending("/HealthAppEncrypted5.sqlite")
         print(pathToDatabase)
     }
     
@@ -78,8 +75,6 @@ class DBFeatures: NSObject {
                 
             }
         }
-        //  0.2  // FMDatabase
-        //    FMDatabase *db = [FMDatabase databaseWithPath:[self getDatabasePath]];
         database.open()
         database.setKey("TGMG2017")
 
@@ -141,8 +136,7 @@ class DBFeatures: NSObject {
         
         //All required fields should be complete
         let query="SELECT * FROM Registration WHERE (\(field_registration_firstName) = NOT NULL OR \(field_registration_lastName) = NOT NULL OR \(field_registration_username) = NOT NULL OR \(field_registration_password) = NOT NULL) OR (\(field_registration_email) = NOT NULL AND \(field_registration_cellPhone) = NOT NULL)"
-        
-        //   var matchPass=""
+    
         
         if openDatabase()
         {
@@ -153,7 +147,6 @@ class DBFeatures: NSObject {
                     
                 {
                     return true
-                    // matchPass=(results.string( forColumn: field_registration_password))!
                 }
                 
                 

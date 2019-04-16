@@ -107,7 +107,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         }
         
         var MonthlyReminder=true
-        //  let defaults:UserDefaults = UserDefaults.standard
         if let opened:Bool = defaults.bool(forKey: "monthlyNotificationStatus" )
         {
             MonthlyReminder=opened
@@ -116,8 +115,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         //view did load of Reminders page
         if(title=="Reminders")
         {
-            //reminderTable.delegate = self
-            //reminderTable.dataSource = self as! UITableViewDataSource
+
             //Hide title on navigation bar
             createDatePicker()
             create2DatePicker()
@@ -134,10 +132,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.LocationField.delegate=self
             
             self.medicationName.delegate=self
-//            self.medicationType.delegate=self
+
             self.medicationAmount.delegate=self
             self.medicationTotalAmount.delegate=self
-//            self.dosageText.delegate=self
+
             self.firstTime.delegate = self
             self.secondTime.delegate = self
             self.thirdTime.delegate = self
@@ -157,8 +155,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.otherControl.isHidden = true
             self.secondTime.isHidden = true
             self.thirdTime.isHidden = true
-//            self.typeMedicationPicker.isHidden = true
-//            self.dosagePicker.isHidden = true
+
             
             //request authroization for notification
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {(granted,error) in self.isGrantedNotificationAccess=granted })
@@ -172,7 +169,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 contentMonthlRem.sound = UNNotificationSound.default
                 contentMonthlRem.title=NSString.localizedUserNotificationString(forKey: "Reminder to Update Medical Information", arguments: nil)
                 contentMonthlRem.body = NSString.localizedUserNotificationString(forKey: "Has any of your Medical Information changed in the past month? If so, please update your information on MyHealthKeeper." , arguments:nil)
-                //contentMonthlRem.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
                 var monthly=DateComponents()
                 //monthly notification for the first day of every month at 12
                 monthly.minute=0
@@ -290,12 +286,11 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }
     
             //Hide back button and add menu
-            //self.navigationItem.setHidesBackButton(true, animated: false)
+        
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "smallmenuIcon"), style: .plain, target: self, action: #selector(ViewController.menu_Action(_:)))
-            //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(ViewController.ButtonPressed(_:)))
+
             
-            //Hides the drop-down menu
-            // self.menuview.isHidden = true
+          
         }
         
         
@@ -325,7 +320,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         //current state
         
         var UName=""
-        //   let defaults:UserDefaults = UserDefaults.standard
         if let opened:String = defaults.string(forKey: "userNameKey" ){UName=opened}
         
         if(isGrantedNotificationAccess) //user has granted app permission to send notifications
@@ -338,7 +332,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             }
             var itemsR: [MonthlyReminderInfo] = DBManager.shared.loadMonthlyReminders(reminderUser: uName) ?? [MonthlyReminderInfo()]
             
-            //  let status=itemsR[0].reminderStatus!
             var noteStatus=""
             if(status){
                 print("Notifications are turned on")
@@ -361,7 +354,6 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                 monthly.day = 1
                 
                 let triggerm = UNCalendarNotificationTrigger(dateMatching: monthly, repeats:true )
-                //UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
                 print("\(DBManager.shared.lastMonthlyReminder())")
                 let request=UNNotificationRequest(identifier:"MonthlyNotif"+UName, content: contentMonthlRem, trigger: triggerm)
                 UNUserNotificationCenter.current().add(request) { (error:Error?) in
@@ -507,10 +499,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.appointmentStack.isHidden = false
             self.medicationView.isHidden = true
             self.saveMedicationButton.isHidden = true
-//            self.typeMedicationPicker.isHidden = true
-//            self.dosagePicker.isHidden = true
-//            typeMedicationPicker.isHidden = true
-//            dosagePicker.isHidden = true
+
             firstTime.text = ""
             secondTime.text = ""
             thirdTime.text = ""
@@ -522,10 +511,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             self.appointmentStack.isHidden = true
             self.medicationView.isHidden = false
             self.saveMedicationButton.isHidden = false
-//            self.typeMedicationPicker.isHidden = false
-//            self.dosagePicker.isHidden = false
-//            typeMedicationPicker.isHidden = true
-//            dosagePicker.isHidden = true
+
             firstTime.text = ""
             secondTime.text = ""
             thirdTime.text = ""
@@ -794,14 +780,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
-                    
+                 
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                        
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -857,14 +841,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                   
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                     
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -939,14 +922,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                   
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                        
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1046,14 +1028,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                 
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1108,14 +1089,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                   
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                      
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1170,14 +1150,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                    
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if (sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1232,14 +1211,13 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+                  
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1311,8 +1289,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                       
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1371,14 +1348,12 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
                     var dateComp = Calendar.current.dateComponents([.year, .month, .day, .hour,.minute], from: firstReminder)
                     
                     var trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-                    //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
                     
                     //Initlize the reminder Status message variable
                     var reminderStatusMessage=""
                     
                     if(sucess){ //if insert was sucessful
-                        //       print("Insert Sucessful")
-                        //      var t = DBManager.shared.lastReminder()
+                      
                         
                         //sets status message variable
                         reminderStatusMessage = "Added " + medName + " to Medication Reminders."
@@ -1546,10 +1521,10 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             content.title=NSString.localizedUserNotificationString(forKey: "Appointment Reminders", arguments: nil)
             //set notificaton body
             content.body = NSString.localizedUserNotificationString(forKey: "Reminder for " + remName + " at location " + remLocation , arguments:nil)
-            //content.setValue("Yes", forKey: "shouldAlwaysAlertWhileAppIsForeground")
+           
             //set trigger
             let trigger = UNCalendarNotificationTrigger(dateMatching: dateComp, repeats:true )
-            //    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 20 , repeats:false)
+            
             //get the Users username from nuser default
             var uName=""
             let defaults:UserDefaults = UserDefaults.standard
@@ -1561,9 +1536,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             var reminderStatusMessage=""
             
             if(sucess){ //if insert was sucessful
-                //       print("Insert Sucessful")
-                //      var t = DBManager.shared.lastReminder()
-                
+              
                 //sets status message variable
                 reminderStatusMessage = "Insert of " + remName + " at " + dateR + " was successful."
                 
@@ -1610,8 +1583,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
             //cancel button on Add Reminder Alert
             reminderAlert.addAction(UIAlertAction(title:"OK", style:UIAlertAction.Style.default, handler: nil))
             
-            //  reminderAlert.addAction(UIAlertAction(title:"View Reminders", style:UIAlertActionStyle.default, handler: {(action) -> Void in
-            // self.performSegue(withIdentifier: "ViewReminders", sender: self)}));
+            
             // Performs the Segue
             self.present(reminderAlert,animated: true, completion:nil)
         }
@@ -1876,7 +1848,7 @@ UINavigationControllerDelegate, UIPickerViewDataSource,UIPickerViewDelegate, UIT
         var boardID = "Info"
         let navigation = main.instantiateViewController(withIdentifier: boardID)
         self.navigationController?.pushViewController(navigation, animated: true)
-         //self.performSegue(withIdentifier: "Info", sender: nil)
+         
     }
     
     func isValidDigit(DigitString: String) -> Bool{

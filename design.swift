@@ -13,7 +13,6 @@ extension UIButton {
     
     func Design(){
    
-        //self.setTitleColor(.blue, for: .normal)
         self.backgroundColor = UIColor(red:0, green:0.4,blue: 0.6000,alpha:1.0)
         self.layer.cornerRadius = 15
         self.layer.shadowColor = UIColor(red:0, green:0.2784,blue: 0.5373,alpha:1.0).cgColor

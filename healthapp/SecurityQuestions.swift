@@ -40,8 +40,7 @@ class SecurityQuestions: UITableViewController{
         if let opened:String = defaults.string(forKey: "userNameKey" )
         {
             CurrentName=opened
-            //print("USERNAME2")
-            //print(opened)
+        
         }
         
         
@@ -122,8 +121,7 @@ class SecurityQuestions: UITableViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(rotatedDevice), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
-    //   override func didReceiveMemoryWarning() {
-    //   super.didReceiveMemoryWarning()
+
     // Dispose of any resources that can be recreated.
 }
 
